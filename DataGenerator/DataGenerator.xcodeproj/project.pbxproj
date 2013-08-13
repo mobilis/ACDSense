@@ -14,6 +14,9 @@
 		5BFEA38817BA693200C7914D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA38717BA693200C7914D /* AppDelegate.m */; };
 		5BFEA38B17BA693200C7914D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BFEA38917BA693200C7914D /* MainMenu.xib */; };
 		5BFEA39217BA69F400C7914D /* MXi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFEA39117BA69F400C7914D /* MXi.framework */; };
+		5BFEA39417BA8F4600C7914D /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BFEA39317BA8F4600C7914D /* Settings.plist */; };
+		5BFEA39717BA900D00C7914D /* RefreshTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA39617BA900D00C7914D /* RefreshTimer.m */; };
+		5BFEA39B17BA959C00C7914D /* TempValueCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA39A17BA959C00C7914D /* TempValueCalculator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +33,12 @@
 		5BFEA38617BA693200C7914D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5BFEA38717BA693200C7914D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5BFEA38A17BA693200C7914D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		5BFEA39117BA69F400C7914D /* MXi.framework */ = {isa = PBXFileReference; lastKnownFileType = file; name = MXi.framework; path = ../../Mobilis/MXi/build/Release/MXi.framework; sourceTree = "<group>"; };
+		5BFEA39117BA69F400C7914D /* MXi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MXi.framework; path = ../../Mobilis/MXi/build/Release/MXi.framework; sourceTree = "<group>"; };
+		5BFEA39317BA8F4600C7914D /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
+		5BFEA39517BA900D00C7914D /* RefreshTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTimer.h; sourceTree = "<group>"; };
+		5BFEA39617BA900D00C7914D /* RefreshTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTimer.m; sourceTree = "<group>"; };
+		5BFEA39917BA959B00C7914D /* TempValueCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempValueCalculator.h; sourceTree = "<group>"; };
+		5BFEA39A17BA959C00C7914D /* TempValueCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempValueCalculator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +98,10 @@
 				5BFEA38717BA693200C7914D /* AppDelegate.m */,
 				5BFEA38917BA693200C7914D /* MainMenu.xib */,
 				5BFEA37B17BA693200C7914D /* Supporting Files */,
+				5BFEA39517BA900D00C7914D /* RefreshTimer.h */,
+				5BFEA39617BA900D00C7914D /* RefreshTimer.m */,
+				5BFEA39917BA959B00C7914D /* TempValueCalculator.h */,
+				5BFEA39A17BA959C00C7914D /* TempValueCalculator.m */,
 			);
 			path = DataGenerator;
 			sourceTree = "<group>";
@@ -102,6 +114,7 @@
 				5BFEA38017BA693200C7914D /* main.m */,
 				5BFEA38217BA693200C7914D /* DataGenerator-Prefix.pch */,
 				5BFEA38317BA693200C7914D /* Credits.rtf */,
+				5BFEA39317BA8F4600C7914D /* Settings.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -160,6 +173,7 @@
 				5BFEA37F17BA693200C7914D /* InfoPlist.strings in Resources */,
 				5BFEA38517BA693200C7914D /* Credits.rtf in Resources */,
 				5BFEA38B17BA693200C7914D /* MainMenu.xib in Resources */,
+				5BFEA39417BA8F4600C7914D /* Settings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +186,8 @@
 			files = (
 				5BFEA38117BA693200C7914D /* main.m in Sources */,
 				5BFEA38817BA693200C7914D /* AppDelegate.m in Sources */,
+				5BFEA39717BA900D00C7914D /* RefreshTimer.m in Sources */,
+				5BFEA39B17BA959C00C7914D /* TempValueCalculator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

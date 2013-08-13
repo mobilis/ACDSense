@@ -8,6 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "RefreshTimer.h"
+#import "TempValueCalculator.h"
+
 @interface AppDelegate : NSObject <NSApplicationDelegate>
+
+@property (strong, nonatomic) RefreshTimer *refreshTimer;
+@property (strong, nonatomic) TempValueCalculator *tempValueCalculator;
 
 @end
