@@ -13,6 +13,7 @@
 		5BFEA38517BA693200C7914D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5BFEA38317BA693200C7914D /* Credits.rtf */; };
 		5BFEA38817BA693200C7914D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA38717BA693200C7914D /* AppDelegate.m */; };
 		5BFEA38B17BA693200C7914D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BFEA38917BA693200C7914D /* MainMenu.xib */; };
+		5BFEA39217BA69F400C7914D /* MXi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFEA39117BA69F400C7914D /* MXi.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		5BFEA38617BA693200C7914D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5BFEA38717BA693200C7914D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5BFEA38A17BA693200C7914D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		5BFEA39117BA69F400C7914D /* MXi.framework */ = {isa = PBXFileReference; lastKnownFileType = file; name = MXi.framework; path = ../../Mobilis/MXi/build/Release/MXi.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BFEA39217BA69F400C7914D /* MXi.framework in Frameworks */,
 				5BFEA37517BA693200C7914D /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +66,7 @@
 		5BFEA37317BA693200C7914D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5BFEA39117BA69F400C7914D /* MXi.framework */,
 				5BFEA37417BA693200C7914D /* Cocoa.framework */,
 				5BFEA37617BA693200C7914D /* Other Frameworks */,
 			);
@@ -303,6 +307,7 @@
 				5BFEA39017BA693200C7914D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
