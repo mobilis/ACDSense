@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msdl:description
+	targetNamespace="http://mobilis.inf.tu-dresden.de/ACDSense"
+	xmlns:msdl="http://mobilis.inf.tu-dresden.de/msdl/"
+	xmlns:xmpp="http://mobilis.inf.tu-dresden.de/xmpp/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mns="http://mobilis.inf.tu-dresden.de/ACDSense"
+	xsi:schemaLocation="http://mobilis.inf.tu-dresden.de/msdl/ http://mobilis.inf.tu-dresden.de/msdl.xsd ">
+
+	<msdl:types>
+		<xs:schema targetNamespace="http://mobilis.inf.tu-dresden.de/ACDSense">
+			<xs:element name="RegisterPublisher" />
+			<xs:element name="RemovePublisher" />
+			<xs:element name="RegisterReceiver" />
+			<xs:element name="RemoveReceiver" />
+			<xs:element name="PublishSensorValues">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element
+							name="sensorValues"
+							type="mns:SensorValue"
+							minOccurs="1"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="DelegateSensorValues">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element
+							name="sensorValues"
+							type="mns:SensorValue"
+							minOccurs="1"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:complexType name="SensorValue">
+				<xs:sequence>
+					<xs:element
+						name="value"
+						type="xs:string" />
+					<xs:element
+						name="unit"
+						type="xs:string" />
+					<xs:element
+						name="type"
+						type="xs:string" />
+					<xs:element
+						name="location"
+						type="xs:string"
+						minOccurs="0"
+						maxOccurs="1" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>
+	</msdl:types>
+
+	<msdl:interface name="ACDSInterface">
+		<msdl:operation
+			name="RegisterPublisher"
+			pattern="http://www.w3.org/ns/wsdl/in-only">
+			<msdl:input element="mns:RegisterPublisher" />
+		</msdl:operation>
+		<msdl:operation
+			name="RemovePublisher"
+			pattern="http://www.w3.org/ns/wsdl/in-only">
+			<msdl:input element="mns:RemovePublisher" />
+		</msdl:operation>
+		<msdl:operation
+			name="RegisterReceiver"
+			pattern="http://www.w3.org/ns/wsdl/in-only">
+			<msdl:input element="mns:RegisterReceiver" />
+		</msdl:operation>
+		<msdl:operation
+			name="RemoveReceiver"
+			pattern="http://www.w3.org/ns/wsdl/in-only">
+			<msdl:input element="mns:RemoveReceiver" />
+		</msdl:operation>
+		<msdl:operation
+			name="PublishSensorValues"
+			pattern="http://www.w3.org/ns/wsdl/in-only">
+			<msdl:input element="mns:PublishSensorValues" />
+		</msdl:operation>
+		<msdl:operation
+			name="DelegateSensorValues"
+			pattern="http://www.w3.org/ns/wsdl/out-only">
+			<msdl:output element="mns:DelegateSensorValues" />
+		</msdl:operation>
+	</msdl:interface>
+
+	<msdl:binding
+		type="http://mobilis.inf.tu-dresden.de/xmpp/"
+		interface="mns:ACDSInterface"
+		name="ACDSBinding">
+		<msdl:operation
+			ref="mns:RegisterPublisher"
+			xmpp:ident="acdsense:iq:registerpublisher">
+			<msdl:input xmpp:type="set" />
+		</msdl:operation>
+		<msdl:operation
+			ref="mns:RemovePublisher"
+			xmpp:ident="acdsense:iq:removepublisher">
+			<msdl:input xmpp:type="set" />
+		</msdl:operation>
+		<msdl:operation
+			ref="mns:RegisterReceiver"
+			xmpp:ident="acdsense:iq:registerreceiver">
+			<msdl:input xmpp:type="set" />
+		</msdl:operation>
+		<msdl:operation
+			ref="mns:RemoveReceiver"
+			xmpp:ident="acdsense:iq:removereceiver">
+			<msdl:input xmpp:type="set" />
+		</msdl:operation>
+		<msdl:operation
+			ref="mns:PublishSensorValues"
+			xmpp:ident="acdsense:iq:publishsensorvalues">
+			<msdl:input xmpp:type="set" />
+		</msdl:operation>
+		<msdl:operation
+			ref="mns:DelegateSensorValues"
+			xmpp:ident="acdsense:iq:delegatesensorvalues">
+			<msdl:output xmpp:type="result" />
+		</msdl:operation>
+	</msdl:binding>
+
+	<msdl:service
+		name="ACDSense"
+		interface="tns:ACDSInterface"
+		ident="http://mobilis.inf.tu-dresden.de#services/ACDSenseService"
+		version="1">
+		<msdl:endpoint
+			name="ACDSEndpoint"
+			binding="tns:ACDSBinding" />
+		<msdl:dependencies />
+	</msdl:service>
+
+</msdl:description>
