@@ -1,32 +1,11 @@
 <?xml version="1.0"?>
-<project name="Ant-Test" default="main" basedir=".">
+<project name="ACDSenseService" default="main" basedir=".">
 
-	<!-- Directory variables -->
-	<property name="src.dir" location="src" />
-	
+	<property file="local.properties" />
+	<echo>mobilis.root = ${mobilis.root}</echo>
+
 	<!-- none: ""; separate entrylist by ':' ; remove one "../" if you're developing on Windows -->
-	<property name="src.dirs.extern" value="basedir/../../../MobilisServer/src:basedir/../../../MobilisXMPP/src" />
-	
-	<property name="build.dir" location="build" />
-	<property name="dist.dir" location="dist" />
-	<property name="lib.dir" location="lib" />
-	<property name="res.dir" value="resource" />
-
-	<!-- Meta information variables -->
-	<property name="service.package" value="the.service.package" />
-	<property name="msdl.filepath" value="META-INF" />
-	<property name="service.name" value="AService" />
-	<property name="msdl.filename" value="AService.msdl" />
-
-	<!-- Jar archive variables -->
-	<property name="jar.filename" value="AService_v1.jar" />
-	<property name="root.packages" value="the/service/package/**/*.*" />
-	<!-- all: "**/*.jar"; none: "none"; separate entrylist by ',' -->
-	<property name="required.libraries" value="none" />
-	<!-- all: "**/*.*"; none: "none"; separate entrylist by ',' -->
-	<property name="required.resources" value="**/*.*" />
-	
-
+	<property name="src.dirs.extern" value="${mobilis.root}/MobilisServer/src:${mobilis.root}/MobilisXMPP/src" />
 
 	<!-- Create build and dist directory-->
 	<target name="makedir">
@@ -37,10 +16,10 @@
 	<!-- Create classpath for libraries to compile binaries -->
 	<path id="build.classpath">
 		<fileset dir="${lib.dir}" includes="**/*.jar" />
-		
+
 		<!-- Add external library dirs of all projects in ${src.dirs.extern} -->
-		<fileset dir="basedir/../../../MobilisServer/libs" includes="**/*.jar" />
-		<fileset dir="basedir/../../../MobilisXMPP/libs" includes="**/*.jar" />
+		<fileset dir="${mobilis.root}/MobilisServer/libs" includes="**/*.jar" />
+		<fileset dir="${mobilis.root}/MobilisXMPP/libs" includes="**/*.jar" />
 	</path>
 
 	<!-- Create classpath for libraries on jar-packing -->
@@ -61,9 +40,7 @@
 
 	<!-- Compile java code -->
 	<target name="compile" depends="makedir">
-		<javac srcdir="${src.dir}:${src.dirs.extern}" destdir="${build.dir}" 
-			classpathref="build.classpath" debug="on" nowarn="on" failonerror="false"
-			encoding="ISO-8859-1">
+		<javac srcdir="${src.dir}:${src.dirs.extern}" destdir="${build.dir}" classpathref="build.classpath" debug="on" nowarn="on" failonerror="false" encoding="ISO-8859-1" includeantruntime="false">
 		</javac>
 
 	</target>
