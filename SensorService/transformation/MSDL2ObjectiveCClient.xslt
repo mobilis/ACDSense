@@ -10,8 +10,8 @@
 	<xsl:output method="text" version="2.0" encoding="UTF-8" indent="yes"/>
 
 	<!-- User defined variables -->
-	<xsl:variable name="outputFolder" select="'client/'" />
-	<xsl:variable name="serviceXMLNS" select="'mns'" />
+	<xsl:param name="outputFolder" select="'client/'" />
+	<xsl:param name="serviceXMLNS" select="'mns'" />
 	
 	<!-- Internal variables - do not edit these unless you know exactly what you're doing -->
 	<xsl:variable name="space" select="' '" />
