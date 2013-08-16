@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B1A01E717BE7A6900CC7011 /* LogFileWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */; };
 		5B6AAB5617BE6B6E0086A510 /* DelegateSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AAB4B17BE6B6E0086A510 /* DelegateSensorValues.m */; };
 		5B6AAB5717BE6B6E0086A510 /* PublishSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AAB4D17BE6B6E0086A510 /* PublishSensorValues.m */; };
 		5B6AAB5817BE6B6E0086A510 /* RegisterPublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AAB4F17BE6B6E0086A510 /* RegisterPublisher.m */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B1A01E517BE7A6900CC7011 /* LogFileWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogFileWriter.h; sourceTree = "<group>"; };
+		5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogFileWriter.m; sourceTree = "<group>"; };
 		5B6AAB4A17BE6B6E0086A510 /* DelegateSensorValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateSensorValues.h; sourceTree = "<group>"; };
 		5B6AAB4B17BE6B6E0086A510 /* DelegateSensorValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateSensorValues.m; sourceTree = "<group>"; };
 		5B6AAB4C17BE6B6E0086A510 /* PublishSensorValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishSensorValues.h; sourceTree = "<group>"; };
@@ -72,11 +75,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5B6AAB4917BE6B510086A510 /* Beans */ = {
+		5B1A01E817BE860200CC7011 /* Incoming */ = {
 			isa = PBXGroup;
 			children = (
 				5B6AAB4A17BE6B6E0086A510 /* DelegateSensorValues.h */,
 				5B6AAB4B17BE6B6E0086A510 /* DelegateSensorValues.m */,
+			);
+			name = Incoming;
+			sourceTree = "<group>";
+		};
+		5B1A01E917BE860E00CC7011 /* Outgoing */ = {
+			isa = PBXGroup;
+			children = (
 				5B6AAB4C17BE6B6E0086A510 /* PublishSensorValues.h */,
 				5B6AAB4D17BE6B6E0086A510 /* PublishSensorValues.m */,
 				5B6AAB4E17BE6B6E0086A510 /* RegisterPublisher.h */,
@@ -87,6 +97,15 @@
 				5B6AAB5317BE6B6E0086A510 /* RemovePublisher.m */,
 				5B6AAB5417BE6B6E0086A510 /* RemoveReceiver.h */,
 				5B6AAB5517BE6B6E0086A510 /* RemoveReceiver.m */,
+			);
+			name = Outgoing;
+			sourceTree = "<group>";
+		};
+		5B6AAB4917BE6B510086A510 /* Beans */ = {
+			isa = PBXGroup;
+			children = (
+				5B1A01E917BE860E00CC7011 /* Outgoing */,
+				5B1A01E817BE860200CC7011 /* Incoming */,
 			);
 			name = Beans;
 			sourceTree = "<group>";
@@ -140,6 +159,8 @@
 				5BFEA39617BA900D00C7914D /* RefreshTimer.m */,
 				5BFEA39917BA959B00C7914D /* TempValueCalculator.h */,
 				5BFEA39A17BA959C00C7914D /* TempValueCalculator.m */,
+				5B1A01E517BE7A6900CC7011 /* LogFileWriter.h */,
+				5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */,
 			);
 			path = DataGenerator;
 			sourceTree = "<group>";
@@ -232,6 +253,7 @@
 				5B6AAB5917BE6B6E0086A510 /* RegisterReceiver.m in Sources */,
 				5B6AAB5A17BE6B6E0086A510 /* RemovePublisher.m in Sources */,
 				5B6AAB5B17BE6B6E0086A510 /* RemoveReceiver.m in Sources */,
+				5B1A01E717BE7A6900CC7011 /* LogFileWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
