@@ -29,3 +29,7 @@ local.properties
 .class
 
 /bin
+
+# ACDSense SensorService
+dist/**
+*.out.txt
