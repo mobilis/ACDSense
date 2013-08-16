@@ -85,6 +85,7 @@
 			
 			<xsl:text>import java.util.List;</xsl:text>
 			<xsl:text>import java.util.ArrayList;</xsl:text>
+			<xsl:text>import de.tudresden.inf.rn.mobilis.xmpp.beans.XMPPBean;</xsl:text>
 			
 			<!-- begin with class definition -->
 			<xsl:text>public class </xsl:text><xsl:value-of select="$className"/><xsl:text> {</xsl:text>
@@ -335,7 +336,7 @@
 				<xsl:text>package </xsl:text><xsl:value-of select="$packageNamespace" /><xsl:text>;</xsl:text>
 				<xsl:value-of select="$newline" /><xsl:value-of select="$newline" />
 			</xsl:if>
-			
+			<xsl:text>import de.tudresden.inf.rn.mobilis.xmpp.beans.XMPPBean;</xsl:text>
 			<xsl:text>public interface </xsl:text><xsl:value-of select="$IIncomingInterfaceName" /><xsl:text> {</xsl:text>
 			<xsl:value-of select="$newline" />
 
@@ -395,7 +396,8 @@
 				<xsl:text>package </xsl:text><xsl:value-of select="$packageNamespace" /><xsl:text>;</xsl:text>
 				<xsl:value-of select="$newline" /><xsl:value-of select="$newline" />
 			</xsl:if>
-			
+			<xsl:text>import de.tudresden.inf.rn.mobilis.xmpp.beans.IXMPPCallback;</xsl:text>
+			<xsl:text>import de.tudresden.inf.rn.mobilis.xmpp.beans.XMPPBean;</xsl:text>
 						<xsl:text>public interface </xsl:text><xsl:value-of select="$IOutgoingInterfaceName" /><xsl:text> {
 
 	void sendXMPPBean( XMPPBean out, IXMPPCallback&lt; ? extends XMPPBean &gt; callback );
@@ -425,6 +427,7 @@
 			<xsl:text>import org.xmlpull.v1.XmlPullParser;</xsl:text>
 			<xsl:text>import java.util.List;</xsl:text>
 			<xsl:text>import java.util.ArrayList;</xsl:text>
+			<xsl:text>import de.tudresden.inf.rn.mobilis.xmpp.beans.XMPPInfo;</xsl:text>
 			<xsl:value-of select="$newline" /><xsl:value-of select="$newline" />
 						
 			<xsl:text>public class </xsl:text><xsl:value-of select="$typeInfoClassName" /><xsl:text> implements XMPPInfo {</xsl:text>
@@ -504,6 +507,7 @@
 						<xsl:text>import org.xmlpull.v1.XmlPullParser;</xsl:text>
 						<xsl:text>import java.util.List;</xsl:text>
 						<xsl:text>import java.util.ArrayList;</xsl:text>
+						<xsl:text>import de.tudresden.inf.rn.mobilis.xmpp.beans.XMPPBean;</xsl:text>
 						<xsl:value-of select="$newline" /><xsl:value-of select="$newline" />
 				
 						<xsl:text>public class </xsl:text><xsl:value-of select="$typeBeanClassName" /><xsl:text> extends </xsl:text><xsl:value-of select="$xmppBeanClassName" /><xsl:text> {</xsl:text>

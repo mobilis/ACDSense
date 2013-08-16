@@ -82,12 +82,8 @@
 		</msdl:operation>
 		<msdl:operation
 			name="PublishSensorValues"
-			pattern="http://www.w3.org/ns/wsdl/in-only">
+			pattern="http://www.w3.org/ns/wsdl/in-out">
 			<msdl:input element="mns:PublishSensorValues" />
-		</msdl:operation>
-		<msdl:operation
-			name="DelegateSensorValues"
-			pattern="http://www.w3.org/ns/wsdl/out-only">
 			<msdl:output element="mns:DelegateSensorValues" />
 		</msdl:operation>
 	</msdl:interface>
@@ -120,10 +116,6 @@
 			ref="mns:PublishSensorValues"
 			xmpp:ident="acdsense:iq:publishsensorvalues">
 			<msdl:input xmpp:type="set" />
-		</msdl:operation>
-		<msdl:operation
-			ref="mns:DelegateSensorValues"
-			xmpp:ident="acdsense:iq:delegatesensorvalues">
 			<msdl:output xmpp:type="result" />
 		</msdl:operation>
 	</msdl:binding>
