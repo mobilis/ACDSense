@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B6AAB5617BE6B6E0086A510 /* DelegateSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AAB4B17BE6B6E0086A510 /* DelegateSensorValues.m */; };
+		5B6AAB5717BE6B6E0086A510 /* PublishSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AAB4D17BE6B6E0086A510 /* PublishSensorValues.m */; };
+		5B6AAB5817BE6B6E0086A510 /* RegisterPublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AAB4F17BE6B6E0086A510 /* RegisterPublisher.m */; };
+		5B6AAB5917BE6B6E0086A510 /* RegisterReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AAB5117BE6B6E0086A510 /* RegisterReceiver.m */; };
+		5B6AAB5A17BE6B6E0086A510 /* RemovePublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AAB5317BE6B6E0086A510 /* RemovePublisher.m */; };
+		5B6AAB5B17BE6B6E0086A510 /* RemoveReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AAB5517BE6B6E0086A510 /* RemoveReceiver.m */; };
 		5BFEA37517BA693200C7914D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFEA37417BA693200C7914D /* Cocoa.framework */; };
 		5BFEA37F17BA693200C7914D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BFEA37D17BA693200C7914D /* InfoPlist.strings */; };
 		5BFEA38117BA693200C7914D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA38017BA693200C7914D /* main.m */; };
@@ -20,6 +26,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B6AAB4A17BE6B6E0086A510 /* DelegateSensorValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateSensorValues.h; sourceTree = "<group>"; };
+		5B6AAB4B17BE6B6E0086A510 /* DelegateSensorValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateSensorValues.m; sourceTree = "<group>"; };
+		5B6AAB4C17BE6B6E0086A510 /* PublishSensorValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishSensorValues.h; sourceTree = "<group>"; };
+		5B6AAB4D17BE6B6E0086A510 /* PublishSensorValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishSensorValues.m; sourceTree = "<group>"; };
+		5B6AAB4E17BE6B6E0086A510 /* RegisterPublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterPublisher.h; sourceTree = "<group>"; };
+		5B6AAB4F17BE6B6E0086A510 /* RegisterPublisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterPublisher.m; sourceTree = "<group>"; };
+		5B6AAB5017BE6B6E0086A510 /* RegisterReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterReceiver.h; sourceTree = "<group>"; };
+		5B6AAB5117BE6B6E0086A510 /* RegisterReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterReceiver.m; sourceTree = "<group>"; };
+		5B6AAB5217BE6B6E0086A510 /* RemovePublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemovePublisher.h; sourceTree = "<group>"; };
+		5B6AAB5317BE6B6E0086A510 /* RemovePublisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemovePublisher.m; sourceTree = "<group>"; };
+		5B6AAB5417BE6B6E0086A510 /* RemoveReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveReceiver.h; sourceTree = "<group>"; };
+		5B6AAB5517BE6B6E0086A510 /* RemoveReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveReceiver.m; sourceTree = "<group>"; };
 		5BFEA37117BA693200C7914D /* DataGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFEA37417BA693200C7914D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5BFEA37717BA693200C7914D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -54,6 +72,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B6AAB4917BE6B510086A510 /* Beans */ = {
+			isa = PBXGroup;
+			children = (
+				5B6AAB4A17BE6B6E0086A510 /* DelegateSensorValues.h */,
+				5B6AAB4B17BE6B6E0086A510 /* DelegateSensorValues.m */,
+				5B6AAB4C17BE6B6E0086A510 /* PublishSensorValues.h */,
+				5B6AAB4D17BE6B6E0086A510 /* PublishSensorValues.m */,
+				5B6AAB4E17BE6B6E0086A510 /* RegisterPublisher.h */,
+				5B6AAB4F17BE6B6E0086A510 /* RegisterPublisher.m */,
+				5B6AAB5017BE6B6E0086A510 /* RegisterReceiver.h */,
+				5B6AAB5117BE6B6E0086A510 /* RegisterReceiver.m */,
+				5B6AAB5217BE6B6E0086A510 /* RemovePublisher.h */,
+				5B6AAB5317BE6B6E0086A510 /* RemovePublisher.m */,
+				5B6AAB5417BE6B6E0086A510 /* RemoveReceiver.h */,
+				5B6AAB5517BE6B6E0086A510 /* RemoveReceiver.m */,
+			);
+			name = Beans;
+			sourceTree = "<group>";
+		};
 		5BFEA36817BA693200C7914D = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +131,7 @@
 		5BFEA37A17BA693200C7914D /* DataGenerator */ = {
 			isa = PBXGroup;
 			children = (
+				5B6AAB4917BE6B510086A510 /* Beans */,
 				5BFEA38617BA693200C7914D /* AppDelegate.h */,
 				5BFEA38717BA693200C7914D /* AppDelegate.m */,
 				5BFEA38917BA693200C7914D /* MainMenu.xib */,
@@ -188,6 +226,12 @@
 				5BFEA38817BA693200C7914D /* AppDelegate.m in Sources */,
 				5BFEA39717BA900D00C7914D /* RefreshTimer.m in Sources */,
 				5BFEA39B17BA959C00C7914D /* TempValueCalculator.m in Sources */,
+				5B6AAB5617BE6B6E0086A510 /* DelegateSensorValues.m in Sources */,
+				5B6AAB5717BE6B6E0086A510 /* PublishSensorValues.m in Sources */,
+				5B6AAB5817BE6B6E0086A510 /* RegisterPublisher.m in Sources */,
+				5B6AAB5917BE6B6E0086A510 /* RegisterReceiver.m in Sources */,
+				5B6AAB5A17BE6B6E0086A510 /* RemovePublisher.m in Sources */,
+				5B6AAB5B17BE6B6E0086A510 /* RemoveReceiver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
