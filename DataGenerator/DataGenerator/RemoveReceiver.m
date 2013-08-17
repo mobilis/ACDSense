@@ -2,8 +2,6 @@
 
 @implementation RemoveReceiver
 
-@synthesize ;
-
 - (id)init {
 	self = [super initWithBeanType:SET];
 	

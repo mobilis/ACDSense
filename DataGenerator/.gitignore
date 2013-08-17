@@ -18,3 +18,6 @@ DerivedData
 
 #CocoaPods
 Pods
+
+# Project specific exludes
+DataGenerator/Settings.plist
