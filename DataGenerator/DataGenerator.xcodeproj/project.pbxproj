@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B1189B617BF5DFB00CACF5A /* Settings.plist.example in Resources */ = {isa = PBXBuildFile; fileRef = 5B1189B517BF5DFB00CACF5A /* Settings.plist.example */; };
 		5B1A01E717BE7A6900CC7011 /* LogFileWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */; };
 		5B6AAB5617BE6B6E0086A510 /* DelegateSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AAB4B17BE6B6E0086A510 /* DelegateSensorValues.m */; };
 		5B6AAB5717BE6B6E0086A510 /* PublishSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AAB4D17BE6B6E0086A510 /* PublishSensorValues.m */; };
@@ -236,7 +235,6 @@
 				5BFEA38517BA693200C7914D /* Credits.rtf in Resources */,
 				5BFEA38B17BA693200C7914D /* MainMenu.xib in Resources */,
 				5BFEA39417BA8F4600C7914D /* Settings.plist in Resources */,
-				5B1189B617BF5DFB00CACF5A /* Settings.plist.example in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
