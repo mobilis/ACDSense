@@ -26,6 +26,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     self.tempValueCalculator = [[TempValueCalculator alloc] init];
+    [self launchConnectionEstablishment];
 }
 
 #pragma mark - DataGenerator
@@ -34,9 +35,15 @@
 {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_async(queue, ^{
-        // TODO: Implement transmission of temp value to Mobilis service here.
         float tempValue = [[self.tempValueCalculator nextValue] floatValue];
-        [self.connection sendBean:[[PublishSensorValues alloc] init]]; // add temperature before transmission
+        PublishSensorValues *sensorValues = [[PublishSensorValues alloc] init];
+        SensorValue *sensorValue = [[SensorValue alloc] init];
+        sensorValue.type = @"Temperature";
+        sensorValue.unit = @"Celsius";
+        sensorValue.value = [NSString stringWithFormat:@"%f", tempValue];
+        [sensorValues.sensorValues addObject:sensorValue];
+        
+        [self.connection sendBean:sensorValues];
     });
 }
 

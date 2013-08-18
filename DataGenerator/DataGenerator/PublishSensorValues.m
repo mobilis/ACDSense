@@ -6,6 +6,9 @@
 
 - (id)init {
 	self = [super initWithBeanType:SET];
+    if (self) {
+        self.sensorValues = [NSMutableArray arrayWithCapacity:2];
+    }
 	
 	return self;
 }
