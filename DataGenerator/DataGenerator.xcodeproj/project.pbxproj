@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B1189B917C0AF0700CACF5A /* SensorValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1189B817C0AF0700CACF5A /* SensorValue.m */; };
 		5B1A01E717BE7A6900CC7011 /* LogFileWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */; };
 		5B6AAB5617BE6B6E0086A510 /* DelegateSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AAB4B17BE6B6E0086A510 /* DelegateSensorValues.m */; };
 		5B6AAB5717BE6B6E0086A510 /* PublishSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AAB4D17BE6B6E0086A510 /* PublishSensorValues.m */; };
@@ -28,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		5B1189B517BF5DFB00CACF5A /* Settings.plist.example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.plist.example; sourceTree = "<group>"; };
+		5B1189B717C0AF0700CACF5A /* SensorValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorValue.h; sourceTree = "<group>"; };
+		5B1189B817C0AF0700CACF5A /* SensorValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorValue.m; sourceTree = "<group>"; };
 		5B1A01E517BE7A6900CC7011 /* LogFileWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogFileWriter.h; sourceTree = "<group>"; };
 		5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogFileWriter.m; sourceTree = "<group>"; };
 		5B6AAB4A17BE6B6E0086A510 /* DelegateSensorValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateSensorValues.h; sourceTree = "<group>"; };
@@ -162,6 +165,8 @@
 				5BFEA39A17BA959C00C7914D /* TempValueCalculator.m */,
 				5B1A01E517BE7A6900CC7011 /* LogFileWriter.h */,
 				5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */,
+				5B1189B717C0AF0700CACF5A /* SensorValue.h */,
+				5B1189B817C0AF0700CACF5A /* SensorValue.m */,
 			);
 			path = DataGenerator;
 			sourceTree = "<group>";
@@ -256,6 +261,7 @@
 				5B6AAB5A17BE6B6E0086A510 /* RemovePublisher.m in Sources */,
 				5B6AAB5B17BE6B6E0086A510 /* RemoveReceiver.m in Sources */,
 				5B1A01E717BE7A6900CC7011 /* LogFileWriter.m in Sources */,
+				5B1189B917C0AF0700CACF5A /* SensorValue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,5 @@
 #import <MXi/MXi.h>
-
-@class DelegateSensorValues;
+#import "SensorValue.h"
 
 @interface PublishSensorValues : MXiBean <MXiOutgoingBean>
 

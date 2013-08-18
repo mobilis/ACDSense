@@ -1,4 +1,5 @@
 #import <MXi/MXi.h>
+#import "SensorValue.h"
 
 @interface DelegateSensorValues : MXiBean <MXiIncomingBean>
 
