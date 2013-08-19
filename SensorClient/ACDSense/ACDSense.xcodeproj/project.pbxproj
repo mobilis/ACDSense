@@ -32,6 +32,7 @@
 		5B22E89F17C26E0500E6E4F4 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89E17C26E0500E6E4F4 /* libxml2.dylib */; };
 		5B22E8A317C284EA00E6E4F4 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E8A117C284E900E6E4F4 /* DataViewController.m */; };
 		5B22E8A417C284EA00E6E4F4 /* DataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B22E8A217C284EA00E6E4F4 /* DataViewController.xib */; };
+		5B333EDD17C28D9C0083BBD8 /* Settings.plist.example in Resources */ = {isa = PBXBuildFile; fileRef = 5B333EDC17C28D9C0083BBD8 /* Settings.plist.example */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,7 +64,7 @@
 		5B22E88817C25ECB00E6E4F4 /* SensorValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorValue.h; sourceTree = "<group>"; };
 		5B22E88917C25ECB00E6E4F4 /* SensorValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorValue.m; sourceTree = "<group>"; };
 		5B22E88B17C25FD200E6E4F4 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
-		5B22E89417C26AAB00E6E4F4 /* libMXi.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libMXi.a; path = "../../../Mobilis/MXi/build/Release-iphoneos/libMXi.a"; sourceTree = "<group>"; };
+		5B22E89417C26AAB00E6E4F4 /* libMXi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMXi.a; path = "../../../Mobilis/MXi/build/Release-iphoneos/libMXi.a"; sourceTree = "<group>"; };
 		5B22E89617C26DD600E6E4F4 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		5B22E89817C26DE000E6E4F4 /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
 		5B22E89A17C26DED00E6E4F4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -72,6 +73,7 @@
 		5B22E8A017C284E900E6E4F4 /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
 		5B22E8A117C284E900E6E4F4 /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
 		5B22E8A217C284EA00E6E4F4 /* DataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataViewController.xib; sourceTree = "<group>"; };
+		5B333EDC17C28D9C0083BBD8 /* Settings.plist.example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.plist.example; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 		5B22E85517C2547B00E6E4F4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5B333EDC17C28D9C0083BBD8 /* Settings.plist.example */,
 				5B22E88B17C25FD200E6E4F4 /* Settings.plist */,
 				5B22E85617C2547B00E6E4F4 /* ACDSense-Info.plist */,
 				5B22E85717C2547B00E6E4F4 /* InfoPlist.strings */,
@@ -250,6 +253,7 @@
 				5B22E86517C2547B00E6E4F4 /* Default-568h@2x.png in Resources */,
 				5B22E88C17C25FD200E6E4F4 /* Settings.plist in Resources */,
 				5B22E8A417C284EA00E6E4F4 /* DataViewController.xib in Resources */,
+				5B333EDD17C28D9C0083BBD8 /* Settings.plist.example in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +408,7 @@
 				5B22E86A17C2547B00E6E4F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
