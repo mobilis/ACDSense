@@ -24,14 +24,14 @@
 		5B22E88417C25CED00E6E4F4 /* RemoveReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E87E17C25CED00E6E4F4 /* RemoveReceiver.m */; };
 		5B22E88A17C25ECB00E6E4F4 /* SensorValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E88917C25ECB00E6E4F4 /* SensorValue.m */; };
 		5B22E88C17C25FD200E6E4F4 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B22E88B17C25FD200E6E4F4 /* Settings.plist */; };
-		5B22E89017C260E700E6E4F4 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E88E17C260E700E6E4F4 /* DataViewController.m */; };
-		5B22E89117C260E700E6E4F4 /* DataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B22E88F17C260E700E6E4F4 /* DataViewController.xib */; };
 		5B22E89517C26AAB00E6E4F4 /* libMXi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89417C26AAB00E6E4F4 /* libMXi.a */; };
 		5B22E89717C26DD600E6E4F4 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89617C26DD600E6E4F4 /* libiconv.dylib */; };
 		5B22E89917C26DE000E6E4F4 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89817C26DE000E6E4F4 /* libresolv.dylib */; };
 		5B22E89B17C26DED00E6E4F4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89A17C26DED00E6E4F4 /* CFNetwork.framework */; };
 		5B22E89D17C26DF800E6E4F4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89C17C26DF800E6E4F4 /* Security.framework */; };
 		5B22E89F17C26E0500E6E4F4 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89E17C26E0500E6E4F4 /* libxml2.dylib */; };
+		5B22E8A317C284EA00E6E4F4 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E8A117C284E900E6E4F4 /* DataViewController.m */; };
+		5B22E8A417C284EA00E6E4F4 /* DataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B22E8A217C284EA00E6E4F4 /* DataViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,15 +63,15 @@
 		5B22E88817C25ECB00E6E4F4 /* SensorValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorValue.h; sourceTree = "<group>"; };
 		5B22E88917C25ECB00E6E4F4 /* SensorValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorValue.m; sourceTree = "<group>"; };
 		5B22E88B17C25FD200E6E4F4 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
-		5B22E88D17C260E700E6E4F4 /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
-		5B22E88E17C260E700E6E4F4 /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
-		5B22E88F17C260E700E6E4F4 /* DataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataViewController.xib; sourceTree = "<group>"; };
 		5B22E89417C26AAB00E6E4F4 /* libMXi.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libMXi.a; path = "../../../Mobilis/MXi/build/Release-iphoneos/libMXi.a"; sourceTree = "<group>"; };
 		5B22E89617C26DD600E6E4F4 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		5B22E89817C26DE000E6E4F4 /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
 		5B22E89A17C26DED00E6E4F4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		5B22E89C17C26DF800E6E4F4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5B22E89E17C26E0500E6E4F4 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		5B22E8A017C284E900E6E4F4 /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
+		5B22E8A117C284E900E6E4F4 /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
+		5B22E8A217C284EA00E6E4F4 /* DataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,9 +136,9 @@
 				5B22E85D17C2547B00E6E4F4 /* AppDelegate.h */,
 				5B22E85E17C2547B00E6E4F4 /* AppDelegate.m */,
 				5B22E85517C2547B00E6E4F4 /* Supporting Files */,
-				5B22E88D17C260E700E6E4F4 /* DataViewController.h */,
-				5B22E88E17C260E700E6E4F4 /* DataViewController.m */,
-				5B22E88F17C260E700E6E4F4 /* DataViewController.xib */,
+				5B22E8A017C284E900E6E4F4 /* DataViewController.h */,
+				5B22E8A117C284E900E6E4F4 /* DataViewController.m */,
+				5B22E8A217C284EA00E6E4F4 /* DataViewController.xib */,
 			);
 			path = ACDSense;
 			sourceTree = "<group>";
@@ -249,7 +249,7 @@
 				5B22E86317C2547B00E6E4F4 /* Default@2x.png in Resources */,
 				5B22E86517C2547B00E6E4F4 /* Default-568h@2x.png in Resources */,
 				5B22E88C17C25FD200E6E4F4 /* Settings.plist in Resources */,
-				5B22E89117C260E700E6E4F4 /* DataViewController.xib in Resources */,
+				5B22E8A417C284EA00E6E4F4 /* DataViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +269,7 @@
 				5B22E88317C25CED00E6E4F4 /* RemovePublisher.m in Sources */,
 				5B22E88417C25CED00E6E4F4 /* RemoveReceiver.m in Sources */,
 				5B22E88A17C25ECB00E6E4F4 /* SensorValue.m in Sources */,
-				5B22E89017C260E700E6E4F4 /* DataViewController.m in Sources */,
+				5B22E8A317C284EA00E6E4F4 /* DataViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

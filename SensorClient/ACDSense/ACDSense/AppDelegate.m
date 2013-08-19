@@ -16,8 +16,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.dataViewController = [[DataViewController alloc] init];
+    
     self.window = [[UIWindow alloc] init];
-    [self.window setRootViewController:[[DataViewController alloc] init]];
+    [self.window setRootViewController:self.dataViewController];
     [self.window makeKeyAndVisible];
     
     [self launchConnectionEstablishment];
@@ -34,6 +36,7 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [self.connection sendBean:[[RemoveReceiver alloc] init]];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -44,6 +47,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [self launchConnectionEstablishment];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -124,7 +128,8 @@
 - (void)didReceiveBean:(MXiBean<MXiIncomingBean> *)theBean
 {
     if ([theBean class] == [DelegateSensorValues class]) {
-        NSLog(@"%@", theBean);
+        DelegateSensorValues *delegateSensorValues = (DelegateSensorValues *)theBean;
+        [self.dataViewController addSensorValues:delegateSensorValues.sensorValues];
     }
 }
 

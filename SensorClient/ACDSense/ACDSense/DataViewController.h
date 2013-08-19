@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DataViewController : UIViewController
+#import "SensorValue.h"
+
+@interface DataViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+
+- (void)addSensorValue:(SensorValue *)sensorValue;
+- (void)addSensorValues:(NSArray *)sensorValues;
 
 @end
