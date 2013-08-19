@@ -83,6 +83,7 @@
 - (void)didAuthenticate
 {
     NSLog(@"Authentication successfull");
+    [self.connection sendBean:[[RegisterReceiver alloc] init]];
 }
 
 - (void)didDisconnectWithError:(NSError *)error
@@ -123,7 +124,7 @@
 - (void)didReceiveBean:(MXiBean<MXiIncomingBean> *)theBean
 {
     if ([theBean class] == [DelegateSensorValues class]) {
-        
+        NSLog(@"%@", theBean);
     }
 }
 

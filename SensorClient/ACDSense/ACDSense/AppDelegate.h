@@ -15,6 +15,7 @@
 
 #import "DelegateSensorValues.h"
 #import "SensorValue.h"
+#import "RegisterReceiver.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, MXiBeanDelegate, MXiPresenceDelegate, MXiStanzaDelegate>
 

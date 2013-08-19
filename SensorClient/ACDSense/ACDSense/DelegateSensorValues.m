@@ -6,13 +6,24 @@
 
 - (id)init {
 	self = [super initWithBeanType:RESULT];
+    if (self) {
+        self.sensorValues = [[NSMutableArray alloc] initWithCapacity:2];
+    }
 	
 	return self;
 }
 
 - (void)fromXML:(NSXMLElement* )xml {
-	NSXMLElement* sensorValuesElement = (NSXMLElement*) [xml childAtIndex:0];
+	NSArray* sensorValueElements = [xml children];
     
+    for (NSXMLElement *sensorValuesElement in sensorValueElements) {
+        SensorValue *sensorValue = [[SensorValue alloc] init];
+        for (NSXMLElement *sensorValueElement in [sensorValuesElement children]) {
+            [sensorValue setValue:[sensorValueElement stringValue] forKey:[sensorValueElement name]];
+            [self.sensorValues addObject:sensorValue];
+        }
+        [self.sensorValues addObject:sensorValue];
+    }
 }
 
 + (NSString* )elementName {
