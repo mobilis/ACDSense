@@ -11,6 +11,7 @@
 #import <MXi/MXi.h>
 #import "DelegateSensorValues.h"
 #import "RegisterPublisher.h"
+#import "RemovePublisher.h"
 #import "PublishSensorValues.h"
 
 #import "RefreshTimer.h"

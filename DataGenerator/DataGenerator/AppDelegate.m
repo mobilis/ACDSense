@@ -29,6 +29,11 @@
     [self launchConnectionEstablishment];
 }
 
+- (void)applicationWillTerminate:(NSNotification *)notification
+{
+    [self.connection sendBean:[[RemovePublisher alloc] init]];
+}
+
 #pragma mark - DataGenerator
 
 - (void)scheduleNewValueCalculation
