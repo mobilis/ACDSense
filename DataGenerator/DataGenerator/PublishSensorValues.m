@@ -16,23 +16,25 @@
 - (NSXMLElement* )toXML {
 	NSXMLElement* beanElement = [NSXMLElement elementWithName:[[self class] elementName]
 														xmlns:[[self class] iqNamespace]];
-
+    
+    NSXMLElement *sensorValuesElement = [NSXMLElement elementWithName:@"sensorValues"];
 	for (SensorValue* sensorValuesPart in sensorValues) {
-		NSXMLElement* sensorValuesElement = [NSXMLElement elementWithName:@"sensorValues"];
+		NSXMLElement* sensorValueElement = [NSXMLElement elementWithName:@"sensorValue"];
         
         NSXMLElement *value = [NSXMLElement elementWithName:@"value" stringValue:sensorValuesPart.value];
         NSXMLElement *unit = [NSXMLElement elementWithName:@"unit" stringValue:sensorValuesPart.unit];
         NSXMLElement *type = [NSXMLElement elementWithName:@"type" stringValue:sensorValuesPart.type];
-        [sensorValuesElement addChild:value];
-        [sensorValuesElement addChild:unit];
-        [sensorValuesElement addChild:type];
+        [sensorValueElement addChild:value];
+        [sensorValueElement addChild:unit];
+        [sensorValueElement addChild:type];
         if (sensorValuesPart.location) {
             NSXMLElement *location = [NSXMLElement elementWithName:@"location" stringValue:sensorValuesPart.location];
-            [sensorValuesElement addChild:location];
+            [sensorValueElement addChild:location];
         }
 
-		[beanElement addChild:sensorValuesElement];
+		[sensorValuesElement addChild:sensorValueElement];
 	}
+    [beanElement addChild:sensorValuesElement];
 
 	return beanElement;
 }
