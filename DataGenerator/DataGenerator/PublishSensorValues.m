@@ -17,9 +17,8 @@
 	NSXMLElement* beanElement = [NSXMLElement elementWithName:[[self class] elementName]
 														xmlns:[[self class] iqNamespace]];
     
-    NSXMLElement *sensorValuesElement = [NSXMLElement elementWithName:@"sensorValues"];
 	for (SensorValue* sensorValuesPart in sensorValues) {
-		NSXMLElement* sensorValueElement = [NSXMLElement elementWithName:@"sensorValue"];
+		NSXMLElement* sensorValueElement = [NSXMLElement elementWithName:@"SensorValue"];
         
         NSXMLElement *value = [NSXMLElement elementWithName:@"value" stringValue:sensorValuesPart.value];
         NSXMLElement *unit = [NSXMLElement elementWithName:@"unit" stringValue:sensorValuesPart.unit];
@@ -32,9 +31,8 @@
             [sensorValueElement addChild:location];
         }
 
-		[sensorValuesElement addChild:sensorValueElement];
+		[beanElement addChild:sensorValueElement];
 	}
-    [beanElement addChild:sensorValuesElement];
 
 	return beanElement;
 }
