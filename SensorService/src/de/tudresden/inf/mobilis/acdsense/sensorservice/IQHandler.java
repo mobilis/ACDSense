@@ -2,6 +2,7 @@ package de.tudresden.inf.mobilis.acdsense.sensorservice;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Logger;
 
 import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.packet.Packet;
@@ -29,6 +30,9 @@ public class IQHandler implements PacketListener, IACDSenseIncoming,
 	private final Set<String> receivers;
 	private final ACDSenseProxy proxy;
 
+	private static Logger logger = Logger
+			.getLogger("de.tudresden.inf.mobilis.acdsense.sensorservice");
+
 	public IQHandler(MobilisAgent agent) {
 		this.setAgent(agent);
 		publishers = new HashSet<>();
@@ -39,30 +43,35 @@ public class IQHandler implements PacketListener, IACDSenseIncoming,
 	@Override
 	public void processPacket(Packet packet) {
 		if (packet instanceof BeanIQAdapter) {
-			System.out.println("is of type BeanIQAdapter");
 			XMPPBean inBean = ((BeanIQAdapter) packet).getBean();
+
+			logger.info(inBean.toXML());
 
 			if (inBean instanceof ProxyBean) {
 				ProxyBean proxyBean = (ProxyBean) inBean;
-
 				if (proxyBean.isTypeOf(RegisterPublisher.NAMESPACE,
 						RegisterPublisher.CHILD_ELEMENT)) {
+					logger.info("RegisterPublisher");
 					onRegisterPublisher((RegisterPublisher) proxyBean
 							.parsePayload(new RegisterPublisher()));
 				} else if (proxyBean.isTypeOf(RegisterReceiver.NAMESPACE,
 						RegisterReceiver.CHILD_ELEMENT)) {
+					logger.info("RegisterReceiver");
 					onRegisterReceiver((RegisterReceiver) proxyBean
 							.parsePayload(new RegisterReceiver()));
 				} else if (proxyBean.isTypeOf(RemovePublisher.NAMESPACE,
 						RegisterReceiver.CHILD_ELEMENT)) {
+					logger.info("RemovePublisher");
 					onRemovePublisher((RemovePublisher) proxyBean
 							.parsePayload(new RemovePublisher()));
 				} else if (proxyBean.isTypeOf(RemoveReceiver.NAMESPACE,
 						RegisterReceiver.CHILD_ELEMENT)) {
+					logger.info("RemoveREceiver");
 					onRemoveReceiver((RemoveReceiver) proxyBean
 							.parsePayload(new RemoveReceiver()));
 				} else if (proxyBean.isTypeOf(PublishSensorValues.NAMESPACE,
 						PublishSensorValues.CHILD_ELEMENT)) {
+					logger.info("PublishSensorValues");
 					onPublishSensorValues((PublishSensorValues) proxyBean
 							.parsePayload(new PublishSensorValues()));
 				} else {
@@ -76,13 +85,15 @@ public class IQHandler implements PacketListener, IACDSenseIncoming,
 	@Override
 	public void sendXMPPBean(XMPPBean out,
 			IXMPPCallback<? extends XMPPBean> callback) {
-		getAgent().getConnection().sendPacket(new BeanIQAdapter(out));
+		logger.warning("sendXMPPBean(XMPPBean out, IXMPPCallback<? extends XMPPBean> callback) not used!");
+		sendXMPPBean(out);
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void sendXMPPBean(XMPPBean out) {
+		logger.info(out.toXML());
 		getAgent().getConnection().sendPacket(new BeanIQAdapter(out));
 		// TODO Auto-generated method stub
 
