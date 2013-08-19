@@ -2,8 +2,6 @@
 
 @implementation RegisterPublisher
 
-@synthesize ;
-
 - (id)init {
 	self = [super initWithBeanType:SET];
 	

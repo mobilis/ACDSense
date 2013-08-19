@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+#import <MXi/MXi.h>
+#import <MXi/MXiBeanDelegate.h>
+#import <MXi/MXiStanzaDelegate.h>
+#import <MXi/MXiPresenceDelegate.h>
+
+#import "DelegateSensorValues.h"
+#import "SensorValue.h"
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate, MXiBeanDelegate, MXiPresenceDelegate, MXiStanzaDelegate>
+
+@property (strong, nonatomic) MXiConnection *connection;
 
 @property (strong, nonatomic) UIWindow *window;
 

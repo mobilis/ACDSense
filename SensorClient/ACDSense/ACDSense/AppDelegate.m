@@ -8,14 +8,19 @@
 
 #import "AppDelegate.h"
 
+#import "DataViewController.h"
+
 @implementation AppDelegate
+
+#pragma mark - NSApplicationDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window = [[UIWindow alloc] init];
+    [self.window setRootViewController:[[DataViewController alloc] init]];
     [self.window makeKeyAndVisible];
+    
+    [self launchConnectionEstablishment];
     return YES;
 }
 
@@ -44,6 +49,82 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - MXi Communication
+
+- (void)launchConnectionEstablishment
+{
+    NSString *settingsPath = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
+    NSDictionary *jabberSettings = [[NSDictionary dictionaryWithContentsOfFile:settingsPath] objectForKey:@"jabberInformation"];
+    
+    NSString *jid = [jabberSettings valueForKey:@"jid"];
+    NSString *password = [jabberSettings valueForKey:@"password"];
+    NSString *hostName = [jabberSettings valueForKey:@"hostName"];
+    NSString *serviceJid = [jabberSettings valueForKey:@"serviceJid"];
+    
+    self.connection = [MXiConnection connectionWithJabberID:jid
+                                                   password:password
+                                                   hostName:hostName
+                                                 serviceJID:serviceJid
+                                           presenceDelegate:self
+                                             stanzaDelegate:self
+                                               beanDelegate:self
+                                  listeningForIncomingBeans:[self incomingBeanPrototypes]];
+}
+
+- (NSArray *)incomingBeanPrototypes
+{
+    return @[[[DelegateSensorValues alloc] init]];
+}
+
+#pragma mark - MXiPresenceDelegate
+
+- (void)didAuthenticate
+{
+    NSLog(@"Authentication successfull");
+}
+
+- (void)didDisconnectWithError:(NSError *)error
+{
+    NSLog(@"%@", error);
+}
+
+- (void)didFailToAuthenticate:(NSXMLElement *)error
+{
+    NSLog(@"%@", [error description]);
+}
+
+#pragma mark - MXiStanzaDelegate
+
+- (void)didReceiveMessage:(XMPPMessage *)message
+{
+#warning Potentially unimplemented method
+}
+
+- (BOOL)didReceiveIQ:(XMPPIQ *)iq
+{
+#warning Potentially unimplemented method
+    return YES;
+}
+
+- (void)didReceivePresence:(XMPPPresence *)presence
+{
+#warning Potentially unimplemented method
+}
+
+- (void)didReceiveError:(NSXMLElement *)error
+{
+    NSLog(@"%@", [error description]);
+}
+
+#pragma mark - MXiBeanDelegate
+
+- (void)didReceiveBean:(MXiBean<MXiIncomingBean> *)theBean
+{
+    if ([theBean class] == [DelegateSensorValues class]) {
+        
+    }
 }
 
 @end

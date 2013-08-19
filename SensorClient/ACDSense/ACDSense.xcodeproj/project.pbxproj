@@ -16,7 +16,6 @@
 		5B22E86117C2547B00E6E4F4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B22E86017C2547B00E6E4F4 /* Default.png */; };
 		5B22E86317C2547B00E6E4F4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B22E86217C2547B00E6E4F4 /* Default@2x.png */; };
 		5B22E86517C2547B00E6E4F4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B22E86417C2547B00E6E4F4 /* Default-568h@2x.png */; };
-		5B22E87217C25B2D00E6E4F4 /* libMXi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E87117C25B2D00E6E4F4 /* libMXi.a */; };
 		5B22E87F17C25CED00E6E4F4 /* DelegateSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E87417C25CED00E6E4F4 /* DelegateSensorValues.m */; };
 		5B22E88017C25CED00E6E4F4 /* PublishSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E87617C25CED00E6E4F4 /* PublishSensorValues.m */; };
 		5B22E88117C25CED00E6E4F4 /* RegisterPublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E87817C25CED00E6E4F4 /* RegisterPublisher.m */; };
@@ -24,6 +23,15 @@
 		5B22E88317C25CED00E6E4F4 /* RemovePublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E87C17C25CED00E6E4F4 /* RemovePublisher.m */; };
 		5B22E88417C25CED00E6E4F4 /* RemoveReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E87E17C25CED00E6E4F4 /* RemoveReceiver.m */; };
 		5B22E88A17C25ECB00E6E4F4 /* SensorValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E88917C25ECB00E6E4F4 /* SensorValue.m */; };
+		5B22E88C17C25FD200E6E4F4 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B22E88B17C25FD200E6E4F4 /* Settings.plist */; };
+		5B22E89017C260E700E6E4F4 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E88E17C260E700E6E4F4 /* DataViewController.m */; };
+		5B22E89117C260E700E6E4F4 /* DataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B22E88F17C260E700E6E4F4 /* DataViewController.xib */; };
+		5B22E89517C26AAB00E6E4F4 /* libMXi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89417C26AAB00E6E4F4 /* libMXi.a */; };
+		5B22E89717C26DD600E6E4F4 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89617C26DD600E6E4F4 /* libiconv.dylib */; };
+		5B22E89917C26DE000E6E4F4 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89817C26DE000E6E4F4 /* libresolv.dylib */; };
+		5B22E89B17C26DED00E6E4F4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89A17C26DED00E6E4F4 /* CFNetwork.framework */; };
+		5B22E89D17C26DF800E6E4F4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89C17C26DF800E6E4F4 /* Security.framework */; };
+		5B22E89F17C26E0500E6E4F4 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89E17C26E0500E6E4F4 /* libxml2.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +48,6 @@
 		5B22E86017C2547B00E6E4F4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		5B22E86217C2547B00E6E4F4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		5B22E86417C2547B00E6E4F4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		5B22E87117C25B2D00E6E4F4 /* libMXi.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libMXi.a; path = "../../../Mobilis/MXi/build/Release-iphoneos/libMXi.a"; sourceTree = "<group>"; };
 		5B22E87317C25CED00E6E4F4 /* DelegateSensorValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateSensorValues.h; sourceTree = "<group>"; };
 		5B22E87417C25CED00E6E4F4 /* DelegateSensorValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateSensorValues.m; sourceTree = "<group>"; };
 		5B22E87517C25CED00E6E4F4 /* PublishSensorValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishSensorValues.h; sourceTree = "<group>"; };
@@ -55,6 +62,16 @@
 		5B22E87E17C25CED00E6E4F4 /* RemoveReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveReceiver.m; sourceTree = "<group>"; };
 		5B22E88817C25ECB00E6E4F4 /* SensorValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorValue.h; sourceTree = "<group>"; };
 		5B22E88917C25ECB00E6E4F4 /* SensorValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorValue.m; sourceTree = "<group>"; };
+		5B22E88B17C25FD200E6E4F4 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
+		5B22E88D17C260E700E6E4F4 /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
+		5B22E88E17C260E700E6E4F4 /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
+		5B22E88F17C260E700E6E4F4 /* DataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataViewController.xib; sourceTree = "<group>"; };
+		5B22E89417C26AAB00E6E4F4 /* libMXi.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libMXi.a; path = "../../../Mobilis/MXi/build/Release-iphoneos/libMXi.a"; sourceTree = "<group>"; };
+		5B22E89617C26DD600E6E4F4 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		5B22E89817C26DE000E6E4F4 /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
+		5B22E89A17C26DED00E6E4F4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		5B22E89C17C26DF800E6E4F4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		5B22E89E17C26E0500E6E4F4 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +79,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B22E87217C25B2D00E6E4F4 /* libMXi.a in Frameworks */,
+				5B22E89F17C26E0500E6E4F4 /* libxml2.dylib in Frameworks */,
+				5B22E89D17C26DF800E6E4F4 /* Security.framework in Frameworks */,
+				5B22E89B17C26DED00E6E4F4 /* CFNetwork.framework in Frameworks */,
+				5B22E89917C26DE000E6E4F4 /* libresolv.dylib in Frameworks */,
+				5B22E89717C26DD600E6E4F4 /* libiconv.dylib in Frameworks */,
+				5B22E89517C26AAB00E6E4F4 /* libMXi.a in Frameworks */,
 				5B22E84F17C2547B00E6E4F4 /* UIKit.framework in Frameworks */,
 				5B22E85117C2547B00E6E4F4 /* Foundation.framework in Frameworks */,
 				5B22E85317C2547B00E6E4F4 /* CoreGraphics.framework in Frameworks */,
@@ -92,7 +114,12 @@
 		5B22E84D17C2547B00E6E4F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5B22E87117C25B2D00E6E4F4 /* libMXi.a */,
+				5B22E89E17C26E0500E6E4F4 /* libxml2.dylib */,
+				5B22E89C17C26DF800E6E4F4 /* Security.framework */,
+				5B22E89A17C26DED00E6E4F4 /* CFNetwork.framework */,
+				5B22E89817C26DE000E6E4F4 /* libresolv.dylib */,
+				5B22E89617C26DD600E6E4F4 /* libiconv.dylib */,
+				5B22E89417C26AAB00E6E4F4 /* libMXi.a */,
 				5B22E84E17C2547B00E6E4F4 /* UIKit.framework */,
 				5B22E85017C2547B00E6E4F4 /* Foundation.framework */,
 				5B22E85217C2547B00E6E4F4 /* CoreGraphics.framework */,
@@ -109,6 +136,9 @@
 				5B22E85D17C2547B00E6E4F4 /* AppDelegate.h */,
 				5B22E85E17C2547B00E6E4F4 /* AppDelegate.m */,
 				5B22E85517C2547B00E6E4F4 /* Supporting Files */,
+				5B22E88D17C260E700E6E4F4 /* DataViewController.h */,
+				5B22E88E17C260E700E6E4F4 /* DataViewController.m */,
+				5B22E88F17C260E700E6E4F4 /* DataViewController.xib */,
 			);
 			path = ACDSense;
 			sourceTree = "<group>";
@@ -116,6 +146,7 @@
 		5B22E85517C2547B00E6E4F4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5B22E88B17C25FD200E6E4F4 /* Settings.plist */,
 				5B22E85617C2547B00E6E4F4 /* ACDSense-Info.plist */,
 				5B22E85717C2547B00E6E4F4 /* InfoPlist.strings */,
 				5B22E85A17C2547B00E6E4F4 /* main.m */,
@@ -217,6 +248,8 @@
 				5B22E86117C2547B00E6E4F4 /* Default.png in Resources */,
 				5B22E86317C2547B00E6E4F4 /* Default@2x.png in Resources */,
 				5B22E86517C2547B00E6E4F4 /* Default-568h@2x.png in Resources */,
+				5B22E88C17C25FD200E6E4F4 /* Settings.plist in Resources */,
+				5B22E89117C260E700E6E4F4 /* DataViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +269,7 @@
 				5B22E88317C25CED00E6E4F4 /* RemovePublisher.m in Sources */,
 				5B22E88417C25CED00E6E4F4 /* RemoveReceiver.m in Sources */,
 				5B22E88A17C25ECB00E6E4F4 /* SensorValue.m in Sources */,
+				5B22E89017C260E700E6E4F4 /* DataViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +352,14 @@
 				GCC_PREFIX_HEADER = "ACDSense/ACDSense-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "ACDSense/ACDSense-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -330,6 +372,14 @@
 				GCC_PREFIX_HEADER = "ACDSense/ACDSense-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "ACDSense/ACDSense-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

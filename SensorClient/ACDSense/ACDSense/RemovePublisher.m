@@ -2,8 +2,6 @@
 
 @implementation RemovePublisher
 
-@synthesize ;
-
 - (id)init {
 	self = [super initWithBeanType:SET];
 	

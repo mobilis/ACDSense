@@ -2,8 +2,6 @@
 
 @implementation RegisterReceiver
 
-@synthesize ;
-
 - (id)init {
 	self = [super initWithBeanType:SET];
 	

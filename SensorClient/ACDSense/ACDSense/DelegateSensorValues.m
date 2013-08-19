@@ -12,6 +12,7 @@
 
 - (void)fromXML:(NSXMLElement* )xml {
 	NSXMLElement* sensorValuesElement = (NSXMLElement*) [xml childAtIndex:0];
+    
 }
 
 + (NSString* )elementName {
