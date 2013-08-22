@@ -1,31 +1,23 @@
-*.pydevproject
-.project
-.metadata
-bin/**
-tmp/**
-tmp/**/*
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.classpath
-.settings/
-.loadpath
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
 
-# External tool builders
-.externalToolBuilders/
+# Folder config file
+Desktop.ini
 
-# Locally stored "Eclipse launch configurations"
-*.launch
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
 
-# CDT-specific
-.cproject
+# OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
 
-# PDT-specific
-.buildpath
 
-# Java
-.class
+# Thumbnails
+._*
 
-/bin
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
