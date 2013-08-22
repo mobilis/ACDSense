@@ -19,7 +19,7 @@ public class RemoveReceiver extends XMPPBean {
 		return CHILD_ELEMENT;
 	}
 
-	public static final String NAMESPACE = "acdsense:iq:removereceiver";
+	public static final String NAMESPACE = "http://mobilis.inf.tu-dresden.de/ACDSense";
 
 	@Override
 	public String getNamespace() {

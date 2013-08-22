@@ -4,14 +4,12 @@ import org.xmlpull.v1.XmlPullParser;import java.util.List;import java.util.Array
 
 public class PublishSensorValues extends XMPPBean {
 
-	private List< SensorValue > sensorValues = new ArrayList< SensorValue >();
+	private SensorValue sensorValues = new SensorValue();
 
 
-	public PublishSensorValues( List< SensorValue > sensorValues ) {
+	public PublishSensorValues( SensorValue sensorValues ) {
 		super();
-		for ( SensorValue entity : sensorValues ) {
-			this.sensorValues.add( entity );
-		}
+		this.sensorValues = sensorValues;
 
 		this.setType( XMPPBean.TYPE_SET );
 	}
@@ -34,12 +32,7 @@ public class PublishSensorValues extends XMPPBean {
 					parser.next();
 				}
 				else if (tagName.equals( SensorValue.CHILD_ELEMENT ) ) {
-					SensorValue entity = new SensorValue();
-
-					entity.fromXML( parser );
-					this.sensorValues.add( entity );
-					
-					parser.next();
+					this.sensorValues.fromXML( parser );
 				}
 				else if (tagName.equals("error")) {
 					parser = parseErrorAttributes(parser);
@@ -69,7 +62,7 @@ public class PublishSensorValues extends XMPPBean {
 		return CHILD_ELEMENT;
 	}
 
-	public static final String NAMESPACE = "acdsense:iq:publishsensorvalues";
+	public static final String NAMESPACE = "http://mobilis.inf.tu-dresden.de/ACDSense";
 
 	@Override
 	public String getNamespace() {
@@ -88,11 +81,9 @@ public class PublishSensorValues extends XMPPBean {
 	public String payloadToXML() {
 		StringBuilder sb = new StringBuilder();
 
-		for( SensorValue entry : sensorValues ) {
-			sb.append( "<" + SensorValue.CHILD_ELEMENT + ">" );
-			sb.append( entry.toXML() );
-			sb.append( "</" + SensorValue.CHILD_ELEMENT + ">" );
-		}
+		sb.append( "<" + this.sensorValues.getChildElement() + ">" )
+			.append( this.sensorValues.toXML() )
+			.append( "</" + this.sensorValues.getChildElement() + ">" );
 
 		sb = appendErrorPayload(sb);
 
@@ -100,11 +91,11 @@ public class PublishSensorValues extends XMPPBean {
 	}
 
 
-	public List< SensorValue > getSensorValues() {
+	public SensorValue getSensorValues() {
 		return this.sensorValues;
 	}
 
-	public void setSensorValues( List< SensorValue > sensorValues ) {
+	public void setSensorValues( SensorValue sensorValues ) {
 		this.sensorValues = sensorValues;
 	}
 

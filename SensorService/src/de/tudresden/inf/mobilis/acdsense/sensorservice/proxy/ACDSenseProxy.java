@@ -15,7 +15,7 @@ import java.util.List;import java.util.ArrayList;import de.tudresden.inf.rn.mobi
 	}
 
 
-	public void DelegateSensorValues( String toJid, List< SensorValue > sensorValues ) {
+	public void DelegateSensorValues( String toJid, SensorValue sensorValues ) {
 		if ( null == _bindingStub )
 			return;
 
@@ -23,6 +23,39 @@ import java.util.List;import java.util.ArrayList;import de.tudresden.inf.rn.mobi
 		out.setTo( toJid );
 
 		_bindingStub.sendXMPPBean( out );
+	}
+
+	public void SensorMUCDomainCreated( String toJid, SensorMUCDomain domain ) {
+		if ( null == _bindingStub )
+			return;
+
+		SensorMUCDomainCreated out = new SensorMUCDomainCreated( domain );
+		out.setTo( toJid );
+
+		_bindingStub.sendXMPPBean( out );
+	}
+
+	public void SensorMUCDomainRemoved( String toJid, SensorMUCDomain domain ) {
+		if ( null == _bindingStub )
+			return;
+
+		SensorMUCDomainRemoved out = new SensorMUCDomainRemoved( domain );
+		out.setTo( toJid );
+
+		_bindingStub.sendXMPPBean( out );
+	}
+
+	public XMPPBean GetSensorMUCDomains( String toJid, String packetId, List< SensorMUCDomain > domains ) {
+		if ( null == _bindingStub )
+			return null;
+
+		GetSensorMUCDomainsResponse out = new GetSensorMUCDomainsResponse( domains );
+		out.setTo( toJid );
+		out.setId( packetId );
+
+		_bindingStub.sendXMPPBean( out );
+
+		return out;
 	}
 
 }

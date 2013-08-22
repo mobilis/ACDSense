@@ -19,7 +19,7 @@ public class RemovePublisher extends XMPPBean {
 		return CHILD_ELEMENT;
 	}
 
-	public static final String NAMESPACE = "acdsense:iq:removepublisher";
+	public static final String NAMESPACE = "http://mobilis.inf.tu-dresden.de/ACDSense";
 
 	@Override
 	public String getNamespace() {

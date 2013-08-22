@@ -14,6 +14,17 @@
 			<xs:element name="RemovePublisher" />
 			<xs:element name="RegisterReceiver" />
 			<xs:element name="RemoveReceiver" />
+			<xs:element name="GetSensorMUCDomainsRequest" />
+			<xs:element name="GetSensorMUCDomainsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element
+							name="domains"
+							type="mns:SensorMUCDomain"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="CreateSensorMUCDomain">
 				<xs:complexType>
 					<xs:sequence>
@@ -33,6 +44,15 @@
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="RemoveSensorMUCDomain">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element
+							name="domain"
+							type="mns:SensorMUCDomain" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SensorMUCDomainRemoved">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element
@@ -131,20 +151,24 @@
 		</msdl:operation>
 		<msdl:operation
 			name="CreateSensorMUCDomain"
-			pattern="http://www.w3.org/ns/wsdl/in-out">
+			pattern="http://www.w3.org/ns/wsdl/in-only">
 			<msdl:input element="mns:CreateSensorMUCDomain" />
+		</msdl:operation>
+		<msdl:operation
+			name="SensorMUCDomainCreated"
+			pattern="http://www.w3.org/ns/wsdl/out-only">
 			<msdl:output element="mns:SensorMUCDomainCreated" />
 		</msdl:operation>
-		<!-- <msdl:operation name="SensorMUCDomainCreated" pattern="http://www.w3.org/ns/wsdl/out-only"> 
-			<msdl:output element="mns:SensorMUCDomainCreated" /> </msdl:operation> -->
 		<msdl:operation
 			name="RemoveSensorMUCDomain"
-			pattern="http://www.w3.org/ns/wsdl/in-out">
+			pattern="http://www.w3.org/ns/wsdl/in-only">
 			<msdl:input element="mns:RemoveSensorMUCDomain" />
+		</msdl:operation>
+		<msdl:operation
+			name="SensorMUCDomainRemoved"
+			pattern="http://www.w3.org/ns/wsdl/out-only">
 			<msdl:output element="mns:SensorMUCDomainRemoved" />
 		</msdl:operation>
-		<!-- <msdl:operation name="SensorMUCDomainRemoved" pattern="http://www.w3.org/ns/wsdl/out-only"> 
-			<msdl:output element="mns:SensorMUCDomainRemoved" /> </msdl:operation> -->
 		<msdl:operation
 			name="GetSensorMUCDomains"
 			pattern="http://www.w3.org/ns/wsdl/in-out">

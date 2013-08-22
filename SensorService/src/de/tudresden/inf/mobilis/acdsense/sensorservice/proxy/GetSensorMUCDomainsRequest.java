@@ -2,17 +2,17 @@ package de.tudresden.inf.mobilis.acdsense.sensorservice.proxy;
 
 import org.xmlpull.v1.XmlPullParser;import java.util.List;import java.util.ArrayList;import de.tudresden.inf.rn.mobilis.xmpp.beans.XMPPBean;
 
-public class RegisterPublisher extends XMPPBean {
+public class GetSensorMUCDomainsRequest extends XMPPBean {
 
-	public RegisterPublisher(){
-		this.setType( XMPPBean.TYPE_SET );
+	public GetSensorMUCDomainsRequest(){
+		this.setType( XMPPBean.TYPE_GET );
 	}
 
 
 	@Override
 	public void fromXML( XmlPullParser parser ) throws Exception {}
 
-	public static final String CHILD_ELEMENT = "RegisterPublisher";
+	public static final String CHILD_ELEMENT = "GetSensorMUCDomainsRequest";
 
 	@Override
 	public String getChildElement() {
@@ -28,7 +28,7 @@ public class RegisterPublisher extends XMPPBean {
 
 	@Override
 	public XMPPBean clone() {
-		RegisterPublisher clone = new RegisterPublisher(  );
+		GetSensorMUCDomainsRequest clone = new GetSensorMUCDomainsRequest(  );
 		this.cloneBasicAttributes( clone );
 
 		return clone;
@@ -36,6 +36,9 @@ public class RegisterPublisher extends XMPPBean {
 
 	@Override
 	public String payloadToXML() { return ""; }
+
+
+
 
 
 }

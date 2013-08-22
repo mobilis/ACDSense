@@ -2,19 +2,19 @@ package de.tudresden.inf.mobilis.acdsense.sensorservice.proxy;
 
 import org.xmlpull.v1.XmlPullParser;import java.util.List;import java.util.ArrayList;import de.tudresden.inf.rn.mobilis.xmpp.beans.XMPPBean;
 
-public class DelegateSensorValues extends XMPPBean {
+public class SensorMUCDomainRemoved extends XMPPBean {
 
-	private SensorValue sensorValues = new SensorValue();
+	private SensorMUCDomain domain = new SensorMUCDomain();
 
 
-	public DelegateSensorValues( SensorValue sensorValues ) {
+	public SensorMUCDomainRemoved( SensorMUCDomain domain ) {
 		super();
-		this.sensorValues = sensorValues;
+		this.domain = domain;
 
 		this.setType( XMPPBean.TYPE_RESULT );
 	}
 
-	public DelegateSensorValues(){
+	public SensorMUCDomainRemoved(){
 		this.setType( XMPPBean.TYPE_RESULT );
 	}
 
@@ -31,8 +31,8 @@ public class DelegateSensorValues extends XMPPBean {
 				if (tagName.equals(getChildElement())) {
 					parser.next();
 				}
-				else if (tagName.equals( SensorValue.CHILD_ELEMENT ) ) {
-					this.sensorValues.fromXML( parser );
+				else if (tagName.equals( SensorMUCDomain.CHILD_ELEMENT ) ) {
+					this.domain.fromXML( parser );
 				}
 				else if (tagName.equals("error")) {
 					parser = parseErrorAttributes(parser);
@@ -55,7 +55,7 @@ public class DelegateSensorValues extends XMPPBean {
 		} while (!done);
 	}
 
-	public static final String CHILD_ELEMENT = "DelegateSensorValues";
+	public static final String CHILD_ELEMENT = "SensorMUCDomainRemoved";
 
 	@Override
 	public String getChildElement() {
@@ -71,7 +71,7 @@ public class DelegateSensorValues extends XMPPBean {
 
 	@Override
 	public XMPPBean clone() {
-		DelegateSensorValues clone = new DelegateSensorValues( sensorValues );
+		SensorMUCDomainRemoved clone = new SensorMUCDomainRemoved( domain );
 		this.cloneBasicAttributes( clone );
 
 		return clone;
@@ -81,9 +81,9 @@ public class DelegateSensorValues extends XMPPBean {
 	public String payloadToXML() {
 		StringBuilder sb = new StringBuilder();
 
-		sb.append( "<" + this.sensorValues.getChildElement() + ">" )
-			.append( this.sensorValues.toXML() )
-			.append( "</" + this.sensorValues.getChildElement() + ">" );
+		sb.append( "<" + this.domain.getChildElement() + ">" )
+			.append( this.domain.toXML() )
+			.append( "</" + this.domain.getChildElement() + ">" );
 
 		sb = appendErrorPayload(sb);
 
@@ -91,12 +91,12 @@ public class DelegateSensorValues extends XMPPBean {
 	}
 
 
-	public SensorValue getSensorValues() {
-		return this.sensorValues;
+	public SensorMUCDomain getDomain() {
+		return this.domain;
 	}
 
-	public void setSensorValues( SensorValue sensorValues ) {
-		this.sensorValues = sensorValues;
+	public void setDomain( SensorMUCDomain domain ) {
+		this.domain = domain;
 	}
 
 }

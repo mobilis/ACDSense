@@ -8,6 +8,9 @@ import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.packet.Packet;
 
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.ACDSenseProxy;
+import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.CreateSensorMUCDomain;
+import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.GetSensorMUCDomainsRequest;
+import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.GetSensorMUCDomainsResponse;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.IACDSenseIncoming;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.IACDSenseOutgoing;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.PublishSensorValues;
@@ -15,6 +18,7 @@ import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.RegisterPublisher;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.RegisterReceiver;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.RemovePublisher;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.RemoveReceiver;
+import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.RemoveSensorMUCDomain;
 import de.tudresden.inf.rn.mobilis.server.agents.MobilisAgent;
 import de.tudresden.inf.rn.mobilis.xmpp.beans.IXMPPCallback;
 import de.tudresden.inf.rn.mobilis.xmpp.beans.ProxyBean;
@@ -132,6 +136,34 @@ public class IQHandler implements PacketListener, IACDSenseIncoming,
 
 	private void setAgent(MobilisAgent agent) {
 		this.agent = agent;
+	}
+
+	@Override
+	public XMPPBean onGetSensorMUCDomains(GetSensorMUCDomainsRequest in) {
+		// TODO Auto-generated method stub
+		GetSensorMUCDomainsResponse out = new GetSensorMUCDomainsResponse();
+		out.setDomains(DomainStore.getInstance().getAllDomains());
+		out.setId(in.getId());
+		return out;
+	}
+
+	@Override
+	public void onCreateSensorMUCDomain(CreateSensorMUCDomain in) {
+		if (!DomainStore.getInstance().addDomain(in.getDomain()))
+			return;
+		for (String toJID : receivers) {
+			proxy.SensorMUCDomainCreated(toJID, in.getDomain());
+		}
+	}
+
+	@Override
+	public void onRemoveSensorMUCDomain(RemoveSensorMUCDomain in) {
+		if (!DomainStore.getInstance().removeDomain(
+				in.getDomain().getDomainId()))
+			return;
+		for (String toJID : receivers) {
+			proxy.SensorMUCDomainRemoved(toJID, in.getDomain());
+		}
 	}
 
 }
