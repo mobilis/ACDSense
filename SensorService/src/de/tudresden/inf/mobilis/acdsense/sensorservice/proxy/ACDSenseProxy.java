@@ -15,11 +15,11 @@ import java.util.List;import java.util.ArrayList;import de.tudresden.inf.rn.mobi
 	}
 
 
-	public void DelegateSensorValues( String toJid, SensorValue sensorValues ) {
+	public void DelegateSensorItems( String toJid, List< SensorItem > sensorItems ) {
 		if ( null == _bindingStub )
 			return;
 
-		DelegateSensorValues out = new DelegateSensorValues( sensorValues );
+		DelegateSensorItems out = new DelegateSensorItems( sensorItems );
 		out.setTo( toJid );
 
 		_bindingStub.sendXMPPBean( out );

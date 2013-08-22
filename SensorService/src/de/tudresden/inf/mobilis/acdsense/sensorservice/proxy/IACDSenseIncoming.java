@@ -10,7 +10,7 @@ import de.tudresden.inf.rn.mobilis.xmpp.beans.XMPPBean;public interface IACDSens
 
 	void onRemoveReceiver( RemoveReceiver in );
 
-	void onPublishSensorValues( PublishSensorValues in );
+	void onPublishSensorItems( PublishSensorItems in );
 
 	void onCreateSensorMUCDomain( CreateSensorMUCDomain in );
 

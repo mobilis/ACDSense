@@ -4,18 +4,16 @@ import org.xmlpull.v1.XmlPullParser;import java.util.List;import java.util.Array
 
 public class SensorValue implements XMPPInfo {
 
+	private String subType = null;
 	private String value = null;
 	private String unit = null;
-	private String type = null;
-	private String location = null;
 
 
-	public SensorValue( String value, String unit, String type, String location ) {
+	public SensorValue( String subType, String value, String unit ) {
 		super();
+		this.subType = subType;
 		this.value = value;
 		this.unit = unit;
-		this.type = type;
-		this.location = location;
 	}
 
 	public SensorValue(){}
@@ -34,17 +32,14 @@ public class SensorValue implements XMPPInfo {
 				if (tagName.equals(getChildElement())) {
 					parser.next();
 				}
+				else if (tagName.equals( "subType" ) ) {
+					this.subType = parser.nextText();
+				}
 				else if (tagName.equals( "value" ) ) {
 					this.value = parser.nextText();
 				}
 				else if (tagName.equals( "unit" ) ) {
 					this.unit = parser.nextText();
-				}
-				else if (tagName.equals( "type" ) ) {
-					this.type = parser.nextText();
-				}
-				else if (tagName.equals( "location" ) ) {
-					this.location = parser.nextText();
 				}
 				else
 					parser.next();
@@ -82,6 +77,10 @@ public class SensorValue implements XMPPInfo {
 	public String toXML() {
 		StringBuilder sb = new StringBuilder();
 
+		sb.append( "<subType>" )
+			.append( this.subType )
+			.append( "</subType>" );
+
 		sb.append( "<value>" )
 			.append( this.value )
 			.append( "</value>" );
@@ -90,18 +89,18 @@ public class SensorValue implements XMPPInfo {
 			.append( this.unit )
 			.append( "</unit>" );
 
-		sb.append( "<type>" )
-			.append( this.type )
-			.append( "</type>" );
-
-		sb.append( "<location>" )
-			.append( this.location )
-			.append( "</location>" );
-
 		return sb.toString();
 	}
 
 
+
+	public String getSubType() {
+		return this.subType;
+	}
+
+	public void setSubType( String subType ) {
+		this.subType = subType;
+	}
 
 	public String getValue() {
 		return this.value;
@@ -117,22 +116,6 @@ public class SensorValue implements XMPPInfo {
 
 	public void setUnit( String unit ) {
 		this.unit = unit;
-	}
-
-	public String getType() {
-		return this.type;
-	}
-
-	public void setType( String type ) {
-		this.type = type;
-	}
-
-	public String getLocation() {
-		return this.location;
-	}
-
-	public void setLocation( String location ) {
-		this.location = location;
 	}
 
 }

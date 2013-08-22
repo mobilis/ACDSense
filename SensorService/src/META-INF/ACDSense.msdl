@@ -70,25 +70,56 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="PublishSensorValues">
+			<xs:element name="PublishSensorItems">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element
-							name="sensorValues"
-							type="mns:SensorValue" />
+							name="sensorItems"
+							type="mns:SensorItem"
+							maxOccurs="unbounded" />
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-
-			<xs:element name="DelegateSensorValues">
+			<xs:element name="DelegateSensorItems">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element
-							name="sensorValues"
-							type="mns:SensorValue" />
+							name="sensorItems"
+							type="mns:SensorItem"
+							maxOccurs="unbounded" />
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:complexType name="SensorItem">
+				<xs:sequence>
+					<xs:element
+						name="sensorId"
+						type="xs:string" />
+					<xs:element
+						type="mns:SensorValue"
+						maxOccurs="unbounded"
+						name="values" />
+					<xs:element
+						name="location"
+						type="xs:string" />
+					<xs:element
+						name="type"
+						type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="SensorValue">
+				<xs:sequence>
+					<xs:element
+						name="subType"
+						type="xs:string" />
+					<xs:element
+						name="value"
+						type="xs:string" />
+					<xs:element
+						name="unit"
+						type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
 			<xs:complexType name="SensorMUCDomain">
 				<xs:sequence>
 					<xs:element
@@ -96,22 +127,6 @@
 						type="xs:string" />
 					<xs:element
 						name="domain"
-						type="xs:string" />
-				</xs:sequence>
-			</xs:complexType>
-			<xs:complexType name="SensorValue">
-				<xs:sequence>
-					<xs:element
-						name="value"
-						type="xs:string" />
-					<xs:element
-						name="unit"
-						type="xs:string" />
-					<xs:element
-						name="type"
-						type="xs:string" />
-					<xs:element
-						name="location"
 						type="xs:string" />
 				</xs:sequence>
 			</xs:complexType>
@@ -140,14 +155,14 @@
 			<msdl:input element="mns:RemoveReceiver" />
 		</msdl:operation>
 		<msdl:operation
-			name="PublishSensorValues"
+			name="PublishSensorItems"
 			pattern="http://www.w3.org/ns/wsdl/in-only">
-			<msdl:input element="mns:PublishSensorValues" />
+			<msdl:input element="mns:PublishSensorItems" />
 		</msdl:operation>
 		<msdl:operation
-			name="DelegateSensorValues"
+			name="DelegateSensorItems"
 			pattern="http://www.w3.org/ns/wsdl/out-only">
-			<msdl:output element="mns:DelegateSensorValues" />
+			<msdl:output element="mns:DelegateSensorItems" />
 		</msdl:operation>
 		<msdl:operation
 			name="CreateSensorMUCDomain"
@@ -202,12 +217,12 @@
 			<msdl:input xmpp:type="set" />
 		</msdl:operation>
 		<msdl:operation
-			ref="mns:PublishSensorValues"
+			ref="mns:PublishSensorItems"
 			xmpp:ident="http://mobilis.inf.tu-dresden.de/ACDSense">
 			<msdl:input xmpp:type="set" />
 		</msdl:operation>
 		<msdl:operation
-			ref="mns:DelegateSensorValues"
+			ref="mns:DelegateSensorItems"
 			xmpp:ident="http://mobilis.inf.tu-dresden.de/ACDSense">
 			<msdl:output xmpp:type="result" />
 		</msdl:operation>
@@ -215,7 +230,6 @@
 			ref="mns:CreateSensorMUCDomain"
 			xmpp:ident="http://mobilis.inf.tu-dresden.de/ACDSense">
 			<msdl:input xmpp:type="set" />
-			<msdl:output xmpp:type="result" />
 		</msdl:operation>
 		<msdl:operation
 			ref="mns:SensorMUCDomainCreated"
@@ -226,7 +240,6 @@
 			ref="mns:RemoveSensorMUCDomain"
 			xmpp:ident="http://mobilis.inf.tu-dresden.de/ACDSense">
 			<msdl:input xmpp:type="set" />
-			<msdl:output xmpp:type="result" />
 		</msdl:operation>
 		<msdl:operation
 			ref="mns:SensorMUCDomainRemoved"

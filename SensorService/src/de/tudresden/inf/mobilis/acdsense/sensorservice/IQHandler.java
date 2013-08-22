@@ -13,7 +13,7 @@ import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.GetSensorMUCDomains
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.GetSensorMUCDomainsResponse;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.IACDSenseIncoming;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.IACDSenseOutgoing;
-import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.PublishSensorValues;
+import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.PublishSensorItems;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.RegisterPublisher;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.RegisterReceiver;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.RemovePublisher;
@@ -73,11 +73,11 @@ public class IQHandler implements PacketListener, IACDSenseIncoming,
 					logger.info("RemoveREceiver");
 					onRemoveReceiver((RemoveReceiver) proxyBean
 							.parsePayload(new RemoveReceiver()));
-				} else if (proxyBean.isTypeOf(PublishSensorValues.NAMESPACE,
-						PublishSensorValues.CHILD_ELEMENT)) {
+				} else if (proxyBean.isTypeOf(PublishSensorItems.NAMESPACE,
+						PublishSensorItems.CHILD_ELEMENT)) {
 					logger.info("PublishSensorValues");
-					onPublishSensorValues((PublishSensorValues) proxyBean
-							.parsePayload(new PublishSensorValues()));
+					onPublishSensorItems((PublishSensorItems) proxyBean
+							.parsePayload(new PublishSensorItems()));
 				} else {
 					// handling of unexpected beans
 				}
@@ -123,13 +123,6 @@ public class IQHandler implements PacketListener, IACDSenseIncoming,
 		receivers.remove(in.getFrom());
 	}
 
-	@Override
-	public void onPublishSensorValues(PublishSensorValues in) {
-		for (String toJID : receivers) {
-			proxy.DelegateSensorValues(toJID, in.getSensorValues());
-		}
-	}
-
 	private MobilisAgent getAgent() {
 		return agent;
 	}
@@ -140,7 +133,6 @@ public class IQHandler implements PacketListener, IACDSenseIncoming,
 
 	@Override
 	public XMPPBean onGetSensorMUCDomains(GetSensorMUCDomainsRequest in) {
-		// TODO Auto-generated method stub
 		GetSensorMUCDomainsResponse out = new GetSensorMUCDomainsResponse();
 		out.setDomains(DomainStore.getInstance().getAllDomains());
 		out.setId(in.getId());
@@ -164,6 +156,14 @@ public class IQHandler implements PacketListener, IACDSenseIncoming,
 		for (String toJID : receivers) {
 			proxy.SensorMUCDomainRemoved(toJID, in.getDomain());
 		}
+	}
+
+	@Override
+	public void onPublishSensorItems(PublishSensorItems in) {
+		for (String toJID : receivers) {
+			proxy.DelegateSensorItems(toJID, in.getSensorItems());
+		}
+
 	}
 
 }

@@ -6,12 +6,14 @@ import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.filter.PacketTypeFilter;
 import org.jivesoftware.smack.packet.IQ;
 
-import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.DelegateSensorValues;
-import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.PublishSensorValues;
+import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.CreateSensorMUCDomain;
+import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.GetSensorMUCDomainsRequest;
+import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.PublishSensorItems;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.RegisterPublisher;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.RegisterReceiver;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.RemovePublisher;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.RemoveReceiver;
+import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.RemoveSensorMUCDomain;
 import de.tudresden.inf.rn.mobilis.server.agents.MobilisAgent;
 import de.tudresden.inf.rn.mobilis.server.services.MobilisService;
 import de.tudresden.inf.rn.mobilis.xmpp.beans.ProxyBean;
@@ -32,10 +34,16 @@ public class ACDSenseService extends MobilisService {
 				RegisterReceiver.CHILD_ELEMENT))).addToProviderManager();
 		(new BeanProviderAdapter(new ProxyBean(RemoveReceiver.NAMESPACE,
 				RemoveReceiver.CHILD_ELEMENT))).addToProviderManager();
-		(new BeanProviderAdapter(new ProxyBean(PublishSensorValues.NAMESPACE,
-				PublishSensorValues.CHILD_ELEMENT))).addToProviderManager();
-		(new BeanProviderAdapter(new ProxyBean(DelegateSensorValues.NAMESPACE,
-				DelegateSensorValues.CHILD_ELEMENT))).addToProviderManager();
+		(new BeanProviderAdapter(new ProxyBean(PublishSensorItems.NAMESPACE,
+				PublishSensorItems.CHILD_ELEMENT))).addToProviderManager();
+		(new BeanProviderAdapter(new ProxyBean(CreateSensorMUCDomain.NAMESPACE,
+				CreateSensorMUCDomain.CHILD_ELEMENT))).addToProviderManager();
+		(new BeanProviderAdapter(new ProxyBean(RemoveSensorMUCDomain.NAMESPACE,
+				RemoveSensorMUCDomain.CHILD_ELEMENT))).addToProviderManager();
+		(new BeanProviderAdapter(new ProxyBean(
+				GetSensorMUCDomainsRequest.NAMESPACE,
+				GetSensorMUCDomainsRequest.CHILD_ELEMENT)))
+				.addToProviderManager();
 
 		PacketListener listener = new IQHandler(getAgent());
 		PacketTypeFilter filter = new PacketTypeFilter(IQ.class);
@@ -45,18 +53,12 @@ public class ACDSenseService extends MobilisService {
 
 	@Override
 	public void startup(MobilisAgent agent) throws Exception {
-		// TODO Auto-generated method stub
-		logger.info("before startup");
 		super.startup(agent);
-		logger.info("after startup");
 	}
 
 	@Override
 	public void shutdown() throws Exception {
-		// TODO Auto-generated method stub
-		logger.info("before shutdown");
 		super.shutdown();
-		logger.info("after shutdown");
 	}
 
 }
