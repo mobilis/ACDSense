@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CD1893517C74C6A004DF634 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD1893417C74C6A004DF634 /* Storyboard.storyboard */; };
+		0CD1893817C74DAC004DF634 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1893717C74DAC004DF634 /* MainViewController.m */; };
+		0CD1893B17C75350004DF634 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1893A17C75350004DF634 /* SettingsViewController.m */; };
+		0CD1894017C7560D004DF634 /* TextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1893F17C7560D004DF634 /* TextFieldCell.m */; };
+		0CD1894317C75885004DF634 /* SensorDomainsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1894217C75885004DF634 /* SensorDomainsViewController.m */; };
 		5B22E84F17C2547B00E6E4F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E84E17C2547B00E6E4F4 /* UIKit.framework */; };
 		5B22E85117C2547B00E6E4F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E85017C2547B00E6E4F4 /* Foundation.framework */; };
 		5B22E85317C2547B00E6E4F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E85217C2547B00E6E4F4 /* CoreGraphics.framework */; };
@@ -35,7 +40,34 @@
 		5B333EDD17C28D9C0083BBD8 /* Settings.plist.example in Resources */ = {isa = PBXBuildFile; fileRef = 5B333EDC17C28D9C0083BBD8 /* Settings.plist.example */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0CD1892317C740C9004DF634 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CD1891E17C740C8004DF634 /* MXi.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 794491A117199564000D53ED;
+			remoteInfo = MXi.framework;
+		};
+		0CD1892517C740C9004DF634 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CD1891E17C740C8004DF634 /* MXi.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 794491BD171995FF000D53ED;
+			remoteInfo = libMXi.a;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		0CD1891E17C740C8004DF634 /* MXi.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MXi.xcodeproj; path = ../../../mobilis/MXi/MXi.xcodeproj; sourceTree = "<group>"; };
+		0CD1893417C74C6A004DF634 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		0CD1893617C74DAC004DF634 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		0CD1893717C74DAC004DF634 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		0CD1893917C75350004DF634 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		0CD1893A17C75350004DF634 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		0CD1893E17C7560D004DF634 /* TextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldCell.h; sourceTree = "<group>"; };
+		0CD1893F17C7560D004DF634 /* TextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldCell.m; sourceTree = "<group>"; };
+		0CD1894117C75885004DF634 /* SensorDomainsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorDomainsViewController.h; sourceTree = "<group>"; };
+		0CD1894217C75885004DF634 /* SensorDomainsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorDomainsViewController.m; sourceTree = "<group>"; };
 		5B22E84B17C2547B00E6E4F4 /* ACDSense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACDSense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B22E84E17C2547B00E6E4F4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5B22E85017C2547B00E6E4F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -96,12 +128,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0CD1891F17C740C8004DF634 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0CD1892417C740C9004DF634 /* MXi.framework */,
+				0CD1892617C740C9004DF634 /* libMXi.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0CD1893C17C755BF004DF634 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5B22E8A217C284EA00E6E4F4 /* DataViewController.xib */,
+				0CD1893417C74C6A004DF634 /* Storyboard.storyboard */,
+				0CD1893E17C7560D004DF634 /* TextFieldCell.h */,
+				0CD1893F17C7560D004DF634 /* TextFieldCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		0CD1893D17C755CD004DF634 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5B22E8A017C284E900E6E4F4 /* DataViewController.h */,
+				5B22E8A117C284E900E6E4F4 /* DataViewController.m */,
+				0CD1893917C75350004DF634 /* SettingsViewController.h */,
+				0CD1893A17C75350004DF634 /* SettingsViewController.m */,
+				0CD1894117C75885004DF634 /* SensorDomainsViewController.h */,
+				0CD1894217C75885004DF634 /* SensorDomainsViewController.m */,
+				0CD1893617C74DAC004DF634 /* MainViewController.h */,
+				0CD1893717C74DAC004DF634 /* MainViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		5B22E84217C2547B00E6E4F4 = {
 			isa = PBXGroup;
 			children = (
 				5B22E85417C2547B00E6E4F4 /* ACDSense */,
 				5B22E84D17C2547B00E6E4F4 /* Frameworks */,
 				5B22E84C17C2547B00E6E4F4 /* Products */,
+				0CD1891E17C740C8004DF634 /* MXi.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,15 +200,14 @@
 		5B22E85417C2547B00E6E4F4 /* ACDSense */ = {
 			isa = PBXGroup;
 			children = (
+				0CD1893D17C755CD004DF634 /* Controllers */,
+				0CD1893C17C755BF004DF634 /* Views */,
 				5B22E88817C25ECB00E6E4F4 /* SensorValue.h */,
 				5B22E88917C25ECB00E6E4F4 /* SensorValue.m */,
 				5B22E88517C25CF700E6E4F4 /* Beans */,
 				5B22E85D17C2547B00E6E4F4 /* AppDelegate.h */,
 				5B22E85E17C2547B00E6E4F4 /* AppDelegate.m */,
 				5B22E85517C2547B00E6E4F4 /* Supporting Files */,
-				5B22E8A017C284E900E6E4F4 /* DataViewController.h */,
-				5B22E8A117C284E900E6E4F4 /* DataViewController.m */,
-				5B22E8A217C284EA00E6E4F4 /* DataViewController.xib */,
 			);
 			path = ACDSense;
 			sourceTree = "<group>";
@@ -235,12 +302,35 @@
 			mainGroup = 5B22E84217C2547B00E6E4F4;
 			productRefGroup = 5B22E84C17C2547B00E6E4F4 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0CD1891F17C740C8004DF634 /* Products */;
+					ProjectRef = 0CD1891E17C740C8004DF634 /* MXi.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				5B22E84A17C2547B00E6E4F4 /* ACDSense */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0CD1892417C740C9004DF634 /* MXi.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MXi.framework;
+			remoteRef = 0CD1892317C740C9004DF634 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0CD1892617C740C9004DF634 /* libMXi.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMXi.a;
+			remoteRef = 0CD1892517C740C9004DF634 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5B22E84917C2547B00E6E4F4 /* Resources */ = {
@@ -254,6 +344,7 @@
 				5B22E88C17C25FD200E6E4F4 /* Settings.plist in Resources */,
 				5B22E8A417C284EA00E6E4F4 /* DataViewController.xib in Resources */,
 				5B333EDD17C28D9C0083BBD8 /* Settings.plist.example in Resources */,
+				0CD1893517C74C6A004DF634 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +365,10 @@
 				5B22E88417C25CED00E6E4F4 /* RemoveReceiver.m in Sources */,
 				5B22E88A17C25ECB00E6E4F4 /* SensorValue.m in Sources */,
 				5B22E8A317C284EA00E6E4F4 /* DataViewController.m in Sources */,
+				0CD1893817C74DAC004DF634 /* MainViewController.m in Sources */,
+				0CD1893B17C75350004DF634 /* SettingsViewController.m in Sources */,
+				0CD1894017C7560D004DF634 /* TextFieldCell.m in Sources */,
+				0CD1894317C75885004DF634 /* SensorDomainsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

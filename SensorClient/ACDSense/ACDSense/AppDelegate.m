@@ -16,12 +16,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.dataViewController = [[DataViewController alloc] init];
-    
-    self.window = [[UIWindow alloc] init];
-    [self.window setRootViewController:self.dataViewController];
-    [self.window makeKeyAndVisible];
-    
+    self.dataViewController = [[DataViewController alloc] init];    
     [self launchConnectionEstablishment];
     return YES;
 }
