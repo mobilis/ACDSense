@@ -3,7 +3,6 @@ package de.tudresden.inf.mobilis.acdsense.sensorservice.helper;
 import java.io.Reader;
 import java.io.StringReader;
 
-
 import org.xmlpull.mxp1.MXParser;
 import org.xmlpull.v1.XmlPullParserException;
 

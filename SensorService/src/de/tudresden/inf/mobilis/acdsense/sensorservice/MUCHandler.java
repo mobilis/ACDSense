@@ -6,15 +6,14 @@ import java.util.Observer;
 
 import org.jivesoftware.smack.Connection;
 
-import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.IACDSenseOutgoing;
-import de.tudresden.inf.rn.mobilis.xmpp.beans.XMPPBean;
+import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.PublishSensorItems;
 
 public class MUCHandler implements Observer {
 	
 	private static MUCHandler mucHandler;
 	
 	private Connection connection;
-	private IACDSenseOutgoing outgoingBeanHandler;
+	private IQHandler outgoingBeanHandler;
 	private List<MUCConnection> mucConnections;
 	
 	private MUCHandler() {}
@@ -63,7 +62,7 @@ public class MUCHandler implements Observer {
 		this.mucConnections.remove(mucConnection);
 	}
 	
-	public void setOutgoingBeanHandler(IACDSenseOutgoing beanHandler) {
+	public void setOutgoingBeanHandler(IQHandler beanHandler) {
 		if (beanHandler != null)
 			this.outgoingBeanHandler = beanHandler;
 	}
@@ -78,6 +77,7 @@ public class MUCHandler implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		this.outgoingBeanHandler.sendXMPPBean((XMPPBean) arg);
+		if (arg instanceof PublishSensorItems)
+			this.outgoingBeanHandler.onPublishSensorItems((PublishSensorItems)arg);
 	}
 }
