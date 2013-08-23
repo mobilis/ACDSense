@@ -33,3 +33,6 @@ local.properties
 # ACDSense SensorService
 dist/**
 *.out.txt
+
+# cmdaltent specific files
+build.sh
