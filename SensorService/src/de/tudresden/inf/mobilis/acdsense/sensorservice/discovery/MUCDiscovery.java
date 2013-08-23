@@ -17,7 +17,7 @@ import org.jivesoftware.smackx.packet.DiscoverItems;
 
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.SensorMUCDomain;
 
-public class MUCDiscovery {
+class MUCDiscovery {
 	
 	private Connection connection;
 	private SensorMUCDomain sensorDomain; 

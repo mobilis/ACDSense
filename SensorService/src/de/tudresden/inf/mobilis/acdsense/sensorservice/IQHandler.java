@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.packet.Packet;
 
+import de.tudresden.inf.mobilis.acdsense.sensorservice.discovery.MUCDiscoveryManager;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.ACDSenseProxy;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.CreateSensorMUCDomain;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.GetSensorMUCDomainsRequest;
@@ -42,6 +43,9 @@ public class IQHandler implements PacketListener, IACDSenseIncoming,
 		publishers = new HashSet<>();
 		receivers = new HashSet<>();
 		proxy = new ACDSenseProxy(this);
+		
+		MUCHandler.getInstance().setOutgoingBeanHandler(this);
+		MUCHandler.getInstance().setConnection(getAgent().getConnection());
 	}
 
 	@Override
@@ -83,7 +87,6 @@ public class IQHandler implements PacketListener, IACDSenseIncoming,
 				}
 			}
 		}
-
 	}
 
 	@Override
@@ -146,6 +149,7 @@ public class IQHandler implements PacketListener, IACDSenseIncoming,
 		for (String toJID : receivers) {
 			proxy.SensorMUCDomainCreated(toJID, in.getDomain());
 		}
+		MUCDiscoveryManager.getInstance(getAgent().getConnection()).discoverMUCRooms(in.getDomain());
 	}
 
 	@Override
