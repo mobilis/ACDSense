@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/SensorBodyShema"
+	xmlns:tns="http://www.example.org/SensorBodyShema" xmlns:mns="http://mobilis.inf.tu-dresden.de/ACDSense"
+	elementFormDefault="qualified">
+
+
+	<xs:element name="sensorItems" type="mns:SensorItem"
+		maxOccurs="unbounded" />
+
+	<xs:complexType name="SensorItem">
+		<xs:sequence>
+			<xs:element name="sensorId" type="xs:string" />
+			<xs:element type="mns:SensorValue" maxOccurs="unbounded"
+				name="values" />
+			<xs:element name="location" type="xs:string" />
+			<xs:element name="type" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SensorValue">
+		<xs:sequence>
+			<xs:element name="subType" type="xs:string" />
+			<xs:element name="value" type="xs:string" />
+			<xs:element name="unit" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+</schema>
