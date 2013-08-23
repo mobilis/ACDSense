@@ -24,11 +24,17 @@ public class MUCDiscoveryManager {
 		return manager;
 	}
 	
+	public void discoverMUCRooms(List<SensorMUCDomain> domains) {
+		if (domains == null)
+			return;
+		for (SensorMUCDomain domain : domains)
+			discoverMUCRooms(domain);
+	}
+	
 	public void discoverMUCRooms(SensorMUCDomain domain) {
 		MUCDiscovery mucDiscovery = new MUCDiscovery(connection, domain);
 		List<HostedRoom> rooms = mucDiscovery.getAllMUCs();
 		establishConnectionsToRooms(rooms);
-		// TODO store MUCs somehow
 	}
 	private void establishConnectionsToRooms(List<HostedRoom> rooms) {
 		MUCHandler mucHandler = MUCHandler.getInstance();

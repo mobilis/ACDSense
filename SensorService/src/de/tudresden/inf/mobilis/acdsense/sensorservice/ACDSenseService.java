@@ -6,6 +6,7 @@ import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.filter.PacketTypeFilter;
 import org.jivesoftware.smack.packet.IQ;
 
+import de.tudresden.inf.mobilis.acdsense.sensorservice.discovery.MUCDiscoveryManager;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.CreateSensorMUCDomain;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.GetSensorMUCDomainsRequest;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.PublishSensorItems;
@@ -54,6 +55,7 @@ public class ACDSenseService extends MobilisService {
 	@Override
 	public void startup(MobilisAgent agent) throws Exception {
 		super.startup(agent);
+		MUCDiscoveryManager.getInstance(agent.getConnection()).discoverMUCRooms(DomainStore.getInstance().getAllDomains());
 	}
 
 	@Override
