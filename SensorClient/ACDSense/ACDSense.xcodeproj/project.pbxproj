@@ -42,6 +42,8 @@
 		5B772CB417C8A2F60008BC02 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CB317C8A2F60008BC02 /* KeychainItemWrapper.m */; };
 		5B772CB717C8A3140008BC02 /* AccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CB617C8A3140008BC02 /* AccountManager.m */; };
 		5B772CBB17C8A37D0008BC02 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CBA17C8A37D0008BC02 /* Account.m */; };
+		5B772CBE17C911B20008BC02 /* DelegateDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CBD17C911B20008BC02 /* DelegateDictionary.m */; };
+		5B772CC217C923920008BC02 /* IncomingBeanDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CC117C923920008BC02 /* IncomingBeanDetection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +102,11 @@
 		5B772CB617C8A3140008BC02 /* AccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountManager.m; sourceTree = "<group>"; };
 		5B772CB917C8A37D0008BC02 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		5B772CBA17C8A37D0008BC02 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
+		5B772CBC17C911B20008BC02 /* DelegateDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateDictionary.h; sourceTree = "<group>"; };
+		5B772CBD17C911B20008BC02 /* DelegateDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateDictionary.m; sourceTree = "<group>"; };
+		5B772CBF17C919040008BC02 /* ConnectionHandlerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionHandlerDelegate.h; sourceTree = "<group>"; };
+		5B772CC017C923910008BC02 /* IncomingBeanDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomingBeanDetection.h; sourceTree = "<group>"; };
+		5B772CC117C923920008BC02 /* IncomingBeanDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomingBeanDetection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +261,11 @@
 				5B772CB817C8A31F0008BC02 /* AccountManagement */,
 				5B772CAE17C89DF50008BC02 /* ConnectionHandler.h */,
 				5B772CAF17C89DF50008BC02 /* ConnectionHandler.m */,
+				5B772CBC17C911B20008BC02 /* DelegateDictionary.h */,
+				5B772CBD17C911B20008BC02 /* DelegateDictionary.m */,
+				5B772CBF17C919040008BC02 /* ConnectionHandlerDelegate.h */,
+				5B772CC017C923910008BC02 /* IncomingBeanDetection.h */,
+				5B772CC117C923920008BC02 /* IncomingBeanDetection.m */,
 			);
 			name = Backend;
 			sourceTree = "<group>";
@@ -358,6 +370,8 @@
 				5B772CB417C8A2F60008BC02 /* KeychainItemWrapper.m in Sources */,
 				5B772CB717C8A3140008BC02 /* AccountManager.m in Sources */,
 				5B772CBB17C8A37D0008BC02 /* Account.m in Sources */,
+				5B772CBE17C911B20008BC02 /* DelegateDictionary.m in Sources */,
+				5B772CC217C923920008BC02 /* IncomingBeanDetection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

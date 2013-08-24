@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ConnectionHandlerDelegate.h"
+
 #import <MXi/MXi.h>
+
+typedef void (^ AuthenticationBlock)(BOOL);
 
 @interface ConnectionHandler : NSObject <MXiBeanDelegate, MXiPresenceDelegate, MXiStanzaDelegate>
 
@@ -18,10 +22,15 @@
 - (instancetype) init __attribute__((unavailable("init not available, call sharedInstance instead")));
 + (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
 
-- (void)launchConnection;
+- (void)launchConnectionWithBlock:(AuthenticationBlock)authentication;
 - (void)launchConnectionWithJID:(NSString *)jabberID
                        password:(NSString *)password
                        hostName:(NSString *)hostName
-                     serviceJID:(NSString *)serviceJabberID;
+                     serviceJID:(NSString *)serviceJabberID
+            authenticationBlock:(AuthenticationBlock)authentication;
+
+- (void)sendBean:(MXiBean<MXiOutgoingBean> *)outgoingBean;
+
+- (void)addDelegate:(id<ConnectionHandlerDelegate>)delegate forBeanClass:(Class)beanClass;
 
 @end
