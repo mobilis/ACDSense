@@ -195,7 +195,6 @@
 				0CD1893C17C755BF004DF634 /* Views */,
 				5B22E88817C25ECB00E6E4F4 /* SensorValue.h */,
 				5B22E88917C25ECB00E6E4F4 /* SensorValue.m */,
-				5B22E88517C25CF700E6E4F4 /* Beans */,
 				5B22E85D17C2547B00E6E4F4 /* AppDelegate.h */,
 				5B22E85E17C2547B00E6E4F4 /* AppDelegate.m */,
 				5B22E85517C2547B00E6E4F4 /* Supporting Files */,
@@ -258,14 +257,12 @@
 		5B772CB117C89F270008BC02 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				5B22E88517C25CF700E6E4F4 /* Beans */,
 				5B772CB817C8A31F0008BC02 /* AccountManagement */,
 				5B772CAE17C89DF50008BC02 /* ConnectionHandler.h */,
 				5B772CAF17C89DF50008BC02 /* ConnectionHandler.m */,
-				5B772CBC17C911B20008BC02 /* DelegateDictionary.h */,
-				5B772CBD17C911B20008BC02 /* DelegateDictionary.m */,
+				5B772CC317C926160008BC02 /* Connection Helper */,
 				5B772CBF17C919040008BC02 /* ConnectionHandlerDelegate.h */,
-				5B772CC017C923910008BC02 /* IncomingBeanDetection.h */,
-				5B772CC117C923920008BC02 /* IncomingBeanDetection.m */,
 			);
 			name = Backend;
 			sourceTree = "<group>";
@@ -281,6 +278,17 @@
 				5B772CBA17C8A37D0008BC02 /* Account.m */,
 			);
 			name = AccountManagement;
+			sourceTree = "<group>";
+		};
+		5B772CC317C926160008BC02 /* Connection Helper */ = {
+			isa = PBXGroup;
+			children = (
+				5B772CBC17C911B20008BC02 /* DelegateDictionary.h */,
+				5B772CBD17C911B20008BC02 /* DelegateDictionary.m */,
+				5B772CC017C923910008BC02 /* IncomingBeanDetection.h */,
+				5B772CC117C923920008BC02 /* IncomingBeanDetection.m */,
+			);
+			name = "Connection Helper";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
