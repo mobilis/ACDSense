@@ -40,25 +40,7 @@
 		5B333EDD17C28D9C0083BBD8 /* Settings.plist.example in Resources */ = {isa = PBXBuildFile; fileRef = 5B333EDC17C28D9C0083BBD8 /* Settings.plist.example */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		0CD1892317C740C9004DF634 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0CD1891E17C740C8004DF634 /* MXi.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 794491A117199564000D53ED;
-			remoteInfo = MXi.framework;
-		};
-		0CD1892517C740C9004DF634 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0CD1891E17C740C8004DF634 /* MXi.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 794491BD171995FF000D53ED;
-			remoteInfo = libMXi.a;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		0CD1891E17C740C8004DF634 /* MXi.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MXi.xcodeproj; path = ../../../mobilis/MXi/MXi.xcodeproj; sourceTree = "<group>"; };
 		0CD1893417C74C6A004DF634 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		0CD1893617C74DAC004DF634 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		0CD1893717C74DAC004DF634 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -128,15 +110,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0CD1891F17C740C8004DF634 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0CD1892417C740C9004DF634 /* MXi.framework */,
-				0CD1892617C740C9004DF634 /* libMXi.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		0CD1893C17C755BF004DF634 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,7 +142,6 @@
 				5B22E85417C2547B00E6E4F4 /* ACDSense */,
 				5B22E84D17C2547B00E6E4F4 /* Frameworks */,
 				5B22E84C17C2547B00E6E4F4 /* Products */,
-				0CD1891E17C740C8004DF634 /* MXi.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -302,35 +274,12 @@
 			mainGroup = 5B22E84217C2547B00E6E4F4;
 			productRefGroup = 5B22E84C17C2547B00E6E4F4 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 0CD1891F17C740C8004DF634 /* Products */;
-					ProjectRef = 0CD1891E17C740C8004DF634 /* MXi.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				5B22E84A17C2547B00E6E4F4 /* ACDSense */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		0CD1892417C740C9004DF634 /* MXi.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = MXi.framework;
-			remoteRef = 0CD1892317C740C9004DF634 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0CD1892617C740C9004DF634 /* libMXi.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libMXi.a;
-			remoteRef = 0CD1892517C740C9004DF634 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5B22E84917C2547B00E6E4F4 /* Resources */ = {
