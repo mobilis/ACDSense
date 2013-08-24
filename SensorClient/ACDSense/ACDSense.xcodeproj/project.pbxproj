@@ -38,6 +38,10 @@
 		5B22E8A317C284EA00E6E4F4 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E8A117C284E900E6E4F4 /* DataViewController.m */; };
 		5B22E8A417C284EA00E6E4F4 /* DataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B22E8A217C284EA00E6E4F4 /* DataViewController.xib */; };
 		5B333EDD17C28D9C0083BBD8 /* Settings.plist.example in Resources */ = {isa = PBXBuildFile; fileRef = 5B333EDC17C28D9C0083BBD8 /* Settings.plist.example */; };
+		5B772CB017C89DF50008BC02 /* ConnectionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CAF17C89DF50008BC02 /* ConnectionHandler.m */; };
+		5B772CB417C8A2F60008BC02 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CB317C8A2F60008BC02 /* KeychainItemWrapper.m */; };
+		5B772CB717C8A3140008BC02 /* AccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CB617C8A3140008BC02 /* AccountManager.m */; };
+		5B772CBB17C8A37D0008BC02 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CBA17C8A37D0008BC02 /* Account.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +92,14 @@
 		5B22E8A117C284E900E6E4F4 /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
 		5B22E8A217C284EA00E6E4F4 /* DataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataViewController.xib; sourceTree = "<group>"; };
 		5B333EDC17C28D9C0083BBD8 /* Settings.plist.example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.plist.example; sourceTree = "<group>"; };
+		5B772CAE17C89DF50008BC02 /* ConnectionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionHandler.h; sourceTree = "<group>"; };
+		5B772CAF17C89DF50008BC02 /* ConnectionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionHandler.m; sourceTree = "<group>"; };
+		5B772CB217C8A2F60008BC02 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		5B772CB317C8A2F60008BC02 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		5B772CB517C8A3140008BC02 /* AccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountManager.h; sourceTree = "<group>"; };
+		5B772CB617C8A3140008BC02 /* AccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountManager.m; sourceTree = "<group>"; };
+		5B772CB917C8A37D0008BC02 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
+		5B772CBA17C8A37D0008BC02 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +192,7 @@
 				5B22E85D17C2547B00E6E4F4 /* AppDelegate.h */,
 				5B22E85E17C2547B00E6E4F4 /* AppDelegate.m */,
 				5B22E85517C2547B00E6E4F4 /* Supporting Files */,
+				5B772CB117C89F270008BC02 /* Backend */,
 			);
 			path = ACDSense;
 			sourceTree = "<group>";
@@ -233,6 +246,29 @@
 				5B22E87417C25CED00E6E4F4 /* DelegateSensorValues.m */,
 			);
 			name = Incoming;
+			sourceTree = "<group>";
+		};
+		5B772CB117C89F270008BC02 /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				5B772CB817C8A31F0008BC02 /* AccountManagement */,
+				5B772CAE17C89DF50008BC02 /* ConnectionHandler.h */,
+				5B772CAF17C89DF50008BC02 /* ConnectionHandler.m */,
+			);
+			name = Backend;
+			sourceTree = "<group>";
+		};
+		5B772CB817C8A31F0008BC02 /* AccountManagement */ = {
+			isa = PBXGroup;
+			children = (
+				5B772CB217C8A2F60008BC02 /* KeychainItemWrapper.h */,
+				5B772CB317C8A2F60008BC02 /* KeychainItemWrapper.m */,
+				5B772CB517C8A3140008BC02 /* AccountManager.h */,
+				5B772CB617C8A3140008BC02 /* AccountManager.m */,
+				5B772CB917C8A37D0008BC02 /* Account.h */,
+				5B772CBA17C8A37D0008BC02 /* Account.m */,
+			);
+			name = AccountManagement;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +354,10 @@
 				0CD1893B17C75350004DF634 /* SettingsViewController.m in Sources */,
 				0CD1894017C7560D004DF634 /* TextFieldCell.m in Sources */,
 				0CD1894317C75885004DF634 /* SensorDomainsViewController.m in Sources */,
+				5B772CB017C89DF50008BC02 /* ConnectionHandler.m in Sources */,
+				5B772CB417C8A2F60008BC02 /* KeychainItemWrapper.m in Sources */,
+				5B772CB717C8A3140008BC02 /* AccountManager.m in Sources */,
+				5B772CBB17C8A37D0008BC02 /* Account.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
