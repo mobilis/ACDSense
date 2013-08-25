@@ -51,6 +51,15 @@
     if (!registeredDelegates) {
         [self.delegateDictionary setObject:@[delegateSelectorMapping] forKey:[self classNameForClass:beanClass]];
     } else {
+        BOOL duplicate = NO;
+        for (DelegateSelectorMapping *mapping in registeredDelegates) {
+            if ([mapping isEqualToDelegate:delegate withSelector:selector]) {
+                duplicate = YES;
+                break;
+            }
+        }
+        if (duplicate) return;
+        
         NSMutableArray *newRegisteredDelegates = [[NSMutableArray alloc] initWithCapacity:registeredDelegates.count+1];
         [newRegisteredDelegates addObjectsFromArray:registeredDelegates];
         [newRegisteredDelegates addObject:delegateSelectorMapping];
@@ -84,11 +93,9 @@
         if (registeredDelegates) {
             DelegateSelectorMapping *mappingToRemove = nil;
             for (DelegateSelectorMapping *mapping in registeredDelegates) {
-                if ([mapping.delegate isEqual:delegate]) {
-                    if ([[NSString stringFromSelector:mapping.selector] isEqualToString:[NSString stringFromSelector:selector]]) {
-                        mappingToRemove = mapping;
-                        break;
-                    }
+                if ([mapping isEqualToDelegate:delegate withSelector:selector]) {
+                    mappingToRemove = mapping;
+                    break;
                 }
             }
             [registeredDelegates removeObject:mappingToRemove];

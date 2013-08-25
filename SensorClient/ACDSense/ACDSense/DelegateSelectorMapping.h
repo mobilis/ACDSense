@@ -13,8 +13,13 @@
 @interface DelegateSelectorMapping : NSObject
 
 @property (strong, nonatomic) id delegate;
-@property SEL selector;
+@property (strong, nonatomic) NSString *selectorAsString;
 
 - (id)initWithDelegate:(id)delegate andSelector:(SEL)selector;
+
+- (SEL)selector;
+
+- (BOOL)isEqualTo:(DelegateSelectorMapping *)anotherMapping;
+- (BOOL)isEqualToDelegate:(id)delegate withSelector:(SEL)selector;
 
 @end

@@ -103,8 +103,8 @@
     NSArray *delegates = [[DelegateDictionary sharedInstance] delegatesForBeanClass:[theBean class]];
     if (delegates) {
         for (DelegateSelectorMapping *mapping in delegates) {
-            if ([mapping.delegate respondsToSelector:mapping.selector]) {
-                [mapping.delegate performSelector:mapping.selector withObject:theBean]; // Warning can be ignored.
+            if ([mapping.delegate respondsToSelector:[mapping selector]]) {
+                [mapping.delegate performSelector:[mapping selector] withObject:theBean]; // Warning can be ignored.
             }
         }
     }

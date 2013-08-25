@@ -15,10 +15,30 @@
     self = [super init];
     if (self) {
         self.delegate = delegate;
-        self.selector = selector;
+        self.selectorAsString = [NSString stringFromSelector:selector];
     }
     
     return self;
+}
+
+- (SEL)selector
+{
+    return [NSString selectorFromString:_selectorAsString];
+}
+
+- (BOOL)isEqualTo:(DelegateSelectorMapping *)anotherMapping
+{
+    if ([_delegate isEqual:anotherMapping.delegate] &&
+        [_selectorAsString isEqualToString:anotherMapping.selectorAsString]) {
+        return YES;
+    } else return NO;
+}
+
+- (BOOL)isEqualToDelegate:(id)delegate withSelector:(SEL)selector
+{
+    DelegateSelectorMapping *intermediaryMapping = [[DelegateSelectorMapping alloc] initWithDelegate:delegate
+                                                                                         andSelector:selector];
+    return [self isEqualTo:intermediaryMapping];
 }
 
 @end
