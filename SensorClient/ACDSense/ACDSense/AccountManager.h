@@ -12,7 +12,18 @@
 
 @interface AccountManager : NSObject
 
+/**
+ *  Store account information in the Keychains.
+ *
+ *  @param account The account to store in the Keychains.
+ */
 + (void)storeAccount:(Account *)account;
+/**
+ *  Fetch the account that is currently stored in the Keychains.
+ *
+ *  @return Account containing the information to connect to a XMPP server and login.
+ *          If no information are stored in the Keychain, the fields of the account will be nil.
+ */
 + (Account *)account;
 
 @end

@@ -16,7 +16,6 @@
 {
     KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:[[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleIdentifier"]
                                                                         accessGroup:nil];
-//    [keychain resetKeychainItem];
     
     [keychain setObject:account.jid forKey:(__bridge id)(kSecAttrAccount)];
     [keychain setObject:account.hostName forKey:(__bridge id)(kSecAttrService)];
