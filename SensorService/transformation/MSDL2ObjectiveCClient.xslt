@@ -161,9 +161,7 @@
 								<xsl:with-param name="elementName" select="$elementName" />
 								<xsl:with-param name="elementToAddTo" select="'beanElement'" />
 								<xsl:with-param name="collectionName" select="./@name" />
-								<xsl:with-param name="indent">
-									<xsl:text>	</xsl:text>
-								</xsl:with-param>
+								<xsl:with-param name="indent" select="$tab" />
 							</xsl:call-template>
 						</xsl:when>
 						<xsl:otherwise>
@@ -176,7 +174,7 @@
 											<!-- Custom type -->
 											<xsl:call-template name="convertToCustomNamedAtomicElement">
 												<xsl:with-param name="elementName" select="$elementName" />
-												<xsl:with-param name="indent"><xsl:text>	</xsl:text></xsl:with-param>
+												<xsl:with-param name="indent" select="$tab" />
 												<xsl:with-param name="elementToAddTo" select="'beanElement'" />
 												<xsl:with-param name="wholeName" select="./@name" />
 											</xsl:call-template>
@@ -184,11 +182,11 @@
 										<xsl:otherwise>
 											<!-- Simple type -->
 											<xsl:call-template name="convertToSimpleAtomicXMLElement">
-												<xsl:with-param name="elementName" select="$elementName " />
+												<xsl:with-param name="elementName" select="$elementName" />
 												<xsl:with-param name="typeName" select="./@type" />
 												<xsl:with-param name="valueName" select="concat('[self ', ./@name, ']')" />
 												<xsl:with-param name="elementToAddTo" select="'beanElement'" />
-												<xsl:with-param name="indent"><xsl:text>	</xsl:text></xsl:with-param>
+												<xsl:with-param name="indent" select="$tab" />
 											</xsl:call-template>
 										</xsl:otherwise>
 									</xsl:choose>
@@ -200,9 +198,7 @@
 										<xsl:with-param name="wholeName" select="./@name" />
 										<xsl:with-param name="elementToAddTo" select="'beanElement'" />
 										<xsl:with-param name="collectionName" select="./@name" />
-										<xsl:with-param name="indent">
-											<xsl:text>	</xsl:text>
-										</xsl:with-param>
+										<xsl:with-param name="indent" select="$tab" />
 									</xsl:call-template>
 								</xsl:otherwise>
 							</xsl:choose>
@@ -214,8 +210,7 @@
 				</xsl:for-each>
 
 <xsl:text>	return beanElement;
-}
-</xsl:text>
+}</xsl:text>
 				</xsl:if>
 
 				<!-- XML to Bean conversion -->
@@ -296,9 +291,11 @@
 
 					</xsl:for-each>
 
+<xsl:text>}</xsl:text>
+
 				</xsl:if>
 
-<xsl:text>}
+<xsl:text>
 
 + (NSString* )elementName {
 	return @"</xsl:text><xsl:value-of select="$className" /><xsl:text>";
@@ -621,7 +618,7 @@
 			<xsl:variable name="subElementName" select="concat(./@name, 'Element')" />
 
 			<xsl:choose>
-				<xsl:when test="./@maxOccurs = 'unbounded'">
+				<xsl:when test="./@maxOccurs != '1'">
 					<!-- Array -->
 					<xsl:choose>
 						<xsl:when test="$collectionName">
@@ -735,8 +732,9 @@
 
 		<!-- Look up the schema definition for the type and recursively call the appropriate code generation -->
 		<xsl:variable name="customTypeName" select="./@type" />
-		<xsl:for-each select="/msdl:description/msdl:types/xs:schema/xs:element[@name = substring-after($customTypeName, ':')]/xs:complexType/xs:sequence/xs:element">
+		<xsl:for-each select="/msdl:description/msdl:types/xs:schema/xs:complexType[@name = substring-after($customTypeName, ':')]/xs:sequence/xs:element">
 			<xsl:variable name="subElementName" select="concat(./@name, 'Element')" />
+
 			<xsl:choose>
 				<xsl:when test="./@maxOccurs != '1'">
 					<!-- Array -->
@@ -1017,7 +1015,7 @@
 		<xsl:text>:[[</xsl:text><xsl:value-of select="$classNameForType" />
 		<xsl:text> alloc] init]];</xsl:text><xsl:value-of select="$newline" />
 
-		<xsl:for-each select="/msdl:description/msdl:types/xs:schema/xs:element[@name = $classNameForType]/xs:complexType/xs:sequence/xs:element">
+		<xsl:for-each select="/msdl:description/msdl:types/xs:schema/xs:complexType[@name = $classNameForType]/xs:sequence/xs:element">
 			<xsl:choose>
 				<xsl:when test="./@maxOccurs != '1'">
 					<!-- array -->
@@ -1100,7 +1098,7 @@
 		<xsl:value-of select="$newline" />
 
 		<!-- Recursion -->
-		<xsl:for-each select="/msdl:description/msdl:types/xs:schema/xs:element[@name=substring-after($type, ':')]/xs:complexType/xs:sequence/xs:element">
+		<xsl:for-each select="/msdl:description/msdl:types/xs:schema/xs:complexType[@name=substring-after($type, ':')]/xs:sequence/xs:element">
 			<xsl:choose>
 				<xsl:when test="./@maxOccurs != '1'">
 				<!-- Array -->
@@ -1452,5 +1450,5 @@
 	</xsl:template>
 
 	<!-- END Sub templates for xml to bean conversion -->
-	
+
 </xsl:stylesheet>
