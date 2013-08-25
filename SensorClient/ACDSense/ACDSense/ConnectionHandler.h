@@ -20,6 +20,9 @@
  */
 typedef void (^ AuthenticationBlock)(BOOL);
 
+/**
+ *  The ConnectionHandler class provides global-level information of the XMPP connection to an XMPP server.
+ */
 @interface ConnectionHandler : NSObject <MXiBeanDelegate, MXiPresenceDelegate, MXiStanzaDelegate>
 
 /**
