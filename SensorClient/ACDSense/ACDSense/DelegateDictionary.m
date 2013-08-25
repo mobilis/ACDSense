@@ -121,8 +121,7 @@
 
 - (NSString *)classNameForClass:(Class)class
 {
-    NSKeyedArchiver *archiver = [NSKeyedArchiver new];
-    return [archiver classNameForClass:class];
+    return [NSKeyedArchiver classNameForClass:class];
 }
 
 @end
