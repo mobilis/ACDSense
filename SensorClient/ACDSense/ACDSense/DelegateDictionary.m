@@ -121,7 +121,7 @@
 
 - (NSString *)classNameForClass:(Class)class
 {
-    return [NSKeyedArchiver classNameForClass:class];
+    return [class description];
 }
 
 @end
