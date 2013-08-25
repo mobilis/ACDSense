@@ -12,13 +12,13 @@
 	[self setSensorItems:[NSMutableArray array]];
 	NSArray* sensorItemsElements = [xml elementsForName:@"sensorItems"];
 	for (NSXMLElement* sensorItemsElement in sensorItemsElements) {
-		sensorItemsObject = [[SensorItem alloc] init];
+		SensorItem *sensorItemsObject = [[SensorItem alloc] init];
 		NSXMLElement* sensorIdElement = [sensorItemsElement elementForName:@"sensorId"];
 		[sensorItemsObject setSensorId:[sensorIdElement stringValue]];
 		[sensorItemsObject setValues:[NSMutableArray array]];
 		NSArray* valuesElements = [sensorItemsElement elementsForName:@"values"];
 		for (NSXMLElement* valuesElement in valuesElements) {
-			valuesObject = [[SensorValue alloc] init];
+			SensorValue *valuesObject = [[SensorValue alloc] init];
 			NSXMLElement* subTypeElement = [valuesElement elementForName:@"subType"];
 			[valuesObject setSubType:[subTypeElement stringValue]];
 			NSXMLElement* valueElement = [valuesElement elementForName:@"value"];

@@ -13,8 +13,8 @@
 	[self setDomain:[[SensorMUCDomain alloc] init]];
 	NSXMLElement* domainIdElement = [domainElement elementForName:@"domainId"];
 	[[self domain] setDomainId:[domainIdElement stringValue]];
-	NSXMLElement* domainElement = [domainElement elementForName:@"domain"];
-	[[self domain] setDomain:[domainElement stringValue]];
+	NSXMLElement* innerDomainElement = [domainElement elementForName:@"domain"];
+	[[self domain] setDomain:[innerDomainElement stringValue]];
 }
 
 + (NSString* )elementName {

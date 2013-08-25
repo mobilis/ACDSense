@@ -8,9 +8,23 @@
 
 #import "SensorDomainsViewController.h"
 
+#import "ConnectionHandler.h"
+
+#import "SensorMUCDomain.h"
+
+#import "CreateSensorMUCDomain.h"
+#import "RemoveSensorMUCDomain.h"
+#import "SensorMUCDomainCreated.h"
+#import "SensorMUCDomainRemoved.h"
+#import "GetSensorMUCDomainsRequest.h"
+#import "GetSensorMUCDomainsResponse.h"
+
 @interface SensorDomainsViewController ()
 @property (retain) NSMutableArray *sensorDomains;
 
+- (void) sensorMUCDomainCreated:(SensorMUCDomainCreated *) bean;
+- (void) sensorMUCDomainRemoved:(SensorMUCDomainRemoved *) bean;
+- (void) sensorMUCDomainsReceived:(GetSensorMUCDomainsResponse *) bean;
 @end
 
 @implementation SensorDomainsViewController
@@ -29,6 +43,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 	self.sensorDomains = [NSMutableArray new];
+	[[ConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(sensorMUCDomainCreated:) forBeanClass:[SensorMUCDomainCreated class]];
+	[[ConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(sensorMUCDomainRemoved:) forBeanClass:[SensorMUCDomainRemoved class]];
+	[[ConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(sensorMUCDomainsReceived:) forBeanClass:[GetSensorMUCDomainsResponse class]];
+	[[ConnectionHandler sharedInstance] sendBean:[GetSensorMUCDomainsRequest new]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,7 +69,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-	cell.textLabel.text = [self.sensorDomains objectAtIndex:indexPath.row];
+	cell.textLabel.text = ((SensorMUCDomain *)[self.sensorDomains objectAtIndex:indexPath.row]).domain;
 	return cell;
 }
 
@@ -63,7 +81,9 @@
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	
+	RemoveSensorMUCDomain *request = [RemoveSensorMUCDomain new];
+	request.domain = [self.sensorDomains objectAtIndex:indexPath.row];
+	[[ConnectionHandler sharedInstance] sendBean:request];
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -75,15 +95,23 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 	if (buttonIndex > 0) {
-		[self.sensorDomains addObject:[[alertView textFieldAtIndex:0] text]];
-		[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+		CreateSensorMUCDomain *request = [CreateSensorMUCDomain new];
+		SensorMUCDomain *domain = [SensorMUCDomain new];
+		domain.domainId = [NSUUID UUID];
+		domain.domain = [[alertView textFieldAtIndex:0] text];
+		request.domain = domain;
+		[[ConnectionHandler sharedInstance] sendBean:request];
 	}
 }
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-	[self.sensorDomains addObject:[textField text]];
-	[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+	CreateSensorMUCDomain *request = [CreateSensorMUCDomain new];
+	SensorMUCDomain *domain = [SensorMUCDomain new];
+	domain.domainId = [NSUUID UUID];
+	domain.domain = [textField text];
+	request.domain = domain;
+	[[ConnectionHandler sharedInstance] sendBean:request];
 	return YES;
 }
 
@@ -95,6 +123,36 @@
 	[[newDomain textFieldAtIndex:0] setDelegate:self];
 	newDomain.delegate = self;
 	[newDomain show];
+}
+
+- (void)sensorMUCDomainCreated:(SensorMUCDomainCreated *)bean
+{
+	[self.sensorDomains addObject:bean.domain];
+	[self refreshTableView];
+}
+
+- (void)sensorMUCDomainRemoved:(SensorMUCDomainRemoved *)bean
+{
+	for (SensorMUCDomain *domain in self.sensorDomains) {
+		if ([[domain domainId] isEqualToString:bean.domain.domainId]) {
+			[self.sensorDomains removeObject:domain];
+		}
+	}
+	[self refreshTableView];
+}
+
+- (void)sensorMUCDomainsReceived:(GetSensorMUCDomainsResponse *)bean
+{
+	[self.sensorDomains removeAllObjects];
+	[self.sensorDomains addObjectsFromArray:bean.domains];
+	[self refreshTableView];
+}
+
+- (void)refreshTableView
+{
+	[UIView transitionWithView:self.tableView duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+		[self.tableView reloadData];
+	} completion:nil];
 }
 
 @end
