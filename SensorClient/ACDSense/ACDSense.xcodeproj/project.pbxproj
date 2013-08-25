@@ -12,6 +12,7 @@
 		0CD1893B17C75350004DF634 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1893A17C75350004DF634 /* SettingsViewController.m */; };
 		0CD1894017C7560D004DF634 /* TextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1893F17C7560D004DF634 /* TextFieldCell.m */; };
 		0CD1894317C75885004DF634 /* SensorDomainsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1894217C75885004DF634 /* SensorDomainsViewController.m */; };
+		0CD1894517CA3009004DF634 /* libMXi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CD1894417CA3009004DF634 /* libMXi.a */; };
 		5B22E84F17C2547B00E6E4F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E84E17C2547B00E6E4F4 /* UIKit.framework */; };
 		5B22E85117C2547B00E6E4F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E85017C2547B00E6E4F4 /* Foundation.framework */; };
 		5B22E85317C2547B00E6E4F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E85217C2547B00E6E4F4 /* CoreGraphics.framework */; };
@@ -21,15 +22,7 @@
 		5B22E86117C2547B00E6E4F4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B22E86017C2547B00E6E4F4 /* Default.png */; };
 		5B22E86317C2547B00E6E4F4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B22E86217C2547B00E6E4F4 /* Default@2x.png */; };
 		5B22E86517C2547B00E6E4F4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B22E86417C2547B00E6E4F4 /* Default-568h@2x.png */; };
-		5B22E87F17C25CED00E6E4F4 /* DelegateSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E87417C25CED00E6E4F4 /* DelegateSensorValues.m */; };
-		5B22E88017C25CED00E6E4F4 /* PublishSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E87617C25CED00E6E4F4 /* PublishSensorValues.m */; };
-		5B22E88117C25CED00E6E4F4 /* RegisterPublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E87817C25CED00E6E4F4 /* RegisterPublisher.m */; };
-		5B22E88217C25CED00E6E4F4 /* RegisterReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E87A17C25CED00E6E4F4 /* RegisterReceiver.m */; };
-		5B22E88317C25CED00E6E4F4 /* RemovePublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E87C17C25CED00E6E4F4 /* RemovePublisher.m */; };
-		5B22E88417C25CED00E6E4F4 /* RemoveReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E87E17C25CED00E6E4F4 /* RemoveReceiver.m */; };
-		5B22E88A17C25ECB00E6E4F4 /* SensorValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E88917C25ECB00E6E4F4 /* SensorValue.m */; };
 		5B22E88C17C25FD200E6E4F4 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B22E88B17C25FD200E6E4F4 /* Settings.plist */; };
-		5B22E89517C26AAB00E6E4F4 /* libMXi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89417C26AAB00E6E4F4 /* libMXi.a */; };
 		5B22E89717C26DD600E6E4F4 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89617C26DD600E6E4F4 /* libiconv.dylib */; };
 		5B22E89917C26DE000E6E4F4 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89817C26DE000E6E4F4 /* libresolv.dylib */; };
 		5B22E89B17C26DED00E6E4F4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89A17C26DED00E6E4F4 /* CFNetwork.framework */; };
@@ -47,6 +40,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C1DD59817CA463000E4A64E /* CreateSensorMUCDomain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CreateSensorMUCDomain.h; path = "src-gen/CreateSensorMUCDomain.h"; sourceTree = "<group>"; };
+		0C1DD59917CA463000E4A64E /* CreateSensorMUCDomain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CreateSensorMUCDomain.m; path = "src-gen/CreateSensorMUCDomain.m"; sourceTree = "<group>"; };
+		0C1DD59A17CA463000E4A64E /* GetSensorMUCDomainsRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GetSensorMUCDomainsRequest.h; path = "src-gen/GetSensorMUCDomainsRequest.h"; sourceTree = "<group>"; };
+		0C1DD59B17CA463000E4A64E /* GetSensorMUCDomainsRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GetSensorMUCDomainsRequest.m; path = "src-gen/GetSensorMUCDomainsRequest.m"; sourceTree = "<group>"; };
+		0C1DD59C17CA463000E4A64E /* PublishSensorItems.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PublishSensorItems.h; path = "src-gen/PublishSensorItems.h"; sourceTree = "<group>"; };
+		0C1DD59D17CA463000E4A64E /* PublishSensorItems.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PublishSensorItems.m; path = "src-gen/PublishSensorItems.m"; sourceTree = "<group>"; };
+		0C1DD59E17CA463000E4A64E /* PublishSensorValues.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PublishSensorValues.h; path = "src-gen/PublishSensorValues.h"; sourceTree = "<group>"; };
+		0C1DD59F17CA463000E4A64E /* PublishSensorValues.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PublishSensorValues.m; path = "src-gen/PublishSensorValues.m"; sourceTree = "<group>"; };
+		0C1DD5A017CA463000E4A64E /* RegisterPublisher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RegisterPublisher.h; path = "src-gen/RegisterPublisher.h"; sourceTree = "<group>"; };
+		0C1DD5A117CA463000E4A64E /* RegisterPublisher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RegisterPublisher.m; path = "src-gen/RegisterPublisher.m"; sourceTree = "<group>"; };
+		0C1DD5A217CA463000E4A64E /* RegisterReceiver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RegisterReceiver.h; path = "src-gen/RegisterReceiver.h"; sourceTree = "<group>"; };
+		0C1DD5A317CA463000E4A64E /* RegisterReceiver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RegisterReceiver.m; path = "src-gen/RegisterReceiver.m"; sourceTree = "<group>"; };
+		0C1DD5A417CA463000E4A64E /* RemovePublisher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RemovePublisher.h; path = "src-gen/RemovePublisher.h"; sourceTree = "<group>"; };
+		0C1DD5A517CA463000E4A64E /* RemovePublisher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RemovePublisher.m; path = "src-gen/RemovePublisher.m"; sourceTree = "<group>"; };
+		0C1DD5A617CA463000E4A64E /* RemoveReceiver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RemoveReceiver.h; path = "src-gen/RemoveReceiver.h"; sourceTree = "<group>"; };
+		0C1DD5A717CA463000E4A64E /* RemoveReceiver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RemoveReceiver.m; path = "src-gen/RemoveReceiver.m"; sourceTree = "<group>"; };
+		0C1DD5A817CA463000E4A64E /* RemoveSensorMUCDomain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RemoveSensorMUCDomain.h; path = "src-gen/RemoveSensorMUCDomain.h"; sourceTree = "<group>"; };
+		0C1DD5A917CA463000E4A64E /* RemoveSensorMUCDomain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RemoveSensorMUCDomain.m; path = "src-gen/RemoveSensorMUCDomain.m"; sourceTree = "<group>"; };
 		0CD1893417C74C6A004DF634 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		0CD1893617C74DAC004DF634 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		0CD1893717C74DAC004DF634 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -56,6 +67,21 @@
 		0CD1893F17C7560D004DF634 /* TextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldCell.m; sourceTree = "<group>"; };
 		0CD1894117C75885004DF634 /* SensorDomainsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorDomainsViewController.h; sourceTree = "<group>"; };
 		0CD1894217C75885004DF634 /* SensorDomainsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorDomainsViewController.m; sourceTree = "<group>"; };
+		0CD1894417CA3009004DF634 /* libMXi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMXi.a; path = "../../../mobilis/MXi/build/Release-iphoneos/libMXi.a"; sourceTree = "<group>"; };
+		0CD1894617CA3FEF004DF634 /* SensorValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SensorValue.h; path = "src-gen/SensorValue.h"; sourceTree = "<group>"; };
+		0CD1894717CA3FEF004DF634 /* SensorValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SensorValue.m; path = "src-gen/SensorValue.m"; sourceTree = "<group>"; };
+		0CD1895217CA402A004DF634 /* DelegateSensorValues.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DelegateSensorValues.h; path = "src-gen/DelegateSensorValues.h"; sourceTree = "<group>"; };
+		0CD1895317CA402A004DF634 /* DelegateSensorValues.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DelegateSensorValues.m; path = "src-gen/DelegateSensorValues.m"; sourceTree = "<group>"; };
+		0CD1895517CA4266004DF634 /* SensorItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SensorItem.h; path = "src-gen/SensorItem.h"; sourceTree = "<group>"; };
+		0CD1895617CA4266004DF634 /* SensorItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SensorItem.m; path = "src-gen/SensorItem.m"; sourceTree = "<group>"; };
+		0CD1895717CA4266004DF634 /* SensorMUCDomain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SensorMUCDomain.h; path = "src-gen/SensorMUCDomain.h"; sourceTree = "<group>"; };
+		0CD1895817CA4266004DF634 /* SensorMUCDomain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SensorMUCDomain.m; path = "src-gen/SensorMUCDomain.m"; sourceTree = "<group>"; };
+		0CD1896B17CA4322004DF634 /* DelegateSensorItems.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DelegateSensorItems.h; path = "src-gen/DelegateSensorItems.h"; sourceTree = "<group>"; };
+		0CD1896C17CA4322004DF634 /* DelegateSensorItems.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DelegateSensorItems.m; path = "src-gen/DelegateSensorItems.m"; sourceTree = "<group>"; };
+		0CD1896D17CA4322004DF634 /* SensorMUCDomainCreated.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SensorMUCDomainCreated.h; path = "src-gen/SensorMUCDomainCreated.h"; sourceTree = "<group>"; };
+		0CD1896E17CA4322004DF634 /* SensorMUCDomainCreated.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SensorMUCDomainCreated.m; path = "src-gen/SensorMUCDomainCreated.m"; sourceTree = "<group>"; };
+		0CD1896F17CA4322004DF634 /* SensorMUCDomainRemoved.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SensorMUCDomainRemoved.h; path = "src-gen/SensorMUCDomainRemoved.h"; sourceTree = "<group>"; };
+		0CD1897017CA4322004DF634 /* SensorMUCDomainRemoved.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SensorMUCDomainRemoved.m; path = "src-gen/SensorMUCDomainRemoved.m"; sourceTree = "<group>"; };
 		5B22E84B17C2547B00E6E4F4 /* ACDSense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACDSense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B22E84E17C2547B00E6E4F4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5B22E85017C2547B00E6E4F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -69,20 +95,6 @@
 		5B22E86017C2547B00E6E4F4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		5B22E86217C2547B00E6E4F4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		5B22E86417C2547B00E6E4F4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		5B22E87317C25CED00E6E4F4 /* DelegateSensorValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateSensorValues.h; sourceTree = "<group>"; };
-		5B22E87417C25CED00E6E4F4 /* DelegateSensorValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateSensorValues.m; sourceTree = "<group>"; };
-		5B22E87517C25CED00E6E4F4 /* PublishSensorValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishSensorValues.h; sourceTree = "<group>"; };
-		5B22E87617C25CED00E6E4F4 /* PublishSensorValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishSensorValues.m; sourceTree = "<group>"; };
-		5B22E87717C25CED00E6E4F4 /* RegisterPublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterPublisher.h; sourceTree = "<group>"; };
-		5B22E87817C25CED00E6E4F4 /* RegisterPublisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterPublisher.m; sourceTree = "<group>"; };
-		5B22E87917C25CED00E6E4F4 /* RegisterReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterReceiver.h; sourceTree = "<group>"; };
-		5B22E87A17C25CED00E6E4F4 /* RegisterReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterReceiver.m; sourceTree = "<group>"; };
-		5B22E87B17C25CED00E6E4F4 /* RemovePublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemovePublisher.h; sourceTree = "<group>"; };
-		5B22E87C17C25CED00E6E4F4 /* RemovePublisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemovePublisher.m; sourceTree = "<group>"; };
-		5B22E87D17C25CED00E6E4F4 /* RemoveReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveReceiver.h; sourceTree = "<group>"; };
-		5B22E87E17C25CED00E6E4F4 /* RemoveReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveReceiver.m; sourceTree = "<group>"; };
-		5B22E88817C25ECB00E6E4F4 /* SensorValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorValue.h; sourceTree = "<group>"; };
-		5B22E88917C25ECB00E6E4F4 /* SensorValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorValue.m; sourceTree = "<group>"; };
 		5B22E88B17C25FD200E6E4F4 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		5B22E89417C26AAB00E6E4F4 /* libMXi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMXi.a; path = "../../../Mobilis/MXi/build/Release-iphoneos/libMXi.a"; sourceTree = "<group>"; };
 		5B22E89617C26DD600E6E4F4 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
@@ -114,12 +126,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CD1894517CA3009004DF634 /* libMXi.a in Frameworks */,
 				5B22E89F17C26E0500E6E4F4 /* libxml2.dylib in Frameworks */,
 				5B22E89D17C26DF800E6E4F4 /* Security.framework in Frameworks */,
 				5B22E89B17C26DED00E6E4F4 /* CFNetwork.framework in Frameworks */,
 				5B22E89917C26DE000E6E4F4 /* libresolv.dylib in Frameworks */,
 				5B22E89717C26DD600E6E4F4 /* libiconv.dylib in Frameworks */,
-				5B22E89517C26AAB00E6E4F4 /* libMXi.a in Frameworks */,
 				5B22E84F17C2547B00E6E4F4 /* UIKit.framework in Frameworks */,
 				5B22E85117C2547B00E6E4F4 /* Foundation.framework in Frameworks */,
 				5B22E85317C2547B00E6E4F4 /* CoreGraphics.framework in Frameworks */,
@@ -155,9 +167,23 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		0CD1895417CA4031004DF634 /* Generated Model */ = {
+			isa = PBXGroup;
+			children = (
+				0CD1895517CA4266004DF634 /* SensorItem.h */,
+				0CD1895617CA4266004DF634 /* SensorItem.m */,
+				0CD1895717CA4266004DF634 /* SensorMUCDomain.h */,
+				0CD1895817CA4266004DF634 /* SensorMUCDomain.m */,
+				0CD1894617CA3FEF004DF634 /* SensorValue.h */,
+				0CD1894717CA3FEF004DF634 /* SensorValue.m */,
+			);
+			name = "Generated Model";
+			sourceTree = "<group>";
+		};
 		5B22E84217C2547B00E6E4F4 = {
 			isa = PBXGroup;
 			children = (
+				0CD1894417CA3009004DF634 /* libMXi.a */,
 				5B22E85417C2547B00E6E4F4 /* ACDSense */,
 				5B22E84D17C2547B00E6E4F4 /* Frameworks */,
 				5B22E84C17C2547B00E6E4F4 /* Products */,
@@ -193,8 +219,6 @@
 			children = (
 				0CD1893D17C755CD004DF634 /* Controllers */,
 				0CD1893C17C755BF004DF634 /* Views */,
-				5B22E88817C25ECB00E6E4F4 /* SensorValue.h */,
-				5B22E88917C25ECB00E6E4F4 /* SensorValue.m */,
 				5B22E85D17C2547B00E6E4F4 /* AppDelegate.h */,
 				5B22E85E17C2547B00E6E4F4 /* AppDelegate.m */,
 				5B22E85517C2547B00E6E4F4 /* Supporting Files */,
@@ -231,16 +255,24 @@
 		5B22E88617C25D0800E6E4F4 /* Outgoing */ = {
 			isa = PBXGroup;
 			children = (
-				5B22E87517C25CED00E6E4F4 /* PublishSensorValues.h */,
-				5B22E87617C25CED00E6E4F4 /* PublishSensorValues.m */,
-				5B22E87717C25CED00E6E4F4 /* RegisterPublisher.h */,
-				5B22E87817C25CED00E6E4F4 /* RegisterPublisher.m */,
-				5B22E87917C25CED00E6E4F4 /* RegisterReceiver.h */,
-				5B22E87A17C25CED00E6E4F4 /* RegisterReceiver.m */,
-				5B22E87B17C25CED00E6E4F4 /* RemovePublisher.h */,
-				5B22E87C17C25CED00E6E4F4 /* RemovePublisher.m */,
-				5B22E87D17C25CED00E6E4F4 /* RemoveReceiver.h */,
-				5B22E87E17C25CED00E6E4F4 /* RemoveReceiver.m */,
+				0C1DD59817CA463000E4A64E /* CreateSensorMUCDomain.h */,
+				0C1DD59917CA463000E4A64E /* CreateSensorMUCDomain.m */,
+				0C1DD59A17CA463000E4A64E /* GetSensorMUCDomainsRequest.h */,
+				0C1DD59B17CA463000E4A64E /* GetSensorMUCDomainsRequest.m */,
+				0C1DD59C17CA463000E4A64E /* PublishSensorItems.h */,
+				0C1DD59D17CA463000E4A64E /* PublishSensorItems.m */,
+				0C1DD59E17CA463000E4A64E /* PublishSensorValues.h */,
+				0C1DD59F17CA463000E4A64E /* PublishSensorValues.m */,
+				0C1DD5A017CA463000E4A64E /* RegisterPublisher.h */,
+				0C1DD5A117CA463000E4A64E /* RegisterPublisher.m */,
+				0C1DD5A217CA463000E4A64E /* RegisterReceiver.h */,
+				0C1DD5A317CA463000E4A64E /* RegisterReceiver.m */,
+				0C1DD5A417CA463000E4A64E /* RemovePublisher.h */,
+				0C1DD5A517CA463000E4A64E /* RemovePublisher.m */,
+				0C1DD5A617CA463000E4A64E /* RemoveReceiver.h */,
+				0C1DD5A717CA463000E4A64E /* RemoveReceiver.m */,
+				0C1DD5A817CA463000E4A64E /* RemoveSensorMUCDomain.h */,
+				0C1DD5A917CA463000E4A64E /* RemoveSensorMUCDomain.m */,
 			);
 			name = Outgoing;
 			sourceTree = "<group>";
@@ -248,8 +280,14 @@
 		5B22E88717C25D1200E6E4F4 /* Incoming */ = {
 			isa = PBXGroup;
 			children = (
-				5B22E87317C25CED00E6E4F4 /* DelegateSensorValues.h */,
-				5B22E87417C25CED00E6E4F4 /* DelegateSensorValues.m */,
+				0CD1896B17CA4322004DF634 /* DelegateSensorItems.h */,
+				0CD1896C17CA4322004DF634 /* DelegateSensorItems.m */,
+				0CD1896D17CA4322004DF634 /* SensorMUCDomainCreated.h */,
+				0CD1896E17CA4322004DF634 /* SensorMUCDomainCreated.m */,
+				0CD1896F17CA4322004DF634 /* SensorMUCDomainRemoved.h */,
+				0CD1897017CA4322004DF634 /* SensorMUCDomainRemoved.m */,
+				0CD1895217CA402A004DF634 /* DelegateSensorValues.h */,
+				0CD1895317CA402A004DF634 /* DelegateSensorValues.m */,
 			);
 			name = Incoming;
 			sourceTree = "<group>";
@@ -257,6 +295,7 @@
 		5B772CB117C89F270008BC02 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				0CD1895417CA4031004DF634 /* Generated Model */,
 				5B22E88517C25CF700E6E4F4 /* Beans */,
 				5B772CB817C8A31F0008BC02 /* AccountManagement */,
 				5B772CAE17C89DF50008BC02 /* ConnectionHandler.h */,
@@ -362,13 +401,6 @@
 			files = (
 				5B22E85B17C2547B00E6E4F4 /* main.m in Sources */,
 				5B22E85F17C2547B00E6E4F4 /* AppDelegate.m in Sources */,
-				5B22E87F17C25CED00E6E4F4 /* DelegateSensorValues.m in Sources */,
-				5B22E88017C25CED00E6E4F4 /* PublishSensorValues.m in Sources */,
-				5B22E88117C25CED00E6E4F4 /* RegisterPublisher.m in Sources */,
-				5B22E88217C25CED00E6E4F4 /* RegisterReceiver.m in Sources */,
-				5B22E88317C25CED00E6E4F4 /* RemovePublisher.m in Sources */,
-				5B22E88417C25CED00E6E4F4 /* RemoveReceiver.m in Sources */,
-				5B22E88A17C25ECB00E6E4F4 /* SensorValue.m in Sources */,
 				5B22E8A317C284EA00E6E4F4 /* DataViewController.m in Sources */,
 				0CD1893817C74DAC004DF634 /* MainViewController.m in Sources */,
 				0CD1893B17C75350004DF634 /* SettingsViewController.m in Sources */,

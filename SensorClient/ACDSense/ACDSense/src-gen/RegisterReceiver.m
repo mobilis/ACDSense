@@ -1,10 +1,10 @@
-#import "RemoveReceiver.h"
+#import "RegisterReceiver.h"
 
-@implementation RemoveReceiver
+@implementation RegisterReceiver
 
 - (id)init {
 	self = [super initWithBeanType:SET];
-	
+
 	return self;
 }
 
@@ -16,11 +16,11 @@
 }
 
 + (NSString* )elementName {
-	return @"RemoveReceiver";
+	return @"RegisterReceiver";
 }
 
 + (NSString* )iqNamespace {
-	return @"acdsense:iq:removereceiver";
+	return @"http://mobilis.inf.tu-dresden.de/ACDSense";
 }
 
 @end

@@ -1,10 +1,10 @@
-#import "RegisterPublisher.h"
+#import "RemoveReceiver.h"
 
-@implementation RegisterPublisher
+@implementation RemoveReceiver
 
 - (id)init {
 	self = [super initWithBeanType:SET];
-	
+
 	return self;
 }
 
@@ -16,11 +16,11 @@
 }
 
 + (NSString* )elementName {
-	return @"RegisterPublisher";
+	return @"RemoveReceiver";
 }
 
 + (NSString* )iqNamespace {
-	return @"acdsense:iq:registerpublisher";
+	return @"http://mobilis.inf.tu-dresden.de/ACDSense";
 }
 
 @end

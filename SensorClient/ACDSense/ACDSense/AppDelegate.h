@@ -8,23 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "DataViewController.h"
-
-#import <MXi/MXi.h>
-#import <MXi/MXiBeanDelegate.h>
-#import <MXi/MXiStanzaDelegate.h>
-#import <MXi/MXiPresenceDelegate.h>
-
-#import "DelegateSensorValues.h"
-#import "SensorValue.h"
-#import "RegisterReceiver.h"
-#import "RemoveReceiver.h"
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate, MXiBeanDelegate, MXiPresenceDelegate, MXiStanzaDelegate>
-
-@property (strong, nonatomic) MXiConnection *connection;
-
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) DataViewController *dataViewController;
-
 @end

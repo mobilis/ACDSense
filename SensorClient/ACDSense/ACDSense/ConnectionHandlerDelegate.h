@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import <MXi/MXiBean.h>
-#import <MXi/MXiIncomingBean.h>
+#import <MXi/MXi.h>
 
 @protocol ConnectionHandlerDelegate <NSObject>
 
