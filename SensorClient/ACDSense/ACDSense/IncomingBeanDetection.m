@@ -20,7 +20,7 @@
     classes = NULL;
     numberOfClasses = objc_getClassList(NULL, 0);
     
-    NSMutableArray *incomingBeans = [NSMutableArray arrayWithCapacity:10];
+    NSMutableArray *incomingBeans = [[NSMutableArray alloc] initWithCapacity:10];
     if (numberOfClasses > 0) {
         classes = malloc(sizeof(Class) * numberOfClasses);
         numberOfClasses = objc_getClassList(classes, numberOfClasses);
@@ -28,13 +28,13 @@
             Class class = classes[i];
             if (class_getClassMethod(class, @selector(conformsToProtocol:))) {
                 if ([class conformsToProtocol:@protocol(MXiIncomingBean)]) {
-                    [incomingBeans addObject:class];
+                    [incomingBeans addObject:[[[class alloc] init] autorelease]];
                 }
             }
         }
         free(classes);
     }
-    return incomingBeans;
+    return [incomingBeans autorelease];
 }
 
 
