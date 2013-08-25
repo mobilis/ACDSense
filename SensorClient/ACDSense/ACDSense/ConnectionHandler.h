@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "ConnectionHandlerDelegate.h"
-
 #import <MXi/MXi.h>
 
 /**
@@ -78,10 +76,10 @@ typedef void (^ AuthenticationBlock)(BOOL);
  *  This method allows objects to register as a delegate for only a specific bean class.
  *
  *  @param delegate  Object that wants to act as a delegate for certain bean classes.
+ *  @param selector  The selector of the delegate that will be called when a bean of the given class arrives.
  *  @param beanClass The class of the bean for which the delegate registers.
  *
- *  @see ConnectionHandlerDelegate protocol
  */
-- (void)addDelegate:(id<ConnectionHandlerDelegate>)delegate forBeanClass:(Class)beanClass;
+- (void)addDelegate:(id)delegate withSelector:(SEL)selector forBeanClass:(Class)beanClass;
 
 @end

@@ -37,6 +37,8 @@
 		5B772CBB17C8A37D0008BC02 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CBA17C8A37D0008BC02 /* Account.m */; };
 		5B772CBE17C911B20008BC02 /* DelegateDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CBD17C911B20008BC02 /* DelegateDictionary.m */; };
 		5B772CC217C923920008BC02 /* IncomingBeanDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CC117C923920008BC02 /* IncomingBeanDetection.m */; };
+		5B96FFA917CA4F0100DADDFA /* DelegateSelectorMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B96FFA817CA4F0100DADDFA /* DelegateSelectorMapping.m */; };
+		5B96FFAC17CA553200DADDFA /* NSString+Selector.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B96FFAB17CA553200DADDFA /* NSString+Selector.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,9 +118,12 @@
 		5B772CBA17C8A37D0008BC02 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		5B772CBC17C911B20008BC02 /* DelegateDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateDictionary.h; sourceTree = "<group>"; };
 		5B772CBD17C911B20008BC02 /* DelegateDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateDictionary.m; sourceTree = "<group>"; };
-		5B772CBF17C919040008BC02 /* ConnectionHandlerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionHandlerDelegate.h; sourceTree = "<group>"; };
 		5B772CC017C923910008BC02 /* IncomingBeanDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomingBeanDetection.h; sourceTree = "<group>"; };
 		5B772CC117C923920008BC02 /* IncomingBeanDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomingBeanDetection.m; sourceTree = "<group>"; };
+		5B96FFA717CA4F0100DADDFA /* DelegateSelectorMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateSelectorMapping.h; sourceTree = "<group>"; };
+		5B96FFA817CA4F0100DADDFA /* DelegateSelectorMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateSelectorMapping.m; sourceTree = "<group>"; };
+		5B96FFAA17CA553200DADDFA /* NSString+Selector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Selector.h"; sourceTree = "<group>"; };
+		5B96FFAB17CA553200DADDFA /* NSString+Selector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Selector.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +228,7 @@
 				5B22E85E17C2547B00E6E4F4 /* AppDelegate.m */,
 				5B22E85517C2547B00E6E4F4 /* Supporting Files */,
 				5B772CB117C89F270008BC02 /* Backend */,
+				5B96FFAD17CA559100DADDFA /* Categories */,
 			);
 			path = ACDSense;
 			sourceTree = "<group>";
@@ -301,7 +307,6 @@
 				5B772CAE17C89DF50008BC02 /* ConnectionHandler.h */,
 				5B772CAF17C89DF50008BC02 /* ConnectionHandler.m */,
 				5B772CC317C926160008BC02 /* Connection Helper */,
-				5B772CBF17C919040008BC02 /* ConnectionHandlerDelegate.h */,
 			);
 			name = Backend;
 			sourceTree = "<group>";
@@ -326,8 +331,19 @@
 				5B772CBD17C911B20008BC02 /* DelegateDictionary.m */,
 				5B772CC017C923910008BC02 /* IncomingBeanDetection.h */,
 				5B772CC117C923920008BC02 /* IncomingBeanDetection.m */,
+				5B96FFA717CA4F0100DADDFA /* DelegateSelectorMapping.h */,
+				5B96FFA817CA4F0100DADDFA /* DelegateSelectorMapping.m */,
 			);
 			name = "Connection Helper";
+			sourceTree = "<group>";
+		};
+		5B96FFAD17CA559100DADDFA /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				5B96FFAA17CA553200DADDFA /* NSString+Selector.h */,
+				5B96FFAB17CA553200DADDFA /* NSString+Selector.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -412,6 +428,8 @@
 				5B772CBB17C8A37D0008BC02 /* Account.m in Sources */,
 				5B772CBE17C911B20008BC02 /* DelegateDictionary.m in Sources */,
 				5B772CC217C923920008BC02 /* IncomingBeanDetection.m in Sources */,
+				5B96FFA917CA4F0100DADDFA /* DelegateSelectorMapping.m in Sources */,
+				5B96FFAC17CA553200DADDFA /* NSString+Selector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

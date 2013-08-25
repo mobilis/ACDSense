@@ -16,8 +16,9 @@
 - (instancetype) init __attribute__((unavailable("init not available, call sharedInstance instead")));
 + (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
 
-- (void)addDelegate:(id)delegate forBeanClass:(Class)beanClass;
+- (void)addDelegate:(id)delegate withSelector:(SEL)selector forBeanClass:(Class)beanClass;
 - (void)removeDelegate:(id)delegate forBeanClass:(Class)beanClass;
+- (void)removeDelegate:(id)delegate withSelector:(SEL)selector forBeanClass:(Class)beanClass;
 - (NSArray *)delegatesForBeanClass:(Class)beanClass;
 
 @end

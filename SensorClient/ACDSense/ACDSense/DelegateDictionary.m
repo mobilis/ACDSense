@@ -8,6 +8,8 @@
 
 #import "DelegateDictionary.h"
 
+#import "DelegateSelectorMapping.h"
+
 @interface DelegateDictionary ()
 
 @property (strong, nonatomic) NSMutableDictionary *delegateDictionary;
@@ -38,17 +40,20 @@
 
 #pragma mark - Delegate Handling
 
-- (void)addDelegate:(id)delegate forBeanClass:(Class)beanClass
+- (void)addDelegate:(id)delegate withSelector:(SEL)selector forBeanClass:(Class)beanClass
 {
     [self initializeDictionaryIfNotExisting];
     
+    DelegateSelectorMapping *delegateSelectorMapping = [[DelegateSelectorMapping alloc] initWithDelegate:delegate
+                                                                                             andSelector:selector];
+    
     NSArray *registeredDelegates = [self.delegateDictionary objectForKey:[self classNameForClass:beanClass]];
     if (!registeredDelegates) {
-        [self.delegateDictionary setObject:@[delegate] forKey:[self classNameForClass:beanClass]];
+        [self.delegateDictionary setObject:@[delegateSelectorMapping] forKey:[self classNameForClass:beanClass]];
     } else {
         NSMutableArray *newRegisteredDelegates = [[NSMutableArray alloc] initWithCapacity:registeredDelegates.count+1];
         [newRegisteredDelegates addObjectsFromArray:registeredDelegates];
-        [newRegisteredDelegates addObject:delegate];
+        [newRegisteredDelegates addObject:delegateSelectorMapping];
         [self.delegateDictionary setObject:newRegisteredDelegates forKey:[self classNameForClass:beanClass]];
     }
 }
@@ -58,8 +63,37 @@
     [self initializeDictionaryIfNotExisting];
     NSMutableArray *registeredDelegates = [self.delegateDictionary objectForKey:[self classNameForClass:beanClass]];
     if (registeredDelegates) {
-        [registeredDelegates removeObject:delegate];
+        NSMutableArray *mappingsToDelete = [NSMutableArray arrayWithCapacity:registeredDelegates.count];
+        for (DelegateSelectorMapping *mapping in registeredDelegates) {
+            if ([mapping.delegate isEqual:delegate]) {
+                [mappingsToDelete addObject:mapping];
+            }
+        }
+        [registeredDelegates removeObjectsInArray:mappingsToDelete];
         [self.delegateDictionary setObject:registeredDelegates forKey:[self classNameForClass:beanClass]];
+    }
+}
+
+- (void)removeDelegate:(id)delegate withSelector:(SEL)selector forBeanClass:(Class)beanClass
+{
+    if (selector == nil) {
+        [self removeDelegate:delegate forBeanClass:beanClass];
+    } else {
+        [self initializeDictionaryIfNotExisting];
+        NSMutableArray *registeredDelegates = [self.delegateDictionary objectForKey:[self classNameForClass:beanClass]];
+        if (registeredDelegates) {
+            DelegateSelectorMapping *mappingToRemove = nil;
+            for (DelegateSelectorMapping *mapping in registeredDelegates) {
+                if ([mapping.delegate isEqual:delegate]) {
+                    if ([[NSString stringFromSelector:mapping.selector] isEqualToString:[NSString stringFromSelector:selector]]) {
+                        mappingToRemove = mapping;
+                        break;
+                    }
+                }
+            }
+            [registeredDelegates removeObject:mappingToRemove];
+            [self.delegateDictionary setObject:registeredDelegates forKey:[self classNameForClass:beanClass]];
+        }
     }
 }
 

@@ -11,6 +11,7 @@
 #import "Account.h"
 #import "AccountManager.h"
 #import "DelegateDictionary.h"
+#import "DelegateSelectorMapping.h"
 #import "IncomingBeanDetection.h"
 
 #import "DelegateSensorValues.h"
@@ -90,9 +91,9 @@
 
 #pragma mark ConnectionHandler Delgation Methods
 
-- (void)addDelegate:(id<ConnectionHandlerDelegate>)delegate forBeanClass:(Class)beanClass
+- (void)addDelegate:(id)delegate withSelector:(SEL)selector forBeanClass:(Class)beanClass
 {
-    [[DelegateDictionary sharedInstance] addDelegate:delegate forBeanClass:beanClass];
+    [[DelegateDictionary sharedInstance] addDelegate:delegate withSelector:selector forBeanClass:beanClass];
 }
 
 #pragma mark - MXiBeanDelegate
@@ -101,8 +102,10 @@
 {
     NSArray *delegates = [[DelegateDictionary sharedInstance] delegatesForBeanClass:[theBean class]];
     if (delegates) {
-        for (id<ConnectionHandlerDelegate> delegate in delegates) {
-            [delegate didReceiveBean:theBean];
+        for (DelegateSelectorMapping *mapping in delegates) {
+            if ([mapping.delegate respondsToSelector:mapping.selector]) {
+                [mapping.delegate performSelector:mapping.selector withObject:theBean]; // Warning can be ignored.
+            }
         }
     }
 }
@@ -136,6 +139,7 @@
     }
     IncomingBeanDetection *incomingBeans = [IncomingBeanDetection new];
     self.incomingBeans = [incomingBeans detectBeans];
+    return self.incomingBeans;
 }
 
 @end
