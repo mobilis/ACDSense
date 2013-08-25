@@ -7,8 +7,16 @@
 //
 
 #import "AppDelegate.h"
+#import "AccountManager.h"
+#import "Account.h"
+#import "ConnectionHandler.h"
 
-#import "DataViewController.h"
+#import "RegisterReceiver.h"
+#import "RemoveReceiver.h"
+
+@interface AppDelegate ()
+- (void) launchConnectionEstablishment;
+@end
 
 @implementation AppDelegate
 
@@ -16,7 +24,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.dataViewController = [[DataViewController alloc] init];    
     [self launchConnectionEstablishment];
     return YES;
 }
@@ -31,7 +38,7 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    [self.connection sendBean:[[RemoveReceiver alloc] init]];
+    [[ConnectionHandler sharedInstance] sendBean:[RemoveReceiver new]];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -54,78 +61,26 @@
 
 - (void)launchConnectionEstablishment
 {
-    NSString *settingsPath = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
-    NSDictionary *jabberSettings = [[NSDictionary dictionaryWithContentsOfFile:settingsPath] objectForKey:@"jabberInformation"];
-    
-    NSString *jid = [jabberSettings valueForKey:@"jid"];
-    NSString *password = [jabberSettings valueForKey:@"password"];
-    NSString *hostName = [jabberSettings valueForKey:@"hostName"];
-    NSString *serviceJid = [jabberSettings valueForKey:@"serviceJid"];
-    
-    self.connection = [MXiConnection connectionWithJabberID:jid
-                                                   password:password
-                                                   hostName:hostName
-                                                 serviceJID:serviceJid
-                                           presenceDelegate:self
-                                             stanzaDelegate:self
-                                               beanDelegate:self
-                                  listeningForIncomingBeans:[self incomingBeanPrototypes]];
-}
-
-- (NSArray *)incomingBeanPrototypes
-{
-    return @[[[DelegateSensorValues alloc] init]];
-}
-
-#pragma mark - MXiPresenceDelegate
-
-- (void)didAuthenticate
-{
-    NSLog(@"Authentication successfull");
-    [self.connection sendBean:[[RegisterReceiver alloc] init]];
-}
-
-- (void)didDisconnectWithError:(NSError *)error
-{
-    NSLog(@"%@", error);
-}
-
-- (void)didFailToAuthenticate:(NSXMLElement *)error
-{
-    NSLog(@"%@", [error description]);
-}
-
-#pragma mark - MXiStanzaDelegate
-
-- (void)didReceiveMessage:(XMPPMessage *)message
-{
-#warning Potentially unimplemented method
-}
-
-- (BOOL)didReceiveIQ:(XMPPIQ *)iq
-{
-#warning Potentially unimplemented method
-    return YES;
-}
-
-- (void)didReceivePresence:(XMPPPresence *)presence
-{
-#warning Potentially unimplemented method
-}
-
-- (void)didReceiveError:(NSXMLElement *)error
-{
-    NSLog(@"%@", [error description]);
-}
-
-#pragma mark - MXiBeanDelegate
-
-- (void)didReceiveBean:(MXiBean<MXiIncomingBean> *)theBean
-{
-    if ([theBean class] == [DelegateSensorValues class]) {
-        DelegateSensorValues *delegateSensorValues = (DelegateSensorValues *)theBean;
-        [self.dataViewController addSensorValues:delegateSensorValues.sensorValues];
-    }
+	Account *account = [AccountManager account];
+	if (account && account.hostName && account.hostName.length > 0) {
+		[[ConnectionHandler sharedInstance] launchConnectionWithBlock:^(BOOL success){
+			if (success)
+				[[ConnectionHandler sharedInstance] sendBean:[RegisterReceiver new]];
+		}];
+	} else {
+		NSString *settingsPath = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
+		NSDictionary *jabberSettings = [[NSDictionary dictionaryWithContentsOfFile:settingsPath] objectForKey:@"jabberInformation"];
+		
+		NSString *jid = [jabberSettings valueForKey:@"jid"];
+		NSString *password = [jabberSettings valueForKey:@"password"];
+		NSString *hostName = [jabberSettings valueForKey:@"hostName"];
+		NSString *serviceJid = [jabberSettings valueForKey:@"serviceJid"];
+		
+		[[ConnectionHandler sharedInstance] launchConnectionWithJID:jid password:password hostName:hostName serviceJID:serviceJid authenticationBlock:^(BOOL success){
+			if (success)
+				[[ConnectionHandler sharedInstance] sendBean:[RegisterReceiver new]];
+		}];
+	}
 }
 
 @end
