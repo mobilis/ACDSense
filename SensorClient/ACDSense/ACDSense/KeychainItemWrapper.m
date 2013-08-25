@@ -200,14 +200,13 @@ Keychain API expects as a validly constructed container class.
     }
     
     // Default attributes for keychain item.
+    [keychainItemData setObject:(id)CFBridgingRelease(kSecAttrAccessibleWhenUnlocked) forKey:(id)CFBridgingRelease(kSecAttrAccessible)];
     [keychainItemData setObject:@"" forKey:(__bridge id)kSecAttrAccount];
     [keychainItemData setObject:@"" forKey:(__bridge id)kSecAttrDescription];
-    [keychainItemData setObject:@"" forKey:(__bridge id)kSecAttrServer];
+    [keychainItemData setObject:@"" forKey:(__bridge id)kSecAttrService];
     
 	// Default data for keychain item.
     [keychainItemData setObject:@"" forKey:(__bridge id)kSecValueData];
-    
-    [keychainItemData setObject:(__bridge id)(kSecAttrAccessibleWhenUnlocked) forKey:(__bridge id<NSCopying>)(kSecAttrAccessible)];
 }
 
 - (NSMutableDictionary *)dictionaryToSecItemFormat:(NSDictionary *)dictionaryToConvert
