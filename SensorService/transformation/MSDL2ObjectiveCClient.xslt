@@ -123,13 +123,6 @@
 
 @implementation </xsl:text><xsl:value-of select="$className" /><xsl:text>
 
-@synthesize </xsl:text>
-				<xsl:for-each select="/msdl:description/msdl:types/xs:schema/xs:element[@name=$className]/xs:complexType/xs:sequence/xs:element">
-					<xsl:value-of select="./@name" />
-					<xsl:if test="position() != last()"><xsl:text>, </xsl:text></xsl:if>
-				</xsl:for-each>
-<xsl:text>;
-
 - (id)init {
 	self = [super initWithBeanType:</xsl:text>
 				<xsl:variable name="fullDirection" select="concat('msdl:', $direction)" />
@@ -425,15 +418,6 @@
 <xsl:text>@implementation </xsl:text><xsl:value-of select="$className" />
 <xsl:value-of select="$newline" /><xsl:value-of select="$newline" />
 
-<!-- Synthesize properties -->
-<xsl:text>@synthesize </xsl:text>
-<xsl:for-each select="/msdl:description/msdl:types/xs:schema/xs:complexType[@name = $className]/xs:sequence/xs:element">
-	<xsl:value-of select="./@name" />
-	<xsl:if test="position() != last()"><xsl:text>, </xsl:text></xsl:if>
-	<xsl:if test="position() = last()"><xsl:text>;</xsl:text></xsl:if>
-</xsl:for-each>
-<xsl:value-of select="$newline" /><xsl:value-of select="$newline" />
-
 <!-- End of class definition -->
 <xsl:text>@end</xsl:text>
 				</xsl:result-document>
@@ -538,15 +522,6 @@
 
 			<!-- Class definition -->
 			<xsl:text>@implementation </xsl:text><xsl:value-of select="$className" />
-			<xsl:value-of select="$newline" /><xsl:value-of select="$newline" />
-
-			<!-- Synthesize properties -->
-			<xsl:text>@synthesize </xsl:text>
-			<xsl:for-each select="./xs:complexType/xs:sequence/xs:element">
-				<xsl:value-of select="./@name" />
-				<xsl:if test="position() = last()">;</xsl:if>
-				<xsl:if test="position() != last()">, </xsl:if>
-			</xsl:for-each>
 			<xsl:value-of select="$newline" /><xsl:value-of select="$newline" />
 
 			<!-- End of class definition -->
