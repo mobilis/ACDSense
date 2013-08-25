@@ -14,11 +14,11 @@
 
 	NSXMLElement* domainElement = [NSXMLElement elementWithName:@"domain"];
 	NSXMLElement* domainIdElement = [NSXMLElement elementWithName:@"domainId"];
-	[domainIdElement setStringValue:[domain domainId]];
+	[domainIdElement setStringValue:[self.domain domainId]];
 	[domainElement addChild:domainIdElement];
-	NSXMLElement* domainElement = [NSXMLElement elementWithName:@"domain"];
-	[domainElement setStringValue:[domain domain]];
-	[domainElement addChild:domainElement];
+	NSXMLElement* innerDomainElement = [NSXMLElement elementWithName:@"domain"];
+	[innerDomainElement setStringValue:[self.domain domain]];
+	[domainElement addChild:innerDomainElement];
 
 	[beanElement addChild:domainElement];
 

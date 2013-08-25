@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C80B7B817CA61F7002A0DD1 /* SensorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1895617CA4266004DF634 /* SensorItem.m */; };
+		0C80B7B917CA61F7002A0DD1 /* SensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1895817CA4266004DF634 /* SensorMUCDomain.m */; };
+		0C80B7BA17CA61F7002A0DD1 /* SensorValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1894717CA3FEF004DF634 /* SensorValue.m */; };
+		0C80B7BB17CA61F7002A0DD1 /* DelegateSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1896C17CA4322004DF634 /* DelegateSensorItems.m */; };
+		0C80B7BC17CA61F7002A0DD1 /* SensorMUCDomainCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1896E17CA4322004DF634 /* SensorMUCDomainCreated.m */; };
+		0C80B7BD17CA61F7002A0DD1 /* SensorMUCDomainRemoved.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1897017CA4322004DF634 /* SensorMUCDomainRemoved.m */; };
+		0C80B7BE17CA61F7002A0DD1 /* DelegateSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1895317CA402A004DF634 /* DelegateSensorValues.m */; };
+		0C80B7BF17CA61F7002A0DD1 /* CreateSensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD59917CA463000E4A64E /* CreateSensorMUCDomain.m */; };
+		0C80B7C017CA61F7002A0DD1 /* GetSensorMUCDomainsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD59B17CA463000E4A64E /* GetSensorMUCDomainsRequest.m */; };
+		0C80B7C117CA61F7002A0DD1 /* PublishSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD59D17CA463000E4A64E /* PublishSensorItems.m */; };
+		0C80B7C317CA61F7002A0DD1 /* RegisterPublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD5A117CA463000E4A64E /* RegisterPublisher.m */; };
+		0C80B7C417CA61F7002A0DD1 /* RegisterReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD5A317CA463000E4A64E /* RegisterReceiver.m */; };
+		0C80B7C517CA61F7002A0DD1 /* RemovePublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD5A517CA463000E4A64E /* RemovePublisher.m */; };
+		0C80B7C617CA61F7002A0DD1 /* RemoveReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD5A717CA463000E4A64E /* RemoveReceiver.m */; };
+		0C80B7C717CA61F7002A0DD1 /* RemoveSensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD5A917CA463000E4A64E /* RemoveSensorMUCDomain.m */; };
+		0C80B7CA17CA84A7002A0DD1 /* GetSensorMUCDomainsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C80B7C917CA84A7002A0DD1 /* GetSensorMUCDomainsResponse.m */; };
 		0CD1893517C74C6A004DF634 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD1893417C74C6A004DF634 /* Storyboard.storyboard */; };
 		0CD1893817C74DAC004DF634 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1893717C74DAC004DF634 /* MainViewController.m */; };
 		0CD1893B17C75350004DF634 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1893A17C75350004DF634 /* SettingsViewController.m */; };
@@ -28,8 +44,6 @@
 		5B22E89B17C26DED00E6E4F4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89A17C26DED00E6E4F4 /* CFNetwork.framework */; };
 		5B22E89D17C26DF800E6E4F4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89C17C26DF800E6E4F4 /* Security.framework */; };
 		5B22E89F17C26E0500E6E4F4 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89E17C26E0500E6E4F4 /* libxml2.dylib */; };
-		5B22E8A317C284EA00E6E4F4 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B22E8A117C284E900E6E4F4 /* DataViewController.m */; };
-		5B22E8A417C284EA00E6E4F4 /* DataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B22E8A217C284EA00E6E4F4 /* DataViewController.xib */; };
 		5B333EDD17C28D9C0083BBD8 /* Settings.plist.example in Resources */ = {isa = PBXBuildFile; fileRef = 5B333EDC17C28D9C0083BBD8 /* Settings.plist.example */; };
 		5B772CB017C89DF50008BC02 /* ConnectionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CAF17C89DF50008BC02 /* ConnectionHandler.m */; };
 		5B772CB417C8A2F60008BC02 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CB317C8A2F60008BC02 /* KeychainItemWrapper.m */; };
@@ -64,8 +78,6 @@
 		0C1DD59B17CA463000E4A64E /* GetSensorMUCDomainsRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GetSensorMUCDomainsRequest.m; path = "src-gen/GetSensorMUCDomainsRequest.m"; sourceTree = "<group>"; };
 		0C1DD59C17CA463000E4A64E /* PublishSensorItems.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PublishSensorItems.h; path = "src-gen/PublishSensorItems.h"; sourceTree = "<group>"; };
 		0C1DD59D17CA463000E4A64E /* PublishSensorItems.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PublishSensorItems.m; path = "src-gen/PublishSensorItems.m"; sourceTree = "<group>"; };
-		0C1DD59E17CA463000E4A64E /* PublishSensorValues.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PublishSensorValues.h; path = "src-gen/PublishSensorValues.h"; sourceTree = "<group>"; };
-		0C1DD59F17CA463000E4A64E /* PublishSensorValues.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PublishSensorValues.m; path = "src-gen/PublishSensorValues.m"; sourceTree = "<group>"; };
 		0C1DD5A017CA463000E4A64E /* RegisterPublisher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RegisterPublisher.h; path = "src-gen/RegisterPublisher.h"; sourceTree = "<group>"; };
 		0C1DD5A117CA463000E4A64E /* RegisterPublisher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RegisterPublisher.m; path = "src-gen/RegisterPublisher.m"; sourceTree = "<group>"; };
 		0C1DD5A217CA463000E4A64E /* RegisterReceiver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RegisterReceiver.h; path = "src-gen/RegisterReceiver.h"; sourceTree = "<group>"; };
@@ -76,6 +88,8 @@
 		0C1DD5A717CA463000E4A64E /* RemoveReceiver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RemoveReceiver.m; path = "src-gen/RemoveReceiver.m"; sourceTree = "<group>"; };
 		0C1DD5A817CA463000E4A64E /* RemoveSensorMUCDomain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RemoveSensorMUCDomain.h; path = "src-gen/RemoveSensorMUCDomain.h"; sourceTree = "<group>"; };
 		0C1DD5A917CA463000E4A64E /* RemoveSensorMUCDomain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RemoveSensorMUCDomain.m; path = "src-gen/RemoveSensorMUCDomain.m"; sourceTree = "<group>"; };
+		0C80B7C817CA84A7002A0DD1 /* GetSensorMUCDomainsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetSensorMUCDomainsResponse.h; path = "src-gen/GetSensorMUCDomainsResponse.h"; sourceTree = "<group>"; };
+		0C80B7C917CA84A7002A0DD1 /* GetSensorMUCDomainsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetSensorMUCDomainsResponse.m; path = "src-gen/GetSensorMUCDomainsResponse.m"; sourceTree = "<group>"; };
 		0CD1893417C74C6A004DF634 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		0CD1893617C74DAC004DF634 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		0CD1893717C74DAC004DF634 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -120,9 +134,6 @@
 		5B22E89A17C26DED00E6E4F4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		5B22E89C17C26DF800E6E4F4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5B22E89E17C26E0500E6E4F4 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		5B22E8A017C284E900E6E4F4 /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
-		5B22E8A117C284E900E6E4F4 /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
-		5B22E8A217C284EA00E6E4F4 /* DataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataViewController.xib; sourceTree = "<group>"; };
 		5B333EDC17C28D9C0083BBD8 /* Settings.plist.example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.plist.example; sourceTree = "<group>"; };
 		5B772CAE17C89DF50008BC02 /* ConnectionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionHandler.h; sourceTree = "<group>"; };
 		5B772CAF17C89DF50008BC02 /* ConnectionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionHandler.m; sourceTree = "<group>"; };
@@ -165,7 +176,6 @@
 		0CD1893C17C755BF004DF634 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5B22E8A217C284EA00E6E4F4 /* DataViewController.xib */,
 				0CD1893417C74C6A004DF634 /* Storyboard.storyboard */,
 				0CD1893E17C7560D004DF634 /* TextFieldCell.h */,
 				0CD1893F17C7560D004DF634 /* TextFieldCell.m */,
@@ -176,8 +186,6 @@
 		0CD1893D17C755CD004DF634 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5B22E8A017C284E900E6E4F4 /* DataViewController.h */,
-				5B22E8A117C284E900E6E4F4 /* DataViewController.m */,
 				0CD1893917C75350004DF634 /* SettingsViewController.h */,
 				0CD1893A17C75350004DF634 /* SettingsViewController.m */,
 				0CD1894117C75885004DF634 /* SensorDomainsViewController.h */,
@@ -283,8 +291,6 @@
 				0C1DD59B17CA463000E4A64E /* GetSensorMUCDomainsRequest.m */,
 				0C1DD59C17CA463000E4A64E /* PublishSensorItems.h */,
 				0C1DD59D17CA463000E4A64E /* PublishSensorItems.m */,
-				0C1DD59E17CA463000E4A64E /* PublishSensorValues.h */,
-				0C1DD59F17CA463000E4A64E /* PublishSensorValues.m */,
 				0C1DD5A017CA463000E4A64E /* RegisterPublisher.h */,
 				0C1DD5A117CA463000E4A64E /* RegisterPublisher.m */,
 				0C1DD5A217CA463000E4A64E /* RegisterReceiver.h */,
@@ -302,6 +308,8 @@
 		5B22E88717C25D1200E6E4F4 /* Incoming */ = {
 			isa = PBXGroup;
 			children = (
+				0C80B7C817CA84A7002A0DD1 /* GetSensorMUCDomainsResponse.h */,
+				0C80B7C917CA84A7002A0DD1 /* GetSensorMUCDomainsResponse.m */,
 				0CD1896B17CA4322004DF634 /* DelegateSensorItems.h */,
 				0CD1896C17CA4322004DF634 /* DelegateSensorItems.m */,
 				0CD1896D17CA4322004DF634 /* SensorMUCDomainCreated.h */,
@@ -418,7 +426,6 @@
 				5B22E86317C2547B00E6E4F4 /* Default@2x.png in Resources */,
 				5B22E86517C2547B00E6E4F4 /* Default-568h@2x.png in Resources */,
 				5B22E88C17C25FD200E6E4F4 /* Settings.plist in Resources */,
-				5B22E8A417C284EA00E6E4F4 /* DataViewController.xib in Resources */,
 				5B333EDD17C28D9C0083BBD8 /* Settings.plist.example in Resources */,
 				0CD1893517C74C6A004DF634 /* Storyboard.storyboard in Resources */,
 			);
@@ -431,9 +438,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C80B7B817CA61F7002A0DD1 /* SensorItem.m in Sources */,
+				0C80B7B917CA61F7002A0DD1 /* SensorMUCDomain.m in Sources */,
+				0C80B7BA17CA61F7002A0DD1 /* SensorValue.m in Sources */,
+				0C80B7BB17CA61F7002A0DD1 /* DelegateSensorItems.m in Sources */,
+				0C80B7BC17CA61F7002A0DD1 /* SensorMUCDomainCreated.m in Sources */,
+				0C80B7BD17CA61F7002A0DD1 /* SensorMUCDomainRemoved.m in Sources */,
+				0C80B7BE17CA61F7002A0DD1 /* DelegateSensorValues.m in Sources */,
+				0C80B7BF17CA61F7002A0DD1 /* CreateSensorMUCDomain.m in Sources */,
+				0C80B7C017CA61F7002A0DD1 /* GetSensorMUCDomainsRequest.m in Sources */,
+				0C80B7C117CA61F7002A0DD1 /* PublishSensorItems.m in Sources */,
+				0C80B7C317CA61F7002A0DD1 /* RegisterPublisher.m in Sources */,
+				0C80B7C417CA61F7002A0DD1 /* RegisterReceiver.m in Sources */,
+				0C80B7C517CA61F7002A0DD1 /* RemovePublisher.m in Sources */,
+				0C80B7C617CA61F7002A0DD1 /* RemoveReceiver.m in Sources */,
+				0C80B7C717CA61F7002A0DD1 /* RemoveSensorMUCDomain.m in Sources */,
 				5B22E85B17C2547B00E6E4F4 /* main.m in Sources */,
 				5B22E85F17C2547B00E6E4F4 /* AppDelegate.m in Sources */,
-				5B22E8A317C284EA00E6E4F4 /* DataViewController.m in Sources */,
 				0CD1893817C74DAC004DF634 /* MainViewController.m in Sources */,
 				0CD1893B17C75350004DF634 /* SettingsViewController.m in Sources */,
 				0CD1894017C7560D004DF634 /* TextFieldCell.m in Sources */,
@@ -446,22 +467,7 @@
 				5B772CC217C923920008BC02 /* IncomingBeanDetection.m in Sources */,
 				5B96FFA917CA4F0100DADDFA /* DelegateSelectorMapping.m in Sources */,
 				5B96FFAC17CA553200DADDFA /* NSString+Selector.m in Sources */,
-				5B96FFAE17CA609100DADDFA /* PublishSensorItems.m in Sources */,
-				5B96FFAF17CA60B000DADDFA /* SensorItem.m in Sources */,
-				5B96FFB017CA60B000DADDFA /* SensorMUCDomain.m in Sources */,
-				5B96FFB117CA60B000DADDFA /* SensorValue.m in Sources */,
-				5B96FFB217CA60C600DADDFA /* DelegateSensorItems.m in Sources */,
-				5B96FFB317CA60C600DADDFA /* SensorMUCDomainCreated.m in Sources */,
-				5B96FFB417CA60C600DADDFA /* SensorMUCDomainRemoved.m in Sources */,
-				5B96FFB517CA60C600DADDFA /* DelegateSensorValues.m in Sources */,
-				5B96FFB617CA60C600DADDFA /* CreateSensorMUCDomain.m in Sources */,
-				5B96FFB717CA60C600DADDFA /* GetSensorMUCDomainsRequest.m in Sources */,
-				5B96FFB817CA60C600DADDFA /* PublishSensorValues.m in Sources */,
-				5B96FFB917CA60C600DADDFA /* RegisterPublisher.m in Sources */,
-				5B96FFBA17CA60C600DADDFA /* RegisterReceiver.m in Sources */,
-				5B96FFBB17CA60C600DADDFA /* RemovePublisher.m in Sources */,
-				5B96FFBC17CA60C600DADDFA /* RemoveReceiver.m in Sources */,
-				5B96FFBD17CA60C600DADDFA /* RemoveSensorMUCDomain.m in Sources */,
+				0C80B7CA17CA84A7002A0DD1 /* GetSensorMUCDomainsResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,7 @@
 	[self setDomains:[NSMutableArray array]];
 	NSArray* domainsElements = [xml elementsForName:@"domains"];
 	for (NSXMLElement* domainsElement in domainsElements) {
-		domainsObject = [[SensorMUCDomain alloc] init];
+		SensorMUCDomain *domainsObject = [[SensorMUCDomain alloc] init];
 		NSXMLElement* domainIdElement = [domainsElement elementForName:@"domainId"];
 		[domainsObject setDomainId:[domainIdElement stringValue]];
 		NSXMLElement* domainElement = [domainsElement elementForName:@"domain"];
