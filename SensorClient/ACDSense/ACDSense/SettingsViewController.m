@@ -9,6 +9,9 @@
 #import "SettingsViewController.h"
 #import "TextFieldCell.h"
 
+#import "AccountManager.h"
+#import "Account.h"
+
 @interface SettingsViewController ()
 @property (retain) NSString *jid;
 @property (retain) NSString *password;
@@ -37,14 +40,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-	NSString *settingsPath = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
-    NSDictionary *jabberSettings = [[NSDictionary dictionaryWithContentsOfFile:settingsPath] objectForKey:@"jabberInformation"];
+	// Do any additional setup after loading the view.    
+    Account *account = [AccountManager account];
     
-    self.jid = [jabberSettings valueForKey:@"jid"];
-    self.password = [jabberSettings valueForKey:@"password"];
-    self.hostName = [jabberSettings valueForKey:@"hostName"];
-    self.serviceJid = [jabberSettings valueForKey:@"serviceJid"];
+    self.jid = account.jid;
+    self.password = account.password;
+    self.hostName = account.hostName;
+    self.serviceJid = account.serviceJID;
 }
 
 - (void)didReceiveMemoryWarning
@@ -142,13 +144,12 @@
 #pragma mark - Interface Implementation
 - (void)saveSettings
 {
-	NSString *settingsPath = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
-    NSDictionary *jabberSettings = @{@"jabberSettings" : @{@"jid": self.jid,
-														   @"hostName": self.hostName,
-														   @"serviceJid": self.serviceJid,
-														   @"password": self.password}};
-	
-	[jabberSettings writeToFile:settingsPath atomically:YES];
+	Account *account = [Account new];
+    account.jid = self.jid;
+    account.password = self.password;
+    account.hostName = self.hostName;
+    account.serviceJID = self.serviceJid;
+    [AccountManager storeAccount:account];
 }
 
 @end
