@@ -92,7 +92,7 @@
 						name="values" />
 					<xs:element
 						name="location"
-						type="xs:string" />
+						type="mns:Location" />
 					<xs:element
 						name="type"
 						type="xs:string" />
@@ -119,6 +119,16 @@
 					<xs:element
 						name="domain"
 						type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Location">
+				<xs:sequence>
+					<xs:element
+						name="latitude"
+						type="xs:long" />
+					<xs:element
+						name="longitude"
+						type="xs:long" />
 				</xs:sequence>
 			</xs:complexType>
 		</xs:schema>
