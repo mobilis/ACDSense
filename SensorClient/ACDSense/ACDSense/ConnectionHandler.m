@@ -130,6 +130,28 @@
     self.authenticationBlock(NO);
 }
 
+#pragma mark - MXiStanzaDelegate
+
+- (void)didReceiveMessage:(XMPPMessage *)message
+{
+#warning incomplete implementation
+}
+
+- (BOOL)didReceiveIQ:(XMPPIQ *)iq
+{
+#warning incomplete implementation
+}
+
+- (void)didReceivePresence:(XMPPPresence *)presence
+{
+#warning incomplete implementation
+}
+
+- (void)didReceiveError:(DDXMLElement *)error
+{
+    NSLog(@"%@", error);
+}
+
 #pragma mark - Private Helper
 
 - (NSArray *)allIncomingBeans
