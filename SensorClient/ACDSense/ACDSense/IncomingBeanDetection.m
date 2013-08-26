@@ -10,6 +10,8 @@
 
 #import <MXi/MXiIncomingBean.h>
 
+#import <objc/runtime.h>
+
 @implementation IncomingBeanDetection
 
 - (NSArray *)detectBeans
