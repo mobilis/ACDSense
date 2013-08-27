@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B1189B917C0AF0700CACF5A /* SensorValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1189B817C0AF0700CACF5A /* SensorValue.m */; };
 		5B1189BC17C12FC000CACF5A /* MXi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1189BA17C12AC900CACF5A /* MXi.framework */; };
 		5B1A01E717BE7A6900CC7011 /* LogFileWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */; };
 		5BB763F117CC770500006CA3 /* CreateSensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763D417CC770400006CA3 /* CreateSensorMUCDomain.m */; };
@@ -21,10 +20,12 @@
 		5BB763F917CC770500006CA3 /* RemovePublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763E417CC770400006CA3 /* RemovePublisher.m */; };
 		5BB763FA17CC770500006CA3 /* RemoveReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763E617CC770400006CA3 /* RemoveReceiver.m */; };
 		5BB763FB17CC770500006CA3 /* RemoveSensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763E817CC770400006CA3 /* RemoveSensorMUCDomain.m */; };
-		5BB763FC17CC770500006CA3 /* SensorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763EA17CC770500006CA3 /* SensorItem.m */; };
 		5BB763FD17CC770500006CA3 /* SensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763EC17CC770500006CA3 /* SensorMUCDomain.m */; };
 		5BB763FE17CC770500006CA3 /* SensorMUCDomainCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763EE17CC770500006CA3 /* SensorMUCDomainCreated.m */; };
 		5BB763FF17CC770500006CA3 /* SensorMUCDomainRemoved.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763F017CC770500006CA3 /* SensorMUCDomainRemoved.m */; };
+		5BB7640417CC7DA400006CA3 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7640117CC7DA300006CA3 /* Location.m */; };
+		5BB7640517CC7DA400006CA3 /* SensorValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7640317CC7DA400006CA3 /* SensorValue.m */; };
+		5BB7640817CC7E2100006CA3 /* SensorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7640717CC7E2100006CA3 /* SensorItem.m */; };
 		5BFEA37517BA693200C7914D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFEA37417BA693200C7914D /* Cocoa.framework */; };
 		5BFEA37F17BA693200C7914D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BFEA37D17BA693200C7914D /* InfoPlist.strings */; };
 		5BFEA38117BA693200C7914D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA38017BA693200C7914D /* main.m */; };
@@ -38,8 +39,6 @@
 
 /* Begin PBXFileReference section */
 		5B1189B517BF5DFB00CACF5A /* Settings.plist.example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.plist.example; sourceTree = "<group>"; };
-		5B1189B717C0AF0700CACF5A /* SensorValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorValue.h; sourceTree = "<group>"; };
-		5B1189B817C0AF0700CACF5A /* SensorValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorValue.m; sourceTree = "<group>"; };
 		5B1189BA17C12AC900CACF5A /* MXi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MXi.framework; path = "../../../../Library/Developer/Xcode/DerivedData/ACDSenseWorkspace-frdhqldyuzdizvcnvnpsartakqci/Build/Products/Debug/MXi.framework"; sourceTree = "<group>"; };
 		5B1A01E517BE7A6900CC7011 /* LogFileWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogFileWriter.h; sourceTree = "<group>"; };
 		5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogFileWriter.m; sourceTree = "<group>"; };
@@ -65,14 +64,18 @@
 		5BB763E617CC770400006CA3 /* RemoveReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveReceiver.m; sourceTree = "<group>"; };
 		5BB763E717CC770400006CA3 /* RemoveSensorMUCDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveSensorMUCDomain.h; sourceTree = "<group>"; };
 		5BB763E817CC770400006CA3 /* RemoveSensorMUCDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveSensorMUCDomain.m; sourceTree = "<group>"; };
-		5BB763E917CC770500006CA3 /* SensorItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorItem.h; sourceTree = "<group>"; };
-		5BB763EA17CC770500006CA3 /* SensorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorItem.m; sourceTree = "<group>"; };
 		5BB763EB17CC770500006CA3 /* SensorMUCDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorMUCDomain.h; sourceTree = "<group>"; };
 		5BB763EC17CC770500006CA3 /* SensorMUCDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorMUCDomain.m; sourceTree = "<group>"; };
 		5BB763ED17CC770500006CA3 /* SensorMUCDomainCreated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorMUCDomainCreated.h; sourceTree = "<group>"; };
 		5BB763EE17CC770500006CA3 /* SensorMUCDomainCreated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorMUCDomainCreated.m; sourceTree = "<group>"; };
 		5BB763EF17CC770500006CA3 /* SensorMUCDomainRemoved.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorMUCDomainRemoved.h; sourceTree = "<group>"; };
 		5BB763F017CC770500006CA3 /* SensorMUCDomainRemoved.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorMUCDomainRemoved.m; sourceTree = "<group>"; };
+		5BB7640017CC7DA300006CA3 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		5BB7640117CC7DA300006CA3 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		5BB7640217CC7DA300006CA3 /* SensorValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorValue.h; sourceTree = "<group>"; };
+		5BB7640317CC7DA400006CA3 /* SensorValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorValue.m; sourceTree = "<group>"; };
+		5BB7640617CC7E2000006CA3 /* SensorItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorItem.h; sourceTree = "<group>"; };
+		5BB7640717CC7E2100006CA3 /* SensorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorItem.m; sourceTree = "<group>"; };
 		5BFEA37117BA693200C7914D /* DataGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFEA37417BA693200C7914D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5BFEA37717BA693200C7914D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -149,8 +152,12 @@
 		5B6AAB4917BE6B510086A510 /* Beans */ = {
 			isa = PBXGroup;
 			children = (
-				5BB763E917CC770500006CA3 /* SensorItem.h */,
-				5BB763EA17CC770500006CA3 /* SensorItem.m */,
+				5BB7640617CC7E2000006CA3 /* SensorItem.h */,
+				5BB7640717CC7E2100006CA3 /* SensorItem.m */,
+				5BB7640017CC7DA300006CA3 /* Location.h */,
+				5BB7640117CC7DA300006CA3 /* Location.m */,
+				5BB7640217CC7DA300006CA3 /* SensorValue.h */,
+				5BB7640317CC7DA400006CA3 /* SensorValue.m */,
 				5BB763EB17CC770500006CA3 /* SensorMUCDomain.h */,
 				5BB763EC17CC770500006CA3 /* SensorMUCDomain.m */,
 				5B1A01E917BE860E00CC7011 /* Outgoing */,
@@ -210,8 +217,6 @@
 				5BFEA39A17BA959C00C7914D /* TempValueCalculator.m */,
 				5B1A01E517BE7A6900CC7011 /* LogFileWriter.h */,
 				5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */,
-				5B1189B717C0AF0700CACF5A /* SensorValue.h */,
-				5B1189B817C0AF0700CACF5A /* SensorValue.m */,
 			);
 			path = DataGenerator;
 			sourceTree = "<group>";
@@ -300,7 +305,6 @@
 				5BFEA39717BA900D00C7914D /* RefreshTimer.m in Sources */,
 				5BFEA39B17BA959C00C7914D /* TempValueCalculator.m in Sources */,
 				5B1A01E717BE7A6900CC7011 /* LogFileWriter.m in Sources */,
-				5B1189B917C0AF0700CACF5A /* SensorValue.m in Sources */,
 				5BB763F117CC770500006CA3 /* CreateSensorMUCDomain.m in Sources */,
 				5BB763F217CC770500006CA3 /* DelegateSensorItems.m in Sources */,
 				5BB763F317CC770500006CA3 /* DelegateSensorValues.m in Sources */,
@@ -312,10 +316,12 @@
 				5BB763F917CC770500006CA3 /* RemovePublisher.m in Sources */,
 				5BB763FA17CC770500006CA3 /* RemoveReceiver.m in Sources */,
 				5BB763FB17CC770500006CA3 /* RemoveSensorMUCDomain.m in Sources */,
-				5BB763FC17CC770500006CA3 /* SensorItem.m in Sources */,
 				5BB763FD17CC770500006CA3 /* SensorMUCDomain.m in Sources */,
 				5BB763FE17CC770500006CA3 /* SensorMUCDomainCreated.m in Sources */,
 				5BB763FF17CC770500006CA3 /* SensorMUCDomainRemoved.m in Sources */,
+				5BB7640417CC7DA400006CA3 /* Location.m in Sources */,
+				5BB7640517CC7DA400006CA3 /* SensorValue.m in Sources */,
+				5BB7640817CC7E2100006CA3 /* SensorItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
