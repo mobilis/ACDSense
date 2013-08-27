@@ -41,15 +41,37 @@
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_async(queue, ^{
         float tempValue = [[self.tempValueCalculator nextValue] floatValue];
-        PublishSensorValues *sensorValues = [[PublishSensorValues alloc] init];
-        SensorValue *sensorValue = [[SensorValue alloc] init];
-        sensorValue.type = @"Temperature";
-        sensorValue.unit = @"Celsius";
-        sensorValue.value = [NSString stringWithFormat:@"%f", tempValue];
-        [sensorValues.sensorValues addObject:sensorValue];
+        PublishSensorItems *sensorItems = [[PublishSensorItems alloc] init];
+        SensorItem *sensorItem = [[SensorItem alloc] init];
+        sensorItem.sensorId = @"DataGenerator_mwb";
         
-        [self.connection sendBean:sensorValues];
+        Location *sensorLocation = [[Location alloc] init];
+        sensorLocation.latitude = 51;
+        sensorLocation.longitude = 13;
+        
+        sensorItem.type = @"Temperature";
+        sensorItem.location = sensorLocation;
+        
+        SensorValue *sensorValue = [[SensorValue alloc] init];
+        sensorValue.subType = @"Generated";
+        sensorValue.value = [NSString stringWithFormat:@"%f", tempValue];
+        sensorValue.unit = @"Celsius";
+        
+        [sensorItem.values addObjectsFromArray:[self variateTheValue:sensorValue]];
+        [sensorItems.sensorItems addObject:sensorItem];
+        
+        [self.connection sendBean:sensorItems];
     });
+}
+- (NSArray *)variateTheValue:(SensorValue *)value
+{
+    SensorValue *lowerValue = [value copy];
+    SensorValue *higherValue = [value copy];
+    
+    lowerValue.value = [NSString stringWithFormat:@"%@", [lowerValue.value floatValue] - 2.4];
+    higherValue.value = [NSString stringWithFormat:@"%@", [lowerValue.value floatValue] + 1.3];
+    
+    return @[lowerValue, higherValue, value];
 }
 
 #pragma mark - MXi Communication

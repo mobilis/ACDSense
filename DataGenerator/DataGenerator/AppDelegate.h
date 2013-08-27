@@ -12,7 +12,7 @@
 #import "DelegateSensorValues.h"
 #import "RegisterPublisher.h"
 #import "RemovePublisher.h"
-#import "PublishSensorValues.h"
+#import "PublishSensorItems.h"
 
 #import "RefreshTimer.h"
 #import "TempValueCalculator.h"
