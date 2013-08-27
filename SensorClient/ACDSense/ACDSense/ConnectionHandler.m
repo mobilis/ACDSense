@@ -59,7 +59,8 @@
     self.connection = [MXiConnection connectionWithJabberID:account.jid
                                                    password:account.password
                                                    hostName:account.hostName
-                                                 serviceJID:account.serviceJID
+                                             coordinatorJID:[NSString stringWithFormat:@"mobilis@%@/Coordinator", hostName]
+                                           serviceNamespace:@"http://mobilis.inf.tu-dresden.de/ACDSense"
                                            presenceDelegate:self
                                              stanzaDelegate:self
                                                beanDelegate:self
@@ -115,6 +116,14 @@
 - (void)didAuthenticate
 {
     self.authenticationBlock(YES);
+}
+
+- (void)didDiscoverServiceWithNamespace:(NSString *)serviceNamespace
+                                   name:(NSString *)serviceName
+                                version:(NSInteger)version
+                             atJabberID:(NSString *)serviceJID
+{
+    NSLog(@"Namespace discovered: %@", serviceJID);
 }
 
 - (void)didDisconnectWithError:(NSError *)error
