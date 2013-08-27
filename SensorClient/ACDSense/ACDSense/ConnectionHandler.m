@@ -64,9 +64,9 @@
     self.connection = [MXiConnection connectionWithJabberID:account.jid
                                                    password:account.password
                                                    hostName:account.hostName
-                                                       port:5222
+                                                       port:[account.port integerValue]
                                              coordinatorJID:[NSString stringWithFormat:@"mobilis@%@/Coordinator", account.hostName]
-                                           serviceNamespace:@"http://mobilis.inf.tu-dresden.de#services/ACDSenseService"
+                                           serviceNamespace:[[[NSBundle mainBundle] infoDictionary] valueForKeyPath:@"jabberInformation.serviceNamespace"]
                                            presenceDelegate:self
                                              stanzaDelegate:self
                                                beanDelegate:self
@@ -78,13 +78,13 @@
 - (void)launchConnectionWithJID:(NSString *)jabberID
                        password:(NSString *)password
                        hostName:(NSString *)hostName
-                     serviceJID:(NSString *)serviceJabberID
+                           port:(NSNumber *)hostPort
             authenticationBlock:(AuthenticationBlock)authentication
 {
     Account *account = [[Account alloc] initWithJID:jabberID
                                            password:password
                                            hostName:hostName
-                                         serviceJID:serviceJabberID];
+                                               port:hostPort];
     [AccountManager storeAccount:account];
     [self launchConnectionWithBlock:authentication];
 }

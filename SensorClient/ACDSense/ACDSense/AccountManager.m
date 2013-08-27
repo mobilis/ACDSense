@@ -19,7 +19,7 @@
     
     [keychain setObject:account.jid forKey:(__bridge id)(kSecAttrAccount)];
     [keychain setObject:account.hostName forKey:(__bridge id)(kSecAttrService)];
-    [keychain setObject:account.serviceJID forKey:(__bridge id)(kSecAttrDescription)];
+    [keychain setObject:account.port forKey:(__bridge id)(kSecAttrDescription)];
     [keychain setObject:account.password forKey:(__bridge id)(kSecValueData)];
 }
 
@@ -32,7 +32,7 @@
     account.jid = [keychain objectForKey:(__bridge id)(kSecAttrAccount)];
     account.password = [keychain objectForKey:(__bridge id)(kSecValueData)];
     account.hostName = [keychain objectForKey:(__bridge id)(kSecAttrService)];
-    account.serviceJID = [keychain objectForKey:(__bridge id)(kSecAttrDescription)];
+    account.port = [keychain objectForKey:(__bridge id)(kSecAttrDescription)];
     
     return account;
 }

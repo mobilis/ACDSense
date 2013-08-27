@@ -73,9 +73,9 @@
 		NSString *jid = [jabberSettings valueForKey:@"jid"];
 		NSString *password = [jabberSettings valueForKey:@"password"];
 		NSString *hostName = [jabberSettings valueForKey:@"hostName"];
-		NSString *serviceJid = [jabberSettings valueForKey:@"serviceJid"];
+        NSNumber *port = [jabberSettings valueForKey:@"port"];
 		
-		[[ConnectionHandler sharedInstance] launchConnectionWithJID:jid password:password hostName:hostName serviceJID:serviceJid authenticationBlock:^(BOOL success){
+		[[ConnectionHandler sharedInstance] launchConnectionWithJID:jid password:password hostName:hostName port:port authenticationBlock:^(BOOL success){
 			if (success)
 				[[ConnectionHandler sharedInstance] sendBean:[RegisterReceiver new]];
 		}];

@@ -10,14 +10,14 @@
 
 @implementation Account
 
-- (id)initWithJID:(NSString *)jabberID password:(NSString *)password hostName:(NSString *)hostName serviceJID:(NSString *)serviceJID
+- (id)initWithJID:(NSString *)jabberID password:(NSString *)password hostName:(NSString *)hostName port:(NSNumber *)port
 {
     self = [super init];
     if (self) {
         self.jid = jabberID;
         self.password = password;
         self.hostName = hostName;
-        self.serviceJID = serviceJID;
+        self.port = port;
     }
     return self;
 }

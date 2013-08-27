@@ -59,7 +59,7 @@ typedef void (^ AuthenticationBlock)(BOOL);
 - (void)launchConnectionWithJID:(NSString *)jabberID
                        password:(NSString *)password
                        hostName:(NSString *)hostName
-                     serviceJID:(NSString *)serviceJabberID
+                           port:(NSNumber *)hostPort
             authenticationBlock:(AuthenticationBlock)authentication;
 
 /**

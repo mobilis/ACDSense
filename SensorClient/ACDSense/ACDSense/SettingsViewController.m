@@ -16,12 +16,12 @@
 @property (retain) NSString *jid;
 @property (retain) NSString *password;
 @property (retain) NSString *hostName;
-@property (retain) NSString *serviceJid;
+@property (retain) NSNumber *port;
 
 @property (weak) UITextField *jidField;
 @property (weak) UITextField *passwordField;
 @property (weak) UITextField *hostNameField;
-@property (weak) UITextField *serviceJidField;
+@property (weak) UITextField *portField;
 
 - (void) saveSettings;
 @end
@@ -46,7 +46,7 @@
     self.jid = account.jid;
     self.password = account.password;
     self.hostName = account.hostName;
-    self.serviceJid = account.serviceJID;
+    self.port = account.port;
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,9 +95,9 @@
 			tf.text = self.password;
 			break;
 		case 3:
-			self.serviceJidField = tf;
-			tf.keyboardType = UIKeyboardTypeEmailAddress;
-			tf.text = self.serviceJid;
+			self.portField = tf;
+			tf.keyboardType = UIKeyboardTypeNumberPad;
+			tf.text = [NSString stringWithFormat:@"%@", self.port];
 			break;
 	}
 	return cell;
@@ -116,7 +116,7 @@
 			return @"Password";
 			break;
 		case 3:
-			return @"Service JID";
+			return @"Port";
 			break;
 	}
 	return @"";
@@ -136,8 +136,8 @@
 	if(textField == self.passwordField) {
 		self.password = self.passwordField.text;
 	}
-	if (textField == self.serviceJidField) {
-		self.serviceJid = self.serviceJidField.text;
+	if (textField == self.portField) {
+		self.port = [NSNumber numberWithInt:[self.portField.text integerValue]];
 	}
 }
 
@@ -148,7 +148,7 @@
     account.jid = self.jid;
     account.password = self.password;
     account.hostName = self.hostName;
-    account.serviceJID = self.serviceJid;
+    account.port = self.port;
     [AccountManager storeAccount:account];
 }
 
