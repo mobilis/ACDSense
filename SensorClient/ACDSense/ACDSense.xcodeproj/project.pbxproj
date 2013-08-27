@@ -53,22 +53,7 @@
 		5B772CC217C923920008BC02 /* IncomingBeanDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CC117C923920008BC02 /* IncomingBeanDetection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5B96FFA917CA4F0100DADDFA /* DelegateSelectorMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B96FFA817CA4F0100DADDFA /* DelegateSelectorMapping.m */; };
 		5B96FFAC17CA553200DADDFA /* NSString+Selector.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B96FFAB17CA553200DADDFA /* NSString+Selector.m */; };
-		5B96FFAE17CA609100DADDFA /* PublishSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD59D17CA463000E4A64E /* PublishSensorItems.m */; };
-		5B96FFAF17CA60B000DADDFA /* SensorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1895617CA4266004DF634 /* SensorItem.m */; };
-		5B96FFB017CA60B000DADDFA /* SensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1895817CA4266004DF634 /* SensorMUCDomain.m */; };
-		5B96FFB117CA60B000DADDFA /* SensorValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1894717CA3FEF004DF634 /* SensorValue.m */; };
-		5B96FFB217CA60C600DADDFA /* DelegateSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1896C17CA4322004DF634 /* DelegateSensorItems.m */; };
-		5B96FFB317CA60C600DADDFA /* SensorMUCDomainCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1896E17CA4322004DF634 /* SensorMUCDomainCreated.m */; };
-		5B96FFB417CA60C600DADDFA /* SensorMUCDomainRemoved.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1897017CA4322004DF634 /* SensorMUCDomainRemoved.m */; };
-		5B96FFB517CA60C600DADDFA /* DelegateSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1895317CA402A004DF634 /* DelegateSensorValues.m */; };
-		5B96FFB617CA60C600DADDFA /* CreateSensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD59917CA463000E4A64E /* CreateSensorMUCDomain.m */; };
-		5B96FFB717CA60C600DADDFA /* GetSensorMUCDomainsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD59B17CA463000E4A64E /* GetSensorMUCDomainsRequest.m */; };
-		5B96FFB817CA60C600DADDFA /* PublishSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD59F17CA463000E4A64E /* PublishSensorValues.m */; };
-		5B96FFB917CA60C600DADDFA /* RegisterPublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD5A117CA463000E4A64E /* RegisterPublisher.m */; };
-		5B96FFBA17CA60C600DADDFA /* RegisterReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD5A317CA463000E4A64E /* RegisterReceiver.m */; };
-		5B96FFBB17CA60C600DADDFA /* RemovePublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD5A517CA463000E4A64E /* RemovePublisher.m */; };
-		5B96FFBC17CA60C600DADDFA /* RemoveReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD5A717CA463000E4A64E /* RemoveReceiver.m */; };
-		5B96FFBD17CA60C600DADDFA /* RemoveSensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD5A917CA463000E4A64E /* RemoveSensorMUCDomain.m */; };
+		5BB7641117CCBA4B00006CA3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB7641017CCBA4B00006CA3 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -151,6 +136,7 @@
 		5B96FFA817CA4F0100DADDFA /* DelegateSelectorMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateSelectorMapping.m; sourceTree = "<group>"; };
 		5B96FFAA17CA553200DADDFA /* NSString+Selector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Selector.h"; sourceTree = "<group>"; };
 		5B96FFAB17CA553200DADDFA /* NSString+Selector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Selector.m"; sourceTree = "<group>"; };
+		5BB7641017CCBA4B00006CA3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BB7641117CCBA4B00006CA3 /* SystemConfiguration.framework in Frameworks */,
 				0CD1894517CA3009004DF634 /* libMXi.a in Frameworks */,
 				5B22E89F17C26E0500E6E4F4 /* libxml2.dylib in Frameworks */,
 				5B22E89D17C26DF800E6E4F4 /* Security.framework in Frameworks */,
@@ -230,6 +217,7 @@
 		5B22E84D17C2547B00E6E4F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5BB7641017CCBA4B00006CA3 /* SystemConfiguration.framework */,
 				5B22E89E17C26E0500E6E4F4 /* libxml2.dylib */,
 				5B22E89C17C26DF800E6E4F4 /* Security.framework */,
 				5B22E89A17C26DED00E6E4F4 /* CFNetwork.framework */,

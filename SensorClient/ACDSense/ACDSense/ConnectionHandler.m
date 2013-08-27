@@ -20,10 +20,15 @@
 
 @property (strong, nonatomic) MXiConnection *connection;
 @property (strong, nonatomic) NSArray *incomingBeans;
+@property (strong, nonatomic) NSMutableArray *outgoingBeanQueue;
+
+@property BOOL authenticated;
+@property BOOL connected;
 
 @property (weak) AuthenticationBlock authenticationBlock;
 
 - (NSArray *)allIncomingBeans;
+- (void)clearOutgoingBeanQueue;
 
 @end
 
@@ -59,8 +64,9 @@
     self.connection = [MXiConnection connectionWithJabberID:account.jid
                                                    password:account.password
                                                    hostName:account.hostName
-                                             coordinatorJID:[NSString stringWithFormat:@"mobilis@%@/Coordinator", hostName]
-                                           serviceNamespace:@"http://mobilis.inf.tu-dresden.de/ACDSense"
+                                                       port:5222
+                                             coordinatorJID:[NSString stringWithFormat:@"mobilis@%@/Coordinator", account.hostName]
+                                           serviceNamespace:@"http://mobilis.inf.tu-dresden.de#services/ACDSenseService"
                                            presenceDelegate:self
                                              stanzaDelegate:self
                                                beanDelegate:self
@@ -86,7 +92,14 @@
 - (void)sendBean:(MXiBean<MXiOutgoingBean> *)outgoingBean
 {
     if (self.connection && outgoingBean) {
-        [self.connection sendBean:outgoingBean];
+        if (_authenticated && _connected) {
+            [self.connection sendBean:outgoingBean];
+        } else {
+            if (!self.outgoingBeanQueue) {
+                self.outgoingBeanQueue = [NSMutableArray arrayWithCapacity:10];
+            }
+            [self.outgoingBeanQueue addObject:outgoingBean];
+        }
     }
 }
 
@@ -115,7 +128,8 @@
 
 - (void)didAuthenticate
 {
-    self.authenticationBlock(YES);
+    _authenticated = YES;
+    [self clearOutgoingBeanQueue];
 }
 
 - (void)didDiscoverServiceWithNamespace:(NSString *)serviceNamespace
@@ -123,7 +137,9 @@
                                 version:(NSInteger)version
                              atJabberID:(NSString *)serviceJID
 {
-    NSLog(@"Namespace discovered: %@", serviceJID);
+    _connected = YES;
+    self.authenticationBlock(_authenticated);
+    [self clearOutgoingBeanQueue];
 }
 
 - (void)didDisconnectWithError:(NSError *)error
@@ -131,6 +147,8 @@
 #warning didDisconnectWithError: not implemented
     // TODO: figure out how this could best be handled
     // View that has initialized the connection might not be visible or allocated anymore
+    _connected = NO;
+    _authenticated = NO;
     self.connection = nil;
 }
 
@@ -171,6 +189,15 @@
     IncomingBeanDetection *incomingBeans = [IncomingBeanDetection new];
     self.incomingBeans = [incomingBeans detectBeans];
     return self.incomingBeans;
+}
+
+- (void)clearOutgoingBeanQueue
+{
+    if (self.outgoingBeanQueue && self.outgoingBeanQueue.count > 0) {
+        for (MXiBean<MXiOutgoingBean> *outgoing in self.outgoingBeanQueue) {
+            [self sendBean:outgoing];
+        }
+    }
 }
 
 @end
