@@ -20,6 +20,7 @@ import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.RegisterReceiver;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.RemovePublisher;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.RemoveReceiver;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.RemoveSensorMUCDomain;
+import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.SensorMUCDomain;
 import de.tudresden.inf.rn.mobilis.server.agents.MobilisAgent;
 import de.tudresden.inf.rn.mobilis.xmpp.beans.IXMPPCallback;
 import de.tudresden.inf.rn.mobilis.xmpp.beans.ProxyBean;
@@ -43,7 +44,7 @@ public class IQHandler implements PacketListener, IACDSenseIncoming,
 		publishers = new HashSet<>();
 		receivers = new HashSet<>();
 		proxy = new ACDSenseProxy(this);
-		
+
 		MUCHandler.getInstance().setOutgoingBeanHandler(this);
 		MUCHandler.getInstance().setConnection(getAgent().getConnection());
 	}
@@ -82,6 +83,21 @@ public class IQHandler implements PacketListener, IACDSenseIncoming,
 					logger.info("PublishSensorValues");
 					onPublishSensorItems((PublishSensorItems) proxyBean
 							.parsePayload(new PublishSensorItems()));
+				} else if (proxyBean.isTypeOf(
+						GetSensorMUCDomainsRequest.NAMESPACE,
+						GetSensorMUCDomainsRequest.CHILD_ELEMENT)) {
+					sendXMPPBean(onGetSensorMUCDomains((GetSensorMUCDomainsRequest) proxyBean
+							.parsePayload(new GetSensorMUCDomainsRequest())));
+				} else if (proxyBean.isTypeOf(CreateSensorMUCDomain.NAMESPACE,
+						CreateSensorMUCDomain.CHILD_ELEMENT)) {
+					onCreateSensorMUCDomain((CreateSensorMUCDomain) proxyBean
+							.parsePayload(new CreateSensorMUCDomain(
+									new SensorMUCDomain())));
+				} else if (proxyBean.isTypeOf(RemoveSensorMUCDomain.NAMESPACE,
+						RemoveSensorMUCDomain.CHILD_ELEMENT)) {
+					onRemoveSensorMUCDomain((RemoveSensorMUCDomain) proxyBean
+							.parsePayload(new RemoveSensorMUCDomain(
+									new SensorMUCDomain())));
 				} else {
 					// handling of unexpected beans
 				}
@@ -139,6 +155,7 @@ public class IQHandler implements PacketListener, IACDSenseIncoming,
 		GetSensorMUCDomainsResponse out = new GetSensorMUCDomainsResponse();
 		out.setDomains(DomainStore.getInstance().getAllDomains());
 		out.setId(in.getId());
+		out.setTo(in.getFrom());
 		return out;
 	}
 
@@ -149,7 +166,8 @@ public class IQHandler implements PacketListener, IACDSenseIncoming,
 		for (String toJID : receivers) {
 			proxy.SensorMUCDomainCreated(toJID, in.getDomain());
 		}
-		MUCDiscoveryManager.getInstance(getAgent().getConnection()).discoverMUCRooms(in.getDomain());
+		MUCDiscoveryManager.getInstance(getAgent().getConnection())
+				.discoverMUCRooms(in.getDomain());
 	}
 
 	@Override

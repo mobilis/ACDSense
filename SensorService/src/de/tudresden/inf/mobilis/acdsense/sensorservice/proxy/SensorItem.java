@@ -6,11 +6,11 @@ public class SensorItem implements XMPPInfo {
 
 	private String sensorId = null;
 	private List< SensorValue > values = new ArrayList< SensorValue >();
-	private String location = null;
+	private Location location = new Location();
 	private String type = null;
 
 
-	public SensorItem( String sensorId, List< SensorValue > values, String location, String type ) {
+	public SensorItem( String sensorId, List< SensorValue > values, Location location, String type ) {
 		super();
 		this.sensorId = sensorId;
 		for ( SensorValue entity : values ) {
@@ -47,8 +47,8 @@ public class SensorItem implements XMPPInfo {
 					
 					parser.next();
 				}
-				else if (tagName.equals( "location" ) ) {
-					this.location = parser.nextText();
+				else if (tagName.equals( Location.CHILD_ELEMENT ) ) {
+					this.location.fromXML( parser );
 				}
 				else if (tagName.equals( "type" ) ) {
 					this.type = parser.nextText();
@@ -99,9 +99,9 @@ public class SensorItem implements XMPPInfo {
 			sb.append( "</" + SensorValue.CHILD_ELEMENT + ">" );
 		}
 
-		sb.append( "<location>" )
-			.append( this.location )
-			.append( "</location>" );
+		sb.append( "<" + this.location.getChildElement() + ">" )
+			.append( this.location.toXML() )
+			.append( "</" + this.location.getChildElement() + ">" );
 
 		sb.append( "<type>" )
 			.append( this.type )
@@ -128,11 +128,11 @@ public class SensorItem implements XMPPInfo {
 		this.values = values;
 	}
 
-	public String getLocation() {
+	public Location getLocation() {
 		return this.location;
 	}
 
-	public void setLocation( String location ) {
+	public void setLocation( Location location ) {
 		this.location = location;
 	}
 
