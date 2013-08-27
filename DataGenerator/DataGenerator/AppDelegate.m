@@ -87,12 +87,11 @@
     NSString *jid = [jabberSettings valueForKey:@"jid"];
     NSString *password = [jabberSettings valueForKey:@"password"];
     NSString *hostName = [jabberSettings valueForKey:@"hostName"];
-    NSString *serviceJid = [jabberSettings valueForKey:@"serviceJid"];
     
     self.connection = [MXiConnection connectionWithJabberID:jid
                                                    password:password
-                                                   hostName:hostName
-                                                 serviceJID:serviceJid
+                                                   hostName:hostName coordinatorJID:[NSString stringWithFormat:@"mobilis@%@/Coordinator", hostName]
+                                           serviceNamespace:@"http://mobilis.inf.tu-dresden.de/ACDSense"
                                            presenceDelegate:self
                                              stanzaDelegate:self
                                                beanDelegate:self
@@ -110,6 +109,14 @@
 {
     [self.connection sendBean:[[RegisterPublisher alloc] init]];
     self.refreshTimer = [[RefreshTimer alloc] initWithTarget:self invokeMethod:@selector(scheduleNewValueCalculation)];
+}
+
+- (void)didDiscoverServiceWithNamespace:(NSString *)serviceNamespace
+                                   name:(NSString *)serviceName
+                                version:(NSInteger)version
+                             atJabberID:(NSString *)serviceJID
+{
+    NSLog(@"Service Discovered: %@", serviceJID);
 }
 
 - (void)didDisconnectWithError:(NSError *)error
