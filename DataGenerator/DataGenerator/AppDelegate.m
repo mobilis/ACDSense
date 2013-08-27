@@ -58,6 +58,9 @@
         sensorValue.unit = @"Celsius";
         
         [sensorItem.values addObjectsFromArray:[self variateTheValue:sensorValue]];
+        if (!sensorItems.sensorItems) {
+            sensorItems.sensorItems = [NSMutableArray arrayWithCapacity:1];
+        }
         [sensorItems.sensorItems addObject:sensorItem];
         
         [self.connection sendBean:sensorItems];
@@ -65,11 +68,11 @@
 }
 - (NSArray *)variateTheValue:(SensorValue *)value
 {
-    SensorValue *lowerValue = [value copy];
-    SensorValue *higherValue = [value copy];
+    SensorValue *lowerValue = [value mutableCopy];
+    SensorValue *higherValue = [value mutableCopy];
     
-    lowerValue.value = [NSString stringWithFormat:@"%@", [lowerValue.value floatValue] - 2.4];
-    higherValue.value = [NSString stringWithFormat:@"%@", [lowerValue.value floatValue] + 1.3];
+    lowerValue.value = [NSString stringWithFormat:@"%f", [lowerValue.value floatValue] - 2.4];
+    higherValue.value = [NSString stringWithFormat:@"%f", [lowerValue.value floatValue] + 1.3];
     
     return @[lowerValue, higherValue, value];
 }

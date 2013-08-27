@@ -12,12 +12,12 @@
 	NSXMLElement* beanElement = [NSXMLElement elementWithName:[[self class] elementName]
 														xmlns:[[self class] iqNamespace]];
 
-	for (SensorItem* sensorItemsPart in self.sensorItems) {
+	for (SensorItem* sensorItemsPart in [self sensorItems]) {
 		NSXMLElement* sensorItemsElement = [NSXMLElement elementWithName:@"sensorItems"];
 		NSXMLElement* sensorIdElement = [NSXMLElement elementWithName:@"sensorId"];
 		[sensorIdElement setStringValue:[sensorItemsPart sensorId]];
 		[sensorItemsElement addChild:sensorIdElement];
-		for (SensorValue* valuesPart in sensorItemsPart.values) {
+		for (SensorValue* valuesPart in [sensorItemsPart values]) {
 			NSXMLElement* valuesElement = [NSXMLElement elementWithName:@"values"];
 			NSXMLElement* subTypeElement = [NSXMLElement elementWithName:@"subType"];
 			[subTypeElement setStringValue:[valuesPart subType]];
@@ -32,7 +32,13 @@
 			[sensorItemsElement addChild:valuesElement];
 		}
 		NSXMLElement* locationElement = [NSXMLElement elementWithName:@"location"];
-		[locationElement setStringValue:[sensorItemsPart location]];
+		NSXMLElement* latitudeElement = [NSXMLElement elementWithName:@"latitude"];
+		[latitudeElement setStringValue:[NSString stringWithFormat:@"%d", [[sensorItemsPart location] latitude]]];
+		[locationElement addChild:latitudeElement];
+		NSXMLElement* longitudeElement = [NSXMLElement elementWithName:@"longitude"];
+		[longitudeElement setStringValue:[NSString stringWithFormat:@"%d", [[sensorItemsPart location] longitude]]];
+		[locationElement addChild:longitudeElement];
+
 		[sensorItemsElement addChild:locationElement];
 		NSXMLElement* typeElement = [NSXMLElement elementWithName:@"type"];
 		[typeElement setStringValue:[sensorItemsPart type]];
