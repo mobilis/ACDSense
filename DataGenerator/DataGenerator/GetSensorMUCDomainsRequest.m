@@ -1,9 +1,9 @@
-#import "RegisterPublisher.h"
+#import "GetSensorMUCDomainsRequest.h"
 
-@implementation RegisterPublisher
+@implementation GetSensorMUCDomainsRequest
 
 - (id)init {
-	self = [super initWithBeanType:SET];
+	self = [super initWithBeanType:GET];
 
 	return self;
 }
@@ -16,7 +16,7 @@
 }
 
 + (NSString* )elementName {
-	return @"RegisterPublisher";
+	return @"GetSensorMUCDomainsRequest";
 }
 
 + (NSString* )iqNamespace {

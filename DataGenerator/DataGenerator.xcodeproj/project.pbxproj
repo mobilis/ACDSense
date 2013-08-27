@@ -10,12 +10,21 @@
 		5B1189B917C0AF0700CACF5A /* SensorValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1189B817C0AF0700CACF5A /* SensorValue.m */; };
 		5B1189BC17C12FC000CACF5A /* MXi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1189BA17C12AC900CACF5A /* MXi.framework */; };
 		5B1A01E717BE7A6900CC7011 /* LogFileWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */; };
-		5B6AAB5617BE6B6E0086A510 /* DelegateSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AAB4B17BE6B6E0086A510 /* DelegateSensorValues.m */; };
-		5B6AAB5717BE6B6E0086A510 /* PublishSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AAB4D17BE6B6E0086A510 /* PublishSensorValues.m */; };
-		5B6AAB5817BE6B6E0086A510 /* RegisterPublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AAB4F17BE6B6E0086A510 /* RegisterPublisher.m */; };
-		5B6AAB5917BE6B6E0086A510 /* RegisterReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AAB5117BE6B6E0086A510 /* RegisterReceiver.m */; };
-		5B6AAB5A17BE6B6E0086A510 /* RemovePublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AAB5317BE6B6E0086A510 /* RemovePublisher.m */; };
-		5B6AAB5B17BE6B6E0086A510 /* RemoveReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AAB5517BE6B6E0086A510 /* RemoveReceiver.m */; };
+		5BB763F117CC770500006CA3 /* CreateSensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763D417CC770400006CA3 /* CreateSensorMUCDomain.m */; };
+		5BB763F217CC770500006CA3 /* DelegateSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763D617CC770400006CA3 /* DelegateSensorItems.m */; };
+		5BB763F317CC770500006CA3 /* DelegateSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763D817CC770400006CA3 /* DelegateSensorValues.m */; };
+		5BB763F417CC770500006CA3 /* GetSensorMUCDomainsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763DA17CC770400006CA3 /* GetSensorMUCDomainsRequest.m */; };
+		5BB763F517CC770500006CA3 /* GetSensorMUCDomainsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763DC17CC770400006CA3 /* GetSensorMUCDomainsResponse.m */; };
+		5BB763F617CC770500006CA3 /* PublishSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763DE17CC770400006CA3 /* PublishSensorItems.m */; };
+		5BB763F717CC770500006CA3 /* RegisterPublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763E017CC770400006CA3 /* RegisterPublisher.m */; };
+		5BB763F817CC770500006CA3 /* RegisterReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763E217CC770400006CA3 /* RegisterReceiver.m */; };
+		5BB763F917CC770500006CA3 /* RemovePublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763E417CC770400006CA3 /* RemovePublisher.m */; };
+		5BB763FA17CC770500006CA3 /* RemoveReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763E617CC770400006CA3 /* RemoveReceiver.m */; };
+		5BB763FB17CC770500006CA3 /* RemoveSensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763E817CC770400006CA3 /* RemoveSensorMUCDomain.m */; };
+		5BB763FC17CC770500006CA3 /* SensorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763EA17CC770500006CA3 /* SensorItem.m */; };
+		5BB763FD17CC770500006CA3 /* SensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763EC17CC770500006CA3 /* SensorMUCDomain.m */; };
+		5BB763FE17CC770500006CA3 /* SensorMUCDomainCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763EE17CC770500006CA3 /* SensorMUCDomainCreated.m */; };
+		5BB763FF17CC770500006CA3 /* SensorMUCDomainRemoved.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763F017CC770500006CA3 /* SensorMUCDomainRemoved.m */; };
 		5BFEA37517BA693200C7914D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFEA37417BA693200C7914D /* Cocoa.framework */; };
 		5BFEA37F17BA693200C7914D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BFEA37D17BA693200C7914D /* InfoPlist.strings */; };
 		5BFEA38117BA693200C7914D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA38017BA693200C7914D /* main.m */; };
@@ -34,18 +43,36 @@
 		5B1189BA17C12AC900CACF5A /* MXi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MXi.framework; path = "../../../../Library/Developer/Xcode/DerivedData/ACDSenseWorkspace-frdhqldyuzdizvcnvnpsartakqci/Build/Products/Debug/MXi.framework"; sourceTree = "<group>"; };
 		5B1A01E517BE7A6900CC7011 /* LogFileWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogFileWriter.h; sourceTree = "<group>"; };
 		5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogFileWriter.m; sourceTree = "<group>"; };
-		5B6AAB4A17BE6B6E0086A510 /* DelegateSensorValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateSensorValues.h; sourceTree = "<group>"; };
-		5B6AAB4B17BE6B6E0086A510 /* DelegateSensorValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateSensorValues.m; sourceTree = "<group>"; };
-		5B6AAB4C17BE6B6E0086A510 /* PublishSensorValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishSensorValues.h; sourceTree = "<group>"; };
-		5B6AAB4D17BE6B6E0086A510 /* PublishSensorValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishSensorValues.m; sourceTree = "<group>"; };
-		5B6AAB4E17BE6B6E0086A510 /* RegisterPublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterPublisher.h; sourceTree = "<group>"; };
-		5B6AAB4F17BE6B6E0086A510 /* RegisterPublisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterPublisher.m; sourceTree = "<group>"; };
-		5B6AAB5017BE6B6E0086A510 /* RegisterReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterReceiver.h; sourceTree = "<group>"; };
-		5B6AAB5117BE6B6E0086A510 /* RegisterReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterReceiver.m; sourceTree = "<group>"; };
-		5B6AAB5217BE6B6E0086A510 /* RemovePublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemovePublisher.h; sourceTree = "<group>"; };
-		5B6AAB5317BE6B6E0086A510 /* RemovePublisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemovePublisher.m; sourceTree = "<group>"; };
-		5B6AAB5417BE6B6E0086A510 /* RemoveReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveReceiver.h; sourceTree = "<group>"; };
-		5B6AAB5517BE6B6E0086A510 /* RemoveReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveReceiver.m; sourceTree = "<group>"; };
+		5BB763D317CC770400006CA3 /* CreateSensorMUCDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSensorMUCDomain.h; sourceTree = "<group>"; };
+		5BB763D417CC770400006CA3 /* CreateSensorMUCDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateSensorMUCDomain.m; sourceTree = "<group>"; };
+		5BB763D517CC770400006CA3 /* DelegateSensorItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateSensorItems.h; sourceTree = "<group>"; };
+		5BB763D617CC770400006CA3 /* DelegateSensorItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateSensorItems.m; sourceTree = "<group>"; };
+		5BB763D717CC770400006CA3 /* DelegateSensorValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateSensorValues.h; sourceTree = "<group>"; };
+		5BB763D817CC770400006CA3 /* DelegateSensorValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateSensorValues.m; sourceTree = "<group>"; };
+		5BB763D917CC770400006CA3 /* GetSensorMUCDomainsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetSensorMUCDomainsRequest.h; sourceTree = "<group>"; };
+		5BB763DA17CC770400006CA3 /* GetSensorMUCDomainsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetSensorMUCDomainsRequest.m; sourceTree = "<group>"; };
+		5BB763DB17CC770400006CA3 /* GetSensorMUCDomainsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetSensorMUCDomainsResponse.h; sourceTree = "<group>"; };
+		5BB763DC17CC770400006CA3 /* GetSensorMUCDomainsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetSensorMUCDomainsResponse.m; sourceTree = "<group>"; };
+		5BB763DD17CC770400006CA3 /* PublishSensorItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishSensorItems.h; sourceTree = "<group>"; };
+		5BB763DE17CC770400006CA3 /* PublishSensorItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishSensorItems.m; sourceTree = "<group>"; };
+		5BB763DF17CC770400006CA3 /* RegisterPublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterPublisher.h; sourceTree = "<group>"; };
+		5BB763E017CC770400006CA3 /* RegisterPublisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterPublisher.m; sourceTree = "<group>"; };
+		5BB763E117CC770400006CA3 /* RegisterReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterReceiver.h; sourceTree = "<group>"; };
+		5BB763E217CC770400006CA3 /* RegisterReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterReceiver.m; sourceTree = "<group>"; };
+		5BB763E317CC770400006CA3 /* RemovePublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemovePublisher.h; sourceTree = "<group>"; };
+		5BB763E417CC770400006CA3 /* RemovePublisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemovePublisher.m; sourceTree = "<group>"; };
+		5BB763E517CC770400006CA3 /* RemoveReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveReceiver.h; sourceTree = "<group>"; };
+		5BB763E617CC770400006CA3 /* RemoveReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveReceiver.m; sourceTree = "<group>"; };
+		5BB763E717CC770400006CA3 /* RemoveSensorMUCDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveSensorMUCDomain.h; sourceTree = "<group>"; };
+		5BB763E817CC770400006CA3 /* RemoveSensorMUCDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveSensorMUCDomain.m; sourceTree = "<group>"; };
+		5BB763E917CC770500006CA3 /* SensorItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorItem.h; sourceTree = "<group>"; };
+		5BB763EA17CC770500006CA3 /* SensorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorItem.m; sourceTree = "<group>"; };
+		5BB763EB17CC770500006CA3 /* SensorMUCDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorMUCDomain.h; sourceTree = "<group>"; };
+		5BB763EC17CC770500006CA3 /* SensorMUCDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorMUCDomain.m; sourceTree = "<group>"; };
+		5BB763ED17CC770500006CA3 /* SensorMUCDomainCreated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorMUCDomainCreated.h; sourceTree = "<group>"; };
+		5BB763EE17CC770500006CA3 /* SensorMUCDomainCreated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorMUCDomainCreated.m; sourceTree = "<group>"; };
+		5BB763EF17CC770500006CA3 /* SensorMUCDomainRemoved.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorMUCDomainRemoved.h; sourceTree = "<group>"; };
+		5BB763F017CC770500006CA3 /* SensorMUCDomainRemoved.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorMUCDomainRemoved.m; sourceTree = "<group>"; };
 		5BFEA37117BA693200C7914D /* DataGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFEA37417BA693200C7914D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5BFEA37717BA693200C7914D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -82,8 +109,16 @@
 		5B1A01E817BE860200CC7011 /* Incoming */ = {
 			isa = PBXGroup;
 			children = (
-				5B6AAB4A17BE6B6E0086A510 /* DelegateSensorValues.h */,
-				5B6AAB4B17BE6B6E0086A510 /* DelegateSensorValues.m */,
+				5BB763DB17CC770400006CA3 /* GetSensorMUCDomainsResponse.h */,
+				5BB763DC17CC770400006CA3 /* GetSensorMUCDomainsResponse.m */,
+				5BB763D517CC770400006CA3 /* DelegateSensorItems.h */,
+				5BB763D617CC770400006CA3 /* DelegateSensorItems.m */,
+				5BB763ED17CC770500006CA3 /* SensorMUCDomainCreated.h */,
+				5BB763EE17CC770500006CA3 /* SensorMUCDomainCreated.m */,
+				5BB763EF17CC770500006CA3 /* SensorMUCDomainRemoved.h */,
+				5BB763F017CC770500006CA3 /* SensorMUCDomainRemoved.m */,
+				5BB763D717CC770400006CA3 /* DelegateSensorValues.h */,
+				5BB763D817CC770400006CA3 /* DelegateSensorValues.m */,
 			);
 			name = Incoming;
 			sourceTree = "<group>";
@@ -91,16 +126,22 @@
 		5B1A01E917BE860E00CC7011 /* Outgoing */ = {
 			isa = PBXGroup;
 			children = (
-				5B6AAB4C17BE6B6E0086A510 /* PublishSensorValues.h */,
-				5B6AAB4D17BE6B6E0086A510 /* PublishSensorValues.m */,
-				5B6AAB4E17BE6B6E0086A510 /* RegisterPublisher.h */,
-				5B6AAB4F17BE6B6E0086A510 /* RegisterPublisher.m */,
-				5B6AAB5017BE6B6E0086A510 /* RegisterReceiver.h */,
-				5B6AAB5117BE6B6E0086A510 /* RegisterReceiver.m */,
-				5B6AAB5217BE6B6E0086A510 /* RemovePublisher.h */,
-				5B6AAB5317BE6B6E0086A510 /* RemovePublisher.m */,
-				5B6AAB5417BE6B6E0086A510 /* RemoveReceiver.h */,
-				5B6AAB5517BE6B6E0086A510 /* RemoveReceiver.m */,
+				5BB763D317CC770400006CA3 /* CreateSensorMUCDomain.h */,
+				5BB763D417CC770400006CA3 /* CreateSensorMUCDomain.m */,
+				5BB763D917CC770400006CA3 /* GetSensorMUCDomainsRequest.h */,
+				5BB763DA17CC770400006CA3 /* GetSensorMUCDomainsRequest.m */,
+				5BB763DD17CC770400006CA3 /* PublishSensorItems.h */,
+				5BB763DE17CC770400006CA3 /* PublishSensorItems.m */,
+				5BB763DF17CC770400006CA3 /* RegisterPublisher.h */,
+				5BB763E017CC770400006CA3 /* RegisterPublisher.m */,
+				5BB763E117CC770400006CA3 /* RegisterReceiver.h */,
+				5BB763E217CC770400006CA3 /* RegisterReceiver.m */,
+				5BB763E317CC770400006CA3 /* RemovePublisher.h */,
+				5BB763E417CC770400006CA3 /* RemovePublisher.m */,
+				5BB763E517CC770400006CA3 /* RemoveReceiver.h */,
+				5BB763E617CC770400006CA3 /* RemoveReceiver.m */,
+				5BB763E717CC770400006CA3 /* RemoveSensorMUCDomain.h */,
+				5BB763E817CC770400006CA3 /* RemoveSensorMUCDomain.m */,
 			);
 			name = Outgoing;
 			sourceTree = "<group>";
@@ -108,6 +149,10 @@
 		5B6AAB4917BE6B510086A510 /* Beans */ = {
 			isa = PBXGroup;
 			children = (
+				5BB763E917CC770500006CA3 /* SensorItem.h */,
+				5BB763EA17CC770500006CA3 /* SensorItem.m */,
+				5BB763EB17CC770500006CA3 /* SensorMUCDomain.h */,
+				5BB763EC17CC770500006CA3 /* SensorMUCDomain.m */,
 				5B1A01E917BE860E00CC7011 /* Outgoing */,
 				5B1A01E817BE860200CC7011 /* Incoming */,
 			);
@@ -254,14 +299,23 @@
 				5BFEA38817BA693200C7914D /* AppDelegate.m in Sources */,
 				5BFEA39717BA900D00C7914D /* RefreshTimer.m in Sources */,
 				5BFEA39B17BA959C00C7914D /* TempValueCalculator.m in Sources */,
-				5B6AAB5617BE6B6E0086A510 /* DelegateSensorValues.m in Sources */,
-				5B6AAB5717BE6B6E0086A510 /* PublishSensorValues.m in Sources */,
-				5B6AAB5817BE6B6E0086A510 /* RegisterPublisher.m in Sources */,
-				5B6AAB5917BE6B6E0086A510 /* RegisterReceiver.m in Sources */,
-				5B6AAB5A17BE6B6E0086A510 /* RemovePublisher.m in Sources */,
-				5B6AAB5B17BE6B6E0086A510 /* RemoveReceiver.m in Sources */,
 				5B1A01E717BE7A6900CC7011 /* LogFileWriter.m in Sources */,
 				5B1189B917C0AF0700CACF5A /* SensorValue.m in Sources */,
+				5BB763F117CC770500006CA3 /* CreateSensorMUCDomain.m in Sources */,
+				5BB763F217CC770500006CA3 /* DelegateSensorItems.m in Sources */,
+				5BB763F317CC770500006CA3 /* DelegateSensorValues.m in Sources */,
+				5BB763F417CC770500006CA3 /* GetSensorMUCDomainsRequest.m in Sources */,
+				5BB763F517CC770500006CA3 /* GetSensorMUCDomainsResponse.m in Sources */,
+				5BB763F617CC770500006CA3 /* PublishSensorItems.m in Sources */,
+				5BB763F717CC770500006CA3 /* RegisterPublisher.m in Sources */,
+				5BB763F817CC770500006CA3 /* RegisterReceiver.m in Sources */,
+				5BB763F917CC770500006CA3 /* RemovePublisher.m in Sources */,
+				5BB763FA17CC770500006CA3 /* RemoveReceiver.m in Sources */,
+				5BB763FB17CC770500006CA3 /* RemoveSensorMUCDomain.m in Sources */,
+				5BB763FC17CC770500006CA3 /* SensorItem.m in Sources */,
+				5BB763FD17CC770500006CA3 /* SensorMUCDomain.m in Sources */,
+				5BB763FE17CC770500006CA3 /* SensorMUCDomainCreated.m in Sources */,
+				5BB763FF17CC770500006CA3 /* SensorMUCDomainRemoved.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

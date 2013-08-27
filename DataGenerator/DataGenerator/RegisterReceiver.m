@@ -4,7 +4,7 @@
 
 - (id)init {
 	self = [super initWithBeanType:SET];
-	
+
 	return self;
 }
 
@@ -20,7 +20,7 @@
 }
 
 + (NSString* )iqNamespace {
-	return @"acdsense:iq:registerreceiver";
+	return @"http://mobilis.inf.tu-dresden.de/ACDSense";
 }
 
 @end
