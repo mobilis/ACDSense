@@ -107,6 +107,22 @@
                           serviceNamespace:[[[NSBundle mainBundle] infoDictionary] valueForKeyPath:@"jabberInformation.serviceNamespace"]];
 }
 
+- (void)reconnectWithAuthenticationBlock:(AuthenticationBlock)authentication
+{
+    Account *account = [AccountManager account];
+    if (account) {
+        [self reconnectWithJID:account.jid
+                      password:account.password
+                      hostName:account.hostName
+                          port:account.port
+          authtenticationBlock:authentication];
+    } else {
+        @throw [NSException exceptionWithName:@"Connection without Account information"
+                                       reason:@"Tried to reconnect using keychain account information, but no information are stored"
+                                     userInfo:nil];
+    }
+}
+
 - (void)sendBean:(MXiBean<MXiOutgoingBean> *)outgoingBean
 {
     if (self.connection && outgoingBean) {

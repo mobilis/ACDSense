@@ -69,14 +69,19 @@ typedef void (^ AuthenticationBlock)(BOOL);
  *  @param password       The user's password accociated with the JID and XMPP server.
  *  @param hostName       The host name of XMPP server, e.g. 'jabber.org'.
  *  @param port           The port under which the XMPP server is available, usually 5222.
- *  @param authentication Callback block to inform the application on the success of the authentication.
+ *  @param authentication Callback block to inform the sender on the success of the authentication.
  */
 - (void)reconnectWithJID:(NSString *)jabberID
                 password:(NSString *)password
                 hostName:(NSString *)hostName
                     port:(NSNumber *)port
     authtenticationBlock:(AuthenticationBlock)authentication;
-
+/**
+ *  Use already exisiting connection delegates and just reconfigure the connection with data read from the account management.
+ *
+ *  @param authentication Callback block to inform the sender on the success of the authentication.
+ */
+- (void)reconnectWithAuthenticationBlock:(AuthenticationBlock)authentication;
 /**
  *  This method realizes client-server communication and sends outgoing beans to the service.
  *
