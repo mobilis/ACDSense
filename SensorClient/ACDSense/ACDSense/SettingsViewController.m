@@ -9,6 +9,7 @@
 #import "SettingsViewController.h"
 #import "TextFieldCell.h"
 
+#import "ConnectionHandler.h"
 #import "AccountManager.h"
 #import "Account.h"
 
@@ -150,6 +151,11 @@
     account.hostName = self.hostName;
     account.port = self.port;
     [AccountManager storeAccount:account];
+    [[ConnectionHandler sharedInstance] reconnectWithAuthenticationBlock:^(BOOL success) {
+        // TODO: trigger reload of data in other views
+        // implement some kind of notification mechanism or something
+        NSLog(@"Reconnection from SettingsView successfull? %c", success);
+    }];
 }
 
 @end
