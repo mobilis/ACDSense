@@ -89,6 +89,24 @@
     [self launchConnectionWithBlock:authentication];
 }
 
+- (void)reconnectWithJID:(NSString *)jabberID
+                password:(NSString *)password
+                hostName:(NSString *)hostName
+                    port:(NSNumber *)port
+    authtenticationBlock:(AuthenticationBlock)authentication
+{
+    _authenticated = NO;
+    _connected = NO;
+    
+    self.authenticationBlock = authentication;
+    [self.connection reconnectWithJabberID:jabberID
+                                  password:password
+                                  hostname:hostName
+                                      port:[port integerValue]
+                            coordinatorJID:[NSString stringWithFormat:@"mobilis@%@/Coordinator", hostName]
+                          serviceNamespace:[[[NSBundle mainBundle] infoDictionary] valueForKeyPath:@"jabberInformation.serviceNamespace"]];
+}
+
 - (void)sendBean:(MXiBean<MXiOutgoingBean> *)outgoingBean
 {
     if (self.connection && outgoingBean) {
