@@ -25,31 +25,31 @@ import java.util.List;import java.util.ArrayList;import de.tudresden.inf.rn.mobi
 		_bindingStub.sendXMPPBean( out );
 	}
 
-	public void SensorMUCDomainCreated( String toJid, SensorMUCDomain domain ) {
+	public void SensorMUCDomainCreated( String toJid, SensorMUCDomain sensorDomain ) {
 		if ( null == _bindingStub )
 			return;
 
-		SensorMUCDomainCreated out = new SensorMUCDomainCreated( domain );
+		SensorMUCDomainCreated out = new SensorMUCDomainCreated( sensorDomain );
 		out.setTo( toJid );
 
 		_bindingStub.sendXMPPBean( out );
 	}
 
-	public void SensorMUCDomainRemoved( String toJid, SensorMUCDomain domain ) {
+	public void SensorMUCDomainRemoved( String toJid, SensorMUCDomain sensorDomain ) {
 		if ( null == _bindingStub )
 			return;
 
-		SensorMUCDomainRemoved out = new SensorMUCDomainRemoved( domain );
+		SensorMUCDomainRemoved out = new SensorMUCDomainRemoved( sensorDomain );
 		out.setTo( toJid );
 
 		_bindingStub.sendXMPPBean( out );
 	}
 
-	public XMPPBean GetSensorMUCDomains( String toJid, String packetId, List< SensorMUCDomain > domains ) {
+	public XMPPBean GetSensorMUCDomains( String toJid, String packetId, List< SensorMUCDomain > sensorDomains ) {
 		if ( null == _bindingStub )
 			return null;
 
-		GetSensorMUCDomainsResponse out = new GetSensorMUCDomainsResponse( domains );
+		GetSensorMUCDomainsResponse out = new GetSensorMUCDomainsResponse( sensorDomains );
 		out.setTo( toJid );
 		out.setId( packetId );
 

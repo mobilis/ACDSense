@@ -39,7 +39,7 @@ public class SensorItem implements XMPPInfo {
 				else if (tagName.equals( "sensorId" ) ) {
 					this.sensorId = parser.nextText();
 				}
-				else if (tagName.equals( SensorValue.CHILD_ELEMENT ) ) {
+				else if (tagName.equals( "values" ) ) {
 					SensorValue entity = new SensorValue();
 
 					entity.fromXML( parser );
@@ -47,7 +47,7 @@ public class SensorItem implements XMPPInfo {
 					
 					parser.next();
 				}
-				else if (tagName.equals( Location.CHILD_ELEMENT ) ) {
+				else if (tagName.equals( "location" ) ) {
 					this.location.fromXML( parser );
 				}
 				else if (tagName.equals( "type" ) ) {
@@ -94,9 +94,9 @@ public class SensorItem implements XMPPInfo {
 			.append( "</sensorId>" );
 
 		for( SensorValue entry : values ) {
-			sb.append( "<" + SensorValue.CHILD_ELEMENT + ">" );
-			sb.append( entry.toXML() );
-			sb.append( "</" + SensorValue.CHILD_ELEMENT + ">" );
+			sb.append( "<values>" );
+			sb.append( entry );
+			sb.append( "</values>" );
 		}
 
 		sb.append( "<" + this.location.getChildElement() + ">" )

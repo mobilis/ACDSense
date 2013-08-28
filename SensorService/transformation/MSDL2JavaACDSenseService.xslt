@@ -704,17 +704,7 @@
 				<xsl:value-of select="$newline" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" />
 				
 				<xsl:text>else if (tagName.equals( </xsl:text>
-				
-				<xsl:choose>
-					<xsl:when test="starts-with(@type,'mns:')">
-							<xsl:value-of select="substring-after(@type,'mns:')" />
-						<xsl:text>.CHILD_ELEMENT</xsl:text>
-					</xsl:when>
-					
-					<xsl:otherwise>
-						<xsl:text>"</xsl:text><xsl:value-of select="./@name" /><xsl:text>"</xsl:text>
-					</xsl:otherwise>							
-				</xsl:choose>
+				<xsl:text>"</xsl:text><xsl:value-of select="./@name" /><xsl:text>"</xsl:text>
 				<xsl:text> ) ) {</xsl:text>
 				<xsl:value-of select="$newline" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" />
 				
@@ -958,43 +948,18 @@
     				</xsl:apply-templates>
 					<xsl:text> entry : </xsl:text><xsl:value-of select="./@name" /><xsl:text> ) {</xsl:text>
 				
-				<xsl:choose>
-					<!-- if list consist of simple datatypes like int -->
-					<xsl:when test="contains(./@type,'mns:')">
-						<xsl:value-of select="$newline" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" />
-						<xsl:text>sb.append( "&lt;" + </xsl:text>
-							<xsl:apply-templates select="." mode="parseElementDatatype">
-		    					<xsl:with-param name="asSimple" select="1" />
-		    				</xsl:apply-templates>
-						<xsl:text>.CHILD_ELEMENT + "&gt;" );</xsl:text>
-						
-						<xsl:value-of select="$newline" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" />
-						<xsl:text>sb.append( entry.toXML() );</xsl:text>
-						
-						<xsl:value-of select="$newline" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" />
-						<xsl:text>sb.append( "&lt;/" + </xsl:text>
-							<xsl:apply-templates select="." mode="parseElementDatatype">
-		    					<xsl:with-param name="asSimple" select="1" />
-		    				</xsl:apply-templates>
-						<xsl:text>.CHILD_ELEMENT + "&gt;"</xsl:text>
-					</xsl:when>
+					<xsl:value-of select="$newline" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" />
+					<xsl:text>sb.append( "&lt;</xsl:text>
+						<xsl:value-of select="./@name" />
+					<xsl:text>&gt;" );</xsl:text>
 					
-					<!-- if list consist of XMPPInfo type -->
-					<xsl:otherwise>
-						<xsl:value-of select="$newline" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" />
-						<xsl:text>sb.append( "&lt;</xsl:text>
-							<xsl:value-of select="./@name" />
-						<xsl:text>&gt;" );</xsl:text>
-						
-						<xsl:value-of select="$newline" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" />
-						<xsl:text>sb.append( entry );</xsl:text>
-						
-						<xsl:value-of select="$newline" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" />
-						<xsl:text>sb.append( "&lt;/</xsl:text>
-							<xsl:value-of select="./@name" />
-						<xsl:text>&gt;"</xsl:text>
-					</xsl:otherwise>
-				</xsl:choose>
+					<xsl:value-of select="$newline" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" />
+					<xsl:text>sb.append( entry );</xsl:text>
+					
+					<xsl:value-of select="$newline" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" />
+					<xsl:text>sb.append( "&lt;/</xsl:text>
+						<xsl:value-of select="./@name" />
+					<xsl:text>&gt;"</xsl:text>
 				
 				<xsl:text> );</xsl:text>
 				

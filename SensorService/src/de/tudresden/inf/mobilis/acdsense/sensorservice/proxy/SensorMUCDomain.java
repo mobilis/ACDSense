@@ -5,13 +5,13 @@ import org.xmlpull.v1.XmlPullParser;import java.util.List;import java.util.Array
 public class SensorMUCDomain implements XMPPInfo {
 
 	private String domainId = null;
-	private String domain = null;
+	private String domainURL = null;
 
 
-	public SensorMUCDomain( String domainId, String domain ) {
+	public SensorMUCDomain( String domainId, String domainURL ) {
 		super();
 		this.domainId = domainId;
-		this.domain = domain;
+		this.domainURL = domainURL;
 	}
 
 	public SensorMUCDomain(){}
@@ -33,8 +33,8 @@ public class SensorMUCDomain implements XMPPInfo {
 				else if (tagName.equals( "domainId" ) ) {
 					this.domainId = parser.nextText();
 				}
-				else if (tagName.equals( "domain" ) ) {
-					this.domain = parser.nextText();
+				else if (tagName.equals( "domainURL" ) ) {
+					this.domainURL = parser.nextText();
 				}
 				else
 					parser.next();
@@ -76,9 +76,9 @@ public class SensorMUCDomain implements XMPPInfo {
 			.append( this.domainId )
 			.append( "</domainId>" );
 
-		sb.append( "<domain>" )
-			.append( this.domain )
-			.append( "</domain>" );
+		sb.append( "<domainURL>" )
+			.append( this.domainURL )
+			.append( "</domainURL>" );
 
 		return sb.toString();
 	}
@@ -93,12 +93,12 @@ public class SensorMUCDomain implements XMPPInfo {
 		this.domainId = domainId;
 	}
 
-	public String getDomain() {
-		return this.domain;
+	public String getDomainURL() {
+		return this.domainURL;
 	}
 
-	public void setDomain( String domain ) {
-		this.domain = domain;
+	public void setDomainURL( String domainURL ) {
+		this.domainURL = domainURL;
 	}
 
 }

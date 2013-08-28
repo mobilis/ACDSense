@@ -33,7 +33,7 @@ public class PublishSensorItems extends XMPPBean {
 				if (tagName.equals(getChildElement())) {
 					parser.next();
 				}
-				else if (tagName.equals( SensorItem.CHILD_ELEMENT ) ) {
+				else if (tagName.equals( "sensorItems" ) ) {
 					SensorItem entity = new SensorItem();
 
 					entity.fromXML( parser );
@@ -89,9 +89,9 @@ public class PublishSensorItems extends XMPPBean {
 		StringBuilder sb = new StringBuilder();
 
 		for( SensorItem entry : sensorItems ) {
-			sb.append( "<" + SensorItem.CHILD_ELEMENT + ">" );
-			sb.append( entry.toXML() );
-			sb.append( "</" + SensorItem.CHILD_ELEMENT + ">" );
+			sb.append( "<sensorItems>" );
+			sb.append( entry );
+			sb.append( "</sensorItems>" );
 		}
 
 		sb = appendErrorPayload(sb);

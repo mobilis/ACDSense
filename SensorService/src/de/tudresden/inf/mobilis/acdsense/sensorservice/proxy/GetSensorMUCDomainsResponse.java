@@ -4,13 +4,13 @@ import org.xmlpull.v1.XmlPullParser;import java.util.List;import java.util.Array
 
 public class GetSensorMUCDomainsResponse extends XMPPBean {
 
-	private List< SensorMUCDomain > domains = new ArrayList< SensorMUCDomain >();
+	private List< SensorMUCDomain > sensorDomains = new ArrayList< SensorMUCDomain >();
 
 
-	public GetSensorMUCDomainsResponse( List< SensorMUCDomain > domains ) {
+	public GetSensorMUCDomainsResponse( List< SensorMUCDomain > sensorDomains ) {
 		super();
-		for ( SensorMUCDomain entity : domains ) {
-			this.domains.add( entity );
+		for ( SensorMUCDomain entity : sensorDomains ) {
+			this.sensorDomains.add( entity );
 		}
 
 		this.setType( XMPPBean.TYPE_RESULT );
@@ -33,11 +33,11 @@ public class GetSensorMUCDomainsResponse extends XMPPBean {
 				if (tagName.equals(getChildElement())) {
 					parser.next();
 				}
-				else if (tagName.equals( SensorMUCDomain.CHILD_ELEMENT ) ) {
+				else if (tagName.equals( "sensorDomains" ) ) {
 					SensorMUCDomain entity = new SensorMUCDomain();
 
 					entity.fromXML( parser );
-					this.domains.add( entity );
+					this.sensorDomains.add( entity );
 					
 					parser.next();
 				}
@@ -78,7 +78,7 @@ public class GetSensorMUCDomainsResponse extends XMPPBean {
 
 	@Override
 	public XMPPBean clone() {
-		GetSensorMUCDomainsResponse clone = new GetSensorMUCDomainsResponse( domains );
+		GetSensorMUCDomainsResponse clone = new GetSensorMUCDomainsResponse( sensorDomains );
 		this.cloneBasicAttributes( clone );
 
 		return clone;
@@ -88,10 +88,10 @@ public class GetSensorMUCDomainsResponse extends XMPPBean {
 	public String payloadToXML() {
 		StringBuilder sb = new StringBuilder();
 
-		for( SensorMUCDomain entry : domains ) {
-			sb.append( "<" + SensorMUCDomain.CHILD_ELEMENT + ">" );
-			sb.append( entry.toXML() );
-			sb.append( "</" + SensorMUCDomain.CHILD_ELEMENT + ">" );
+		for( SensorMUCDomain entry : sensorDomains ) {
+			sb.append( "<sensorDomains>" );
+			sb.append( entry );
+			sb.append( "</sensorDomains>" );
 		}
 
 		sb = appendErrorPayload(sb);
@@ -100,12 +100,12 @@ public class GetSensorMUCDomainsResponse extends XMPPBean {
 	}
 
 
-	public List< SensorMUCDomain > getDomains() {
-		return this.domains;
+	public List< SensorMUCDomain > getSensorDomains() {
+		return this.sensorDomains;
 	}
 
-	public void setDomains( List< SensorMUCDomain > domains ) {
-		this.domains = domains;
+	public void setSensorDomains( List< SensorMUCDomain > sensorDomains ) {
+		this.sensorDomains = sensorDomains;
 	}
 
 }

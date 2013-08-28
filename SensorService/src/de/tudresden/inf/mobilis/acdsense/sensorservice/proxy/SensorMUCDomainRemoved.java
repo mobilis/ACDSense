@@ -4,12 +4,12 @@ import org.xmlpull.v1.XmlPullParser;import java.util.List;import java.util.Array
 
 public class SensorMUCDomainRemoved extends XMPPBean {
 
-	private SensorMUCDomain domain = new SensorMUCDomain();
+	private SensorMUCDomain sensorDomain = new SensorMUCDomain();
 
 
-	public SensorMUCDomainRemoved( SensorMUCDomain domain ) {
+	public SensorMUCDomainRemoved( SensorMUCDomain sensorDomain ) {
 		super();
-		this.domain = domain;
+		this.sensorDomain = sensorDomain;
 
 		this.setType( XMPPBean.TYPE_RESULT );
 	}
@@ -31,8 +31,8 @@ public class SensorMUCDomainRemoved extends XMPPBean {
 				if (tagName.equals(getChildElement())) {
 					parser.next();
 				}
-				else if (tagName.equals( SensorMUCDomain.CHILD_ELEMENT ) ) {
-					this.domain.fromXML( parser );
+				else if (tagName.equals( "sensorDomain" ) ) {
+					this.sensorDomain.fromXML( parser );
 				}
 				else if (tagName.equals("error")) {
 					parser = parseErrorAttributes(parser);
@@ -71,7 +71,7 @@ public class SensorMUCDomainRemoved extends XMPPBean {
 
 	@Override
 	public XMPPBean clone() {
-		SensorMUCDomainRemoved clone = new SensorMUCDomainRemoved( domain );
+		SensorMUCDomainRemoved clone = new SensorMUCDomainRemoved( sensorDomain );
 		this.cloneBasicAttributes( clone );
 
 		return clone;
@@ -81,9 +81,9 @@ public class SensorMUCDomainRemoved extends XMPPBean {
 	public String payloadToXML() {
 		StringBuilder sb = new StringBuilder();
 
-		sb.append( "<" + this.domain.getChildElement() + ">" )
-			.append( this.domain.toXML() )
-			.append( "</" + this.domain.getChildElement() + ">" );
+		sb.append( "<" + this.sensorDomain.getChildElement() + ">" )
+			.append( this.sensorDomain.toXML() )
+			.append( "</" + this.sensorDomain.getChildElement() + ">" );
 
 		sb = appendErrorPayload(sb);
 
@@ -91,12 +91,12 @@ public class SensorMUCDomainRemoved extends XMPPBean {
 	}
 
 
-	public SensorMUCDomain getDomain() {
-		return this.domain;
+	public SensorMUCDomain getSensorDomain() {
+		return this.sensorDomain;
 	}
 
-	public void setDomain( SensorMUCDomain domain ) {
-		this.domain = domain;
+	public void setSensorDomain( SensorMUCDomain sensorDomain ) {
+		this.sensorDomain = sensorDomain;
 	}
 
 }
