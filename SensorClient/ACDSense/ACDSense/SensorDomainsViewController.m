@@ -21,6 +21,7 @@
 
 @interface SensorDomainsViewController ()
 @property (retain) NSMutableArray *sensorDomains;
+@property (retain) UIRefreshControl *refreshControl;
 
 - (void) sensorMUCDomainCreated:(SensorMUCDomainCreated *) bean;
 - (void) sensorMUCDomainRemoved:(SensorMUCDomainRemoved *) bean;
@@ -46,7 +47,21 @@
 	[[ConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(sensorMUCDomainCreated:) forBeanClass:[SensorMUCDomainCreated class]];
 	[[ConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(sensorMUCDomainRemoved:) forBeanClass:[SensorMUCDomainRemoved class]];
 	[[ConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(sensorMUCDomainsReceived:) forBeanClass:[GetSensorMUCDomainsResponse class]];
+	
+	self.refreshControl = [UIRefreshControl new];
+    [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+}
+
+- (void)handleRefresh:(id)arg
+{
 	[[ConnectionHandler sharedInstance] sendBean:[GetSensorMUCDomainsRequest new]];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[[ConnectionHandler sharedInstance] sendBean:[GetSensorMUCDomainsRequest new]];
+	[super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
