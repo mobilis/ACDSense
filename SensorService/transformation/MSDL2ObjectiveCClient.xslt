@@ -1135,7 +1135,8 @@
 		<xsl:variable name="classNameForType" select="substring-after($type, ':')" />
 
 		<xsl:value-of select="$indent" />
-		<xsl:value-of select="$memberObjectName" /><xsl:text> = [[</xsl:text>
+		<xsl:value-of select="$classNameForType"/>
+		<xsl:text> *</xsl:text><xsl:value-of select="$memberObjectName" /><xsl:text> = [[</xsl:text>
 		<xsl:value-of select="$classNameForType" /><xsl:text> alloc] init];</xsl:text>
 		<xsl:value-of select="$newline" />
 
@@ -1329,7 +1330,8 @@
 		</xsl:variable>
 
 		<xsl:value-of select="$indent" />
-		<xsl:value-of select="$memberObjectName" /><xsl:text> = [[</xsl:text>
+		<xsl:value-of select="$classNameForType"/>
+		<xsl:text> *</xsl:text><xsl:value-of select="$memberObjectName" /><xsl:text> = [[</xsl:text>
 		<xsl:value-of select="$classNameForType" /><xsl:text> alloc] init];</xsl:text>
 		<xsl:value-of select="$newline" />
 
