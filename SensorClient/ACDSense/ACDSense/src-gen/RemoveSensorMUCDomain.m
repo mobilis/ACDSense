@@ -12,15 +12,15 @@
 	NSXMLElement* beanElement = [NSXMLElement elementWithName:[[self class] elementName]
 														xmlns:[[self class] iqNamespace]];
 
-	NSXMLElement* domainElement = [NSXMLElement elementWithName:@"domain"];
+	NSXMLElement* sensorDomainElement = [NSXMLElement elementWithName:@"sensorDomain"];
 	NSXMLElement* domainIdElement = [NSXMLElement elementWithName:@"domainId"];
-	[domainIdElement setStringValue:[self.domain domainId]];
-	[domainElement addChild:domainIdElement];
-	NSXMLElement* innerDomainElement = [NSXMLElement elementWithName:@"domain"];
-	[innerDomainElement setStringValue:[self.domain domain]];
-	[domainElement addChild:innerDomainElement];
+	[domainIdElement setStringValue:[[self sensorDomain] domainId]];
+	[sensorDomainElement addChild:domainIdElement];
+	NSXMLElement* domainURLElement = [NSXMLElement elementWithName:@"domainURL"];
+	[domainURLElement setStringValue:[[self sensorDomain] domainURL]];
+	[sensorDomainElement addChild:domainURLElement];
 
-	[beanElement addChild:domainElement];
+	[beanElement addChild:sensorDomainElement];
 
 	return beanElement;
 }

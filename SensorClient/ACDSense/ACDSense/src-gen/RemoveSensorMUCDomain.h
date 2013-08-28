@@ -3,7 +3,7 @@
 
 @interface RemoveSensorMUCDomain : MXiBean <MXiOutgoingBean>
 
-@property (nonatomic, strong) SensorMUCDomain* domain;
+@property (nonatomic, strong) SensorMUCDomain* sensorDomain;
 
 - (id)init;
 

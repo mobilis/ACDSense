@@ -28,7 +28,11 @@
 			[[sensorItemsObject values] addObject:valuesObject];
 		}
 		NSXMLElement* locationElement = [sensorItemsElement elementForName:@"location"];
-		[sensorItemsObject setLocation:[locationElement stringValue]];
+		[sensorItemsObject setLocation:[[Location alloc] init]];
+		NSXMLElement* latitudeElement = [locationElement elementForName:@"latitude"];
+		[[sensorItemsObject location] setLatitude:[[latitudeElement stringValue] integerValue]];
+		NSXMLElement* longitudeElement = [locationElement elementForName:@"longitude"];
+		[[sensorItemsObject location] setLongitude:[[longitudeElement stringValue] integerValue]];
 		NSXMLElement* typeElement = [sensorItemsElement elementForName:@"type"];
 		[sensorItemsObject setType:[typeElement stringValue]];
 		[[self sensorItems] addObject:sensorItemsObject];

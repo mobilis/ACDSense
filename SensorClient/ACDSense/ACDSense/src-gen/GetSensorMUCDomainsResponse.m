@@ -9,15 +9,15 @@
 }
 
 - (void)fromXML:(NSXMLElement* )xml {
-	[self setDomains:[NSMutableArray array]];
-	NSArray* domainsElements = [xml elementsForName:@"domains"];
-	for (NSXMLElement* domainsElement in domainsElements) {
-		SensorMUCDomain *domainsObject = [[SensorMUCDomain alloc] init];
-		NSXMLElement* domainIdElement = [domainsElement elementForName:@"domainId"];
-		[domainsObject setDomainId:[domainIdElement stringValue]];
-		NSXMLElement* domainElement = [domainsElement elementForName:@"domain"];
-		[domainsObject setDomain:[domainElement stringValue]];
-		[[self domains] addObject:domainsObject];
+	[self setSensorDomains:[NSMutableArray array]];
+	NSArray* sensorDomainsElements = [xml elementsForName:@"sensorDomains"];
+	for (NSXMLElement* sensorDomainsElement in sensorDomainsElements) {
+		SensorMUCDomain *sensorDomainsObject = [[SensorMUCDomain alloc] init];
+		NSXMLElement* domainIdElement = [sensorDomainsElement elementForName:@"domainId"];
+		[sensorDomainsObject setDomainId:[domainIdElement stringValue]];
+		NSXMLElement* domainURLElement = [sensorDomainsElement elementForName:@"domainURL"];
+		[sensorDomainsObject setDomainURL:[domainURLElement stringValue]];
+		[[self sensorDomains] addObject:sensorDomainsObject];
 	}
 }
 

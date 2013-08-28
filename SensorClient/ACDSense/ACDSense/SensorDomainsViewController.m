@@ -84,7 +84,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-	cell.textLabel.text = ((SensorMUCDomain *)[self.sensorDomains objectAtIndex:indexPath.row]).domain;
+	cell.textLabel.text = ((SensorMUCDomain *)[self.sensorDomains objectAtIndex:indexPath.row]).domainURL;
 	return cell;
 }
 
@@ -97,7 +97,7 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	RemoveSensorMUCDomain *request = [RemoveSensorMUCDomain new];
-	request.domain = [self.sensorDomains objectAtIndex:indexPath.row];
+	request.sensorDomain = [self.sensorDomains objectAtIndex:indexPath.row];
 	[[ConnectionHandler sharedInstance] sendBean:request];
 }
 
@@ -112,9 +112,9 @@
 	if (buttonIndex > 0) {
 		CreateSensorMUCDomain *request = [CreateSensorMUCDomain new];
 		SensorMUCDomain *domain = [SensorMUCDomain new];
-		domain.domainId = [NSUUID UUID];
-		domain.domain = [[alertView textFieldAtIndex:0] text];
-		request.domain = domain;
+		domain.domainId = [[NSUUID UUID] UUIDString];
+		domain.domainURL = [[alertView textFieldAtIndex:0] text];
+		request.sensorDomain = domain;
 		[[ConnectionHandler sharedInstance] sendBean:request];
 	}
 }
@@ -123,9 +123,9 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	CreateSensorMUCDomain *request = [CreateSensorMUCDomain new];
 	SensorMUCDomain *domain = [SensorMUCDomain new];
-	domain.domainId = [NSUUID UUID];
-	domain.domain = [textField text];
-	request.domain = domain;
+	domain.domainId = [[NSUUID UUID] UUIDString];
+	domain.domainURL = [textField text];
+	request.sensorDomain = domain;
 	[[ConnectionHandler sharedInstance] sendBean:request];
 	return YES;
 }
@@ -142,14 +142,14 @@
 
 - (void)sensorMUCDomainCreated:(SensorMUCDomainCreated *)bean
 {
-	[self.sensorDomains addObject:bean.domain];
+	[self.sensorDomains addObject:bean.sensorDomain];
 	[self refreshTableView];
 }
 
 - (void)sensorMUCDomainRemoved:(SensorMUCDomainRemoved *)bean
 {
 	for (SensorMUCDomain *domain in self.sensorDomains) {
-		if ([[domain domainId] isEqualToString:bean.domain.domainId]) {
+		if ([[domain domainId] isEqualToString:bean.sensorDomain.domainId]) {
 			[self.sensorDomains removeObject:domain];
 		}
 	}
@@ -159,7 +159,8 @@
 - (void)sensorMUCDomainsReceived:(GetSensorMUCDomainsResponse *)bean
 {
 	[self.sensorDomains removeAllObjects];
-	[self.sensorDomains addObjectsFromArray:bean.domains];
+	[self.sensorDomains addObjectsFromArray:bean.sensorDomains];
+	[self.refreshControl endRefreshing];
 	[self refreshTableView];
 }
 
