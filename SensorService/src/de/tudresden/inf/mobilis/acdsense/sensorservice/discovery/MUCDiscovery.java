@@ -18,29 +18,35 @@ import org.jivesoftware.smackx.packet.DiscoverItems;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.SensorMUCDomain;
 
 class MUCDiscovery {
-	
+
 	private Connection connection;
-	private SensorMUCDomain sensorDomain; 
-	
+	private SensorMUCDomain sensorDomain;
+
 	private Collection<HostedRoom> hostedRooms;
 	private Collection<HostedRoom> sensorRooms;
-	
+
 	private void discoverSensorMUCRooms() {
-		this.hostedRooms.addAll(this.getHostedRoomsForService(this.getMUCService()));
-		
+		this.hostedRooms.addAll(this.getHostedRoomsForService(this
+				.getMUCService()));
+
 		this.sensorRooms = new ArrayList<>(this.hostedRooms.size());
-		ServiceDiscoveryManager roomDiscoManager = new ServiceDiscoveryManager(this.connection);
+		ServiceDiscoveryManager roomDiscoManager = new ServiceDiscoveryManager(
+				this.connection);
 		for (HostedRoom room : this.hostedRooms) {
 			try {
-				DiscoverInfo roomInfo = roomDiscoManager.discoverInfo(room.getJid());
-				DataForm roomAdditinalInfo = (DataForm) roomInfo.getExtension("x", "jabber:x:data");
-				Iterator<FormField> fieldIterator = roomAdditinalInfo.getFields();
+				DiscoverInfo roomInfo = roomDiscoManager.discoverInfo(room
+						.getJid());
+				DataForm roomAdditinalInfo = (DataForm) roomInfo.getExtension(
+						"x", "jabber:x:data");
+				Iterator<FormField> fieldIterator = roomAdditinalInfo
+						.getFields();
 				boolean found = false;
 				while (fieldIterator.hasNext() && !found) {
 					FormField field = fieldIterator.next();
-					if (	field.getVariable().equalsIgnoreCase("muc#roominfo_description") &&
-							field.getDescription().substring(0, 12).equalsIgnoreCase("acdsense_muc#")
-							) {
+					if (field.getVariable().equalsIgnoreCase(
+							"muc#roominfo_description")
+							&& field.getDescription().substring(0, 12)
+									.equalsIgnoreCase("acdsense_muc#")) {
 						found = true;
 						this.sensorRooms.add(room);
 					}
@@ -51,17 +57,23 @@ class MUCDiscovery {
 			}
 		}
 	}
+
 	private String getMUCService() {
 		String mucService = null;
-		
-		ServiceDiscoveryManager disco = new ServiceDiscoveryManager(this.connection);
+
+		ServiceDiscoveryManager disco = new ServiceDiscoveryManager(
+				this.connection);
 		DiscoverItems serviceItems;
 		try {
-			serviceItems = disco.discoverItems(this.sensorDomain.getDomain());
-			for (Iterator<DiscoverItems.Item> serviceItem = serviceItems.getItems(); serviceItem.hasNext();) {
+			serviceItems = disco
+					.discoverItems(this.sensorDomain.getDomainURL());
+			for (Iterator<DiscoverItems.Item> serviceItem = serviceItems
+					.getItems(); serviceItem.hasNext();) {
 				String serviceName = serviceItem.next().getEntityID();
-				DiscoverInfo potentialMUCService = disco.discoverInfo(serviceName);
-				if (potentialMUCService.containsFeature("http://jabber.org/protocol/muc")) {
+				DiscoverInfo potentialMUCService = disco
+						.discoverInfo(serviceName);
+				if (potentialMUCService
+						.containsFeature("http://jabber.org/protocol/muc")) {
 					mucService = serviceName;
 					break;
 				}
@@ -70,31 +82,34 @@ class MUCDiscovery {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return mucService;
 	}
-	private Collection<HostedRoom> getHostedRoomsForService(final String serviceName) {
+
+	private Collection<HostedRoom> getHostedRoomsForService(
+			final String serviceName) {
 		Collection<HostedRoom> hostedRooms = null;
 		try {
-			hostedRooms = MultiUserChat.getHostedRooms(this.connection, serviceName);
+			hostedRooms = MultiUserChat.getHostedRooms(this.connection,
+					serviceName);
 		} catch (XMPPException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return hostedRooms;
 	}
-	
+
 	private void initialize() {
-		this.hostedRooms = new ArrayList<>(10);		
+		this.hostedRooms = new ArrayList<>(10);
 		this.discoverSensorMUCRooms();
 	}
-	
+
 	public MUCDiscovery(Connection connection, SensorMUCDomain sensorDomain) {
 		this.connection = connection;
 		this.sensorDomain = sensorDomain;
 		this.initialize();
 	}
-	
+
 	public List<HostedRoom> getAllMUCs() {
 		return new ArrayList<HostedRoom>(this.sensorRooms);
 	}

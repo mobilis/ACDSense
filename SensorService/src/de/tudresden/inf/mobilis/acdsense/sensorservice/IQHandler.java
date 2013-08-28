@@ -153,7 +153,7 @@ public class IQHandler implements PacketListener, IACDSenseIncoming,
 	@Override
 	public XMPPBean onGetSensorMUCDomains(GetSensorMUCDomainsRequest in) {
 		GetSensorMUCDomainsResponse out = new GetSensorMUCDomainsResponse();
-		out.setDomains(DomainStore.getInstance().getAllDomains());
+		out.setSensorDomains(DomainStore.getInstance().getAllDomains());
 		out.setId(in.getId());
 		out.setTo(in.getFrom());
 		return out;
@@ -161,22 +161,22 @@ public class IQHandler implements PacketListener, IACDSenseIncoming,
 
 	@Override
 	public void onCreateSensorMUCDomain(CreateSensorMUCDomain in) {
-		if (!DomainStore.getInstance().addDomain(in.getDomain()))
+		if (!DomainStore.getInstance().addDomain(in.getSensorDomain()))
 			return;
 		for (String toJID : receivers) {
-			proxy.SensorMUCDomainCreated(toJID, in.getDomain());
+			proxy.SensorMUCDomainCreated(toJID, in.getSensorDomain());
 		}
 		MUCDiscoveryManager.getInstance(getAgent().getConnection())
-				.discoverMUCRooms(in.getDomain());
+				.discoverMUCRooms(in.getSensorDomain());
 	}
 
 	@Override
 	public void onRemoveSensorMUCDomain(RemoveSensorMUCDomain in) {
 		if (!DomainStore.getInstance().removeDomain(
-				in.getDomain().getDomainId()))
+				in.getSensorDomain().getDomainId()))
 			return;
 		for (String toJID : receivers) {
-			proxy.SensorMUCDomainRemoved(toJID, in.getDomain());
+			proxy.SensorMUCDomainRemoved(toJID, in.getSensorDomain());
 		}
 	}
 
