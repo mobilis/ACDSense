@@ -970,15 +970,7 @@
 			<!-- Else if property is no list -->
 			<xsl:otherwise>
 				<xsl:text>sb.append( "&lt;</xsl:text>
-				<xsl:choose>
-				<!-- if property is of type XMPPInfo -->
-					<xsl:when test="contains(./@type,'mns:')">
-						<xsl:text>" + this.</xsl:text><xsl:value-of select="./@name" /><xsl:text>.getChildElement() + "</xsl:text>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:value-of select="./@name" />
-					</xsl:otherwise>
-				</xsl:choose>		
+				<xsl:value-of select="./@name" />
 				<xsl:text>&gt;" )</xsl:text>
 				
 				<xsl:value-of select="$newline" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" />
