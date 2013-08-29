@@ -1,5 +1,7 @@
 package de.tudresden.inf.mobilis.acdsense.sensorservice;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -11,7 +13,8 @@ import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smackx.muc.MultiUserChat;
 
 import de.tudresden.inf.mobilis.acdsense.sensorservice.helper.MessageBodyParser;
-import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.PublishSensorItems;
+import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.SensorItem;
+import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.SensorValue;
 
 public class MUCConnection extends Observable implements PacketListener {
 	
@@ -19,6 +22,7 @@ public class MUCConnection extends Observable implements PacketListener {
 	private MultiUserChat muc;
 	
 	private String roomJID;
+	private String roomType;
 		
 	public MUCConnection(Connection connection, final String roomJID, final Observer messageObserver) {
 		this.connection = connection;
@@ -46,7 +50,14 @@ public class MUCConnection extends Observable implements PacketListener {
 		if (packet instanceof Message) {
 			Message message = (Message)packet;
 			setChanged();
-			PublishSensorItems sensorItems = MessageBodyParser.processMessageBody(message.getBody());
+			SensorValue sensorValue = MessageBodyParser.processMessageBody(message.getBody());
+			List<SensorValue> sensorValues = new ArrayList<>(1);
+			sensorValues.add(sensorValue);
+			
+			SensorItem sensorItem = new SensorItem("test", sensorValues, null, roomType);
+			List<SensorItem> sensorItems = new ArrayList<>(1);
+			sensorItems.add(sensorItem);
+			
 			notifyObservers(sensorItems);
 		}
 	}
