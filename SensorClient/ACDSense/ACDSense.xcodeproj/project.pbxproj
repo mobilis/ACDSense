@@ -13,7 +13,6 @@
 		0C80B7BB17CA61F7002A0DD1 /* DelegateSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1896C17CA4322004DF634 /* DelegateSensorItems.m */; };
 		0C80B7BC17CA61F7002A0DD1 /* SensorMUCDomainCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1896E17CA4322004DF634 /* SensorMUCDomainCreated.m */; };
 		0C80B7BD17CA61F7002A0DD1 /* SensorMUCDomainRemoved.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1897017CA4322004DF634 /* SensorMUCDomainRemoved.m */; };
-		0C80B7BE17CA61F7002A0DD1 /* DelegateSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1895317CA402A004DF634 /* DelegateSensorValues.m */; };
 		0C80B7BF17CA61F7002A0DD1 /* CreateSensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD59917CA463000E4A64E /* CreateSensorMUCDomain.m */; };
 		0C80B7C017CA61F7002A0DD1 /* GetSensorMUCDomainsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD59B17CA463000E4A64E /* GetSensorMUCDomainsRequest.m */; };
 		0C80B7C117CA61F7002A0DD1 /* PublishSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DD59D17CA463000E4A64E /* PublishSensorItems.m */; };
@@ -56,6 +55,7 @@
 		5B772CC217C923920008BC02 /* IncomingBeanDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CC117C923920008BC02 /* IncomingBeanDetection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5B96FFA917CA4F0100DADDFA /* DelegateSelectorMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B96FFA817CA4F0100DADDFA /* DelegateSelectorMapping.m */; };
 		5B96FFAC17CA553200DADDFA /* NSString+Selector.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B96FFAB17CA553200DADDFA /* NSString+Selector.m */; };
+		5BE348A017CF287300AE0407 /* Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3489F17CF287300AE0407 /* Timestamp.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,8 +94,6 @@
 		0CD1894417CA3009004DF634 /* libMXi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMXi.a; path = "../../../mobilis/MXi/build/Release-iphoneos/libMXi.a"; sourceTree = "<group>"; };
 		0CD1894617CA3FEF004DF634 /* SensorValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SensorValue.h; path = "src-gen/SensorValue.h"; sourceTree = "<group>"; };
 		0CD1894717CA3FEF004DF634 /* SensorValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SensorValue.m; path = "src-gen/SensorValue.m"; sourceTree = "<group>"; };
-		0CD1895217CA402A004DF634 /* DelegateSensorValues.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DelegateSensorValues.h; path = "src-gen/DelegateSensorValues.h"; sourceTree = "<group>"; };
-		0CD1895317CA402A004DF634 /* DelegateSensorValues.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DelegateSensorValues.m; path = "src-gen/DelegateSensorValues.m"; sourceTree = "<group>"; };
 		0CD1895517CA4266004DF634 /* SensorItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SensorItem.h; path = "src-gen/SensorItem.h"; sourceTree = "<group>"; };
 		0CD1895617CA4266004DF634 /* SensorItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SensorItem.m; path = "src-gen/SensorItem.m"; sourceTree = "<group>"; };
 		0CD1895717CA4266004DF634 /* SensorMUCDomain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SensorMUCDomain.h; path = "src-gen/SensorMUCDomain.h"; sourceTree = "<group>"; };
@@ -143,6 +141,8 @@
 		5B96FFA817CA4F0100DADDFA /* DelegateSelectorMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateSelectorMapping.m; sourceTree = "<group>"; };
 		5B96FFAA17CA553200DADDFA /* NSString+Selector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Selector.h"; sourceTree = "<group>"; };
 		5B96FFAB17CA553200DADDFA /* NSString+Selector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Selector.m"; sourceTree = "<group>"; };
+		5BE3489E17CF287300AE0407 /* Timestamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Timestamp.h; path = "src-gen/Timestamp.h"; sourceTree = "<group>"; };
+		5BE3489F17CF287300AE0407 /* Timestamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Timestamp.m; path = "src-gen/Timestamp.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +194,8 @@
 		0CD1895417CA4031004DF634 /* Generated Model */ = {
 			isa = PBXGroup;
 			children = (
+				5BE3489E17CF287300AE0407 /* Timestamp.h */,
+				5BE3489F17CF287300AE0407 /* Timestamp.m */,
 				0C84D6EE17CE300700E1DB7D /* Location.h */,
 				0C84D6EF17CE300700E1DB7D /* Location.m */,
 				0CD1895517CA4266004DF634 /* SensorItem.h */,
@@ -314,8 +316,6 @@
 				0CD1896E17CA4322004DF634 /* SensorMUCDomainCreated.m */,
 				0CD1896F17CA4322004DF634 /* SensorMUCDomainRemoved.h */,
 				0CD1897017CA4322004DF634 /* SensorMUCDomainRemoved.m */,
-				0CD1895217CA402A004DF634 /* DelegateSensorValues.h */,
-				0CD1895317CA402A004DF634 /* DelegateSensorValues.m */,
 			);
 			name = Incoming;
 			sourceTree = "<group>";
@@ -442,7 +442,6 @@
 				0C80B7BB17CA61F7002A0DD1 /* DelegateSensorItems.m in Sources */,
 				0C80B7BC17CA61F7002A0DD1 /* SensorMUCDomainCreated.m in Sources */,
 				0C80B7BD17CA61F7002A0DD1 /* SensorMUCDomainRemoved.m in Sources */,
-				0C80B7BE17CA61F7002A0DD1 /* DelegateSensorValues.m in Sources */,
 				0C80B7BF17CA61F7002A0DD1 /* CreateSensorMUCDomain.m in Sources */,
 				0C80B7C017CA61F7002A0DD1 /* GetSensorMUCDomainsRequest.m in Sources */,
 				0C80B7C117CA61F7002A0DD1 /* PublishSensorItems.m in Sources */,
@@ -468,6 +467,7 @@
 				0C80B7CA17CA84A7002A0DD1 /* GetSensorMUCDomainsResponse.m in Sources */,
 				0C84D6F017CE300700E1DB7D /* Location.m in Sources */,
 				0C8B6A5017CE397000D15D3C /* SensorsViewController.m in Sources */,
+				5BE348A017CF287300AE0407 /* Timestamp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
