@@ -7,13 +7,15 @@ public class SensorValue implements XMPPInfo {
 	private String subType = null;
 	private String value = null;
 	private String unit = null;
+	private Timestamp timestamp = new Timestamp();
 
 
-	public SensorValue( String subType, String value, String unit ) {
+	public SensorValue( String subType, String value, String unit, Timestamp timestamp ) {
 		super();
 		this.subType = subType;
 		this.value = value;
 		this.unit = unit;
+		this.timestamp = timestamp;
 	}
 
 	public SensorValue(){}
@@ -40,6 +42,9 @@ public class SensorValue implements XMPPInfo {
 				}
 				else if (tagName.equals( "unit" ) ) {
 					this.unit = parser.nextText();
+				}
+				else if (tagName.equals( "timestamp" ) ) {
+					this.timestamp.fromXML( parser );
 				}
 				else
 					parser.next();
@@ -89,6 +94,10 @@ public class SensorValue implements XMPPInfo {
 			.append( this.unit )
 			.append( "</unit>" );
 
+		sb.append( "<" + this.timestamp.getChildElement() + ">" )
+			.append( this.timestamp.toXML() )
+			.append( "</" + this.timestamp.getChildElement() + ">" );
+
 		return sb.toString();
 	}
 
@@ -116,6 +125,14 @@ public class SensorValue implements XMPPInfo {
 
 	public void setUnit( String unit ) {
 		this.unit = unit;
+	}
+
+	public Timestamp getTimestamp() {
+		return this.timestamp;
+	}
+
+	public void setTimestamp( Timestamp timestamp ) {
+		this.timestamp = timestamp;
 	}
 
 }

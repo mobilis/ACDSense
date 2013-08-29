@@ -109,6 +109,9 @@
 					<xs:element
 						name="unit"
 						type="xs:string" />
+					<xs:element 
+						name="timestamp" 
+						type="mns:Timestamp" />
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="SensorMUCDomain">
@@ -128,6 +131,28 @@
 						type="xs:long" />
 					<xs:element
 						name="longitude"
+						type="xs:long" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Timestamp">
+				<xs:sequence>
+					<xs:element
+						name="day"
+						type="xs:long" />
+					<xs:element
+						name="month"
+						type="xs:long" />
+					<xs:element
+						name="year"
+						type="xs:long" />
+					<xs:element
+						name="hour"
+						type="xs:long" />
+					<xs:element
+						name="minute"
+						type="xs:long" />
+					<xs:element
+						name="second"
 						type="xs:long" />
 				</xs:sequence>
 			</xs:complexType>
