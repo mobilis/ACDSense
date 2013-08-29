@@ -30,11 +30,11 @@
                             <constraint firstItem="hBr-oH-fOw" firstAttribute="leading" secondItem="g1t-FV-Vbb" secondAttribute="leading" type="default" id="2T2-qa-SMi"/>
                             <constraint firstItem="UUm-LE-APp" firstAttribute="leading" secondItem="g1t-FV-Vbb" secondAttribute="leading" type="default" id="CbY-Bn-Lrn"/>
                             <constraint firstItem="hBr-oH-fOw" firstAttribute="top" secondItem="g1t-FV-Vbb" secondAttribute="top" type="default" id="Nhj-ee-dKx"/>
-                            <constraint firstItem="UUm-LE-APp" firstAttribute="height" secondItem="hBr-oH-fOw" secondAttribute="height" type="user" id="PzB-3S-uqg"/>
-                            <constraint firstItem="UUm-LE-APp" firstAttribute="top" secondItem="hBr-oH-fOw" secondAttribute="bottom" type="user" id="VwB-Hg-y1G"/>
                             <constraint firstItem="UUm-LE-APp" firstAttribute="trailing" secondItem="g1t-FV-Vbb" secondAttribute="trailing" type="default" id="lnZ-Z0-6Wh"/>
                             <constraint firstItem="UUm-LE-APp" firstAttribute="bottom" secondItem="g1t-FV-Vbb" secondAttribute="bottom" type="default" id="lxc-M2-JEx"/>
+                            <constraint firstItem="UUm-LE-APp" firstAttribute="top" secondItem="g1t-FV-Vbb" secondAttribute="top" constant="502" id="pO7-yw-VgG"/>
                             <constraint firstItem="hBr-oH-fOw" firstAttribute="trailing" secondItem="g1t-FV-Vbb" secondAttribute="trailing" type="default" id="pcH-30-Rnm"/>
+                            <constraint firstAttribute="bottom" secondItem="hBr-oH-fOw" secondAttribute="bottom" constant="502" id="uUJ-aM-NfC"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
