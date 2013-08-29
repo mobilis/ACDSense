@@ -99,9 +99,9 @@ public class SensorItem implements XMPPInfo {
 			sb.append( "</values>" );
 		}
 
-		sb.append( "<" + this.location.getChildElement() + ">" )
+		sb.append( "<location>" )
 			.append( this.location.toXML() )
-			.append( "</" + this.location.getChildElement() + ">" );
+			.append( "</location>" );
 
 		sb.append( "<type>" )
 			.append( this.type )

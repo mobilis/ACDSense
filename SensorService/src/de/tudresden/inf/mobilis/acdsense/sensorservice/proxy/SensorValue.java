@@ -94,9 +94,9 @@ public class SensorValue implements XMPPInfo {
 			.append( this.unit )
 			.append( "</unit>" );
 
-		sb.append( "<" + this.timestamp.getChildElement() + ">" )
+		sb.append( "<timestamp>" )
 			.append( this.timestamp.toXML() )
-			.append( "</" + this.timestamp.getChildElement() + ">" );
+			.append( "</timestamp>" );
 
 		return sb.toString();
 	}

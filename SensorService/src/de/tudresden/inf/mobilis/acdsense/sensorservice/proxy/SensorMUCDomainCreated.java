@@ -81,9 +81,9 @@ public class SensorMUCDomainCreated extends XMPPBean {
 	public String payloadToXML() {
 		StringBuilder sb = new StringBuilder();
 
-		sb.append( "<" + this.sensorDomain.getChildElement() + ">" )
+		sb.append( "<sensorDomain>" )
 			.append( this.sensorDomain.toXML() )
-			.append( "</" + this.sensorDomain.getChildElement() + ">" );
+			.append( "</sensorDomain>" );
 
 		sb = appendErrorPayload(sb);
 

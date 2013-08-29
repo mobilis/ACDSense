@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <msdl:description
-	targetNamespace="http://mobilis.inf.tu-dresden.de/ACDSense"
+	targetNamespace="http://mobilis.inf.tu-dresden.de#services/ACDSenseService"
 	xmlns:msdl="http://mobilis.inf.tu-dresden.de/msdl/"
 	xmlns:xmpp="http://mobilis.inf.tu-dresden.de/xmpp/"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:mns="http://mobilis.inf.tu-dresden.de/ACDSense"
+	xmlns:mns="http://mobilis.inf.tu-dresden.de#services/ACDSenseService"
 	xsi:schemaLocation="http://mobilis.inf.tu-dresden.de/msdl/ http://mobilis.inf.tu-dresden.de/msdl.xsd ">
 
 	<msdl:types>
-		<xs:schema targetNamespace="http://mobilis.inf.tu-dresden.de/ACDSense">
+		<xs:schema targetNamespace="http://mobilis.inf.tu-dresden.de#services/ACDSenseService">
 			<xs:element name="RegisterPublisher" />
 			<xs:element name="RemovePublisher" />
 			<xs:element name="RegisterReceiver" />

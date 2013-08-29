@@ -982,15 +982,9 @@
 				
 				<xsl:value-of select="$newline" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" />
 				<xsl:text>.append( "&lt;/</xsl:text>
-				<xsl:choose>
-					<!-- if property is of type XMPPInfo -->
-					<xsl:when test="starts-with(./@type,'mns:')">
-						<xsl:text>" + this.</xsl:text><xsl:value-of select="./@name" /><xsl:text>.getChildElement() + "</xsl:text>
-					</xsl:when>
-					<xsl:otherwise>
+				
 						<xsl:value-of select="./@name" />
-					</xsl:otherwise>
-				</xsl:choose>
+					
 				<xsl:text>&gt;" );</xsl:text>
 			</xsl:otherwise>
 		</xsl:choose> 		
