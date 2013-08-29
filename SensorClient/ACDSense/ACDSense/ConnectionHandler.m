@@ -14,8 +14,6 @@
 #import "DelegateSelectorMapping.h"
 #import "IncomingBeanDetection.h"
 
-#import "DelegateSensorValues.h"
-
 @interface ConnectionHandler ()
 
 @property (strong, nonatomic) MXiConnection *connection;
@@ -61,12 +59,15 @@
     }
     
     Account *account = [AccountManager account];
+    NSDictionary *settingsDictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Settings"
+                                                                                                                  ofType:@"plist"]];
+    
     self.connection = [MXiConnection connectionWithJabberID:account.jid
                                                    password:account.password
                                                    hostName:account.hostName
                                                        port:[account.port integerValue]
                                              coordinatorJID:[NSString stringWithFormat:@"mobilis@%@/Coordinator", account.hostName]
-                                           serviceNamespace:[[[NSBundle mainBundle] infoDictionary] valueForKeyPath:@"jabberInformation.serviceNamespace"]
+                                           serviceNamespace:[settingsDictionary valueForKeyPath:@"jabberInformation.serviceNamespace"]
                                            presenceDelegate:self
                                              stanzaDelegate:self
                                                beanDelegate:self
@@ -163,7 +164,6 @@
 - (void)didAuthenticate
 {
     _authenticated = YES;
-    [self clearOutgoingBeanQueue];
 }
 
 - (void)didDiscoverServiceWithNamespace:(NSString *)serviceNamespace
@@ -173,7 +173,7 @@
 {
     _connected = YES;
     self.authenticationBlock(_authenticated);
-    [self clearOutgoingBeanQueue];
+    [self clearOutgoingBeanQueueWithServiceJID:serviceJID];
 }
 
 - (void)didDisconnectWithError:(NSError *)error
@@ -229,6 +229,17 @@
 {
     if (self.outgoingBeanQueue && self.outgoingBeanQueue.count > 0) {
         for (MXiBean<MXiOutgoingBean> *outgoing in self.outgoingBeanQueue) {
+            outgoing.to = [XMPPJID jidWithString:self.connection.serviceJID];
+            [self sendBean:outgoing];
+        }
+    }
+}
+
+- (void)clearOutgoingBeanQueueWithServiceJID:(NSString *)serviceJID
+{
+    if (self.outgoingBeanQueue && self.outgoingBeanQueue.count > 0) {
+        for (MXiBean<MXiOutgoingBean> *outgoing in self.outgoingBeanQueue) {
+            outgoing.to = [XMPPJID jidWithString:serviceJID];
             [self sendBean:outgoing];
         }
     }
