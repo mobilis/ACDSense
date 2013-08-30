@@ -954,7 +954,11 @@
 					<xsl:text>&gt;" );</xsl:text>
 					
 					<xsl:value-of select="$newline" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" />
-					<xsl:text>sb.append( entry );</xsl:text>
+					<xsl:text>sb.append( entry</xsl:text>
+					<xsl:if test="contains(./@type,'mns:')">
+						<xsl:text>.toXML()</xsl:text>
+					</xsl:if>
+					<xsl:text>);</xsl:text>
 					
 					<xsl:value-of select="$newline" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" /><xsl:value-of select="$indent" />
 					<xsl:text>sb.append( "&lt;/</xsl:text>

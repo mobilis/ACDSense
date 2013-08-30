@@ -1,12 +1,16 @@
 package de.tudresden.inf.mobilis.acdsense.sensorservice;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
 import org.jivesoftware.smack.Connection;
+import org.jivesoftware.smack.XMPPException;
 
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.PublishSensorItems;
+import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.SensorItem;
 
 public class MUCHandler implements Observer {
 	
@@ -16,7 +20,9 @@ public class MUCHandler implements Observer {
 	private IQHandler outgoingBeanHandler;
 	private List<MUCConnection> mucConnections;
 	
-	private MUCHandler() {}
+	private MUCHandler() {
+		this.mucConnections = new LinkedList<>();
+	}
 	
 	public static synchronized MUCHandler getInstance() {
 		if (mucHandler == null)
@@ -33,7 +39,12 @@ public class MUCHandler implements Observer {
 			return;
 		
 		MUCConnection newConnection = new MUCConnection(connection, roomJID, this);
-		mucConnections.add(newConnection);
+		try {
+			newConnection.join("acdsense_bot");
+			mucConnections.add(newConnection);
+		} catch (XMPPException e) {
+			e.printStackTrace();
+		}
 	}
 	private boolean doesConnectionToRoomAlreadyExist(final String roomJID) {
 		boolean connectionToRoomIsExisting = false;
@@ -77,7 +88,8 @@ public class MUCHandler implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		if (arg instanceof PublishSensorItems)
+		if (arg instanceof PublishSensorItems) {
 			this.outgoingBeanHandler.onPublishSensorItems((PublishSensorItems)arg);
+		}
 	}
 }

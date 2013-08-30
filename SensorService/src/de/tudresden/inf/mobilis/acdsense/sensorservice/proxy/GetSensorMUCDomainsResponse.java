@@ -90,7 +90,7 @@ public class GetSensorMUCDomainsResponse extends XMPPBean {
 
 		for( SensorMUCDomain entry : sensorDomains ) {
 			sb.append( "<sensorDomains>" );
-			sb.append( entry );
+			sb.append( entry.toXML());
 			sb.append( "</sensorDomains>" );
 		}
 

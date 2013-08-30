@@ -48,7 +48,7 @@ public class MessageBodyParser {
 	private static String getUnitFromBody(final String messageBody) {
 		// Expected Format: 34+Celsius+Timestamp
 		int indexOfSeparator = messageBody.indexOf("+");
-		int indexOfLastSeparator = messageBody.indexOf("+");
+		int indexOfLastSeparator = messageBody.lastIndexOf("+");
 		if (indexOfSeparator > -1 && indexOfLastSeparator == -1) {
 			return messageBody.substring(indexOfSeparator+1, messageBody.length());
 		} else if (indexOfSeparator > -1 && indexOfLastSeparator > -1) {
@@ -74,7 +74,7 @@ public class MessageBodyParser {
 	}
 	
 	private static Date parseTimestampFromDateString(final String dateString) throws ParseException {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyyTHH:mm:ss");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy-HH:mm:ss");
 		return dateFormat.parse(dateString);
 	}
 }

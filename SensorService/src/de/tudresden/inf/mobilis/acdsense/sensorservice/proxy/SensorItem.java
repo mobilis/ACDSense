@@ -95,7 +95,7 @@ public class SensorItem implements XMPPInfo {
 
 		for( SensorValue entry : values ) {
 			sb.append( "<values>" );
-			sb.append( entry );
+			sb.append( entry.toXML());
 			sb.append( "</values>" );
 		}
 

@@ -90,7 +90,7 @@ public class DelegateSensorItems extends XMPPBean {
 
 		for( SensorItem entry : sensorItems ) {
 			sb.append( "<sensorItems>" );
-			sb.append( entry );
+			sb.append( entry.toXML());
 			sb.append( "</sensorItems>" );
 		}
 
