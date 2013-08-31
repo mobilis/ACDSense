@@ -9,6 +9,8 @@
 #import <Cocoa/Cocoa.h>
 
 #import <MXi/MXi.h>
+#import <MXi/MXiMultiUserChatDelegate.h>
+
 #import "DelegateSensorValues.h"
 #import "RegisterPublisher.h"
 #import "RemovePublisher.h"
@@ -17,7 +19,7 @@
 #import "RefreshTimer.h"
 #import "TempValueCalculator.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, MXiPresenceDelegate, MXiStanzaDelegate, MXiBeanDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, MXiPresenceDelegate, MXiStanzaDelegate, MXiBeanDelegate, MXiMultiUserChatDelegate>
 
 @property (strong, nonatomic) RefreshTimer *refreshTimer;
 @property (strong, nonatomic) TempValueCalculator *tempValueCalculator;

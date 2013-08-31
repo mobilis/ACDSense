@@ -21,3 +21,4 @@ Pods
 
 # Project specific exludes
 DataGenerator/Settings.plist
+roomList.txt
