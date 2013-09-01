@@ -30,7 +30,6 @@
 		0CD1893B17C75350004DF634 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1893A17C75350004DF634 /* SettingsViewController.m */; };
 		0CD1894017C7560D004DF634 /* TextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1893F17C7560D004DF634 /* TextFieldCell.m */; };
 		0CD1894317C75885004DF634 /* SensorDomainsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1894217C75885004DF634 /* SensorDomainsViewController.m */; };
-		0CD1894517CA3009004DF634 /* libMXi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CD1894417CA3009004DF634 /* libMXi.a */; };
 		5B22E84F17C2547B00E6E4F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E84E17C2547B00E6E4F4 /* UIKit.framework */; };
 		5B22E85117C2547B00E6E4F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E85017C2547B00E6E4F4 /* Foundation.framework */; };
 		5B22E85317C2547B00E6E4F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E85217C2547B00E6E4F4 /* CoreGraphics.framework */; };
@@ -57,6 +56,10 @@
 		5B96FFAC17CA553200DADDFA /* NSString+Selector.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B96FFAB17CA553200DADDFA /* NSString+Selector.m */; };
 		5BB71D5C17D31872000CAF47 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB71D5B17D31872000CAF47 /* CoreData.framework */; };
 		5BB71D5F17D3199E000CAF47 /* SensorChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB71D5E17D3199E000CAF47 /* SensorChooserViewController.m */; };
+		5BB71D6117D32CDA000CAF47 /* libMXi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB71D6017D32CDA000CAF47 /* libMXi.a */; };
+		5BB71DB117D32EEA000CAF47 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB71DB017D32EEA000CAF47 /* libCorePlot-CocoaTouch.a */; };
+		5BB71DB317D32F37000CAF47 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB71DB217D32F37000CAF47 /* QuartzCore.framework */; };
+		5BB71DB617D32F88000CAF47 /* SensorDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB71DB517D32F88000CAF47 /* SensorDetailViewController.m */; };
 		5BE348A017CF287300AE0407 /* Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3489F17CF287300AE0407 /* Timestamp.m */; };
 /* End PBXBuildFile section */
 
@@ -93,7 +96,6 @@
 		0CD1893F17C7560D004DF634 /* TextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldCell.m; sourceTree = "<group>"; };
 		0CD1894117C75885004DF634 /* SensorDomainsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorDomainsViewController.h; sourceTree = "<group>"; };
 		0CD1894217C75885004DF634 /* SensorDomainsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorDomainsViewController.m; sourceTree = "<group>"; };
-		0CD1894417CA3009004DF634 /* libMXi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMXi.a; path = "../../../mobilis/MXi/build/Release-iphoneos/libMXi.a"; sourceTree = "<group>"; };
 		0CD1894617CA3FEF004DF634 /* SensorValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SensorValue.h; path = "src-gen/SensorValue.h"; sourceTree = "<group>"; };
 		0CD1894717CA3FEF004DF634 /* SensorValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SensorValue.m; path = "src-gen/SensorValue.m"; sourceTree = "<group>"; };
 		0CD1895517CA4266004DF634 /* SensorItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SensorItem.h; path = "src-gen/SensorItem.h"; sourceTree = "<group>"; };
@@ -120,7 +122,6 @@
 		5B22E86217C2547B00E6E4F4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		5B22E86417C2547B00E6E4F4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5B22E88B17C25FD200E6E4F4 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
-		5B22E89417C26AAB00E6E4F4 /* libMXi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMXi.a; path = "../../../Mobilis/MXi/build/Release-iphoneos/libMXi.a"; sourceTree = "<group>"; };
 		5B22E89617C26DD600E6E4F4 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		5B22E89817C26DE000E6E4F4 /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
 		5B22E89A17C26DED00E6E4F4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -146,6 +147,11 @@
 		5BB71D5B17D31872000CAF47 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5BB71D5D17D3199E000CAF47 /* SensorChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorChooserViewController.h; sourceTree = "<group>"; };
 		5BB71D5E17D3199E000CAF47 /* SensorChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorChooserViewController.m; sourceTree = "<group>"; };
+		5BB71D6017D32CDA000CAF47 /* libMXi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMXi.a; path = "../../../Mobilis/MXi/build/Release-iphoneos/libMXi.a"; sourceTree = "<group>"; };
+		5BB71DB017D32EEA000CAF47 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libCorePlot-CocoaTouch.a"; path = "/ProgrammingLibraries/CorePlot_1.3/Source/framework/../build/Release-iphoneos/libCorePlot-CocoaTouch.a"; sourceTree = "<absolute>"; };
+		5BB71DB217D32F37000CAF47 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5BB71DB417D32F88000CAF47 /* SensorDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorDetailViewController.h; sourceTree = "<group>"; };
+		5BB71DB517D32F88000CAF47 /* SensorDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorDetailViewController.m; sourceTree = "<group>"; };
 		5BE3489E17CF287300AE0407 /* Timestamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Timestamp.h; path = "src-gen/Timestamp.h"; sourceTree = "<group>"; };
 		5BE3489F17CF287300AE0407 /* Timestamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Timestamp.m; path = "src-gen/Timestamp.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,9 +161,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BB71DB317D32F37000CAF47 /* QuartzCore.framework in Frameworks */,
+				5BB71DB117D32EEA000CAF47 /* libCorePlot-CocoaTouch.a in Frameworks */,
+				5BB71D6117D32CDA000CAF47 /* libMXi.a in Frameworks */,
 				5BB71D5C17D31872000CAF47 /* CoreData.framework in Frameworks */,
 				0C80B7CC17CCB6BA002A0DD1 /* SystemConfiguration.framework in Frameworks */,
-				0CD1894517CA3009004DF634 /* libMXi.a in Frameworks */,
 				5B22E89F17C26E0500E6E4F4 /* libxml2.dylib in Frameworks */,
 				5B22E89D17C26DF800E6E4F4 /* Security.framework in Frameworks */,
 				5B22E89B17C26DED00E6E4F4 /* CFNetwork.framework in Frameworks */,
@@ -195,6 +203,8 @@
 				0C8B6A4F17CE397000D15D3C /* SensorsViewController.m */,
 				5BB71D5D17D3199E000CAF47 /* SensorChooserViewController.h */,
 				5BB71D5E17D3199E000CAF47 /* SensorChooserViewController.m */,
+				5BB71DB417D32F88000CAF47 /* SensorDetailViewController.h */,
+				5BB71DB517D32F88000CAF47 /* SensorDetailViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -219,7 +229,6 @@
 		5B22E84217C2547B00E6E4F4 = {
 			isa = PBXGroup;
 			children = (
-				0CD1894417CA3009004DF634 /* libMXi.a */,
 				5B22E85417C2547B00E6E4F4 /* ACDSense */,
 				5B22E84D17C2547B00E6E4F4 /* Frameworks */,
 				5B22E84C17C2547B00E6E4F4 /* Products */,
@@ -237,6 +246,9 @@
 		5B22E84D17C2547B00E6E4F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5BB71DB217D32F37000CAF47 /* QuartzCore.framework */,
+				5BB71DB017D32EEA000CAF47 /* libCorePlot-CocoaTouch.a */,
+				5BB71D6017D32CDA000CAF47 /* libMXi.a */,
 				5BB71D5B17D31872000CAF47 /* CoreData.framework */,
 				0C80B7CB17CCB6BA002A0DD1 /* SystemConfiguration.framework */,
 				5B22E89E17C26E0500E6E4F4 /* libxml2.dylib */,
@@ -244,7 +256,6 @@
 				5B22E89A17C26DED00E6E4F4 /* CFNetwork.framework */,
 				5B22E89817C26DE000E6E4F4 /* libresolv.dylib */,
 				5B22E89617C26DD600E6E4F4 /* libiconv.dylib */,
-				5B22E89417C26AAB00E6E4F4 /* libMXi.a */,
 				5B22E84E17C2547B00E6E4F4 /* UIKit.framework */,
 				5B22E85017C2547B00E6E4F4 /* Foundation.framework */,
 				5B22E85217C2547B00E6E4F4 /* CoreGraphics.framework */,
@@ -478,6 +489,7 @@
 				0C8B6A5017CE397000D15D3C /* SensorsViewController.m in Sources */,
 				5BE348A017CF287300AE0407 /* Timestamp.m in Sources */,
 				5BB71D5F17D3199E000CAF47 /* SensorChooserViewController.m in Sources */,
+				5BB71DB617D32F88000CAF47 /* SensorDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,7 +570,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ACDSense/ACDSense-Prefix.pch";
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
+					"\"$(CORE_PLOT)\"/**",
+				);
 				INFOPLIST_FILE = "ACDSense/ACDSense-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -579,7 +594,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ACDSense/ACDSense-Prefix.pch";
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
+					"\"$(CORE_PLOT)\"/**",
+				);
 				INFOPLIST_FILE = "ACDSense/ACDSense-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (

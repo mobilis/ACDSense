@@ -244,16 +244,30 @@
             </objects>
             <point key="canvasLocation" x="1604" y="389"/>
         </scene>
-        <!--View Controller-->
+        <!--Sensor Detail View Controller-->
         <scene sceneID="lSR-gt-TRf">
             <objects>
-                <viewController id="cDf-8N-Z7r" sceneMemberID="viewController">
+                <viewController id="cDf-8N-Z7r" customClass="SensorDetailViewController" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="88N-jp-XWl">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="502"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JRc-mC-4pN" customClass="CPTGraphHostingView">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="JRc-mC-4pN" firstAttribute="leading" secondItem="88N-jp-XWl" secondAttribute="leading" type="default" id="1MN-y3-YGp"/>
+                            <constraint firstItem="JRc-mC-4pN" firstAttribute="top" secondItem="88N-jp-XWl" secondAttribute="top" constant="251" id="3Wn-LG-9aR"/>
+                            <constraint firstItem="JRc-mC-4pN" firstAttribute="trailing" secondItem="88N-jp-XWl" secondAttribute="trailing" type="default" id="Fh9-HP-sZp"/>
+                            <constraint firstItem="JRc-mC-4pN" firstAttribute="bottom" secondItem="88N-jp-XWl" secondAttribute="bottom" type="default" id="UAh-SS-uhh"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="plotView" destination="JRc-mC-4pN" id="NUe-gX-OnY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oVL-hh-pIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -261,6 +275,9 @@
         </scene>
     </scenes>
     <classes>
+        <class className="CPTGraphHostingView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPTGraphHostingView.h"/>
+        </class>
         <class className="MainViewController" superclassName="UISplitViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
         </class>
@@ -269,6 +286,12 @@
         </class>
         <class className="SensorChooserViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SensorChooserViewController.h"/>
+        </class>
+        <class className="SensorDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SensorDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="plotView" candidateClass="CPTGraphHostingView"/>
+            </relationships>
         </class>
         <class className="SensorDomainsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SensorDomainsViewController.h"/>
