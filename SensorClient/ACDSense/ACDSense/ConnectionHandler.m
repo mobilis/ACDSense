@@ -171,8 +171,8 @@
                                 version:(NSInteger)version
                              atJabberID:(NSString *)serviceJID
 {
-    _connected = YES;
     self.authenticationBlock(_authenticated);
+    _connected = YES;
     [self clearOutgoingBeanQueueWithServiceJID:serviceJID];
 }
 
