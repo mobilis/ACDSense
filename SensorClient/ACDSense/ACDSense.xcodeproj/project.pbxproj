@@ -55,6 +55,8 @@
 		5B772CC217C923920008BC02 /* IncomingBeanDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CC117C923920008BC02 /* IncomingBeanDetection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5B96FFA917CA4F0100DADDFA /* DelegateSelectorMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B96FFA817CA4F0100DADDFA /* DelegateSelectorMapping.m */; };
 		5B96FFAC17CA553200DADDFA /* NSString+Selector.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B96FFAB17CA553200DADDFA /* NSString+Selector.m */; };
+		5BB71D5C17D31872000CAF47 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB71D5B17D31872000CAF47 /* CoreData.framework */; };
+		5BB71D5F17D3199E000CAF47 /* SensorChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB71D5E17D3199E000CAF47 /* SensorChooserViewController.m */; };
 		5BE348A017CF287300AE0407 /* Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3489F17CF287300AE0407 /* Timestamp.m */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +143,9 @@
 		5B96FFA817CA4F0100DADDFA /* DelegateSelectorMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateSelectorMapping.m; sourceTree = "<group>"; };
 		5B96FFAA17CA553200DADDFA /* NSString+Selector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Selector.h"; sourceTree = "<group>"; };
 		5B96FFAB17CA553200DADDFA /* NSString+Selector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Selector.m"; sourceTree = "<group>"; };
+		5BB71D5B17D31872000CAF47 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5BB71D5D17D3199E000CAF47 /* SensorChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorChooserViewController.h; sourceTree = "<group>"; };
+		5BB71D5E17D3199E000CAF47 /* SensorChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorChooserViewController.m; sourceTree = "<group>"; };
 		5BE3489E17CF287300AE0407 /* Timestamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Timestamp.h; path = "src-gen/Timestamp.h"; sourceTree = "<group>"; };
 		5BE3489F17CF287300AE0407 /* Timestamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Timestamp.m; path = "src-gen/Timestamp.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +155,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BB71D5C17D31872000CAF47 /* CoreData.framework in Frameworks */,
 				0C80B7CC17CCB6BA002A0DD1 /* SystemConfiguration.framework in Frameworks */,
 				0CD1894517CA3009004DF634 /* libMXi.a in Frameworks */,
 				5B22E89F17C26E0500E6E4F4 /* libxml2.dylib in Frameworks */,
@@ -187,6 +193,8 @@
 				0CD1893717C74DAC004DF634 /* MainViewController.m */,
 				0C8B6A4E17CE397000D15D3C /* SensorsViewController.h */,
 				0C8B6A4F17CE397000D15D3C /* SensorsViewController.m */,
+				5BB71D5D17D3199E000CAF47 /* SensorChooserViewController.h */,
+				5BB71D5E17D3199E000CAF47 /* SensorChooserViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -229,6 +237,7 @@
 		5B22E84D17C2547B00E6E4F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5BB71D5B17D31872000CAF47 /* CoreData.framework */,
 				0C80B7CB17CCB6BA002A0DD1 /* SystemConfiguration.framework */,
 				5B22E89E17C26E0500E6E4F4 /* libxml2.dylib */,
 				5B22E89C17C26DF800E6E4F4 /* Security.framework */,
@@ -468,6 +477,7 @@
 				0C84D6F017CE300700E1DB7D /* Location.m in Sources */,
 				0C8B6A5017CE397000D15D3C /* SensorsViewController.m in Sources */,
 				5BE348A017CF287300AE0407 /* Timestamp.m in Sources */,
+				5BB71D5F17D3199E000CAF47 /* SensorChooserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
