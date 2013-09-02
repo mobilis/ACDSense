@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SensorSelectionDelegate.h"
+
 @interface SensorChooserViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) id<SensorSelectionDelegate> delegate;
 
 - (void)addSensorItems:(NSArray *)sensorItems;
 

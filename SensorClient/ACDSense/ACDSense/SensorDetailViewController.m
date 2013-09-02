@@ -8,15 +8,23 @@
 
 #import "SensorDetailViewController.h"
 
+#import "SensorValue.h"
+#import "Location+Description.h"
+
 @interface SensorDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet CPTGraphHostingView *plotView;
+@property (weak, nonatomic) IBOutlet UILabel *sensorIDLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sensorTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sensorLocationLabel;
 
 @property (strong) CPTXYGraph *graph;
 
 @property (strong, nonatomic) NSMutableArray *sensorValues;
 
 - (void)constructChart;
+- (void)updateChartContent;
+- (void)updateLabels;
 
 @end
 
@@ -68,10 +76,10 @@
 //    xAxis.orthogonalCoordinateDecimal = CPTDecimalFromString(@"5.0");
     xAxis.minorTicksPerInterval = 5;
     
-    CPTXYAxis *yAxis = axisSet.xAxis;
-    yAxis.majorIntervalLength = CPTDecimalFromString(@"10.0");
+    CPTXYAxis *yAxis = axisSet.yAxis;
+    yAxis.majorIntervalLength = CPTDecimalFromString(@"1.0");
 //    yAxis.orthogonalCoordinateDecimal = CPTDecimalFromString(@"5.0");
-    yAxis.minorTicksPerInterval = 5;
+    yAxis.minorTicksPerInterval = 1;
     
     CPTScatterPlot *dataSourceLinePlot = [[CPTScatterPlot alloc] init];
     dataSourceLinePlot.identifier = @"Black Plot";
@@ -83,6 +91,46 @@
     dataSourceLinePlot.dataLineStyle = lineStyle;
     
     dataSourceLinePlot.dataSource = self;
+    [_graph addPlot:dataSourceLinePlot];
+}
+
+#pragma mark - Custom Setter & Getter
+
+- (void)setSensorItem:(SensorItem *)sensorItem
+{
+    if (_sensorItem == sensorItem) {
+        return;
+    }
+    _sensorItem = nil;
+    _sensorItem = sensorItem;
+    
+    [self updateLabels];
+}
+
+#pragma mark - Private Methods
+
+- (void)updateChartContent
+{
+    [_graph reloadData];
+}
+
+- (void)updateLabels
+{
+    _sensorIDLabel.text = _sensorItem.sensorId;
+    _sensorTypeLabel.text = _sensorItem.type;
+    _sensorLocationLabel.text = [_sensorItem.location locationAsString];
+}
+
+#pragma mark - Public Methods
+
+- (void)addSensorValues:(NSArray *)sensorValues
+{
+    if (!_sensorValues) {
+        self.sensorValues = [NSMutableArray arrayWithCapacity:sensorValues.count + 10];
+    }
+    
+    [_sensorValues addObjectsFromArray:sensorValues];
+    [self updateChartContent];
 }
 
 #pragma mark - CPTPlotDataSource
@@ -92,9 +140,24 @@
     return _sensorValues ? _sensorValues.count : 0;
 }
 
-- (NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)idx
+- (double)doubleForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)idx
 {
-    return  [NSNumber numberWithInt:5];
+    if (!_sensorValues) {
+        return 0.0;
+    }
+    
+    switch (fieldEnum) {
+        case CPTScatterPlotFieldX: {
+            return [[NSNumber numberWithInt:idx] doubleValue];
+        }
+        case CPTScatterPlotFieldY: {
+            SensorValue *value = [_sensorValues objectAtIndex:idx];
+            return [value.value doubleValue];
+        }
+        default:
+            break;
+    }
+    return 0.0;
 }
 
 @end

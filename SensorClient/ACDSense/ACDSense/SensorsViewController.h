@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SensorsViewController : UIViewController
+#import "SensorSelectionDelegate.h"
+
+@interface SensorsViewController : UIViewController <SensorSelectionDelegate>
 @property (weak, nonatomic) IBOutlet UIView *sensorsView;
 @property (weak, nonatomic) IBOutlet UIView *sensorDetailView;
-
 
 @end

@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSMutableDictionary *sensorItems;
 
 - (void)updateView;
+- (SensorItem *)retrieveSensorItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -79,6 +80,12 @@
     [self.tableView reloadData];
 }
 
+- (SensorItem *)retrieveSensorItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *sensorItemKey = [[_sensorItems allKeys] objectAtIndex:indexPath.row]; // TODO: sort to guarantee a fixed order
+    return [_sensorItems objectForKey:sensorItemKey];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -97,8 +104,7 @@
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    NSString *sensorItemKey = [[_sensorItems allKeys] objectAtIndex:indexPath.row]; // TODO: sort to guarantee a fixed order
-    SensorItem *sensorItem = [_sensorItems objectForKey:sensorItemKey];
+    SensorItem *sensorItem = [self retrieveSensorItemAtIndexPath:indexPath];
     
     cell.textLabel.text = [NSString stringWithFormat:@"Sensor ID: %@", sensorItem.sensorId];
     cell.detailTextLabel.text = sensorItem.type;
@@ -110,6 +116,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // TODO: implement delegation to display this sensor in the detail view
+    if (_delegate) {
+        [_delegate performSelector:@selector(updateSensorItemWithSensorItem:)
+                        withObject:[self retrieveSensorItemAtIndexPath:indexPath]];
+    }
 }
 @end

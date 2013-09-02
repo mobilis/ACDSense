@@ -21,7 +21,7 @@
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUm-LE-APp">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="cDf-8N-Z7r" kind="embed" id="a2Z-hO-gub"/>
+                                    <segue destination="cDf-8N-Z7r" kind="embed" identifier="sensorDetailSegue" id="a2Z-hO-gub"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -255,18 +255,76 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JRc-mC-4pN" customClass="CPTGraphHostingView">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SensorID:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Oo-0r-wov">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="88" id="Jvz-fq-YC8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OmS-Z3-JtE">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Type:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Osg-lv-1PM">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Location:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp7-zD-dpU">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAh-Wq-ezv">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6g-V3-FTC">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="1Oo-0r-wov" firstAttribute="leading" secondItem="88N-jp-XWl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="10S-2Q-8qo"/>
                             <constraint firstItem="JRc-mC-4pN" firstAttribute="leading" secondItem="88N-jp-XWl" secondAttribute="leading" type="default" id="1MN-y3-YGp"/>
-                            <constraint firstItem="JRc-mC-4pN" firstAttribute="top" secondItem="88N-jp-XWl" secondAttribute="top" constant="251" id="3Wn-LG-9aR"/>
+                            <constraint firstAttribute="trailing" secondItem="jAh-Wq-ezv" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="2if-o9-b6G"/>
+                            <constraint firstItem="jAh-Wq-ezv" firstAttribute="leading" secondItem="Osg-lv-1PM" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="40b-EO-cR1"/>
+                            <constraint firstItem="jAh-Wq-ezv" firstAttribute="top" secondItem="OmS-Z3-JtE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="5rl-6H-Fgf"/>
+                            <constraint firstItem="Osg-lv-1PM" firstAttribute="top" secondItem="1Oo-0r-wov" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="7bc-N7-DhK"/>
+                            <constraint firstItem="cp7-zD-dpU" firstAttribute="leading" secondItem="88N-jp-XWl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Anq-lq-8xE"/>
+                            <constraint firstItem="OmS-Z3-JtE" firstAttribute="leading" secondItem="1Oo-0r-wov" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Bia-Qc-N4B"/>
+                            <constraint firstItem="c6g-V3-FTC" firstAttribute="leading" secondItem="jAh-Wq-ezv" secondAttribute="leading" type="default" id="F1e-lJ-T9Y"/>
                             <constraint firstItem="JRc-mC-4pN" firstAttribute="trailing" secondItem="88N-jp-XWl" secondAttribute="trailing" type="default" id="Fh9-HP-sZp"/>
-                            <constraint firstItem="JRc-mC-4pN" firstAttribute="bottom" secondItem="88N-jp-XWl" secondAttribute="bottom" type="default" id="UAh-SS-uhh"/>
+                            <constraint firstItem="c6g-V3-FTC" firstAttribute="top" secondItem="jAh-Wq-ezv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="JD2-Zy-HYn"/>
+                            <constraint firstItem="OmS-Z3-JtE" firstAttribute="top" secondItem="88N-jp-XWl" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Liu-8o-1Dm"/>
+                            <constraint firstItem="1Oo-0r-wov" firstAttribute="top" secondItem="88N-jp-XWl" secondAttribute="top" constant="20" symbolic="YES" type="default" id="N04-sG-2T0"/>
+                            <constraint firstItem="JRc-mC-4pN" firstAttribute="top" secondItem="88N-jp-XWl" secondAttribute="top" constant="150" id="OjP-ml-U6T"/>
+                            <constraint firstItem="jAh-Wq-ezv" firstAttribute="baseline" secondItem="Osg-lv-1PM" secondAttribute="baseline" type="default" id="R9k-UT-gHs"/>
+                            <constraint firstItem="c6g-V3-FTC" firstAttribute="leading" secondItem="cp7-zD-dpU" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="XR7-VC-Ccw"/>
+                            <constraint firstItem="Osg-lv-1PM" firstAttribute="leading" secondItem="88N-jp-XWl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Xtg-vF-q0x"/>
+                            <constraint firstItem="c6g-V3-FTC" firstAttribute="baseline" secondItem="cp7-zD-dpU" secondAttribute="baseline" type="default" id="Yc7-iF-Lor"/>
+                            <constraint firstItem="JRc-mC-4pN" firstAttribute="top" relation="lessThanOrEqual" secondItem="88N-jp-XWl" secondAttribute="top" constant="150" type="user" id="bH6-1B-YSN"/>
+                            <constraint firstItem="cp7-zD-dpU" firstAttribute="top" secondItem="Osg-lv-1PM" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="hHt-hb-WfX"/>
+                            <constraint firstAttribute="trailing" secondItem="c6g-V3-FTC" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="vlV-Je-TOJ"/>
+                            <constraint firstItem="JRc-mC-4pN" firstAttribute="bottom" secondItem="88N-jp-XWl" secondAttribute="bottom" type="default" id="vzm-Bt-ZJR"/>
+                            <constraint firstAttribute="trailing" secondItem="OmS-Z3-JtE" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="xNQ-uU-HvB"/>
+                            <constraint firstItem="OmS-Z3-JtE" firstAttribute="baseline" secondItem="1Oo-0r-wov" secondAttribute="baseline" type="default" id="xxA-th-bAS"/>
+                            <constraint firstItem="jAh-Wq-ezv" firstAttribute="leading" secondItem="OmS-Z3-JtE" secondAttribute="leading" type="default" id="zMq-wa-kWl"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="plotView" destination="JRc-mC-4pN" id="NUe-gX-OnY"/>
+                        <outlet property="sensorIDLabel" destination="OmS-Z3-JtE" id="Hz8-GV-qE4"/>
+                        <outlet property="sensorLocationLabel" destination="c6g-V3-FTC" id="BdA-9B-fzO"/>
+                        <outlet property="sensorTypeLabel" destination="jAh-Wq-ezv" id="cle-CO-iNS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oVL-hh-pIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -291,6 +349,9 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SensorDetailViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="plotView" candidateClass="CPTGraphHostingView"/>
+                <relationship kind="outlet" name="sensorIDLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sensorLocationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sensorTypeLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="SensorDomainsViewController" superclassName="UIViewController">

@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SensorItem.h"
+
 #import "CorePlot-CocoaTouch.h"
 
 @interface SensorDetailViewController : UIViewController <CPTPlotDataSource>
+
+@property (strong, nonatomic) SensorItem *sensorItem;
+
+- (void)addSensorValues:(NSArray *)sensorValues;
 
 @end

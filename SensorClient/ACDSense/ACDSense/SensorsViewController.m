@@ -9,6 +9,7 @@
 #import "SensorsViewController.h"
 
 #import "SensorChooserViewController.h"
+#import "SensorDetailViewController.h"
 
 #import "ConnectionHandler.h"
 
@@ -17,7 +18,7 @@
 @interface SensorsViewController ()
 
 @property (weak) SensorChooserViewController *sensorsViewController;
-@property (weak) UIViewController *sensorDetailViewController;
+@property (weak) SensorDetailViewController *sensorDetailViewController;
 
 - (void)registerBeanListener;
 
@@ -61,6 +62,11 @@
     if ([segue.identifier isEqualToString:@"sensorsViewSegue"]) {
         NSLog(@"Seque for SensorsView called");
         self.sensorsViewController = [segue destinationViewController];
+        self.sensorsViewController.delegate = self;
+    }
+    if ([segue.identifier isEqualToString:@"sensorDetailSegue"]) {
+        NSLog(@"Segue for SensorDetail called");
+        self.sensorDetailViewController = [segue destinationViewController];
     }
 }
 
@@ -79,6 +85,19 @@
     }
     
     [_sensorsViewController addSensorItems:sensorItems.sensorItems];
+    for (SensorItem *item in sensorItems.sensorItems) {
+        if ([_sensorDetailViewController.sensorItem.sensorId isEqualToString:item.sensorId]) {
+            [_sensorDetailViewController addSensorValues:item.values];
+            break;
+        }
+    }
+}
+
+#pragma mark - SensorSelectionDelegate
+
+- (void)updateSensorItemWithSensorItem:(SensorItem *)sensorItem
+{
+    [_sensorDetailViewController setSensorItem:sensorItem];
 }
 
 @end

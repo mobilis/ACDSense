@@ -30,6 +30,7 @@
 		0CD1893B17C75350004DF634 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1893A17C75350004DF634 /* SettingsViewController.m */; };
 		0CD1894017C7560D004DF634 /* TextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1893F17C7560D004DF634 /* TextFieldCell.m */; };
 		0CD1894317C75885004DF634 /* SensorDomainsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1894217C75885004DF634 /* SensorDomainsViewController.m */; };
+		5B1F319017D4823900ADA1CA /* Location+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F318F17D4823900ADA1CA /* Location+Description.m */; };
 		5B22E84F17C2547B00E6E4F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E84E17C2547B00E6E4F4 /* UIKit.framework */; };
 		5B22E85117C2547B00E6E4F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E85017C2547B00E6E4F4 /* Foundation.framework */; };
 		5B22E85317C2547B00E6E4F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E85217C2547B00E6E4F4 /* CoreGraphics.framework */; };
@@ -108,6 +109,9 @@
 		0CD1896E17CA4322004DF634 /* SensorMUCDomainCreated.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SensorMUCDomainCreated.m; path = "src-gen/SensorMUCDomainCreated.m"; sourceTree = "<group>"; };
 		0CD1896F17CA4322004DF634 /* SensorMUCDomainRemoved.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SensorMUCDomainRemoved.h; path = "src-gen/SensorMUCDomainRemoved.h"; sourceTree = "<group>"; };
 		0CD1897017CA4322004DF634 /* SensorMUCDomainRemoved.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SensorMUCDomainRemoved.m; path = "src-gen/SensorMUCDomainRemoved.m"; sourceTree = "<group>"; };
+		5B1F318E17D4823900ADA1CA /* Location+Description.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Location+Description.h"; sourceTree = "<group>"; };
+		5B1F318F17D4823900ADA1CA /* Location+Description.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Location+Description.m"; sourceTree = "<group>"; };
+		5B1F319117D487F500ADA1CA /* SensorSelectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorSelectionDelegate.h; sourceTree = "<group>"; };
 		5B22E84B17C2547B00E6E4F4 /* ACDSense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACDSense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B22E84E17C2547B00E6E4F4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5B22E85017C2547B00E6E4F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -205,6 +209,7 @@
 				5BB71D5E17D3199E000CAF47 /* SensorChooserViewController.m */,
 				5BB71DB417D32F88000CAF47 /* SensorDetailViewController.h */,
 				5BB71DB517D32F88000CAF47 /* SensorDetailViewController.m */,
+				5B1F319117D487F500ADA1CA /* SensorSelectionDelegate.h */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -384,6 +389,8 @@
 			children = (
 				5B96FFAA17CA553200DADDFA /* NSString+Selector.h */,
 				5B96FFAB17CA553200DADDFA /* NSString+Selector.m */,
+				5B1F318E17D4823900ADA1CA /* Location+Description.h */,
+				5B1F318F17D4823900ADA1CA /* Location+Description.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -490,6 +497,7 @@
 				5BE348A017CF287300AE0407 /* Timestamp.m in Sources */,
 				5BB71D5F17D3199E000CAF47 /* SensorChooserViewController.m in Sources */,
 				5BB71DB617D32F88000CAF47 /* SensorDetailViewController.m in Sources */,
+				5B1F319017D4823900ADA1CA /* Location+Description.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
