@@ -3,7 +3,7 @@
 
 @interface GetSensorMUCDomainsResponse : MXiBean <MXiIncomingBean>
 
-@property (nonatomic, strong) NSMutableArray* domains;
+@property (nonatomic, strong) NSMutableArray* sensorDomains;
 
 - (id)init;
 

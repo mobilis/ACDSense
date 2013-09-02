@@ -15,6 +15,12 @@
 		SensorItem *sensorItemsObject = [[SensorItem alloc] init];
 		NSXMLElement* sensorIdElement = [sensorItemsElement elementForName:@"sensorId"];
 		[sensorItemsObject setSensorId:[sensorIdElement stringValue]];
+		NSXMLElement* sensorDomainElement = [sensorItemsElement elementForName:@"sensorDomain"];
+		[sensorItemsObject setSensorDomain:[[SensorMUCDomain alloc] init]];
+		NSXMLElement* domainIdElement = [sensorDomainElement elementForName:@"domainId"];
+		[[sensorItemsObject sensorDomain] setDomainId:[domainIdElement stringValue]];
+		NSXMLElement* domainURLElement = [sensorDomainElement elementForName:@"domainURL"];
+		[[sensorItemsObject sensorDomain] setDomainURL:[domainURLElement stringValue]];
 		[sensorItemsObject setValues:[NSMutableArray array]];
 		NSArray* valuesElements = [sensorItemsElement elementsForName:@"values"];
 		for (NSXMLElement* valuesElement in valuesElements) {
@@ -25,10 +31,28 @@
 			[valuesObject setValue:[valueElement stringValue]];
 			NSXMLElement* unitElement = [valuesElement elementForName:@"unit"];
 			[valuesObject setUnit:[unitElement stringValue]];
+			NSXMLElement* timestampElement = [valuesElement elementForName:@"timestamp"];
+			[valuesObject setTimestamp:[[Timestamp alloc] init]];
+			NSXMLElement* dayElement = [timestampElement elementForName:@"day"];
+			[[valuesObject timestamp] setDay:[[dayElement stringValue] integerValue]];
+			NSXMLElement* monthElement = [timestampElement elementForName:@"month"];
+			[[valuesObject timestamp] setMonth:[[monthElement stringValue] integerValue]];
+			NSXMLElement* yearElement = [timestampElement elementForName:@"year"];
+			[[valuesObject timestamp] setYear:[[yearElement stringValue] integerValue]];
+			NSXMLElement* hourElement = [timestampElement elementForName:@"hour"];
+			[[valuesObject timestamp] setHour:[[hourElement stringValue] integerValue]];
+			NSXMLElement* minuteElement = [timestampElement elementForName:@"minute"];
+			[[valuesObject timestamp] setMinute:[[minuteElement stringValue] integerValue]];
+			NSXMLElement* secondElement = [timestampElement elementForName:@"second"];
+			[[valuesObject timestamp] setSecond:[[secondElement stringValue] integerValue]];
 			[[sensorItemsObject values] addObject:valuesObject];
 		}
 		NSXMLElement* locationElement = [sensorItemsElement elementForName:@"location"];
-		[sensorItemsObject setLocation:[locationElement stringValue]];
+		[sensorItemsObject setLocation:[[Location alloc] init]];
+		NSXMLElement* latitudeElement = [locationElement elementForName:@"latitude"];
+		[[sensorItemsObject location] setLatitude:[[latitudeElement stringValue] integerValue]];
+		NSXMLElement* longitudeElement = [locationElement elementForName:@"longitude"];
+		[[sensorItemsObject location] setLongitude:[[longitudeElement stringValue] integerValue]];
 		NSXMLElement* typeElement = [sensorItemsElement elementForName:@"type"];
 		[sensorItemsObject setType:[typeElement stringValue]];
 		[[self sensorItems] addObject:sensorItemsObject];

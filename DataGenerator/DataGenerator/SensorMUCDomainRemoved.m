@@ -9,12 +9,12 @@
 }
 
 - (void)fromXML:(NSXMLElement* )xml {
-	NSXMLElement* domainElement = [xml elementForName:@"domain"];
-	[self setDomain:[[SensorMUCDomain alloc] init]];
-	NSXMLElement* domainIdElement = [domainElement elementForName:@"domainId"];
-	[[self domain] setDomainId:[domainIdElement stringValue]];
-	NSXMLElement* innerDomainElement = [domainElement elementForName:@"domain"];
-	[[self domain] setDomain:[innerDomainElement stringValue]];
+	NSXMLElement* sensorDomainElement = [xml elementForName:@"sensorDomain"];
+	[self setSensorDomain:[[SensorMUCDomain alloc] init]];
+	NSXMLElement* domainIdElement = [sensorDomainElement elementForName:@"domainId"];
+	[[self sensorDomain] setDomainId:[domainIdElement stringValue]];
+	NSXMLElement* domainURLElement = [sensorDomainElement elementForName:@"domainURL"];
+	[[self sensorDomain] setDomainURL:[domainURLElement stringValue]];
 }
 
 + (NSString* )elementName {

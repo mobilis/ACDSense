@@ -3,7 +3,7 @@
 
 @interface SensorMUCDomainCreated : MXiBean <MXiIncomingBean>
 
-@property (nonatomic, strong) SensorMUCDomain* domain;
+@property (nonatomic, strong) SensorMUCDomain* sensorDomain;
 
 - (id)init;
 
