@@ -11,6 +11,7 @@ import org.jivesoftware.smack.XMPPException;
 
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.PublishSensorItems;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.SensorItem;
+import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.SensorMUCDomain;
 
 public class MUCHandler implements Observer {
 	
@@ -34,11 +35,11 @@ public class MUCHandler implements Observer {
 		return this.mucConnections;
 	}
 	
-	public void addRoomConnection(final String roomJID) {
+	public void addRoomConnection(final SensorMUCDomain domain, final String roomJID) {
 		if (doesConnectionToRoomAlreadyExist(roomJID))
 			return;
 		
-		MUCConnection newConnection = new MUCConnection(connection, roomJID, this);
+		MUCConnection newConnection = new MUCConnection(connection, domain, roomJID, this);
 		try {
 			newConnection.join("acdsense_bot");
 			mucConnections.add(newConnection);

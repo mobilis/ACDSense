@@ -34,14 +34,14 @@ public class MUCDiscoveryManager {
 	public void discoverMUCRooms(SensorMUCDomain domain) {
 		MUCDiscovery mucDiscovery = new MUCDiscovery(connection, domain);
 		List<HostedRoom> rooms = mucDiscovery.getAllMUCs();
-		establishConnectionsToRooms(rooms);
+		establishConnectionsToRooms(rooms, domain);
 	}
-	private void establishConnectionsToRooms(List<HostedRoom> rooms) {
+	private void establishConnectionsToRooms(List<HostedRoom> rooms, SensorMUCDomain domain) {
 		MUCHandler mucHandler = MUCHandler.getInstance();
 		if (!mucHandler.isConnectionExisting())
 			mucHandler.setConnection(connection);
 		for (HostedRoom room : rooms) {
-			MUCHandler.getInstance().addRoomConnection(room.getJid());
+			MUCHandler.getInstance().addRoomConnection(domain, room.getJid());
 		}
 	}
 }

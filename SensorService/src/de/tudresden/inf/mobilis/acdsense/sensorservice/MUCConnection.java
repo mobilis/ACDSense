@@ -23,6 +23,7 @@ import de.tudresden.inf.mobilis.acdsense.sensorservice.helper.MessageBodyParser;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.Location;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.PublishSensorItems;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.SensorItem;
+import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.SensorMUCDomain;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.SensorValue;
 
 public class MUCConnection extends Observable implements PacketListener {
@@ -32,6 +33,7 @@ public class MUCConnection extends Observable implements PacketListener {
 	
 	private String roomJID;
 	private String roomType;
+	private SensorMUCDomain domain;
 	
 	private void determineRoomType() {
 		ServiceDiscoveryManager discoveryManager = new ServiceDiscoveryManager(connection);
@@ -78,9 +80,10 @@ public class MUCConnection extends Observable implements PacketListener {
 		return history;
 	}
 		
-	public MUCConnection(Connection connection, final String roomJID, final Observer messageObserver) {
+	public MUCConnection(Connection connection, final SensorMUCDomain domain, final String roomJID, final Observer messageObserver) {
 		this.connection = connection;
 		this.roomJID = roomJID;
+		this.domain = domain;
 		determineRoomType();
 		addObserver(messageObserver);
 	}
@@ -112,7 +115,7 @@ public class MUCConnection extends Observable implements PacketListener {
 			List<SensorValue> sensorValues = new ArrayList<>(1);
 			sensorValues.add(sensorValue);
 			
-			SensorItem sensorItem = new SensorItem("test", sensorValues, new Location(51, 13), roomType);
+			SensorItem sensorItem = new SensorItem("test", domain, sensorValues, new Location(51, 13), roomType);
 			List<SensorItem> sensorItems = new ArrayList<>(1);
 			sensorItems.add(sensorItem);
 			

@@ -5,14 +5,16 @@ import org.xmlpull.v1.XmlPullParser;import java.util.List;import java.util.Array
 public class SensorItem implements XMPPInfo {
 
 	private String sensorId = null;
+	private SensorMUCDomain sensorDomain = new SensorMUCDomain();
 	private List< SensorValue > values = new ArrayList< SensorValue >();
 	private Location location = new Location();
 	private String type = null;
 
 
-	public SensorItem( String sensorId, List< SensorValue > values, Location location, String type ) {
+	public SensorItem( String sensorId, SensorMUCDomain sensorDomain, List< SensorValue > values, Location location, String type ) {
 		super();
 		this.sensorId = sensorId;
+		this.sensorDomain = sensorDomain;
 		for ( SensorValue entity : values ) {
 			this.values.add( entity );
 		}
@@ -38,6 +40,9 @@ public class SensorItem implements XMPPInfo {
 				}
 				else if (tagName.equals( "sensorId" ) ) {
 					this.sensorId = parser.nextText();
+				}
+				else if (tagName.equals( "sensorDomain" ) ) {
+					this.sensorDomain.fromXML( parser );
 				}
 				else if (tagName.equals( "values" ) ) {
 					SensorValue entity = new SensorValue();
@@ -93,6 +98,10 @@ public class SensorItem implements XMPPInfo {
 			.append( this.sensorId )
 			.append( "</sensorId>" );
 
+		sb.append( "<sensorDomain>" )
+			.append( this.sensorDomain.toXML() )
+			.append( "</sensorDomain>" );
+
 		for( SensorValue entry : values ) {
 			sb.append( "<values>" );
 			sb.append( entry.toXML());
@@ -118,6 +127,14 @@ public class SensorItem implements XMPPInfo {
 
 	public void setSensorId( String sensorId ) {
 		this.sensorId = sensorId;
+	}
+
+	public SensorMUCDomain getSensorDomain() {
+		return this.sensorDomain;
+	}
+
+	public void setSensorDomain( SensorMUCDomain sensorDomain ) {
+		this.sensorDomain = sensorDomain;
 	}
 
 	public List< SensorValue > getValues() {

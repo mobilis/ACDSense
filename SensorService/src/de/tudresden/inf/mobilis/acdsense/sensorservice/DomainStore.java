@@ -57,5 +57,12 @@ public class DomainStore {
 		}
 		return null;
 	}
-
+	
+	public SensorMUCDomain getDomainByDomainName(String domainName) {
+		for (SensorMUCDomain domain : allDomains) {
+			if (domain.getDomainURL().equalsIgnoreCase(domainName))
+				return domain;
+		}
+		return null;
+	}
 }
