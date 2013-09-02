@@ -2,6 +2,7 @@ package de.tudresden.inf.mobilis.acdsense.sensorservice;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -11,8 +12,12 @@ import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.packet.Message;
 import org.jivesoftware.smack.packet.Packet;
+import org.jivesoftware.smackx.FormField;
+import org.jivesoftware.smackx.ServiceDiscoveryManager;
 import org.jivesoftware.smackx.muc.DiscussionHistory;
 import org.jivesoftware.smackx.muc.MultiUserChat;
+import org.jivesoftware.smackx.packet.DataForm;
+import org.jivesoftware.smackx.packet.DiscoverInfo;
 
 import de.tudresden.inf.mobilis.acdsense.sensorservice.helper.MessageBodyParser;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.Location;
@@ -27,6 +32,33 @@ public class MUCConnection extends Observable implements PacketListener {
 	
 	private String roomJID;
 	private String roomType;
+	
+	private void determineRoomType() {
+		ServiceDiscoveryManager discoveryManager = new ServiceDiscoveryManager(connection);
+		DiscoverInfo roomInfo;
+		try {
+			roomInfo = discoveryManager.discoverInfo(roomJID);
+			DataForm roomAdditionalInfo = (DataForm) roomInfo.getExtension("x", "jabber:x:data");
+			Iterator<FormField> fieldIterator = roomAdditionalInfo.getFields();
+			boolean found = false;
+			while (fieldIterator.hasNext() && !found) {
+				FormField field = fieldIterator.next();
+				if (field.getVariable().equalsIgnoreCase("muc#roominfo_description")) {
+					for (Iterator<String> valueIterator = field.getValues(); valueIterator.hasNext() && !found;) {
+						String value = valueIterator.next();
+						if (value.length() >= 12)
+							if (value.substring(0, 13).equalsIgnoreCase("acdsense_muc#")) {
+								found = true;
+								roomType = value.substring(13);
+							}
+					}
+				}
+			}
+		} catch (XMPPException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 	private DiscussionHistory noMUCHistory() {
 		DiscussionHistory history = new DiscussionHistory();
@@ -49,6 +81,7 @@ public class MUCConnection extends Observable implements PacketListener {
 	public MUCConnection(Connection connection, final String roomJID, final Observer messageObserver) {
 		this.connection = connection;
 		this.roomJID = roomJID;
+		determineRoomType();
 		addObserver(messageObserver);
 	}
 	
@@ -79,7 +112,7 @@ public class MUCConnection extends Observable implements PacketListener {
 			List<SensorValue> sensorValues = new ArrayList<>(1);
 			sensorValues.add(sensorValue);
 			
-			SensorItem sensorItem = new SensorItem("test", sensorValues, new Location(), roomType);
+			SensorItem sensorItem = new SensorItem("test", sensorValues, new Location(51, 13), roomType);
 			List<SensorItem> sensorItems = new ArrayList<>(1);
 			sensorItems.add(sensorItem);
 			
