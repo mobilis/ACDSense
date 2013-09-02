@@ -14,6 +14,8 @@
 
 @property (weak, nonatomic) id<SensorSelectionDelegate> delegate;
 
+- (void)filterForSensorMUCDomains:(NSArray *)domains;
+
 - (void)addSensorItems:(NSArray *)sensorItems;
 
 @end

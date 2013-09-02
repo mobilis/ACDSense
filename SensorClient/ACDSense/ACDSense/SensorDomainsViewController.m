@@ -8,6 +8,8 @@
 
 #import "SensorDomainsViewController.h"
 
+#import "SensorsViewController.h"
+
 #import "ConnectionHandler.h"
 
 #import "SensorMUCDomain.h"
@@ -51,6 +53,7 @@
 	self.refreshControl = [UIRefreshControl new];
     [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
+    [self.tableView setAllowsMultipleSelection:YES];
 }
 
 - (void)handleRefresh:(id)arg
@@ -99,6 +102,18 @@
 	RemoveSensorMUCDomain *request = [RemoveSensorMUCDomain new];
 	request.sensorDomain = [self.sensorDomains objectAtIndex:indexPath.row];
 	[[ConnectionHandler sharedInstance] sendBean:request];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SensorsViewController *detailView = [((UISplitViewController *)self.parentViewController.parentViewController) viewControllers][1];
+    NSArray *selectedRows = [tableView indexPathsForSelectedRows];
+    NSMutableArray *selectedDomains = [NSMutableArray arrayWithCapacity:selectedRows.count];
+    
+    for (NSIndexPath *indexPath in selectedRows) {
+        [selectedDomains addObject:[_sensorDomains objectAtIndex:indexPath.row]];
+    }
+    [detailView filterForDomains:selectedDomains];
 }
 
 #pragma mark - UIAlertViewDelegate

@@ -18,7 +18,7 @@
 @interface SensorsViewController ()
 
 @property (weak) SensorChooserViewController *sensorsViewController;
-@property (weak) SensorDetailViewController *sensorDetailViewController;
+@property (weak) SensorDetailViewController *sensorDetailViewController; 
 
 - (void)registerBeanListener;
 
@@ -68,6 +68,18 @@
         NSLog(@"Segue for SensorDetail called");
         self.sensorDetailViewController = [segue destinationViewController];
     }
+}
+
+#pragma mark - Filter SensorMUCDomains
+
+- (void)filterForDomain:(SensorMUCDomain *)domain
+{
+    [self filterForDomains:@[domain]];
+}
+
+- (void)filterForDomains:(NSArray *)domains
+{
+    [_sensorsViewController filterForSensorMUCDomains:domains];
 }
 
 #pragma mark - MXiCommunication

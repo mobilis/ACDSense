@@ -12,7 +12,9 @@
 
 @interface SensorChooserViewController ()
 
-@property (strong, nonatomic) NSMutableDictionary *sensorItems;
+@property (strong, nonatomic) NSMutableDictionary *filteredSensorItems;
+@property (strong, nonatomic) NSMutableDictionary *allSensorItems;
+@property BOOL filtered;
 
 - (void)updateView;
 - (SensorItem *)retrieveSensorItemAtIndexPath:(NSIndexPath *)indexPath;
@@ -33,12 +35,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.allSensorItems = [NSMutableDictionary dictionaryWithCapacity:10];
+    self.filteredSensorItems = [NSMutableDictionary dictionaryWithCapacity:10];
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,25 +48,70 @@
 
 #pragma mark - Public Methods
 
+- (void)filterForSensorMUCDomains:(NSArray *)domains
+{
+    if (!domains || domains.count == 0) {
+        _filtered = NO;
+        return;
+    }
+    
+    self.filteredSensorItems = [NSMutableDictionary dictionaryWithCapacity:domains.count];
+    for (NSString *domainID in [_allSensorItems allKeys]) {
+        for (SensorMUCDomain *domain in domains) {
+            if ([domain.domainId isEqualToString:domainID]) {
+                [self.filteredSensorItems setObject:[_allSensorItems objectForKey:domainID] forKey:domainID];
+            }
+        }
+    }
+    
+    _filtered = YES;
+    [self updateView];
+}
+
 - (void)addSensorItems:(NSArray *)sensorItems
 {
     if (!sensorItems || sensorItems.count == 0) {
         return;
     }
-    if (!_sensorItems) {
-        self.sensorItems = [NSMutableDictionary dictionaryWithCapacity:10];
-    }
     
     for (SensorItem *sensorItem in sensorItems) {
-        if (_sensorItems ) {
-            SensorItem *tempSensorItem = [_sensorItems objectForKey:sensorItem.sensorId];
-            if (tempSensorItem) {
-                [tempSensorItem.values addObjectsFromArray:sensorItem.values];
-            } else {
-                tempSensorItem = sensorItem;
+        NSMutableArray *storedItems = [_allSensorItems objectForKey:sensorItem.sensorDomain.domainId];
+        if (storedItems) {
+            BOOL found = NO;
+            for (SensorItem *storedSensorItem in storedItems) {
+                if ([sensorItem.sensorId isEqualToString:storedSensorItem.sensorId]) {
+                    [storedSensorItem.values addObjectsFromArray:sensorItem.values];
+                    found = YES;
+                    break;
+                }
             }
-            [_sensorItems setObject:tempSensorItem forKey:tempSensorItem.sensorId];
-            break;
+            if (!found) {
+                [storedItems addObject:sensorItem];
+                [_allSensorItems setObject:storedItems forKey:sensorItem.sensorDomain.domainId];
+            }
+        } else {
+            [_allSensorItems setObject:@[sensorItem] forKey:sensorItem.sensorDomain.domainId];
+        }
+    }
+    if (_filtered) {
+        for (SensorItem *sensorItem in sensorItems) {
+            NSMutableArray *storedItems = [_filteredSensorItems objectForKey:sensorItem.sensorDomain.domainId];
+            if (storedItems) {
+                BOOL found = NO;
+                for (SensorItem *storedSensorItem in storedItems) {
+                    if ([sensorItem.sensorId isEqualToString:storedSensorItem.sensorId]) {
+                        [storedSensorItem.values addObjectsFromArray:sensorItem.values];
+                        found = YES;
+                        break;
+                    }
+                }
+                if (!found) {
+                    [storedItems addObject:sensorItem];
+                    [_filteredSensorItems setObject:storedItems forKey:sensorItem.sensorDomain.domainId];
+                }
+            } else {
+                [_filteredSensorItems setObject:@[sensorItem] forKey:sensorItem.sensorDomain.domainId];
+            }
         }
     }
     [self updateView];
@@ -82,20 +126,47 @@
 
 - (SensorItem *)retrieveSensorItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *sensorItemKey = [[_sensorItems allKeys] objectAtIndex:indexPath.row]; // TODO: sort to guarantee a fixed order
-    return [_sensorItems objectForKey:sensorItemKey];
+    NSString *sensorItemKey = nil;
+    if (_filtered) {
+        sensorItemKey = [[_filteredSensorItems allKeys] objectAtIndex:indexPath.section];
+        return [[_filteredSensorItems objectForKey:sensorItemKey] objectAtIndex:indexPath.row];
+    } else {
+        sensorItemKey = [[_allSensorItems allKeys] objectAtIndex:indexPath.section];
+        return [[_allSensorItems objectForKey:sensorItemKey] objectAtIndex:indexPath.row];
+    }
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    if (_filtered) {
+        return [[_filteredSensorItems allKeys] count];
+    } else {
+        return [[_allSensorItems allKeys] count];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _sensorItems ? [_sensorItems count] : 0;
+    NSArray *items = nil;
+    if (_filtered) {
+        items = [_filteredSensorItems objectForKey:[[_filteredSensorItems allKeys] objectAtIndex:section]];
+    } else {
+        items = [_allSensorItems objectForKey:[[_allSensorItems allKeys] objectAtIndex:section]];
+    }
+    return items.count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSArray *items = nil;
+    if (_filtered) {
+        items = [[_filteredSensorItems allKeys] objectAtIndex:section];
+    } else {
+        items = [[_allSensorItems allKeys] objectAtIndex:section];
+    }
+    return ((SensorItem *)items[0]).sensorDomain.domainURL;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

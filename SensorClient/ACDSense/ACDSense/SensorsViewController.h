@@ -10,8 +10,14 @@
 
 #import "SensorSelectionDelegate.h"
 
+@class SensorMUCDomain;
+
 @interface SensorsViewController : UIViewController <SensorSelectionDelegate>
+
 @property (weak, nonatomic) IBOutlet UIView *sensorsView;
 @property (weak, nonatomic) IBOutlet UIView *sensorDetailView;
+
+- (void)filterForDomain:(SensorMUCDomain *)domain;
+- (void)filterForDomains:(NSArray *)domains;
 
 @end
