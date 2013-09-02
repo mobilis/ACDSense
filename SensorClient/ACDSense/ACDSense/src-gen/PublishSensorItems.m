@@ -17,6 +17,15 @@
 		NSXMLElement* sensorIdElement = [NSXMLElement elementWithName:@"sensorId"];
 		[sensorIdElement setStringValue:[sensorItemsPart sensorId]];
 		[sensorItemsElement addChild:sensorIdElement];
+		NSXMLElement* sensorDomainElement = [NSXMLElement elementWithName:@"sensorDomain"];
+		NSXMLElement* domainIdElement = [NSXMLElement elementWithName:@"domainId"];
+		[domainIdElement setStringValue:[[sensorItemsPart sensorDomain] domainId]];
+		[sensorDomainElement addChild:domainIdElement];
+		NSXMLElement* domainURLElement = [NSXMLElement elementWithName:@"domainURL"];
+		[domainURLElement setStringValue:[[sensorItemsPart sensorDomain] domainURL]];
+		[sensorDomainElement addChild:domainURLElement];
+
+		[sensorItemsElement addChild:sensorDomainElement];
 		for (SensorValue* valuesPart in [sensorItemsPart values]) {
 			NSXMLElement* valuesElement = [NSXMLElement elementWithName:@"values"];
 			NSXMLElement* subTypeElement = [NSXMLElement elementWithName:@"subType"];

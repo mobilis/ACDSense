@@ -15,6 +15,12 @@
 		SensorItem *sensorItemsObject = [[SensorItem alloc] init];
 		NSXMLElement* sensorIdElement = [sensorItemsElement elementForName:@"sensorId"];
 		[sensorItemsObject setSensorId:[sensorIdElement stringValue]];
+		NSXMLElement* sensorDomainElement = [sensorItemsElement elementForName:@"sensorDomain"];
+		[sensorItemsObject setSensorDomain:[[SensorMUCDomain alloc] init]];
+		NSXMLElement* domainIdElement = [sensorDomainElement elementForName:@"domainId"];
+		[[sensorItemsObject sensorDomain] setDomainId:[domainIdElement stringValue]];
+		NSXMLElement* domainURLElement = [sensorDomainElement elementForName:@"domainURL"];
+		[[sensorItemsObject sensorDomain] setDomainURL:[domainURLElement stringValue]];
 		[sensorItemsObject setValues:[NSMutableArray array]];
 		NSArray* valuesElements = [sensorItemsElement elementsForName:@"values"];
 		for (NSXMLElement* valuesElement in valuesElements) {
