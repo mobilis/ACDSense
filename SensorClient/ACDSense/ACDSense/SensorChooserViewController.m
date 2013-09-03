@@ -8,6 +8,8 @@
 
 #import "SensorChooserViewController.h"
 
+#import "SensorTableViewCell.h"
+
 #import "SensorItem.h"
 
 @interface SensorChooserViewController ()
@@ -175,13 +177,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"sensorItemCell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    SensorTableViewCell *cell = (SensorTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SensorTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
     
     SensorItem *sensorItem = [self retrieveSensorItemAtIndexPath:indexPath];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"Sensor ID: %@", sensorItem.sensorId];
-    cell.detailTextLabel.text = sensorItem.type;
+    cell.sensorIDLabel.text = [NSString stringWithFormat:@"Sensor ID: %@", sensorItem.sensorId];
+    cell.sensorDetailLabel.text = sensorItem.type;
+    cell.sensorValueLabel.text = ((SensorValue *)[sensorItem.values lastObject]).value;
     
     return cell;
 }

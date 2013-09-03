@@ -212,26 +212,52 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sensorItemCell" textLabel="X54-U9-1qt" detailTextLabel="NF1-dR-fXw" style="IBUITableViewCellStyleSubtitle" id="T2P-Eq-9By">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sensorItemCell" id="T2P-Eq-9By" customClass="SensorTableViewCell">
                                 <rect key="frame" x="0.0" y="22" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X54-U9-1qt">
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SensorID:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bc-8K-3AP">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NF1-dR-fXw">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVn-Fu-rLu">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="3Rn-PS-C1S"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRx-7A-RHA">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="242" id="nXU-uA-2EE"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="KVn-Fu-rLu" secondAttribute="bottom" constant="1" id="69P-C0-jcr"/>
+                                    <constraint firstItem="KVn-Fu-rLu" firstAttribute="leading" secondItem="T2P-Eq-9By" secondAttribute="leading" constant="20" type="default" id="93V-d1-HWQ"/>
+                                    <constraint firstItem="kRx-7A-RHA" firstAttribute="leading" secondItem="KVn-Fu-rLu" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Dzq-gz-AeB"/>
+                                    <constraint firstAttribute="trailing" secondItem="kRx-7A-RHA" secondAttribute="trailing" constant="20" type="default" id="LpT-Pf-NlO"/>
+                                    <constraint firstItem="kRx-7A-RHA" firstAttribute="leading" secondItem="3bc-8K-3AP" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Nrb-eH-5QD"/>
+                                    <constraint firstItem="3bc-8K-3AP" firstAttribute="top" secondItem="T2P-Eq-9By" secondAttribute="top" constant="2" id="YTq-Pe-RLt"/>
+                                    <constraint firstItem="3bc-8K-3AP" firstAttribute="leading" secondItem="T2P-Eq-9By" secondAttribute="leading" constant="20" type="default" id="YV5-QG-gmH"/>
+                                    <constraint firstItem="kRx-7A-RHA" firstAttribute="top" secondItem="T2P-Eq-9By" secondAttribute="top" constant="11" id="lFw-OV-OOt"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="sensorDetailLabel" destination="KVn-Fu-rLu" id="FxX-zm-r1O"/>
+                                    <outlet property="sensorIDLabel" destination="3bc-8K-3AP" id="S5j-A4-YSl"/>
+                                    <outlet property="sensorValueLabel" destination="kRx-7A-RHA" id="8J3-TM-GhF"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -360,6 +386,14 @@
                 <relationship kind="action" name="addSensorDomain:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SensorTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SensorTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="sensorDetailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sensorIDLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sensorValueLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="SensorsViewController" superclassName="UIViewController">

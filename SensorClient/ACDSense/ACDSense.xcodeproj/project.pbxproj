@@ -30,6 +30,7 @@
 		0CD1893B17C75350004DF634 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1893A17C75350004DF634 /* SettingsViewController.m */; };
 		0CD1894017C7560D004DF634 /* TextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1893F17C7560D004DF634 /* TextFieldCell.m */; };
 		0CD1894317C75885004DF634 /* SensorDomainsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1894217C75885004DF634 /* SensorDomainsViewController.m */; };
+		5B19093C17D60F9200376B58 /* SensorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B19093B17D60F9200376B58 /* SensorTableViewCell.m */; };
 		5B1F319017D4823900ADA1CA /* Location+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F318F17D4823900ADA1CA /* Location+Description.m */; };
 		5B22E84F17C2547B00E6E4F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E84E17C2547B00E6E4F4 /* UIKit.framework */; };
 		5B22E85117C2547B00E6E4F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E85017C2547B00E6E4F4 /* Foundation.framework */; };
@@ -110,6 +111,8 @@
 		0CD1896E17CA4322004DF634 /* SensorMUCDomainCreated.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SensorMUCDomainCreated.m; path = "src-gen/SensorMUCDomainCreated.m"; sourceTree = "<group>"; };
 		0CD1896F17CA4322004DF634 /* SensorMUCDomainRemoved.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SensorMUCDomainRemoved.h; path = "src-gen/SensorMUCDomainRemoved.h"; sourceTree = "<group>"; };
 		0CD1897017CA4322004DF634 /* SensorMUCDomainRemoved.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SensorMUCDomainRemoved.m; path = "src-gen/SensorMUCDomainRemoved.m"; sourceTree = "<group>"; };
+		5B19093A17D60F9200376B58 /* SensorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorTableViewCell.h; sourceTree = "<group>"; };
+		5B19093B17D60F9200376B58 /* SensorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorTableViewCell.m; sourceTree = "<group>"; };
 		5B1F318E17D4823900ADA1CA /* Location+Description.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Location+Description.h"; sourceTree = "<group>"; };
 		5B1F318F17D4823900ADA1CA /* Location+Description.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Location+Description.m"; sourceTree = "<group>"; };
 		5B1F319117D487F500ADA1CA /* SensorSelectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorSelectionDelegate.h; sourceTree = "<group>"; };
@@ -193,6 +196,8 @@
 				0CD1893417C74C6A004DF634 /* Storyboard.storyboard */,
 				0CD1893E17C7560D004DF634 /* TextFieldCell.h */,
 				0CD1893F17C7560D004DF634 /* TextFieldCell.m */,
+				5B19093A17D60F9200376B58 /* SensorTableViewCell.h */,
+				5B19093B17D60F9200376B58 /* SensorTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -504,6 +509,7 @@
 				5BB71DB617D32F88000CAF47 /* SensorDetailViewController.m in Sources */,
 				5B1F319017D4823900ADA1CA /* Location+Description.m in Sources */,
 				5B5BCFCF17D5BAB4006E3EF3 /* Timestamp+Description.m in Sources */,
+				5B19093C17D60F9200376B58 /* SensorTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
