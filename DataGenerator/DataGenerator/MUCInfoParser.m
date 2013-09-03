@@ -35,7 +35,7 @@
     NSArray *components = [self splitLineIntoComponents:string];
     if (components.count < 3) {
         return LOWER_LIMIT;
-    } else return components[2];
+    } else return [((NSString *)components[2]) floatValue];
 }
 
 + (float)parseUpperLimitFromString:(NSString *)string
@@ -43,7 +43,7 @@
     NSArray *components = [self splitLineIntoComponents:string];
     if (components.count < 4) {
         return UPPER_LIMIT;
-    } else return components[3];
+    } else return [((NSString *)components[3]) floatValue];
 }
 
 + (NSInteger)parseIntermediaryStepsFromString:(NSString *)string
@@ -51,7 +51,7 @@
     NSArray *components = [self splitLineIntoComponents:string];
     if (components.count < 5) {
         return STEPS;
-    } else return components[4];
+    } else return [((NSString *)components[4]) integerValue];
 }
 
 + (NSArray *)splitLineIntoComponents:(NSString *)line
