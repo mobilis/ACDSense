@@ -10,6 +10,8 @@
 		5B1189BC17C12FC000CACF5A /* MXi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1189BA17C12AC900CACF5A /* MXi.framework */; };
 		5B1A01E717BE7A6900CC7011 /* LogFileWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */; };
 		5B5BCFD217D5CA8E006E3EF3 /* Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5BCFD117D5CA8E006E3EF3 /* Timestamp.m */; };
+		5B5BCFD517D5D31E006E3EF3 /* MUCInfoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5BCFD417D5D31E006E3EF3 /* MUCInfoParser.m */; };
+		5B5BCFD817D5D451006E3EF3 /* MUCInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5BCFD717D5D451006E3EF3 /* MUCInformation.m */; };
 		5B63EE5C17D1D10700CD8667 /* NSString+FileReading.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B63EE5B17D1D10700CD8667 /* NSString+FileReading.m */; };
 		5B63EE6417D1F95600CD8667 /* MXi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5B1189BA17C12AC900CACF5A /* MXi.framework */; };
 		5BB763F117CC770500006CA3 /* CreateSensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763D417CC770400006CA3 /* CreateSensorMUCDomain.m */; };
@@ -37,7 +39,7 @@
 		5BFEA38B17BA693200C7914D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BFEA38917BA693200C7914D /* MainMenu.xib */; };
 		5BFEA39417BA8F4600C7914D /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BFEA39317BA8F4600C7914D /* Settings.plist */; };
 		5BFEA39717BA900D00C7914D /* RefreshTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA39617BA900D00C7914D /* RefreshTimer.m */; };
-		5BFEA39B17BA959C00C7914D /* TempValueCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA39A17BA959C00C7914D /* TempValueCalculator.m */; };
+		5BFEA39B17BA959C00C7914D /* ValueCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA39A17BA959C00C7914D /* ValueCalculator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -60,6 +62,10 @@
 		5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogFileWriter.m; sourceTree = "<group>"; };
 		5B5BCFD017D5CA8E006E3EF3 /* Timestamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timestamp.h; sourceTree = "<group>"; };
 		5B5BCFD117D5CA8E006E3EF3 /* Timestamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timestamp.m; sourceTree = "<group>"; };
+		5B5BCFD317D5D31D006E3EF3 /* MUCInfoParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUCInfoParser.h; sourceTree = "<group>"; };
+		5B5BCFD417D5D31E006E3EF3 /* MUCInfoParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUCInfoParser.m; sourceTree = "<group>"; };
+		5B5BCFD617D5D450006E3EF3 /* MUCInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUCInformation.h; sourceTree = "<group>"; };
+		5B5BCFD717D5D451006E3EF3 /* MUCInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUCInformation.m; sourceTree = "<group>"; };
 		5B63EE5A17D1D10700CD8667 /* NSString+FileReading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FileReading.h"; sourceTree = "<group>"; };
 		5B63EE5B17D1D10700CD8667 /* NSString+FileReading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FileReading.m"; sourceTree = "<group>"; };
 		5B63EE6017D1E8FC00CD8667 /* roomList.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = roomList.txt; sourceTree = "<group>"; };
@@ -113,8 +119,8 @@
 		5BFEA39317BA8F4600C7914D /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		5BFEA39517BA900D00C7914D /* RefreshTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTimer.h; sourceTree = "<group>"; };
 		5BFEA39617BA900D00C7914D /* RefreshTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTimer.m; sourceTree = "<group>"; };
-		5BFEA39917BA959B00C7914D /* TempValueCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempValueCalculator.h; sourceTree = "<group>"; };
-		5BFEA39A17BA959C00C7914D /* TempValueCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempValueCalculator.m; sourceTree = "<group>"; };
+		5BFEA39917BA959B00C7914D /* ValueCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueCalculator.h; sourceTree = "<group>"; };
+		5BFEA39A17BA959C00C7914D /* ValueCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValueCalculator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,12 +243,16 @@
 				5BFEA37B17BA693200C7914D /* Supporting Files */,
 				5BFEA39517BA900D00C7914D /* RefreshTimer.h */,
 				5BFEA39617BA900D00C7914D /* RefreshTimer.m */,
-				5BFEA39917BA959B00C7914D /* TempValueCalculator.h */,
-				5BFEA39A17BA959C00C7914D /* TempValueCalculator.m */,
+				5BFEA39917BA959B00C7914D /* ValueCalculator.h */,
+				5BFEA39A17BA959C00C7914D /* ValueCalculator.m */,
 				5B1A01E517BE7A6900CC7011 /* LogFileWriter.h */,
 				5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */,
 				5B63EE5A17D1D10700CD8667 /* NSString+FileReading.h */,
 				5B63EE5B17D1D10700CD8667 /* NSString+FileReading.m */,
+				5B5BCFD317D5D31D006E3EF3 /* MUCInfoParser.h */,
+				5B5BCFD417D5D31E006E3EF3 /* MUCInfoParser.m */,
+				5B5BCFD617D5D450006E3EF3 /* MUCInformation.h */,
+				5B5BCFD717D5D451006E3EF3 /* MUCInformation.m */,
 			);
 			path = DataGenerator;
 			sourceTree = "<group>";
@@ -330,7 +340,7 @@
 				5BFEA38117BA693200C7914D /* main.m in Sources */,
 				5BFEA38817BA693200C7914D /* AppDelegate.m in Sources */,
 				5BFEA39717BA900D00C7914D /* RefreshTimer.m in Sources */,
-				5BFEA39B17BA959C00C7914D /* TempValueCalculator.m in Sources */,
+				5BFEA39B17BA959C00C7914D /* ValueCalculator.m in Sources */,
 				5B1A01E717BE7A6900CC7011 /* LogFileWriter.m in Sources */,
 				5BB763F117CC770500006CA3 /* CreateSensorMUCDomain.m in Sources */,
 				5BB763F217CC770500006CA3 /* DelegateSensorItems.m in Sources */,
@@ -351,6 +361,8 @@
 				5BB7640F17CC859100006CA3 /* PublishSensorItems.m in Sources */,
 				5B63EE5C17D1D10700CD8667 /* NSString+FileReading.m in Sources */,
 				5B5BCFD217D5CA8E006E3EF3 /* Timestamp.m in Sources */,
+				5B5BCFD517D5D31E006E3EF3 /* MUCInfoParser.m in Sources */,
+				5B5BCFD817D5D451006E3EF3 /* MUCInformation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,18 +1,18 @@
 //
-//  TempValueCalculator.m
+//  ValueCalculator.m
 //  DataGenerator
 //
 //  Created by Martin Weißbach on 8/13/13.
 //  Copyright (c) 2013 Technische Universität Dresden. All rights reserved.
 //
 
-#import "TempValueCalculator.h"
+#import "ValueCalculator.h"
 
 #define UPPER_LIMIT 40.0
 #define LOWER_LIMIT -20.0
 #define STEPS 20
 
-@interface TempValueCalculator ()
+@interface ValueCalculator ()
 
 @property (nonatomic) BOOL ascending;
 @property (nonatomic) int stepCount;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation TempValueCalculator
+@implementation ValueCalculator
 
 #pragma mark - Initialize
 

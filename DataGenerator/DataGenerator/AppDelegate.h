@@ -17,12 +17,10 @@
 #import "PublishSensorItems.h"
 
 #import "RefreshTimer.h"
-#import "TempValueCalculator.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, MXiPresenceDelegate, MXiStanzaDelegate, MXiBeanDelegate, MXiMultiUserChatDelegate>
 
 @property (strong, nonatomic) RefreshTimer *refreshTimer;
-@property (strong, nonatomic) TempValueCalculator *tempValueCalculator;
 
 @property (strong, nonatomic) MXiConnection *connection;
 

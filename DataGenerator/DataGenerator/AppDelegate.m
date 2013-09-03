@@ -9,13 +9,15 @@
 #import "AppDelegate.h"
 
 #import "LogFileWriter.h"
+#import "MUCInformation.h"
+#import "MUCInfoParser.h"
 
 #import "NSString+FileReading.h"
 
 @interface AppDelegate ()
 
-@property (strong, nonatomic) NSArray *mucAddresses;
-@property (strong, nonatomic) NSMutableArray *connectedMUCAddresses;
+@property (strong, nonatomic) NSMutableArray *mucInformation;
+@property (strong, nonatomic) NSMutableArray *connectedMUCs;
 
 - (void)scheduleNewValueCalculation;
 - (NSString *)timestamp;
@@ -32,7 +34,6 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    self.tempValueCalculator = [[TempValueCalculator alloc] initWithUpperLimit:4.0 lowerLimit:-2.0 intermediarySteps:7];
     [self launchConnectionEstablishment];
 }
 
@@ -40,8 +41,16 @@
 {
     // Will be called before applicationDidFinishLaunching:
     // Read in a list of MUCs
-    self.mucAddresses = [NSString linesOfStringsOfFile:filename];
-    return _mucAddresses ? YES : NO;
+    NSArray *rawMUCInformation = [NSString linesOfStringsOfFile:filename];
+    self.mucInformation = [NSMutableArray arrayWithCapacity:rawMUCInformation.count];
+    for (NSString *rawMUC in rawMUCInformation) {
+        [_mucInformation addObject:[[MUCInformation alloc] initWithAddress:[MUCInfoParser parseMUCAddressFromString:rawMUC]
+                                                                      type:[MUCInfoParser parseMUCTypeFromString:rawMUC]
+                                                                lowerLimit:[MUCInfoParser parseLowerLimitFromString:rawMUC]
+                                                                upperLimit:[MUCInfoParser parseUpperLimitFromString:rawMUC]
+                                                         intermediarySteps:[MUCInfoParser parseIntermediaryStepsFromString:rawMUC]]];
+    }
+    return _mucInformation.count > 0 ? YES : NO;
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification
@@ -55,13 +64,16 @@
 {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_async(queue, ^{
-        float tempValue = [[self.tempValueCalculator nextValue] floatValue];
-        if (self.mucAddresses) {
-            for (NSString *roomJID in self.connectedMUCAddresses) {
-                [self.connection sendMessage:[NSString stringWithFormat:@"%f+Celsius+%@", tempValue, [self timestamp]]
-                                      toRoom:roomJID];
+        if (self.mucInformation) {
+            for (MUCInformation *mucInfo in self.connectedMUCs) {
+                [self.connection sendMessage:[NSString stringWithFormat:@"%f+%@+%@", [[mucInfo nextValue] floatValue],
+                                              [mucInfo unitOfValues],
+                                              [self timestamp]]
+                                      toRoom:mucInfo.address];
             }
         } else {
+            ValueCalculator *valueCalculator = [[ValueCalculator alloc] initWithUpperLimit:5.0 lowerLimit:-1.0 intermediarySteps:10];
+            
             PublishSensorItems *sensorItems = [[PublishSensorItems alloc] init];
             SensorItem *sensorItem = [[SensorItem alloc] init];
             sensorItem.sensorId = @"DataGenerator_mwb";
@@ -75,7 +87,7 @@
         
             SensorValue *sensorValue = [[SensorValue alloc] init];
             sensorValue.subType = @"Generated";
-            sensorValue.value = [NSString stringWithFormat:@"%f", tempValue];
+            sensorValue.value = [NSString stringWithFormat:@"%f", [[valueCalculator nextValue] floatValue]];
             sensorValue.unit = @"Celsius";
         
             [sensorItem.values addObjectsFromArray:[self variateTheValue:sensorValue]];
@@ -144,11 +156,11 @@
 
 - (void)setUpConnectionToMUCs
 {
-    if (self.mucAddresses) {
+    if (self.mucInformation) {
         [self.connection setMucDelegate:self];
-        self.connectedMUCAddresses = [NSMutableArray arrayWithCapacity:_mucAddresses.count];
-        for (NSString *roomJID in self.mucAddresses) {
-            [self.connection connectToMultiUserChatRoom:roomJID];
+        self.connectedMUCs = [NSMutableArray arrayWithCapacity:_mucInformation.count];
+        for (MUCInformation *mucInfo in _mucInformation) {
+            [self.connection connectToMultiUserChatRoom:mucInfo.address];
         }
     }
 }
@@ -223,7 +235,12 @@
 
 - (void)connectionToRoomEstablished:(NSString *)roomJID
 {
-    [_connectedMUCAddresses addObject:roomJID];
+    for (MUCInformation *mucInfo in _mucInformation) {
+        if ([mucInfo.address isEqualToString:roomJID]) {
+            [_connectedMUCs addObject:mucInfo];
+            break;
+        }
+    }
 }
 
 @end

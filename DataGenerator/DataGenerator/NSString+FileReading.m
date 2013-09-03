@@ -8,6 +8,8 @@
 
 #import "NSString+FileReading.h"
 
+#import "LogFileWriter.h"
+
 @implementation NSString (FileReading)
 
 + (NSArray *)linesOfStringsOfFile:(NSString *)filePath
@@ -18,7 +20,19 @@
         return nil;
     }
     
-    return [completeFileString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    NSArray *allLines = [completeFileString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    NSMutableArray *contentLines = [[NSMutableArray alloc] initWithCapacity:allLines.count];
+    for (NSString *line in allLines) {
+        @try {
+            if (![[line substringToIndex:2] isEqualToString:@"//"]) {
+                [contentLines addObject:line];
+            }
+        }
+        @catch (NSException *exception) {
+            [LogFileWriter writeNSError:[NSError errorWithDomain:@"ReadRoomList" code:0 userInfo:nil]];
+        }
+    }
+    return contentLines;
 }
 
 @end

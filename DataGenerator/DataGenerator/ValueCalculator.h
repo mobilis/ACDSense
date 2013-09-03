@@ -1,5 +1,5 @@
 //
-//  TempValueCalculator.h
+//  ValueCalculator.h
 //  DataGenerator
 //
 //  Created by Martin Weißbach on 8/13/13.
@@ -8,7 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TempValueCalculator : NSObject
+@protocol ValueCalculatorProtocol <NSObject>
+
+- (NSNumber *)nextValue;
+- (NSString *)unitOfValues;
+
+@end
+
+@interface ValueCalculator : NSObject
 
 @property (nonatomic, readonly) float upperLimit;
 @property (nonatomic, readonly) float lowerLimit;
