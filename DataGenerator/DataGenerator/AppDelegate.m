@@ -32,7 +32,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    self.tempValueCalculator = [[TempValueCalculator alloc] init];
+    self.tempValueCalculator = [[TempValueCalculator alloc] initWithUpperLimit:4.0 lowerLimit:-2.0 intermediarySteps:7];
     [self launchConnectionEstablishment];
 }
 

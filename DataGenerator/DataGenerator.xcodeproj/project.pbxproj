@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5B1189BC17C12FC000CACF5A /* MXi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1189BA17C12AC900CACF5A /* MXi.framework */; };
 		5B1A01E717BE7A6900CC7011 /* LogFileWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */; };
+		5B5BCFD217D5CA8E006E3EF3 /* Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5BCFD117D5CA8E006E3EF3 /* Timestamp.m */; };
 		5B63EE5C17D1D10700CD8667 /* NSString+FileReading.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B63EE5B17D1D10700CD8667 /* NSString+FileReading.m */; };
 		5B63EE6417D1F95600CD8667 /* MXi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5B1189BA17C12AC900CACF5A /* MXi.framework */; };
 		5BB763F117CC770500006CA3 /* CreateSensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763D417CC770400006CA3 /* CreateSensorMUCDomain.m */; };
@@ -57,6 +58,8 @@
 		5B1189BA17C12AC900CACF5A /* MXi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MXi.framework; path = "../../../../Library/Developer/Xcode/DerivedData/ACDSenseWorkspace-frdhqldyuzdizvcnvnpsartakqci/Build/Products/Debug/MXi.framework"; sourceTree = "<group>"; };
 		5B1A01E517BE7A6900CC7011 /* LogFileWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogFileWriter.h; sourceTree = "<group>"; };
 		5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogFileWriter.m; sourceTree = "<group>"; };
+		5B5BCFD017D5CA8E006E3EF3 /* Timestamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timestamp.h; sourceTree = "<group>"; };
+		5B5BCFD117D5CA8E006E3EF3 /* Timestamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timestamp.m; sourceTree = "<group>"; };
 		5B63EE5A17D1D10700CD8667 /* NSString+FileReading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FileReading.h"; sourceTree = "<group>"; };
 		5B63EE5B17D1D10700CD8667 /* NSString+FileReading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FileReading.m"; sourceTree = "<group>"; };
 		5B63EE6017D1E8FC00CD8667 /* roomList.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = roomList.txt; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 		5B6AAB4917BE6B510086A510 /* Beans */ = {
 			isa = PBXGroup;
 			children = (
+				5B5BCFD017D5CA8E006E3EF3 /* Timestamp.h */,
+				5B5BCFD117D5CA8E006E3EF3 /* Timestamp.m */,
 				5BB7640617CC7E2000006CA3 /* SensorItem.h */,
 				5BB7640717CC7E2100006CA3 /* SensorItem.m */,
 				5BB7640017CC7DA300006CA3 /* Location.h */,
@@ -345,6 +350,7 @@
 				5BB7640817CC7E2100006CA3 /* SensorItem.m in Sources */,
 				5BB7640F17CC859100006CA3 /* PublishSensorItems.m in Sources */,
 				5B63EE5C17D1D10700CD8667 /* NSString+FileReading.m in Sources */,
+				5B5BCFD217D5CA8E006E3EF3 /* Timestamp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
