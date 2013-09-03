@@ -160,11 +160,14 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
+    NSString *key = nil;
     NSArray *items = nil;
     if (_filtered) {
-        items = [[_filteredSensorItems allKeys] objectAtIndex:section];
+        key = [[_filteredSensorItems allKeys] objectAtIndex:section];
+        items = [_filteredSensorItems objectForKey:key];
     } else {
-        items = [[_allSensorItems allKeys] objectAtIndex:section];
+        key = [[_allSensorItems allKeys] objectAtIndex:section];
+        items = [_allSensorItems objectForKey:key];
     }
     return ((SensorItem *)items[0]).sensorDomain.domainURL;
 }

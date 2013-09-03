@@ -47,6 +47,7 @@
 		5B22E89D17C26DF800E6E4F4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89C17C26DF800E6E4F4 /* Security.framework */; };
 		5B22E89F17C26E0500E6E4F4 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89E17C26E0500E6E4F4 /* libxml2.dylib */; };
 		5B333EDD17C28D9C0083BBD8 /* Settings.plist.example in Resources */ = {isa = PBXBuildFile; fileRef = 5B333EDC17C28D9C0083BBD8 /* Settings.plist.example */; };
+		5B5BCFCF17D5BAB4006E3EF3 /* Timestamp+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5BCFCE17D5BAB4006E3EF3 /* Timestamp+Description.m */; };
 		5B772CB017C89DF50008BC02 /* ConnectionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CAF17C89DF50008BC02 /* ConnectionHandler.m */; };
 		5B772CB417C8A2F60008BC02 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CB317C8A2F60008BC02 /* KeychainItemWrapper.m */; };
 		5B772CB717C8A3140008BC02 /* AccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CB617C8A3140008BC02 /* AccountManager.m */; };
@@ -132,6 +133,8 @@
 		5B22E89C17C26DF800E6E4F4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5B22E89E17C26E0500E6E4F4 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		5B333EDC17C28D9C0083BBD8 /* Settings.plist.example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.plist.example; sourceTree = "<group>"; };
+		5B5BCFCD17D5BAB4006E3EF3 /* Timestamp+Description.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Timestamp+Description.h"; sourceTree = "<group>"; };
+		5B5BCFCE17D5BAB4006E3EF3 /* Timestamp+Description.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Timestamp+Description.m"; sourceTree = "<group>"; };
 		5B772CAE17C89DF50008BC02 /* ConnectionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionHandler.h; sourceTree = "<group>"; };
 		5B772CAF17C89DF50008BC02 /* ConnectionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionHandler.m; sourceTree = "<group>"; };
 		5B772CB217C8A2F60008BC02 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
@@ -391,6 +394,8 @@
 				5B96FFAB17CA553200DADDFA /* NSString+Selector.m */,
 				5B1F318E17D4823900ADA1CA /* Location+Description.h */,
 				5B1F318F17D4823900ADA1CA /* Location+Description.m */,
+				5B5BCFCD17D5BAB4006E3EF3 /* Timestamp+Description.h */,
+				5B5BCFCE17D5BAB4006E3EF3 /* Timestamp+Description.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -498,6 +503,7 @@
 				5BB71D5F17D3199E000CAF47 /* SensorChooserViewController.m in Sources */,
 				5BB71DB617D32F88000CAF47 /* SensorDetailViewController.m in Sources */,
 				5B1F319017D4823900ADA1CA /* Location+Description.m in Sources */,
+				5B5BCFCF17D5BAB4006E3EF3 /* Timestamp+Description.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

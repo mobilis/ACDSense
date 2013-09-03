@@ -10,6 +10,7 @@
 
 #import "SensorValue.h"
 #import "Location+Description.h"
+#import "Timestamp+Description.h"
 
 @interface SensorDetailViewController ()
 
@@ -73,12 +74,10 @@
     CPTXYAxisSet *axisSet = (CPTXYAxisSet *)_graph.axisSet;
     CPTXYAxis *xAxis = axisSet.xAxis;
     xAxis.majorIntervalLength = CPTDecimalFromString(@"10.0");
-//    xAxis.orthogonalCoordinateDecimal = CPTDecimalFromString(@"5.0");
     xAxis.minorTicksPerInterval = 5;
     
     CPTXYAxis *yAxis = axisSet.yAxis;
     yAxis.majorIntervalLength = CPTDecimalFromString(@"1.0");
-//    yAxis.orthogonalCoordinateDecimal = CPTDecimalFromString(@"5.0");
     yAxis.minorTicksPerInterval = 1;
     
     CPTScatterPlot *dataSourceLinePlot = [[CPTScatterPlot alloc] init];
@@ -159,5 +158,25 @@
     }
     return 0.0;
 }
+
+- (CPTLayer *)dataLabelForPlot:(CPTPlot *)plot recordIndex:(NSUInteger)idx
+{
+    if (!_sensorValues) {
+        return NULL;
+    }
+    
+    SensorValue *value = [_sensorValues objectAtIndex:idx];
+    Timestamp *timestamp = value.timestamp;
+
+    CPTTextStyle *labelStyle = [[CPTTextStyle alloc] init];
+    CPTAxisLabel *axisLabel = [[CPTAxisLabel alloc] initWithText:[timestamp timestampAsString]
+                                                       textStyle:labelStyle];
+    
+    return [axisLabel contentLayer];
+}
+
+#pragma mark - CPTPlotSpaceDelegate
+
+
 
 @end
