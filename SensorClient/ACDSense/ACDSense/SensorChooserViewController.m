@@ -97,7 +97,7 @@
     }
     if (_filtered) {
         for (SensorItem *sensorItem in sensorItems) {
-            NSMutableArray *storedItems = [_filteredSensorItems objectForKey:sensorItem.sensorDomain.domainId];
+            NSMutableArray *storedItems = [NSMutableArray arrayWithArray:[_filteredSensorItems objectForKey:sensorItem.sensorDomain.domainId]];
             if (storedItems) {
                 BOOL found = NO;
                 for (SensorItem *storedSensorItem in storedItems) {

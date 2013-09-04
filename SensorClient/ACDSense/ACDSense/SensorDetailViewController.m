@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSMutableArray *sensorValues;
 
 - (void)constructChart;
+- (void)updateChartPlot;
 - (void)updateChartContent;
 - (void)updateLabels;
 
@@ -80,17 +81,7 @@
     yAxis.majorIntervalLength = CPTDecimalFromString(@"1.0");
     yAxis.minorTicksPerInterval = 1;
     
-    CPTScatterPlot *dataSourceLinePlot = [[CPTScatterPlot alloc] init];
-    dataSourceLinePlot.identifier = @"Black Plot";
-    
-    CPTMutableLineStyle *lineStyle = [dataSourceLinePlot.dataLineStyle mutableCopy];
-    lineStyle.lineWidth = 3.f;
-    lineStyle.lineColor = [CPTColor blackColor];
-    lineStyle.dashPattern = [NSArray arrayWithObjects:[NSNumber numberWithFloat:5.0f],[NSNumber numberWithFloat:5.0f], nil];
-    dataSourceLinePlot.dataLineStyle = lineStyle;
-    
-    dataSourceLinePlot.dataSource = self;
-    [_graph addPlot:dataSourceLinePlot];
+    [self updateChartPlot];
 }
 
 #pragma mark - Custom Setter & Getter
@@ -103,7 +94,10 @@
     _sensorItem = nil;
     _sensorItem = sensorItem;
     
+    self.sensorValues = _sensorItem.values;
+    
     [self updateLabels];
+    [self updateChartContent];
 }
 
 #pragma mark - Private Methods
@@ -111,6 +105,26 @@
 - (void)updateChartContent
 {
     [_graph reloadData];
+}
+
+- (void)updateChartPlot
+{
+    NSArray *plots = [_graph allPlots];
+    for (CPTPlot *plot in plots) {
+        [_graph removePlot:plot];
+    }
+    
+    CPTScatterPlot *dataSourceLinePlot = [[CPTScatterPlot alloc] init];
+    dataSourceLinePlot.identifier = @"Black Plot";
+    
+    CPTMutableLineStyle *lineStyle = [dataSourceLinePlot.dataLineStyle mutableCopy];
+    lineStyle.lineWidth = 3.f;
+    lineStyle.lineColor = [CPTColor blackColor];
+    lineStyle.dashPattern = [NSArray arrayWithObjects:[NSNumber numberWithFloat:5.0f],[NSNumber numberWithFloat:5.0f], nil];
+    dataSourceLinePlot.dataLineStyle = lineStyle;
+    
+    dataSourceLinePlot.dataSource = self;
+    [_graph addPlot:dataSourceLinePlot];
 }
 
 - (void)updateLabels
