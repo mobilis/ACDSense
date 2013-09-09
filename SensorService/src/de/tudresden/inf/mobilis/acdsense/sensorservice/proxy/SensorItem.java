@@ -76,7 +76,7 @@ public class SensorItem implements XMPPInfo {
 		} while (!done);
 	}
 
-	public static final String CHILD_ELEMENT = "SensorItem";
+	public static final String CHILD_ELEMENT = "sensorItem";
 
 	@Override
 	public String getChildElement() {

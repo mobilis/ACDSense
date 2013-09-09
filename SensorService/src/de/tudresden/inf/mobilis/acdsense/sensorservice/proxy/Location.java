@@ -54,7 +54,7 @@ public class Location implements XMPPInfo {
 		} while (!done);
 	}
 
-	public static final String CHILD_ELEMENT = "Location";
+	public static final String CHILD_ELEMENT = "location";
 
 	@Override
 	public String getChildElement() {

@@ -54,7 +54,7 @@ public class SensorMUCDomain implements XMPPInfo {
 		} while (!done);
 	}
 
-	public static final String CHILD_ELEMENT = "SensorMUCDomain";
+	public static final String CHILD_ELEMENT = "sensorDomain";
 
 	@Override
 	public String getChildElement() {

@@ -74,7 +74,7 @@ public class Timestamp implements XMPPInfo {
 		} while (!done);
 	}
 
-	public static final String CHILD_ELEMENT = "Timestamp";
+	public static final String CHILD_ELEMENT = "timestamp";
 
 	@Override
 	public String getChildElement() {

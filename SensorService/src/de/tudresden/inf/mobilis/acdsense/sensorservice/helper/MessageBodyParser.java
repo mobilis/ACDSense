@@ -64,7 +64,7 @@ public class MessageBodyParser {
 			Timestamp timestamp = null;
 			try {
 				Date date = parseTimestampFromDateString(messageBody.substring(indexOfLastSeparator+1, messageBody.length()));
-				timestamp = new Timestamp(date.getDay(), date.getMonth(), date.getYear(), date.getHours(), date.getMinutes(), date.getSeconds());
+				timestamp = new Timestamp(date.getDate(), date.getMonth()+1, date.getYear()+1900, date.getHours(), date.getMinutes(), date.getSeconds());
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

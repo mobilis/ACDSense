@@ -64,7 +64,7 @@ public class SensorValue implements XMPPInfo {
 		} while (!done);
 	}
 
-	public static final String CHILD_ELEMENT = "SensorValue";
+	public static final String CHILD_ELEMENT = "values";
 
 	@Override
 	public String getChildElement() {
