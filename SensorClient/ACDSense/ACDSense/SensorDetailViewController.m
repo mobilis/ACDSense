@@ -94,7 +94,7 @@
     _sensorItem = nil;
     _sensorItem = sensorItem;
     
-    self.sensorValues = _sensorItem.values;
+    self.sensorValues = [NSMutableArray arrayWithArray:_sensorItem.values];
     
     [self updateLabels];
     [self updateChartContent];
