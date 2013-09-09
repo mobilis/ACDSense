@@ -28,3 +28,12 @@ local.properties
 # Java
 .class
 
+/bin
+
+# ACDSense SensorService
+dist/**
+*.out.xml
+lib/**
+
+# cmdaltent specific files
+build.sh

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<msdl:description
+	targetNamespace="http://mobilis.inf.tu-dresden.de#services/ACDSenseService"
+	xmlns:msdl="http://mobilis.inf.tu-dresden.de/msdl/"
+	xmlns:xmpp="http://mobilis.inf.tu-dresden.de/xmpp/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mns="http://mobilis.inf.tu-dresden.de#services/ACDSenseService"
+	xsi:schemaLocation="http://mobilis.inf.tu-dresden.de/msdl/ http://mobilis.inf.tu-dresden.de/msdl.xsd ">
+
+	<msdl:types>
+		<xs:schema targetNamespace="http://mobilis.inf.tu-dresden.de#services/ACDSenseService">
+			<xs:element name="RegisterPublisher" />
+			<xs:element name="RemovePublisher" />
+			<xs:element name="RegisterReceiver" />
+			<xs:element name="RemoveReceiver" />
+			<xs:element name="GetSensorMUCDomainsRequest" />
+			<xs:element name="GetSensorMUCDomainsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element
+							name="sensorDomains"
+							type="mns:SensorMUCDomain"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CreateSensorMUCDomain">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element
+							name="sensorDomain"
+							type="mns:SensorMUCDomain" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SensorMUCDomainCreated">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element
+							name="sensorDomain"
+							type="mns:SensorMUCDomain" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RemoveSensorMUCDomain">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element
+							name="sensorDomain"
+							type="mns:SensorMUCDomain" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SensorMUCDomainRemoved">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element
+							name="sensorDomain"
+							type="mns:SensorMUCDomain" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PublishSensorItems">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element
+							name="sensorItems"
+							type="mns:SensorItem"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DelegateSensorItems">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element
+							name="sensorItems"
+							type="mns:SensorItem"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:complexType name="SensorItem">
+				<xs:sequence>
+					<xs:element
+						name="sensorId"
+						type="xs:string" />
+					<xs:element
+						name="sensorDomain"
+						type="mns:SensorMUCDomain" />
+					<xs:element
+						type="mns:SensorValue"
+						maxOccurs="unbounded"
+						name="values" />
+					<xs:element
+						name="location"
+						type="mns:Location" />
+					<xs:element
+						name="type"
+						type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="SensorValue">
+				<xs:sequence>
+					<xs:element
+						name="subType"
+						type="xs:string" />
+					<xs:element
+						name="value"
+						type="xs:string" />
+					<xs:element
+						name="unit"
+						type="xs:string" />
+					<xs:element 
+						name="timestamp" 
+						type="mns:Timestamp" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="SensorMUCDomain">
+				<xs:sequence>
+					<xs:element
+						name="domainId"
+						type="xs:string" />
+					<xs:element
+						name="domainURL"
+						type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Location">
+				<xs:sequence>
+					<xs:element
+						name="latitude"
+						type="xs:long" />
+					<xs:element
+						name="longitude"
+						type="xs:long" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Timestamp">
+				<xs:sequence>
+					<xs:element
+						name="day"
+						type="xs:long" />
+					<xs:element
+						name="month"
+						type="xs:long" />
+					<xs:element
+						name="year"
+						type="xs:long" />
+					<xs:element
+						name="hour"
+						type="xs:long" />
+					<xs:element
+						name="minute"
+						type="xs:long" />
+					<xs:element
+						name="second"
+						type="xs:long" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>
+	</msdl:types>
+
+	<msdl:interface name="ACDSInterface">
+		<msdl:operation
+			name="RegisterPublisher"
+			pattern="http://www.w3.org/ns/wsdl/in-only">
+			<msdl:input element="mns:RegisterPublisher" />
+		</msdl:operation>
+		<msdl:operation
+			name="RemovePublisher"
+			pattern="http://www.w3.org/ns/wsdl/in-only">
+			<msdl:input element="mns:RemovePublisher" />
+		</msdl:operation>
+		<msdl:operation
+			name="RegisterReceiver"
+			pattern="http://www.w3.org/ns/wsdl/in-only">
+			<msdl:input element="mns:RegisterReceiver" />
+		</msdl:operation>
+		<msdl:operation
+			name="RemoveReceiver"
+			pattern="http://www.w3.org/ns/wsdl/in-only">
+			<msdl:input element="mns:RemoveReceiver" />
+		</msdl:operation>
+		<msdl:operation
+			name="PublishSensorItems"
+			pattern="http://www.w3.org/ns/wsdl/in-only">
+			<msdl:input element="mns:PublishSensorItems" />
+		</msdl:operation>
+		<msdl:operation
+			name="DelegateSensorItems"
+			pattern="http://www.w3.org/ns/wsdl/out-only">
+			<msdl:output element="mns:DelegateSensorItems" />
+		</msdl:operation>
+		<msdl:operation
+			name="CreateSensorMUCDomain"
+			pattern="http://www.w3.org/ns/wsdl/in-only">
+			<msdl:input element="mns:CreateSensorMUCDomain" />
+		</msdl:operation>
+		<msdl:operation
+			name="SensorMUCDomainCreated"
+			pattern="http://www.w3.org/ns/wsdl/out-only">
+			<msdl:output element="mns:SensorMUCDomainCreated" />
+		</msdl:operation>
+		<msdl:operation
+			name="RemoveSensorMUCDomain"
+			pattern="http://www.w3.org/ns/wsdl/in-only">
+			<msdl:input element="mns:RemoveSensorMUCDomain" />
+		</msdl:operation>
+		<msdl:operation
+			name="SensorMUCDomainRemoved"
+			pattern="http://www.w3.org/ns/wsdl/out-only">
+			<msdl:output element="mns:SensorMUCDomainRemoved" />
+		</msdl:operation>
+		<msdl:operation
+			name="GetSensorMUCDomains"
+			pattern="http://www.w3.org/ns/wsdl/in-out">
+			<msdl:input element="mns:GetSensorMUCDomainsRequest" />
+			<msdl:output element="mns:GetSensorMUCDomainsResponse" />
+		</msdl:operation>
+	</msdl:interface>
+
+	<msdl:binding
+		type="http://mobilis.inf.tu-dresden.de/xmpp/"
+		interface="mns:ACDSInterface"
+		name="ACDSBinding">
+		<msdl:operation
+			ref="mns:RegisterPublisher"
+			xmpp:ident="http://mobilis.inf.tu-dresden.de/ACDSense">
+			<msdl:input xmpp:type="set" />
+		</msdl:operation>
+		<msdl:operation
+			ref="mns:RemovePublisher"
+			xmpp:ident="http://mobilis.inf.tu-dresden.de/ACDSense">
+			<msdl:input xmpp:type="set" />
+		</msdl:operation>
+		<msdl:operation
+			ref="mns:RegisterReceiver"
+			xmpp:ident="http://mobilis.inf.tu-dresden.de/ACDSense">
+			<msdl:input xmpp:type="set" />
+		</msdl:operation>
+		<msdl:operation
+			ref="mns:RemoveReceiver"
+			xmpp:ident="http://mobilis.inf.tu-dresden.de/ACDSense">
+			<msdl:input xmpp:type="set" />
+		</msdl:operation>
+		<msdl:operation
+			ref="mns:PublishSensorItems"
+			xmpp:ident="http://mobilis.inf.tu-dresden.de/ACDSense">
+			<msdl:input xmpp:type="set" />
+		</msdl:operation>
+		<msdl:operation
+			ref="mns:DelegateSensorItems"
+			xmpp:ident="http://mobilis.inf.tu-dresden.de/ACDSense">
+			<msdl:output xmpp:type="result" />
+		</msdl:operation>
+		<msdl:operation
+			ref="mns:CreateSensorMUCDomain"
+			xmpp:ident="http://mobilis.inf.tu-dresden.de/ACDSense">
+			<msdl:input xmpp:type="set" />
+		</msdl:operation>
+		<msdl:operation
+			ref="mns:SensorMUCDomainCreated"
+			xmpp:ident="http://mobilis.inf.tu-dresden.de/ACDSense">
+			<msdl:output xmpp:type="result" />
+		</msdl:operation>
+		<msdl:operation
+			ref="mns:RemoveSensorMUCDomain"
+			xmpp:ident="http://mobilis.inf.tu-dresden.de/ACDSense">
+			<msdl:input xmpp:type="set" />
+		</msdl:operation>
+		<msdl:operation
+			ref="mns:SensorMUCDomainRemoved"
+			xmpp:ident="http://mobilis.inf.tu-dresden.de/ACDSense">
+			<msdl:output xmpp:type="result" />
+		</msdl:operation>
+		<msdl:operation
+			ref="mns:GetSensorMUCDomains"
+			xmpp:ident="http://mobilis.inf.tu-dresden.de/ACDSense">
+			<msdl:input xmpp:type="get" />
+			<msdl:output xmpp:type="result" />
+		</msdl:operation>
+	</msdl:binding>
+
+	<msdl:service
+		name="ACDSense"
+		interface="mns:ACDSInterface"
+		ident="http://mobilis.inf.tu-dresden.de#services/ACDSenseService"
+		version="1">
+		<msdl:endpoint
+			name="ACDSEndpoint"
+			binding="mns:ACDSBinding" />
+		<msdl:dependencies />
+	</msdl:service>
+
+</msdl:description>
