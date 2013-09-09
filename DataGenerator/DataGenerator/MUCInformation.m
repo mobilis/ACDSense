@@ -40,6 +40,7 @@
         _upperLimit = upperLimit;
         _intermediarySteps = steps;
         
+        [self setUpUnit];
         [self setupValueCalculator];
     }
     return self;

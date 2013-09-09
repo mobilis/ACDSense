@@ -12,12 +12,16 @@
 #import "MUCInformation.h"
 #import "MUCInfoParser.h"
 
+#import "SensorMUCDomain.h"
+
 #import "NSString+FileReading.h"
 
 @interface AppDelegate ()
 
 @property (strong, nonatomic) NSMutableArray *mucInformation;
 @property (strong, nonatomic) NSMutableArray *connectedMUCs;
+
+@property (strong, atomic) ValueCalculator *valueCalculator;
 
 - (void)scheduleNewValueCalculation;
 - (NSString *)timestamp;
@@ -62,7 +66,7 @@
 
 - (void)scheduleNewValueCalculation
 {
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
         if (self.mucInformation) {
             for (MUCInformation *mucInfo in self.connectedMUCs) {
@@ -72,8 +76,6 @@
                                       toRoom:mucInfo.address];
             }
         } else {
-            ValueCalculator *valueCalculator = [[ValueCalculator alloc] initWithUpperLimit:5.0 lowerLimit:-1.0 intermediarySteps:10];
-            
             PublishSensorItems *sensorItems = [[PublishSensorItems alloc] init];
             SensorItem *sensorItem = [[SensorItem alloc] init];
             sensorItem.sensorId = @"DataGenerator_mwb";
@@ -84,13 +86,21 @@
         
             sensorItem.type = @"Temperature";
             sensorItem.location = sensorLocation;
+            
+            SensorMUCDomain *sensorDomain = [[SensorMUCDomain alloc] init];
+            sensorDomain.domainId = @"46364823482364872364872364783647823648723648";
+            sensorDomain.domainURL = @"localhost/DataGenerator";
+            
+            sensorItem.sensorDomain = sensorDomain;
         
             SensorValue *sensorValue = [[SensorValue alloc] init];
             sensorValue.subType = @"Generated";
-            sensorValue.value = [NSString stringWithFormat:@"%f", [[valueCalculator nextValue] floatValue]];
+            sensorValue.value = [NSString stringWithFormat:@"%f", [[self.valueCalculator nextValue] floatValue]];
             sensorValue.unit = @"Celsius";
+            sensorValue.timestamp = [self sensorTimestamp];
         
-            [sensorItem.values addObjectsFromArray:[self variateTheValue:sensorValue]];
+//            [sensorItem.values addObjectsFromArray:[self variateTheValue:sensorValue]];
+            sensorItem.values = [NSMutableArray arrayWithObject:sensorValue];
             if (!sensorItems.sensorItems) {
                 sensorItems.sensorItems = [NSMutableArray arrayWithCapacity:1];
             }
@@ -127,6 +137,24 @@
     NSString *dateString = [NSString stringWithFormat:@"%@.%@.%@-%@:%@:%@", day, month, year, hour, minute, second];
     NSLog(@"dateString");
     return dateString;
+}
+
+- (Timestamp *)sensorTimestamp
+{
+    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+    unsigned calendarFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    
+    NSDateComponents *dateComponents = [currentCalendar components:calendarFlags fromDate:[NSDate date]];
+    Timestamp *timestamp = [Timestamp new];
+    
+    timestamp.year = [dateComponents year];
+    timestamp.month = [dateComponents month];
+    timestamp.day = [dateComponents day];
+    timestamp.hour = [dateComponents hour];
+    timestamp.minute = [dateComponents minute];
+    timestamp.second = [dateComponents second];
+    
+    return timestamp;
 }
 
 #pragma mark - MXi Communication
@@ -184,6 +212,7 @@
 {
     NSLog(@"Service Discovered: %@", serviceJID);
     [self.connection sendBean:[[RegisterPublisher alloc] init]];
+    self.valueCalculator = [[ValueCalculator alloc] initWithUpperLimit:5.0 lowerLimit:-1.0 intermediarySteps:10];
     self.refreshTimer = [[RefreshTimer alloc] initWithTarget:self invokeMethod:@selector(scheduleNewValueCalculation)];
     [self setUpConnectionToMUCs];
 }

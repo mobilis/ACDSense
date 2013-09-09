@@ -1,6 +1,6 @@
 #import "Timestamp.h"
 
-@interface SensorValue : NSObject
+@interface SensorValue : NSObject <NSMutableCopying>
 
 @property (nonatomic, strong) NSString* subType;
 @property (nonatomic, strong) NSString* value;

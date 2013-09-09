@@ -31,6 +31,7 @@
 		5BB7640517CC7DA400006CA3 /* SensorValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7640317CC7DA400006CA3 /* SensorValue.m */; };
 		5BB7640817CC7E2100006CA3 /* SensorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7640717CC7E2100006CA3 /* SensorItem.m */; };
 		5BB7640F17CC859100006CA3 /* PublishSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7640E17CC859100006CA3 /* PublishSensorItems.m */; };
+		5BC9413D17D708DD002F1051 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5BC9413C17D708DD002F1051 /* icon.icns */; };
 		5BFEA37517BA693200C7914D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFEA37417BA693200C7914D /* Cocoa.framework */; };
 		5BFEA37F17BA693200C7914D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BFEA37D17BA693200C7914D /* InfoPlist.strings */; };
 		5BFEA38117BA693200C7914D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA38017BA693200C7914D /* main.m */; };
@@ -103,6 +104,7 @@
 		5BB7640717CC7E2100006CA3 /* SensorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorItem.m; sourceTree = "<group>"; };
 		5BB7640D17CC859000006CA3 /* PublishSensorItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishSensorItems.h; sourceTree = "<group>"; };
 		5BB7640E17CC859100006CA3 /* PublishSensorItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishSensorItems.m; sourceTree = "<group>"; };
+		5BC9413C17D708DD002F1051 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = icon.icns; path = ../icon.icns; sourceTree = "<group>"; };
 		5BFEA37117BA693200C7914D /* DataGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFEA37417BA693200C7914D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5BFEA37717BA693200C7914D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -260,6 +262,7 @@
 		5BFEA37B17BA693200C7914D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5BC9413C17D708DD002F1051 /* icon.icns */,
 				5B1189B517BF5DFB00CACF5A /* Settings.plist.example */,
 				5BFEA37C17BA693200C7914D /* DataGenerator-Info.plist */,
 				5BFEA37D17BA693200C7914D /* InfoPlist.strings */,
@@ -327,6 +330,7 @@
 				5BFEA38517BA693200C7914D /* Credits.rtf in Resources */,
 				5BFEA38B17BA693200C7914D /* MainMenu.xib in Resources */,
 				5BFEA39417BA8F4600C7914D /* Settings.plist in Resources */,
+				5BC9413D17D708DD002F1051 /* icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
