@@ -4,7 +4,7 @@
 All requests are embedded as payload in an IQ-stanza.  
 All requests must be qualified with a unique namespace which is:
 
-	xmlns="http://mobilis.inf.tu-dresden.de#services/ACDSenseService"
+	xmlns="http://mobilis.inf.tu-dresden.de/ACDSense"
 This namespace has to be added to all request descibed in the following sections.
 
 ## Register clients at service 
