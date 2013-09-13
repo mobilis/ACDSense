@@ -31,6 +31,12 @@ public class MUCDiscoveryManager {
 			discoverMUCRooms(domain);
 	}
 	
+	
+	public void discoverMUCRooms(String domainName) {
+		SensorMUCDomain domain = new SensorMUCDomain();
+		domain.setDomainURL(domainName);
+		discoverMUCRooms(domain);
+	}
 	public void discoverMUCRooms(SensorMUCDomain domain) {
 		MUCDiscovery mucDiscovery = new MUCDiscovery(connection, domain);
 		List<HostedRoom> rooms = mucDiscovery.getAllMUCs();

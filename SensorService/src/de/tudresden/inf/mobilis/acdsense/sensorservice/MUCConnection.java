@@ -114,6 +114,10 @@ public class MUCConnection extends Observable implements PacketListener {
 	public final String getRoomJID() {
 		return this.roomJID;
 	}
+	
+	public final SensorMUCDomain getDomain() {
+		return this.domain;
+	}
 
 	@Override
 	public void processPacket(Packet packet) {
