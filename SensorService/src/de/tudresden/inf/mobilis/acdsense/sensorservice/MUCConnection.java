@@ -119,7 +119,7 @@ public class MUCConnection extends Observable implements PacketListener {
 			List<SensorValue> sensorValues = new ArrayList<>(1);
 			sensorValues.add(sensorValue);
 			
-			SensorItem sensorItem = new SensorItem(roomJID, domain, sensorValues, new Location(51, 13), roomType);
+			SensorItem sensorItem = new SensorItem(packet.getFrom(), domain, sensorValues, new Location(51, 13), roomType);
 			List<SensorItem> sensorItems = new ArrayList<>(1);
 			sensorItems.add(sensorItem);
 			
