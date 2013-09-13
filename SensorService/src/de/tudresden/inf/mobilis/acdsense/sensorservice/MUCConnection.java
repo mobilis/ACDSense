@@ -33,7 +33,6 @@ public class MUCConnection extends Observable implements PacketListener {
 	
 	private String roomJID;
 	private String roomType;
-	private String roomSubject;
 	private SensorMUCDomain domain;
 	
 	private void determineRoomType() {
@@ -43,29 +42,19 @@ public class MUCConnection extends Observable implements PacketListener {
 			roomInfo = discoveryManager.discoverInfo(roomJID);
 			DataForm roomAdditionalInfo = (DataForm) roomInfo.getExtension("x", "jabber:x:data");
 			Iterator<FormField> fieldIterator = roomAdditionalInfo.getFields();
-			boolean descriptionFound = false;
-			boolean subjectFound = false;
-			boolean allFound = false;
-			while (fieldIterator.hasNext() && !allFound) {
+			boolean found = false;
+			while (fieldIterator.hasNext() && !found) {
 				FormField field = fieldIterator.next();
 				if (field.getVariable().equalsIgnoreCase("muc#roominfo_description")) {
-					for (Iterator<String> valueIterator = field.getValues(); valueIterator.hasNext() && !descriptionFound;) {
+					for (Iterator<String> valueIterator = field.getValues(); valueIterator.hasNext() && !found;) {
 						String value = valueIterator.next();
 						if (value.length() >= 12)
 							if (value.substring(0, 13).equalsIgnoreCase("acdsense_muc#")) {
-								descriptionFound = true;
+								found = true;
 								roomType = value.substring(13);
 							}
 					}
 				}
-				if (field.getVariable().equalsIgnoreCase("muc#roominfo_subject")) {
-					for (Iterator<String> valueIterator = field.getValues(); valueIterator.hasNext() && !subjectFound;) {
-						String value = valueIterator.next();
-						roomSubject = value;
-						subjectFound = true;
-					}
-				}
-				if (subjectFound && descriptionFound) allFound = true;
 			}
 		} catch (XMPPException e) {
 			e.printStackTrace();
@@ -95,7 +84,6 @@ public class MUCConnection extends Observable implements PacketListener {
 		this.connection = connection;
 		this.roomJID = roomJID;
 		this.domain = domain;
-		this.roomSubject = "No Subject specified";
 		determineRoomType();
 		addObserver(messageObserver);
 	}
@@ -131,7 +119,7 @@ public class MUCConnection extends Observable implements PacketListener {
 			List<SensorValue> sensorValues = new ArrayList<>(1);
 			sensorValues.add(sensorValue);
 			
-			SensorItem sensorItem = new SensorItem(roomSubject, domain, sensorValues, new Location(51, 13), roomType);
+			SensorItem sensorItem = new SensorItem(roomJID, domain, sensorValues, new Location(51, 13), roomType);
 			List<SensorItem> sensorItems = new ArrayList<>(1);
 			sensorItems.add(sensorItem);
 			
