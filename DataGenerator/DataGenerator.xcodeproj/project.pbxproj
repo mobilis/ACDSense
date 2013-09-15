@@ -42,7 +42,9 @@
 		5BFEA39417BA8F4600C7914D /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BFEA39317BA8F4600C7914D /* Settings.plist */; };
 		5BFEA39717BA900D00C7914D /* RefreshTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA39617BA900D00C7914D /* RefreshTimer.m */; };
 		5BFEA39B17BA959C00C7914D /* ValueCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA39A17BA959C00C7914D /* ValueCalculator.m */; };
+		BF8CB1C00C1DC103F0149A3E /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB505CEA995E5510F49B2 /* XMLReader.m */; };
 		BF8CB7A236FB194992D237A2 /* Property.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB5305F95C17A7317FC2F /* Property.m */; };
+		BF8CB845F5A8A4FE2048AAC2 /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBD31E55CEE28EEE1DBB2 /* DataLoader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -129,7 +131,11 @@
 		5BFEA39A17BA959C00C7914D /* ValueCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValueCalculator.m; sourceTree = "<group>"; };
 		BF8CB076BD06048942FDDA64 /* test_parser.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = test_parser.py; path = scripts/test_parser.py; sourceTree = "<group>"; };
 		BF8CB3B9E944DA4DB5BF3520 /* sparql.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sparql.txt; path = scripts/sparql.txt; sourceTree = "<group>"; };
+		BF8CB505CEA995E5510F49B2 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		BF8CB5305F95C17A7317FC2F /* Property.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Property.m; path = n3/Property.m; sourceTree = "<group>"; };
+		BF8CBC99C7638B729653BB38 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
+		BF8CBD31E55CEE28EEE1DBB2 /* DataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataLoader.m; sourceTree = "<group>"; };
+		BF8CBDF831B330828C0253FA /* DataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataLoader.h; sourceTree = "<group>"; };
 		BF8CBF9746D0CE50AC6602F0 /* Property.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Property.h; path = n3/Property.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -212,6 +218,10 @@
 				5BE5EFE817E4567C00F1A9BC /* Subject.m */,
 				BF8CB5305F95C17A7317FC2F /* Property.m */,
 				BF8CBF9746D0CE50AC6602F0 /* Property.h */,
+				BF8CBD31E55CEE28EEE1DBB2 /* DataLoader.m */,
+				BF8CBDF831B330828C0253FA /* DataLoader.h */,
+				BF8CB505CEA995E5510F49B2 /* XMLReader.m */,
+				BF8CBC99C7638B729653BB38 /* XMLReader.h */,
 			);
 			name = "N3 Parser";
 			sourceTree = "<group>";
@@ -399,6 +409,8 @@
 				5B5BCFD817D5D451006E3EF3 /* MUCInformation.m in Sources */,
 				5BE5EFE917E4567C00F1A9BC /* Subject.m in Sources */,
 				BF8CB7A236FB194992D237A2 /* Property.m in Sources */,
+				BF8CB845F5A8A4FE2048AAC2 /* DataLoader.m in Sources */,
+				BF8CB1C00C1DC103F0149A3E /* XMLReader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

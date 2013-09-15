@@ -52,12 +52,12 @@ def write_result_to_file(result):
 		if first == 1 and file_exists == 0:
 			sensorID = ET.SubElement(root,"sensorId")
 			sensorID.text = components[2]
-			sensorType = ET.SubElement(root,"type")
-			sensorType.text = components[1]
 			first = 0
 		values = ET.SubElement(root,"values")
 		value = ET.SubElement(values,"value")
 		value.text = row.value
+		sensorValueType = ET.SubElement(values,"subType")
+        sensorValueType.text = components[1]
 		unit = ET.SubElement(values,"unit")
 		timestamp = get_timestamp_element_from_components(components)
 		values.append(timestamp)
