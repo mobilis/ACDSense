@@ -12,11 +12,26 @@
 
 @implementation NSString (FileReading)
 
-+ (NSArray *)linesOfStringsOfFile:(NSString *)filePath
++ (NSString *)contentsOfFile:(NSString *)filePath
 {
     NSError *error = nil;
-    NSString *completeFileString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+    NSString *fileContent = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
     if (error) {
+        return nil;
+    }
+    
+    return fileContent;
+}
+
++ (NSArray *)pointSeparatedComponentsOfString:(NSString *)string
+{
+    return [string componentsSeparatedByString:@"."];
+}
+
++ (NSArray *)linesOfStringsOfFile:(NSString *)filePath
+{
+    NSString *completeFileString = [self contentsOfFile:filePath];
+    if (!completeFileString) {
         return nil;
     }
     

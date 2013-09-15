@@ -32,6 +32,7 @@
 		5BB7640817CC7E2100006CA3 /* SensorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7640717CC7E2100006CA3 /* SensorItem.m */; };
 		5BB7640F17CC859100006CA3 /* PublishSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7640E17CC859100006CA3 /* PublishSensorItems.m */; };
 		5BC9413D17D708DD002F1051 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5BC9413C17D708DD002F1051 /* icon.icns */; };
+		5BE5EFE917E4567C00F1A9BC /* Subject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5EFE817E4567C00F1A9BC /* Subject.m */; };
 		5BFEA37517BA693200C7914D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFEA37417BA693200C7914D /* Cocoa.framework */; };
 		5BFEA37F17BA693200C7914D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BFEA37D17BA693200C7914D /* InfoPlist.strings */; };
 		5BFEA38117BA693200C7914D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA38017BA693200C7914D /* main.m */; };
@@ -41,6 +42,7 @@
 		5BFEA39417BA8F4600C7914D /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BFEA39317BA8F4600C7914D /* Settings.plist */; };
 		5BFEA39717BA900D00C7914D /* RefreshTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA39617BA900D00C7914D /* RefreshTimer.m */; };
 		5BFEA39B17BA959C00C7914D /* ValueCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA39A17BA959C00C7914D /* ValueCalculator.m */; };
+		BF8CB7A236FB194992D237A2 /* Property.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB5305F95C17A7317FC2F /* Property.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -105,6 +107,8 @@
 		5BB7640D17CC859000006CA3 /* PublishSensorItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishSensorItems.h; sourceTree = "<group>"; };
 		5BB7640E17CC859100006CA3 /* PublishSensorItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishSensorItems.m; sourceTree = "<group>"; };
 		5BC9413C17D708DD002F1051 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = icon.icns; path = ../icon.icns; sourceTree = "<group>"; };
+		5BE5EFE717E4567C00F1A9BC /* Subject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Subject.h; path = n3/Subject.h; sourceTree = "<group>"; };
+		5BE5EFE817E4567C00F1A9BC /* Subject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Subject.m; path = n3/Subject.m; sourceTree = "<group>"; };
 		5BFEA37117BA693200C7914D /* DataGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFEA37417BA693200C7914D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5BFEA37717BA693200C7914D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -123,6 +127,10 @@
 		5BFEA39617BA900D00C7914D /* RefreshTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTimer.m; sourceTree = "<group>"; };
 		5BFEA39917BA959B00C7914D /* ValueCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueCalculator.h; sourceTree = "<group>"; };
 		5BFEA39A17BA959C00C7914D /* ValueCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValueCalculator.m; sourceTree = "<group>"; };
+		BF8CB076BD06048942FDDA64 /* test_parser.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = test_parser.py; path = scripts/test_parser.py; sourceTree = "<group>"; };
+		BF8CB3B9E944DA4DB5BF3520 /* sparql.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sparql.txt; path = scripts/sparql.txt; sourceTree = "<group>"; };
+		BF8CB5305F95C17A7317FC2F /* Property.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Property.m; path = n3/Property.m; sourceTree = "<group>"; };
+		BF8CBF9746D0CE50AC6602F0 /* Property.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Property.h; path = n3/Property.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +205,26 @@
 			name = Beans;
 			sourceTree = "<group>";
 		};
+		5BE5EFE317E453D500F1A9BC /* N3 Parser */ = {
+			isa = PBXGroup;
+			children = (
+				5BE5EFE717E4567C00F1A9BC /* Subject.h */,
+				5BE5EFE817E4567C00F1A9BC /* Subject.m */,
+				BF8CB5305F95C17A7317FC2F /* Property.m */,
+				BF8CBF9746D0CE50AC6602F0 /* Property.h */,
+			);
+			name = "N3 Parser";
+			sourceTree = "<group>";
+		};
+		5BE5EFED17E45A4000F1A9BC /* Helper Categories */ = {
+			isa = PBXGroup;
+			children = (
+				5B63EE5A17D1D10700CD8667 /* NSString+FileReading.h */,
+				5B63EE5B17D1D10700CD8667 /* NSString+FileReading.m */,
+			);
+			name = "Helper Categories";
+			sourceTree = "<group>";
+		};
 		5BFEA36817BA693200C7914D = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +232,8 @@
 				5BFEA37A17BA693200C7914D /* DataGenerator */,
 				5BFEA37317BA693200C7914D /* Frameworks */,
 				5BFEA37217BA693200C7914D /* Products */,
+				BF8CB3B9E944DA4DB5BF3520 /* sparql.txt */,
+				BF8CB076BD06048942FDDA64 /* test_parser.py */,
 			);
 			sourceTree = "<group>";
 		};
@@ -238,6 +268,7 @@
 		5BFEA37A17BA693200C7914D /* DataGenerator */ = {
 			isa = PBXGroup;
 			children = (
+				5BE5EFE317E453D500F1A9BC /* N3 Parser */,
 				5B6AAB4917BE6B510086A510 /* Beans */,
 				5BFEA38617BA693200C7914D /* AppDelegate.h */,
 				5BFEA38717BA693200C7914D /* AppDelegate.m */,
@@ -249,8 +280,7 @@
 				5BFEA39A17BA959C00C7914D /* ValueCalculator.m */,
 				5B1A01E517BE7A6900CC7011 /* LogFileWriter.h */,
 				5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */,
-				5B63EE5A17D1D10700CD8667 /* NSString+FileReading.h */,
-				5B63EE5B17D1D10700CD8667 /* NSString+FileReading.m */,
+				5BE5EFED17E45A4000F1A9BC /* Helper Categories */,
 				5B5BCFD317D5D31D006E3EF3 /* MUCInfoParser.h */,
 				5B5BCFD417D5D31E006E3EF3 /* MUCInfoParser.m */,
 				5B5BCFD617D5D450006E3EF3 /* MUCInformation.h */,
@@ -367,6 +397,8 @@
 				5B5BCFD217D5CA8E006E3EF3 /* Timestamp.m in Sources */,
 				5B5BCFD517D5D31E006E3EF3 /* MUCInfoParser.m in Sources */,
 				5B5BCFD817D5D451006E3EF3 /* MUCInformation.m in Sources */,
+				5BE5EFE917E4567C00F1A9BC /* Subject.m in Sources */,
+				BF8CB7A236FB194992D237A2 /* Property.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
