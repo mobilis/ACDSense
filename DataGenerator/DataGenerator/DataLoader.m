@@ -7,18 +7,22 @@
 
 
 #import "DataLoader.h"
+#import "LoaderOperation.h"
+#import "NSString+FileReading.h"
+#import "SensorItem.h"
 
 
 @interface DataLoader ()
 
-@property(nonatomic, strong) NSArray *dataFiles;
+@property (nonatomic, strong) NSArray *dataFiles;
+@property (atomic, strong) NSMutableArray *sensorItems;
+
+@property (strong, nonatomic) NSOperationQueue *backgroundQueue;
 
 @end
 
 @implementation DataLoader
-{
 
-}
 + (id)loadWithDirectory:(NSString *)pathToDirectory
 {
     return [[self alloc] initWithDirectory:pathToDirectory];
@@ -29,9 +33,23 @@
     self = [super init];
     if (self) {
         self.directoryPath = pathToDirectory;
+        self.backgroundQueue = [NSOperationQueue new];
     }
 
     return self;
+}
+
+#pragma mark - KVO Compliance
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"isFinished"]) {
+        SensorItem *sensorItem = [((LoaderOperation *)object) sensorItem];
+        @synchronized (_sensorItems) {
+            [_sensorItems addObject:sensorItem];
+        }
+        [_delegate sensorItemParsed:sensorItem];
+    }
 }
 
 #pragma mark - Handle Data Loading
@@ -62,7 +80,11 @@
     if (numberOfFiles == 0)
         filesToLoad = _dataFiles.count;
 
-    // TODO: dispatch file loading and parsing
+    for (int i = 0; i < filesToLoad; i++) {
+        NSOperation *dataLoader = [[LoaderOperation alloc] initWithXMLString:[NSString contentsOfFile:_dataFiles[i]]];
+        [dataLoader addObserver:self forKeyPath:@"isFinished" options:NSKeyValueObservingOptionNew context:nil];
+        [_backgroundQueue addOperation:dataLoader];
+    }
 }
 
 @end

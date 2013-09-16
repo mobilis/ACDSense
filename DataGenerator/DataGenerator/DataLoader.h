@@ -8,10 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class SensorItem;
+
 
 @protocol DataLoaderDelegate
 
 - (void)numberOfFiles:(NSUInteger)numberOfFiles inDirectory:(NSString *)directoryPath;
+- (void)sensorItemParsed:(SensorItem *)sensorItem;
+- (void)loadingFinished:(BOOL)successfull;
 
 @end
 
@@ -27,5 +31,7 @@
 
 - (void)startLoading;
 - (void)startLoadingNumberOfFiles:(NSUInteger)numberOfFiles;
+
+- (void)stopLoading;
 
 @end
