@@ -49,7 +49,7 @@ public class MUCConnection extends Observable implements PacketListener {
 					for (Iterator<String> valueIterator = field.getValues(); valueIterator.hasNext() && !found;) {
 						String value = valueIterator.next();
 						if (value.length() >= 57)
-							if (value.substring(0, 58).equalsIgnoreCase("http://mobilis.inf.tu-dresden.de#services/ACDSenseService#")) {
+							if (value.substring(0, 58).equalsIgnoreCase("http://mobilis.inf.tu-dresden.de/sensors#")) {
 								found = true;
 								roomType = value.substring(58);
 							}
