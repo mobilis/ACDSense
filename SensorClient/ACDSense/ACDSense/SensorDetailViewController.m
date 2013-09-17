@@ -27,6 +27,7 @@
 - (void)updateChartPlot;
 - (void)updateChartContent;
 - (void)updateLabels;
+- (void)updateMapView;
 
 @end
 
@@ -98,9 +99,18 @@
     
     [self updateLabels];
     [self updateChartContent];
+	[self updateMapView];
 }
 
 #pragma mark - Private Methods
+
+- (void)updateMapView
+{
+	[self.mapView removeAnnotations:self.mapView.annotations];
+	MKPointAnnotation *pa = [MKPointAnnotation new];
+	pa.coordinate = CLLocationCoordinate2DMake((double) self.sensorItem.location.latitude, (double) self.sensorItem.location.longitude);
+	[self.mapView addAnnotation:pa];
+}
 
 - (void)updateChartContent
 {
@@ -191,6 +201,14 @@
 
 #pragma mark - CPTPlotSpaceDelegate
 
-
+#pragma mark - MKMapViewDelegate
+-(void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
+{
+	MKAnnotationView *annotationView = [views objectAtIndex:0];
+	id <MKAnnotation> mp = [annotationView annotation];
+	MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance([mp coordinate], 1500, 1500);
+	[mapView setRegion:region animated:YES];
+	[mapView selectAnnotation:mp animated:YES];
+}
 
 @end

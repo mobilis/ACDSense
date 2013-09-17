@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 #import "SensorItem.h"
 
 #import "CorePlot-CocoaTouch.h"
 
-@interface SensorDetailViewController : UIViewController <CPTPlotDataSource>
+@interface SensorDetailViewController : UIViewController <CPTPlotDataSource, MKMapViewDelegate>
 
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) SensorItem *sensorItem;
 
 - (void)addSensorValues:(NSArray *)sensorValues;

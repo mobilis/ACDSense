@@ -314,6 +314,13 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vhg-mt-8ab">
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" type="user" id="AMv-LI-oXz"/>
+                                    <constraint firstAttribute="width" constant="250" type="user" id="Hf6-Lh-pl0"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" type="user" id="Vn0-Ne-nN4"/>
+                                </constraints>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -325,12 +332,14 @@
                             <constraint firstItem="Osg-lv-1PM" firstAttribute="top" secondItem="1Oo-0r-wov" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="7bc-N7-DhK"/>
                             <constraint firstItem="cp7-zD-dpU" firstAttribute="leading" secondItem="88N-jp-XWl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Anq-lq-8xE"/>
                             <constraint firstItem="OmS-Z3-JtE" firstAttribute="leading" secondItem="1Oo-0r-wov" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Bia-Qc-N4B"/>
+                            <constraint firstItem="vhg-mt-8ab" firstAttribute="trailing" secondItem="88N-jp-XWl" secondAttribute="trailing" type="default" id="CH3-VN-gEf"/>
                             <constraint firstItem="c6g-V3-FTC" firstAttribute="leading" secondItem="jAh-Wq-ezv" secondAttribute="leading" type="default" id="F1e-lJ-T9Y"/>
                             <constraint firstItem="JRc-mC-4pN" firstAttribute="trailing" secondItem="88N-jp-XWl" secondAttribute="trailing" type="default" id="Fh9-HP-sZp"/>
                             <constraint firstItem="c6g-V3-FTC" firstAttribute="top" secondItem="jAh-Wq-ezv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="JD2-Zy-HYn"/>
                             <constraint firstItem="OmS-Z3-JtE" firstAttribute="top" secondItem="88N-jp-XWl" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Liu-8o-1Dm"/>
                             <constraint firstItem="1Oo-0r-wov" firstAttribute="top" secondItem="88N-jp-XWl" secondAttribute="top" constant="20" symbolic="YES" type="default" id="N04-sG-2T0"/>
                             <constraint firstItem="JRc-mC-4pN" firstAttribute="top" secondItem="88N-jp-XWl" secondAttribute="top" constant="150" id="OjP-ml-U6T"/>
+                            <constraint firstItem="vhg-mt-8ab" firstAttribute="top" secondItem="88N-jp-XWl" secondAttribute="top" type="default" id="Oz8-R8-KtL"/>
                             <constraint firstItem="jAh-Wq-ezv" firstAttribute="baseline" secondItem="Osg-lv-1PM" secondAttribute="baseline" type="default" id="R9k-UT-gHs"/>
                             <constraint firstItem="c6g-V3-FTC" firstAttribute="leading" secondItem="cp7-zD-dpU" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="XR7-VC-Ccw"/>
                             <constraint firstItem="Osg-lv-1PM" firstAttribute="leading" secondItem="88N-jp-XWl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Xtg-vF-q0x"/>
@@ -347,6 +356,7 @@
                     <toolbarItems/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="mapView" destination="vhg-mt-8ab" id="4SF-zy-xKy"/>
                         <outlet property="plotView" destination="JRc-mC-4pN" id="NUe-gX-OnY"/>
                         <outlet property="sensorIDLabel" destination="OmS-Z3-JtE" id="Hz8-GV-qE4"/>
                         <outlet property="sensorLocationLabel" destination="c6g-V3-FTC" id="BdA-9B-fzO"/>
@@ -374,6 +384,7 @@
         <class className="SensorDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SensorDetailViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="plotView" candidateClass="CPTGraphHostingView"/>
                 <relationship kind="outlet" name="sensorIDLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sensorLocationLabel" candidateClass="UILabel"/>

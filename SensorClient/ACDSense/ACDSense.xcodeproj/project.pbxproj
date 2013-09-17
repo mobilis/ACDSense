@@ -30,6 +30,8 @@
 		0CD1893B17C75350004DF634 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1893A17C75350004DF634 /* SettingsViewController.m */; };
 		0CD1894017C7560D004DF634 /* TextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1893F17C7560D004DF634 /* TextFieldCell.m */; };
 		0CD1894317C75885004DF634 /* SensorDomainsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD1894217C75885004DF634 /* SensorDomainsViewController.m */; };
+		0CF0A42917E845D10098FF30 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CF0A42817E845D10098FF30 /* MapKit.framework */; };
+		0CF0A42B17E84BD60098FF30 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CF0A42A17E84BD60098FF30 /* CoreLocation.framework */; };
 		5B19093C17D60F9200376B58 /* SensorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B19093B17D60F9200376B58 /* SensorTableViewCell.m */; };
 		5B1F319017D4823900ADA1CA /* Location+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F318F17D4823900ADA1CA /* Location+Description.m */; };
 		5B22E84F17C2547B00E6E4F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E84E17C2547B00E6E4F4 /* UIKit.framework */; };
@@ -111,6 +113,8 @@
 		0CD1896E17CA4322004DF634 /* SensorMUCDomainCreated.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SensorMUCDomainCreated.m; path = "src-gen/SensorMUCDomainCreated.m"; sourceTree = "<group>"; };
 		0CD1896F17CA4322004DF634 /* SensorMUCDomainRemoved.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SensorMUCDomainRemoved.h; path = "src-gen/SensorMUCDomainRemoved.h"; sourceTree = "<group>"; };
 		0CD1897017CA4322004DF634 /* SensorMUCDomainRemoved.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SensorMUCDomainRemoved.m; path = "src-gen/SensorMUCDomainRemoved.m"; sourceTree = "<group>"; };
+		0CF0A42817E845D10098FF30 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0CF0A42A17E84BD60098FF30 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5B19093A17D60F9200376B58 /* SensorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorTableViewCell.h; sourceTree = "<group>"; };
 		5B19093B17D60F9200376B58 /* SensorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorTableViewCell.m; sourceTree = "<group>"; };
 		5B1F318E17D4823900ADA1CA /* Location+Description.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Location+Description.h"; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CF0A42B17E84BD60098FF30 /* CoreLocation.framework in Frameworks */,
+				0CF0A42917E845D10098FF30 /* MapKit.framework in Frameworks */,
 				5BB71DB317D32F37000CAF47 /* QuartzCore.framework in Frameworks */,
 				5BB71DB117D32EEA000CAF47 /* libCorePlot-CocoaTouch.a in Frameworks */,
 				5BB71D6117D32CDA000CAF47 /* libMXi.a in Frameworks */,
@@ -259,6 +265,8 @@
 		5B22E84D17C2547B00E6E4F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0CF0A42A17E84BD60098FF30 /* CoreLocation.framework */,
+				0CF0A42817E845D10098FF30 /* MapKit.framework */,
 				5BB71DB217D32F37000CAF47 /* QuartzCore.framework */,
 				5BB71DB017D32EEA000CAF47 /* libCorePlot-CocoaTouch.a */,
 				5BB71D6017D32CDA000CAF47 /* libMXi.a */,
