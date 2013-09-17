@@ -206,7 +206,7 @@
 {
 	MKAnnotationView *annotationView = [views objectAtIndex:0];
 	id <MKAnnotation> mp = [annotationView annotation];
-	MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance([mp coordinate], 1500, 1500);
+	MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance([mp coordinate], 100000, 100000);
 	[mapView setRegion:region animated:YES];
 	[mapView selectAnnotation:mp animated:YES];
 }
