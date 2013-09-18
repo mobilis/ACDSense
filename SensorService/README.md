@@ -41,7 +41,7 @@ The sensor information will be broadcasted to all registered receivers afterward
 The service requires some specific information on a MUC to correctly identify the MUC as a sensor value provider.  
 Create a MUC room as usual on the XMPP server. The field of interest is the "Topic" field (room subject). In  this field, specify the following qualifier:
 
-	http://mobilis.inf.tu-dresden.de#services/ACDSenseService#<type>
+	http://mobilis.inf.tu-dresden.de/sensors#<type>
 The &lt;type&gt; can currently take one of the following values:  
 * temperature  
 * wind  
