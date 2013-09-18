@@ -8,8 +8,9 @@
 
 #import "LoaderOperation.h"
 #import "SensorItem.h"
+#import "XMLReader.h"
 
-@interface LoaderOperation () {
+@interface LoaderOperation () <XMLReaderDelegate> {
     BOOL _executing, _finished;
 }
 
@@ -27,6 +28,7 @@
     self = [super init];
     if (self) {
         self.xmlReader = [[XMLReader alloc] initWithString:xmlString];
+        self.xmlReader.delegate = self;
     }
 
     return self;
@@ -63,11 +65,11 @@
     }
 
     [self willChangeValueForKey:@"isExecuting"];
+    _executing = YES;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
     {
         [self.xmlReader parse];
     });
-    _executing = YES;
     [self didChangeValueForKey:@"isExecuting"];
 }
 

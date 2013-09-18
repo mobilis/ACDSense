@@ -15,11 +15,31 @@
 + (NSString *)contentsOfFile:(NSString *)filePath
 {
     NSError *error = nil;
-    NSString *fileContent = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+    NSString *fileContent = [NSString stringWithContentsOfURL:[NSURL URLWithString:filePath]
+                                                      encoding:NSUTF8StringEncoding error:&error];
     if (error) {
         return nil;
     }
     
+    return fileContent;
+}
++ (NSString *)fileLessFilePath:(NSString *)filePath
+{
+    return [filePath stringByReplacingOccurrencesOfString:@"file://localhost" withString:@""];
+}
+
++ (NSString *)contentsOfFile:(NSString *)fileName inDirectory:(NSString *)directory
+{
+    NSError *error = nil;
+    NSString *fileContent = nil;
+    @autoreleasepool {
+        NSURL *directoryURL = [NSURL URLWithString:directory];
+        NSURL *filePathURL = [directoryURL URLByAppendingPathComponent:fileName];
+        fileContent = [[NSString alloc] initWithContentsOfURL:filePathURL encoding:NSUTF8StringEncoding error:&error];
+    }
+    if (error)
+        return nil;
+
     return fileContent;
 }
 

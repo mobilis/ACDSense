@@ -6,9 +6,9 @@
 //
 
 
-#import "XMLReader.h"
+@class SensorItem;
 
-@interface LoaderOperation : NSOperation <XMLReaderDelegate>
+@interface LoaderOperation : NSOperation
 
 - (id)initWithXMLString:(NSString *)xmlString;
 

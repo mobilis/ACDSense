@@ -12,21 +12,22 @@
 #import "MUCInformation.h"
 #import "MUCInfoParser.h"
 
-#import "SensorMUCDomain.h"
-
 #import "NSString+FileReading.h"
+#import "MainWindowController.h"
+#import "Timestamp+Description.h"
+#import "DataHandler.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <DataHandlerDelegate>
+
+@property (strong, nonatomic) MainWindowController *mainWindowController;
 
 @property (strong, nonatomic) NSMutableArray *mucInformation;
 @property (strong, nonatomic) NSMutableArray *connectedMUCs;
 
-@property (strong, atomic) ValueCalculator *valueCalculator;
+@property (strong, atomic) DataHandler *dataHandler;
 
-- (void)scheduleNewValueCalculation;
 - (NSString *)timestamp;
 
-- (void)launchConnectionEstablishment;
 - (void)setUpConnectionToMUCs;
 - (NSArray *)incomingBeanPrototypes;
 
@@ -38,23 +39,9 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [self launchConnectionEstablishment];
-}
-
-- (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename
-{
-    // Will be called before applicationDidFinishLaunching:
-    // Read in a list of MUCs
-    NSArray *rawMUCInformation = [NSString linesOfStringsOfFile:filename];
-    self.mucInformation = [NSMutableArray arrayWithCapacity:rawMUCInformation.count];
-    for (NSString *rawMUC in rawMUCInformation) {
-        [_mucInformation addObject:[[MUCInformation alloc] initWithAddress:[MUCInfoParser parseMUCAddressFromString:rawMUC]
-                                                                      type:[MUCInfoParser parseMUCTypeFromString:rawMUC]
-                                                                lowerLimit:[MUCInfoParser parseLowerLimitFromString:rawMUC]
-                                                                upperLimit:[MUCInfoParser parseUpperLimitFromString:rawMUC]
-                                                         intermediarySteps:[MUCInfoParser parseIntermediaryStepsFromString:rawMUC]]];
-    }
-    return _mucInformation.count > 0 ? YES : NO;
+    self.mainWindowController = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"];
+    self.mainWindowController.delegate = self;
+    [self.mainWindowController.window makeKeyAndOrderFront:self];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification
@@ -64,61 +51,17 @@
 
 #pragma mark - DataGenerator
 
-- (void)scheduleNewValueCalculation
+- (void)getMUCInformationFromFile:(NSString *)pathToFile
 {
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(queue, ^{
-        if (self.mucInformation) {
-            for (MUCInformation *mucInfo in self.connectedMUCs) {
-                [self.connection sendMessage:[NSString stringWithFormat:@"%f+%@+%@", [[mucInfo nextValue] floatValue],
-                                              [mucInfo unitOfValues],
-                                              [self timestamp]]
-                                      toRoom:mucInfo.address];
-            }
-        } else {
-            PublishSensorItems *sensorItems = [[PublishSensorItems alloc] init];
-            SensorItem *sensorItem = [[SensorItem alloc] init];
-            sensorItem.sensorId = @"DataGenerator_mwb";
-        
-            Location *sensorLocation = [[Location alloc] init];
-            sensorLocation.latitude = 51;
-            sensorLocation.longitude = 13;
-        
-            sensorItem.type = @"Temperature";
-            sensorItem.location = sensorLocation;
-            
-            SensorMUCDomain *sensorDomain = [[SensorMUCDomain alloc] init];
-            sensorDomain.domainId = @"46364823482364872364872364783647823648723648";
-            sensorDomain.domainURL = @"localhost/DataGenerator";
-            
-            sensorItem.sensorDomain = sensorDomain;
-        
-            SensorValue *sensorValue = [[SensorValue alloc] init];
-            sensorValue.subType = @"Generated";
-            sensorValue.value = [NSString stringWithFormat:@"%f", [[self.valueCalculator nextValue] floatValue]];
-            sensorValue.unit = @"Celsius";
-            sensorValue.timestamp = [self sensorTimestamp];
-        
-//            [sensorItem.values addObjectsFromArray:[self variateTheValue:sensorValue]];
-            sensorItem.values = [NSMutableArray arrayWithObject:sensorValue];
-            if (!sensorItems.sensorItems) {
-                sensorItems.sensorItems = [NSMutableArray arrayWithCapacity:1];
-            }
-            [sensorItems.sensorItems addObject:sensorItem];
-        
-            [self.connection sendBean:sensorItems];
-        }
-    });
-}
-- (NSArray *)variateTheValue:(SensorValue *)value
-{
-    SensorValue *lowerValue = [value mutableCopy];
-    SensorValue *higherValue = [value mutableCopy];
-    
-    lowerValue.value = [NSString stringWithFormat:@"%f", [lowerValue.value floatValue] - 2.4];
-    higherValue.value = [NSString stringWithFormat:@"%f", [lowerValue.value floatValue] + 1.3];
-    
-    return @[lowerValue, higherValue, value];
+    NSArray *rawMUCInformation = [NSString linesOfStringsOfFile:pathToFile];
+    self.mucInformation = [NSMutableArray arrayWithCapacity:rawMUCInformation.count];
+    for (NSString *rawMUC in rawMUCInformation) {
+        [_mucInformation addObject:[[MUCInformation alloc] initWithAddress:[MUCInfoParser parseMUCAddressFromString:rawMUC]
+                                                                      type:[MUCInfoParser parseMUCTypeFromString:rawMUC]
+                                                                lowerLimit:[MUCInfoParser parseLowerLimitFromString:rawMUC]
+                                                                upperLimit:[MUCInfoParser parseUpperLimitFromString:rawMUC]
+                                                         intermediarySteps:[MUCInfoParser parseIntermediaryStepsFromString:rawMUC]]];
+    }
 }
 
 - (NSString *)timestamp
@@ -139,22 +82,12 @@
     return dateString;
 }
 
-- (Timestamp *)sensorTimestamp
+- (void)launchDataLoadingFromDirectory:(NSString *)directory
 {
-    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
-    unsigned calendarFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-    
-    NSDateComponents *dateComponents = [currentCalendar components:calendarFlags fromDate:[NSDate date]];
-    Timestamp *timestamp = [Timestamp new];
-    
-    timestamp.year = [dateComponents year];
-    timestamp.month = [dateComponents month];
-    timestamp.day = [dateComponents day];
-    timestamp.hour = [dateComponents hour];
-    timestamp.minute = [dateComponents minute];
-    timestamp.second = [dateComponents second];
-    
-    return timestamp;
+    @autoreleasepool {
+        self.dataHandler = [DataHandler dataHandlerWithDelegate:self andDirectory:directory];
+    }
+    [self.dataHandler startLoading];
 }
 
 #pragma mark - MXi Communication
@@ -163,13 +96,13 @@
 {
     NSString *settingsPath = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
     NSDictionary *jabberSettings = [[NSDictionary dictionaryWithContentsOfFile:settingsPath] objectForKey:@"jabberInformation"];
-    
+
     NSString *jid = [jabberSettings valueForKey:@"jid"];
     NSString *password = [jabberSettings valueForKey:@"password"];
     NSString *hostName = [jabberSettings valueForKey:@"hostName"];
     NSString *serviceNamespace = [jabberSettings valueForKey:@"serviceNamespace"];
     NSString *port = [jabberSettings valueForKey:@"port"];
-    
+
     self.connection = [MXiConnection connectionWithJabberID:jid
                                                    password:password
                                                    hostName:hostName
@@ -212,8 +145,6 @@
 {
     NSLog(@"Service Discovered: %@", serviceJID);
     [self.connection sendBean:[[RegisterPublisher alloc] init]];
-    self.valueCalculator = [[ValueCalculator alloc] initWithUpperLimit:5.0 lowerLimit:-1.0 intermediarySteps:10];
-    self.refreshTimer = [[RefreshTimer alloc] initWithTarget:self invokeMethod:@selector(scheduleNewValueCalculation)];
     [self setUpConnectionToMUCs];
 }
 
@@ -254,10 +185,9 @@
 
 - (void)didReceiveBean:(MXiBean<MXiIncomingBean> *)theBean
 {
-    if ([theBean class] == [DelegateSensorValues class]) {
-        // DataGenerator does not handle incoming Sensor values
-        // It's a producer only
-    }
+    // DataGenerator does not handle incoming Sensor values
+    // It's a producer only
+    return;
 }
 
 #pragma mark - MXiMultiUserChatDelegate
@@ -267,9 +197,26 @@
     for (MUCInformation *mucInfo in _mucInformation) {
         if ([mucInfo.address isEqualToString:roomJID]) {
             [_connectedMUCs addObject:mucInfo];
+            [self.dataHandler setSubmitData:YES];
             break;
         }
     }
+}
+
+#pragma mark - DataHandlerDelegate
+
+- (void)sendSensorItem:(SensorItem *)sensorItem
+{
+    // TODO: ask Daniel how MUCs shall be handled (Post weather to type or to one MUC?)
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+    {
+        for (SensorValue *value in sensorItem.values) {
+            [self.connection sendMessage:[NSString stringWithFormat:@"%@+%@+%@", value.value,
+                                                                   value.unit,
+                            [value.timestamp timestampAsString]]
+                                  toRoom:((MUCInformation *)_connectedMUCs[0]).address];
+        }
+    });
 }
 
 @end

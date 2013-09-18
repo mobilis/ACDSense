@@ -60,8 +60,10 @@
 }
 - (void)startLoadingNumberOfFiles:(NSUInteger)numberOfFiles
 {
-    NSArray *directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:_directoryPath error:nil];
-    if (!directoryContent || directoryContent.count == 0)
+    NSError *error = nil;
+    NSArray *directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[NSString fileLessFilePath:_directoryPath]
+                                                                                    error:&error];
+    if (error || !directoryContent || directoryContent.count == 0)
         return;
 
     NSMutableArray *xmlFiles = [NSMutableArray arrayWithCapacity:directoryContent.count];
@@ -81,7 +83,8 @@
         filesToLoad = _dataFiles.count;
 
     for (int i = 0; i < filesToLoad; i++) {
-        NSOperation *dataLoader = [[LoaderOperation alloc] initWithXMLString:[NSString contentsOfFile:_dataFiles[i]]];
+        NSOperation *dataLoader = [[LoaderOperation alloc] initWithXMLString:[NSString contentsOfFile:_dataFiles[i]
+                                                                                          inDirectory:_directoryPath]];
         [dataLoader addObserver:self forKeyPath:@"isFinished" options:NSKeyValueObservingOptionNew context:nil];
         [_backgroundQueue addOperation:dataLoader];
     }
