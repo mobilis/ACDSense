@@ -41,6 +41,8 @@ def write_result_to_file(result):
 	file_exists = 1
 	file_name = ""
 	for row in result:
+		if row.observation is None:
+			return;
 		components = get_string_components(row.observation,'_')
 		file_name = components[2] + ".xml"
 		try:
@@ -58,13 +60,13 @@ def write_result_to_file(result):
 		value.text = row.value
 		sensorValueType = ET.SubElement(values,"subType")
         sensorValueType.text = components[1]
-		unit = ET.SubElement(values,"unit")
-		timestamp = get_timestamp_element_from_components(components)
-		values.append(timestamp)
-		try:
-			unit.text = row.unit[row.unit.index('#') + 1:]
-		except ValueError:
-			unit.text = ""
+        unit = ET.SubElement(values,"unit")
+        timestamp = get_timestamp_element_from_components(components)
+        values.append(timestamp)
+        try:
+        	unit.text = row.unit[row.unit.index('#') + 1:]
+        except ValueError:
+        	unit.text = ""
 	
 	tree = ET.ElementTree(root)
 	tree.write(file_name)
@@ -95,9 +97,12 @@ def main(argv):
 		if opt in ("m"):
 			print "m"
 		else:
-			print "d"
 			datafiles = files_in_directory(arg)
+			print "Total Number of Files: {}" .format(len(datafiles))
+			counter = 0
 			for file in datafiles:
+				counter += 1
+				print "Parsing {} of {} files".format(counter,len(datafiles))
 				query(parse(arg + '/' + file), "sparql.txt")
 	
 if __name__ == '__main__':
