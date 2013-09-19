@@ -24,7 +24,6 @@ import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.Location;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.PublishSensorItems;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.SensorItem;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.SensorMUCDomain;
-import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.SensorValue;
 
 public class MUCConnection extends Observable implements PacketListener {
 	
@@ -48,10 +47,10 @@ public class MUCConnection extends Observable implements PacketListener {
 				if (field.getVariable().equalsIgnoreCase("muc#roominfo_subject")) {
 					for (Iterator<String> valueIterator = field.getValues(); valueIterator.hasNext() && !found;) {
 						String value = valueIterator.next();
-						if (value.length() >= 57)
-							if (value.substring(0, 58).equalsIgnoreCase("http://mobilis.inf.tu-dresden.de/sensors#")) {
+						if (value.length() >= 40)
+							if (value.substring(0, 41).equalsIgnoreCase("http://mobilis.inf.tu-dresden.de/sensors#")) {
 								found = true;
-								roomType = value.substring(58);
+								roomType = value.substring(41);
 							}
 					}
 				}
@@ -111,15 +110,17 @@ public class MUCConnection extends Observable implements PacketListener {
 	public void processPacket(Packet packet) {
 		if (packet instanceof Message) {
 			Message message = (Message)packet;
-			SensorValue sensorValue = MessageBodyParser.processMessageBody(message.getBody());
-			if ("".equalsIgnoreCase(sensorValue.getValue())) {
+			String body = message.getBody();
+			SensorItem mucSensorItem = MessageBodyParser.processMessageBody(body);
+			if (mucSensorItem == null) {
+				return;
+			}
+			if (mucSensorItem.getValues().size() == 0) {
 				return;
 			}
 			setChanged();
-			List<SensorValue> sensorValues = new ArrayList<>(1);
-			sensorValues.add(sensorValue);
 			
-			SensorItem sensorItem = new SensorItem(packet.getFrom(), domain, sensorValues, new Location(51, 13), roomType);
+			SensorItem sensorItem = new SensorItem(packet.getFrom(), domain, mucSensorItem.getValues(), new Location(51, 13), roomType);
 			List<SensorItem> sensorItems = new ArrayList<>(1);
 			sensorItems.add(sensorItem);
 			

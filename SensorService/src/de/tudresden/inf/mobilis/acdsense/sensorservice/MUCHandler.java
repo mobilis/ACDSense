@@ -16,7 +16,7 @@ import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.SensorMUCDomain;
 
 public class MUCHandler implements Observer {
 	
-	private static int RefreshInterval = 60*60;
+	private static int RefreshInterval = 120;
 	
 	private static MUCHandler mucHandler;
 	
