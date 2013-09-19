@@ -16,6 +16,7 @@
 #import "MainWindowController.h"
 #import "Timestamp+Description.h"
 #import "DataHandler.h"
+#import "MessageProcessor.h"
 
 @interface AppDelegate () <DataHandlerDelegate>
 
@@ -211,9 +212,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
     {
         for (SensorValue *value in sensorItem.values) {
-            [self.connection sendMessage:[NSString stringWithFormat:@"%@+%@+%@", value.value,
-                                                                   value.unit,
-                            [value.timestamp timestampAsString]]
+            [self.connection sendMessage:[MessageProcessor messageWithSensorValue:value]
                                   toRoom:((MUCInformation *)_connectedMUCs[0]).address];
         }
     });

@@ -12,13 +12,14 @@
 
 - (NSString *)timestampAsString
 {
+    // 2013-09-18T18:31:38+1:00
     NSMutableString *timestampString = [[NSMutableString alloc] init];
-    [timestampString appendFormat:@"%02li/", self.month];
-    [timestampString appendFormat:@"%02li/", self.day];
-    [timestampString appendFormat:@"%li ", self.year];
+    [timestampString appendFormat:@"%li-", self.year];
+    [timestampString appendFormat:@"%02li-", self.month];
+    [timestampString appendFormat:@"%02liT", self.day];
     [timestampString appendFormat:@"%02li:", self.hour];
     [timestampString appendFormat:@"%02li:", self.minute];
-    [timestampString appendFormat:@"%02li", self.second];
+    [timestampString appendFormat:@"%02li+01:00", self.second];
     
     return timestampString;
 }

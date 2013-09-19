@@ -10,8 +10,6 @@
 		5B1189BC17C12FC000CACF5A /* MXi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1189BA17C12AC900CACF5A /* MXi.framework */; };
 		5B1A01E717BE7A6900CC7011 /* LogFileWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */; };
 		5B5BCFD217D5CA8E006E3EF3 /* Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5BCFD117D5CA8E006E3EF3 /* Timestamp.m */; };
-		5B5BCFD517D5D31E006E3EF3 /* MUCInfoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5BCFD417D5D31E006E3EF3 /* MUCInfoParser.m */; };
-		5B5BCFD817D5D451006E3EF3 /* MUCInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5BCFD717D5D451006E3EF3 /* MUCInformation.m */; };
 		5B63EE5C17D1D10700CD8667 /* NSString+FileReading.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B63EE5B17D1D10700CD8667 /* NSString+FileReading.m */; };
 		5B63EE6417D1F95600CD8667 /* MXi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5B1189BA17C12AC900CACF5A /* MXi.framework */; };
 		5BA3A78C17E7749B004379FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B442E1C17E7715C006AF7AE /* Foundation.framework */; };
@@ -37,7 +35,6 @@
 		5BC9413D17D708DD002F1051 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5BC9413C17D708DD002F1051 /* icon.icns */; };
 		5BCAC94817E8456900AEDFF6 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BCAC94617E8456900AEDFF6 /* MainWindow.xib */; };
 		5BCAC94C17E846FE00AEDFF6 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCAC94B17E846FE00AEDFF6 /* MainWindowController.m */; };
-		5BE5EFE917E4567C00F1A9BC /* Subject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5EFE817E4567C00F1A9BC /* Subject.m */; };
 		5BFEA37517BA693200C7914D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFEA37417BA693200C7914D /* Cocoa.framework */; };
 		5BFEA37F17BA693200C7914D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BFEA37D17BA693200C7914D /* InfoPlist.strings */; };
 		5BFEA38117BA693200C7914D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA38017BA693200C7914D /* main.m */; };
@@ -45,29 +42,30 @@
 		5BFEA38817BA693200C7914D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA38717BA693200C7914D /* AppDelegate.m */; };
 		5BFEA38B17BA693200C7914D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BFEA38917BA693200C7914D /* MainMenu.xib */; };
 		5BFEA39417BA8F4600C7914D /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BFEA39317BA8F4600C7914D /* Settings.plist */; };
-		5BFEA39717BA900D00C7914D /* RefreshTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA39617BA900D00C7914D /* RefreshTimer.m */; };
 		5BFEA39B17BA959C00C7914D /* ValueCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA39A17BA959C00C7914D /* ValueCalculator.m */; };
+		BF8CB0B990577C64D268F802 /* DataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBCB530B86497096DC61E /* DataHandler.m */; };
 		BF8CB1735E06D0AA6C7C3905 /* LogFileWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */; };
 		BF8CB1C00C1DC103F0149A3E /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB505CEA995E5510F49B2 /* XMLReader.m */; };
+		BF8CB2919133477A1601C300 /* MUCInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBB67CA62B94A8ECE455D /* MUCInformation.m */; };
 		BF8CB2FC8FD14CB01B4F8CDC /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7640117CC7DA300006CA3 /* Location.m */; };
 		BF8CB3E39006E9FFBBAD0EDF /* Timestamp+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB4776FBFA22E0B774E76 /* Timestamp+Description.m */; };
 		BF8CB411AB296D5DD8DEE533 /* Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5BCFD117D5CA8E006E3EF3 /* Timestamp.m */; };
-		BF8CB461A0507761A85F6727 /* DataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB47D693AF87C251AA8DA /* DataHandler.m */; };
 		BF8CB5BF056FCE11A3DEC191 /* LoaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB43F316485F99C48CE74 /* LoaderOperation.m */; };
-		BF8CB65FCCE00103EE5FFE8E /* MUCInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5BCFD717D5D451006E3EF3 /* MUCInformation.m */; };
 		BF8CB6DE4EDA80CA36B76FAF /* SensorValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7640317CC7DA400006CA3 /* SensorValue.m */; };
 		BF8CB732400BA089FAD8EBF1 /* NSString+FileReading.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B63EE5B17D1D10700CD8667 /* NSString+FileReading.m */; };
-		BF8CB7A236FB194992D237A2 /* Property.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB5305F95C17A7317FC2F /* Property.m */; };
+		BF8CB740BCAB80BD45A01CC7 /* MUCInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBB67CA62B94A8ECE455D /* MUCInformation.m */; };
+		BF8CB75D7213A021D9B492A3 /* MUCInfoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBC2797248890512511AC /* MUCInfoParser.m */; };
 		BF8CB7AF253F1F80EEE86BE6 /* LoaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB43F316485F99C48CE74 /* LoaderOperation.m */; };
 		BF8CB845F5A8A4FE2048AAC2 /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBD31E55CEE28EEE1DBB2 /* DataLoader.m */; };
 		BF8CB8C0743F7272391E4D4A /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBD31E55CEE28EEE1DBB2 /* DataLoader.m */; };
-		BF8CB9C49616A6A90A705BB7 /* DataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB47D693AF87C251AA8DA /* DataHandler.m */; };
+		BF8CB8CA01FE4ECE60EFAD90 /* MessageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBB8E5C4B94CC504ED5A0 /* MessageProcessor.m */; };
 		BF8CBACB80E041703C3A2183 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB505CEA995E5510F49B2 /* XMLReader.m */; };
+		BF8CBB860FA9C1625BA394F2 /* DataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBCB530B86497096DC61E /* DataHandler.m */; };
+		BF8CBC7523289A9DC034D6EF /* MUCInfoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBC2797248890512511AC /* MUCInfoParser.m */; };
 		BF8CBCC644A80B10FDADB02B /* SensorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7640717CC7E2100006CA3 /* SensorItem.m */; };
 		BF8CBD41D57E29A995D1B635 /* Timestamp+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB4776FBFA22E0B774E76 /* Timestamp+Description.m */; };
 		BF8CBEBBE7DD6FD3CE390805 /* ValueCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA39A17BA959C00C7914D /* ValueCalculator.m */; };
 		BF8CBEE8141DEA3AC9D2C648 /* SensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763EC17CC770500006CA3 /* SensorMUCDomain.m */; };
-		BF8CBFD1E97993A00031AFC3 /* MUCInfoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5BCFD417D5D31E006E3EF3 /* MUCInfoParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -101,10 +99,6 @@
 		5B442E1C17E7715C006AF7AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5B5BCFD017D5CA8E006E3EF3 /* Timestamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timestamp.h; sourceTree = "<group>"; };
 		5B5BCFD117D5CA8E006E3EF3 /* Timestamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timestamp.m; sourceTree = "<group>"; };
-		5B5BCFD317D5D31D006E3EF3 /* MUCInfoParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUCInfoParser.h; sourceTree = "<group>"; };
-		5B5BCFD417D5D31E006E3EF3 /* MUCInfoParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUCInfoParser.m; sourceTree = "<group>"; };
-		5B5BCFD617D5D450006E3EF3 /* MUCInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUCInformation.h; sourceTree = "<group>"; };
-		5B5BCFD717D5D451006E3EF3 /* MUCInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUCInformation.m; sourceTree = "<group>"; };
 		5B63EE5A17D1D10700CD8667 /* NSString+FileReading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FileReading.h"; sourceTree = "<group>"; };
 		5B63EE5B17D1D10700CD8667 /* NSString+FileReading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FileReading.m"; sourceTree = "<group>"; };
 		5B63EE6017D1E8FC00CD8667 /* roomList.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = roomList.txt; sourceTree = "<group>"; };
@@ -150,8 +144,6 @@
 		5BCAC94717E8456900AEDFF6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		5BCAC94A17E846FE00AEDFF6 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		5BCAC94B17E846FE00AEDFF6 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
-		5BE5EFE717E4567C00F1A9BC /* Subject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Subject.h; path = n3/Subject.h; sourceTree = "<group>"; };
-		5BE5EFE817E4567C00F1A9BC /* Subject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Subject.m; path = n3/Subject.m; sourceTree = "<group>"; };
 		5BFEA37117BA693200C7914D /* DataGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFEA37417BA693200C7914D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5BFEA37717BA693200C7914D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -166,24 +158,26 @@
 		5BFEA38717BA693200C7914D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5BFEA38A17BA693200C7914D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		5BFEA39317BA8F4600C7914D /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
-		5BFEA39517BA900D00C7914D /* RefreshTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTimer.h; sourceTree = "<group>"; };
-		5BFEA39617BA900D00C7914D /* RefreshTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTimer.m; sourceTree = "<group>"; };
 		5BFEA39917BA959B00C7914D /* ValueCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueCalculator.h; sourceTree = "<group>"; };
 		5BFEA39A17BA959C00C7914D /* ValueCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValueCalculator.m; sourceTree = "<group>"; };
 		BF8CB076BD06048942FDDA64 /* test_parser.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = test_parser.py; path = scripts/test_parser.py; sourceTree = "<group>"; };
+		BF8CB32FCC2E75315D1873A9 /* MessageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageProcessor.h; sourceTree = "<group>"; };
 		BF8CB3B9E944DA4DB5BF3520 /* sparql.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sparql.txt; path = scripts/sparql.txt; sourceTree = "<group>"; };
 		BF8CB43F316485F99C48CE74 /* LoaderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoaderOperation.m; path = n3/LoaderOperation.m; sourceTree = "<group>"; };
 		BF8CB4776FBFA22E0B774E76 /* Timestamp+Description.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Timestamp+Description.m"; sourceTree = SOURCE_ROOT; };
-		BF8CB47D693AF87C251AA8DA /* DataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHandler.m; sourceTree = "<group>"; };
 		BF8CB505CEA995E5510F49B2 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
-		BF8CB5305F95C17A7317FC2F /* Property.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Property.m; path = n3/Property.m; sourceTree = "<group>"; };
-		BF8CB7EB68BA53EA17CBEC31 /* DataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHandler.h; sourceTree = "<group>"; };
 		BF8CB8E537F28076A2156EFC /* LoaderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoaderOperation.h; path = n3/LoaderOperation.h; sourceTree = "<group>"; };
+		BF8CB98CB4A9038FB1689A7D /* MUCInfoParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUCInfoParser.h; sourceTree = "<group>"; };
+		BF8CB9E9536F0DE4DA391D41 /* MUCInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUCInformation.h; sourceTree = "<group>"; };
+		BF8CBB67CA62B94A8ECE455D /* MUCInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUCInformation.m; sourceTree = "<group>"; };
+		BF8CBB8E5C4B94CC504ED5A0 /* MessageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageProcessor.m; sourceTree = "<group>"; };
+		BF8CBC2797248890512511AC /* MUCInfoParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUCInfoParser.m; sourceTree = "<group>"; };
+		BF8CBC28CA5976869EA33251 /* DataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHandler.h; sourceTree = "<group>"; };
 		BF8CBC5B7FDD8248228402BA /* Timestamp+Description.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Timestamp+Description.h"; sourceTree = SOURCE_ROOT; };
 		BF8CBC99C7638B729653BB38 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
+		BF8CBCB530B86497096DC61E /* DataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHandler.m; sourceTree = "<group>"; };
 		BF8CBD31E55CEE28EEE1DBB2 /* DataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataLoader.m; sourceTree = "<group>"; };
 		BF8CBDF831B330828C0253FA /* DataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataLoader.h; sourceTree = "<group>"; };
-		BF8CBF9746D0CE50AC6602F0 /* Property.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Property.h; path = n3/Property.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,16 +292,14 @@
 		5BE5EFE317E453D500F1A9BC /* N3 Parser */ = {
 			isa = PBXGroup;
 			children = (
-				5BE5EFE717E4567C00F1A9BC /* Subject.h */,
-				5BE5EFE817E4567C00F1A9BC /* Subject.m */,
-				BF8CB5305F95C17A7317FC2F /* Property.m */,
-				BF8CBF9746D0CE50AC6602F0 /* Property.h */,
 				BF8CBD31E55CEE28EEE1DBB2 /* DataLoader.m */,
 				BF8CBDF831B330828C0253FA /* DataLoader.h */,
 				BF8CB505CEA995E5510F49B2 /* XMLReader.m */,
 				BF8CBC99C7638B729653BB38 /* XMLReader.h */,
 				BF8CB43F316485F99C48CE74 /* LoaderOperation.m */,
 				BF8CB8E537F28076A2156EFC /* LoaderOperation.h */,
+				BF8CBCB530B86497096DC61E /* DataHandler.m */,
+				BF8CBC28CA5976869EA33251 /* DataHandler.h */,
 			);
 			name = "N3 Parser";
 			sourceTree = "<group>";
@@ -375,19 +367,12 @@
 				5BFEA38717BA693200C7914D /* AppDelegate.m */,
 				5BCAC94917E8457A00AEDFF6 /* User Interface */,
 				5BFEA37B17BA693200C7914D /* Supporting Files */,
-				5BFEA39517BA900D00C7914D /* RefreshTimer.h */,
-				5BFEA39617BA900D00C7914D /* RefreshTimer.m */,
 				5BFEA39917BA959B00C7914D /* ValueCalculator.h */,
 				5BFEA39A17BA959C00C7914D /* ValueCalculator.m */,
 				5B1A01E517BE7A6900CC7011 /* LogFileWriter.h */,
 				5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */,
 				5BE5EFED17E45A4000F1A9BC /* Helper Categories */,
-				5B5BCFD317D5D31D006E3EF3 /* MUCInfoParser.h */,
-				5B5BCFD417D5D31E006E3EF3 /* MUCInfoParser.m */,
-				5B5BCFD617D5D450006E3EF3 /* MUCInformation.h */,
-				5B5BCFD717D5D451006E3EF3 /* MUCInformation.m */,
-				BF8CB47D693AF87C251AA8DA /* DataHandler.m */,
-				BF8CB7EB68BA53EA17CBEC31 /* DataHandler.h */,
+				BF8CBFBEA50FAFFEEFDA83FE /* MUC Information */,
 			);
 			path = DataGenerator;
 			sourceTree = "<group>";
@@ -405,6 +390,19 @@
 				5BFEA39317BA8F4600C7914D /* Settings.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BF8CBFBEA50FAFFEEFDA83FE /* MUC Information */ = {
+			isa = PBXGroup;
+			children = (
+				BF8CB98CB4A9038FB1689A7D /* MUCInfoParser.h */,
+				BF8CBC2797248890512511AC /* MUCInfoParser.m */,
+				BF8CB9E9536F0DE4DA391D41 /* MUCInformation.h */,
+				BF8CBB67CA62B94A8ECE455D /* MUCInformation.m */,
+				BF8CB32FCC2E75315D1873A9 /* MessageProcessor.h */,
+				BF8CBB8E5C4B94CC504ED5A0 /* MessageProcessor.m */,
+			);
+			name = "MUC Information";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -495,8 +493,6 @@
 			files = (
 				5BA3A78F17E7749B004379FC /* main.m in Sources */,
 				BF8CB8C0743F7272391E4D4A /* DataLoader.m in Sources */,
-				BF8CBFD1E97993A00031AFC3 /* MUCInfoParser.m in Sources */,
-				BF8CB65FCCE00103EE5FFE8E /* MUCInformation.m in Sources */,
 				BF8CB7AF253F1F80EEE86BE6 /* LoaderOperation.m in Sources */,
 				BF8CB411AB296D5DD8DEE533 /* Timestamp.m in Sources */,
 				BF8CBEE8141DEA3AC9D2C648 /* SensorMUCDomain.m in Sources */,
@@ -508,7 +504,9 @@
 				BF8CB732400BA089FAD8EBF1 /* NSString+FileReading.m in Sources */,
 				BF8CB1735E06D0AA6C7C3905 /* LogFileWriter.m in Sources */,
 				BF8CB3E39006E9FFBBAD0EDF /* Timestamp+Description.m in Sources */,
-				BF8CB9C49616A6A90A705BB7 /* DataHandler.m in Sources */,
+				BF8CBB860FA9C1625BA394F2 /* DataHandler.m in Sources */,
+				BF8CB75D7213A021D9B492A3 /* MUCInfoParser.m in Sources */,
+				BF8CB740BCAB80BD45A01CC7 /* MUCInformation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,7 +516,6 @@
 			files = (
 				5BFEA38117BA693200C7914D /* main.m in Sources */,
 				5BFEA38817BA693200C7914D /* AppDelegate.m in Sources */,
-				5BFEA39717BA900D00C7914D /* RefreshTimer.m in Sources */,
 				5BFEA39B17BA959C00C7914D /* ValueCalculator.m in Sources */,
 				5B1A01E717BE7A6900CC7011 /* LogFileWriter.m in Sources */,
 				5BB763F117CC770500006CA3 /* CreateSensorMUCDomain.m in Sources */,
@@ -540,16 +537,15 @@
 				5BB7640F17CC859100006CA3 /* PublishSensorItems.m in Sources */,
 				5B63EE5C17D1D10700CD8667 /* NSString+FileReading.m in Sources */,
 				5B5BCFD217D5CA8E006E3EF3 /* Timestamp.m in Sources */,
-				5B5BCFD517D5D31E006E3EF3 /* MUCInfoParser.m in Sources */,
-				5B5BCFD817D5D451006E3EF3 /* MUCInformation.m in Sources */,
-				5BE5EFE917E4567C00F1A9BC /* Subject.m in Sources */,
-				BF8CB7A236FB194992D237A2 /* Property.m in Sources */,
 				BF8CB845F5A8A4FE2048AAC2 /* DataLoader.m in Sources */,
 				BF8CB1C00C1DC103F0149A3E /* XMLReader.m in Sources */,
 				BF8CB5BF056FCE11A3DEC191 /* LoaderOperation.m in Sources */,
 				5BCAC94C17E846FE00AEDFF6 /* MainWindowController.m in Sources */,
 				BF8CBD41D57E29A995D1B635 /* Timestamp+Description.m in Sources */,
-				BF8CB461A0507761A85F6727 /* DataHandler.m in Sources */,
+				BF8CB0B990577C64D268F802 /* DataHandler.m in Sources */,
+				BF8CBC7523289A9DC034D6EF /* MUCInfoParser.m in Sources */,
+				BF8CB2919133477A1601C300 /* MUCInformation.m in Sources */,
+				BF8CB8CA01FE4ECE60EFAD90 /* MessageProcessor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

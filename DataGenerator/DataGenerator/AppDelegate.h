@@ -16,8 +16,6 @@
 #import "RemovePublisher.h"
 #import "PublishSensorItems.h"
 
-#import "RefreshTimer.h"
-
 @interface AppDelegate : NSObject <NSApplicationDelegate, MXiPresenceDelegate, MXiStanzaDelegate, MXiBeanDelegate, MXiMultiUserChatDelegate>
 
 @property (strong, nonatomic) MXiConnection *connection;
