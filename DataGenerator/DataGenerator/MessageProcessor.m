@@ -14,13 +14,13 @@
 
 + (NSString *)messageWithSensorValue:(SensorValue *)sensorValue
 {
-    // {"sensorevent":{"type":"AMBIENT_TEMPERATURE","value":20.34432,"timestamp":"2013-09-18T18:31:38+1:00"}}
+    // {"sensorevent":{"type":"AMBIENT_TEMPERATURE","value":[20.34432],"timestamp":"2013-09-18T18:31:38+1:00"}}
     NSMutableString *jsonString = [NSMutableString stringWithCapacity:100];
     [jsonString appendString:@"{\"sensorevent\":{\"type\":\""];
     [jsonString appendFormat:@"%@",sensorValue.subType];
-    [jsonString appendString:@"\",\"value\":"];
+    [jsonString appendString:@"\",\"value\":["];
     [jsonString appendString:sensorValue.value];
-    [jsonString appendString:@",\"timestamp\":\""];
+    [jsonString appendString:@"],\"timestamp\":\""];
     [jsonString appendString:[sensorValue.timestamp timestampAsString]];
     [jsonString appendString:@"\"}}"];
 
