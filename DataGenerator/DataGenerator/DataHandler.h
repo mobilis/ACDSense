@@ -15,6 +15,10 @@
 
 @end
 
+/**
+*   This class encapsulates the loading of files in a given directory and the propagation
+*   of the respective objects gained by reading the files located in the given directory.
+*/
 @interface DataHandler : NSObject <DataLoaderDelegate>
 
 @property (nonatomic, weak) id delegate;
@@ -23,9 +27,21 @@
 
 @property (nonatomic, strong) DataLoader *dataLoader;
 
+/**
+*   Initialize a new instance of a DataHandler class.
+*
+*   @param delegate A delegate that should be called when certain events occur.
+*   @param directory The directory where files to read are located in.
+*
+*   @return A new DataHandler instance configured with the given attributes.
+*/
 + (id)dataHandlerWithDelegate:(id)delegate andDirectory:(NSString *)directory;
-
 - (id)initWithDelegate:(id)delegate andDirectory:(NSString *)directory;
 
+/**
+*   Start loading the files in the directory.
+*   This method executes asynchronously and results are delivered via the delegate.
+*/
 - (void)startLoading;
+
 @end
