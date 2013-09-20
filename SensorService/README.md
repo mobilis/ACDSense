@@ -1,5 +1,5 @@
 # ACDSense SensorService
-
+The ACDSense Service depends on the [Jackson JSON processor](http://jackson.codehaus.org). Information about the setup of service dependencies can be found on the project's wiki page: [ACDSense Service](https://github.com/mobilis/ACDSense/wiki/ACDSense-Service).
 # Requests
 All requests are embedded as payload in an IQ-stanza.  
 All requests must be qualified with a unique namespace which is:
