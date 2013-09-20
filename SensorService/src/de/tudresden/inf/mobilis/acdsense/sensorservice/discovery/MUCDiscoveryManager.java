@@ -5,6 +5,7 @@ import java.util.List;
 import org.jivesoftware.smack.Connection;
 import org.jivesoftware.smackx.muc.HostedRoom;
 
+import de.tudresden.inf.mobilis.acdsense.sensorservice.DomainStore;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.MUCHandler;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.SensorMUCDomain;
 
@@ -33,8 +34,12 @@ public class MUCDiscoveryManager {
 	
 	
 	public void discoverMUCRooms(String domainName) {
-		SensorMUCDomain domain = new SensorMUCDomain();
-		domain.setDomainURL(domainName);
+		SensorMUCDomain domain = DomainStore.getInstance().getDomainByDomainName(domainName);
+		if (domain == null) {
+			domain = new SensorMUCDomain();
+			domain.setDomainURL(domainName);
+			DomainStore.getInstance().addDomain(domain);
+		}
 		discoverMUCRooms(domain);
 	}
 	public void discoverMUCRooms(SensorMUCDomain domain) {
