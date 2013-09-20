@@ -4,11 +4,11 @@ import org.xmlpull.v1.XmlPullParser;import java.util.List;import java.util.Array
 
 public class Location implements XMPPInfo {
 
-	private long latitude = Long.MIN_VALUE;
-	private long longitude = Long.MIN_VALUE;
+	private Double latitude = 51.049259;
+	private Double longitude = 13.73836;
 
 
-	public Location( long latitude, long longitude ) {
+	public Location( Double latitude, Double longitude ) {
 		super();
 		this.latitude = latitude;
 		this.longitude = longitude;
@@ -31,10 +31,10 @@ public class Location implements XMPPInfo {
 					parser.next();
 				}
 				else if (tagName.equals( "latitude" ) ) {
-					this.latitude = Long.parseLong( parser.nextText() );
+					this.latitude = Double.parseDouble(parser.nextText());
 				}
 				else if (tagName.equals( "longitude" ) ) {
-					this.longitude = Long.parseLong( parser.nextText() );
+					this.longitude = Double.parseDouble(parser.nextText());
 				}
 				else
 					parser.next();
@@ -85,19 +85,19 @@ public class Location implements XMPPInfo {
 
 
 
-	public long getLatitude() {
+	public Double getLatitude() {
 		return this.latitude;
 	}
 
-	public void setLatitude( long latitude ) {
+	public void setLatitude( Double latitude ) {
 		this.latitude = latitude;
 	}
 
-	public long getLongitude() {
+	public Double getLongitude() {
 		return this.longitude;
 	}
 
-	public void setLongitude( long longitude ) {
+	public void setLongitude( Double longitude ) {
 		this.longitude = longitude;
 	}
 
