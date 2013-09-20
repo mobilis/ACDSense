@@ -1,6 +1,6 @@
 @interface Location : NSObject
 
-@property (nonatomic) NSInteger latitude;
-@property (nonatomic) NSInteger longitude;
+@property (nonatomic) float latitude;
+@property (nonatomic) float longitude;
 
 @end

@@ -50,9 +50,9 @@
 		NSXMLElement* locationElement = [sensorItemsElement elementForName:@"location"];
 		[sensorItemsObject setLocation:[[Location alloc] init]];
 		NSXMLElement* latitudeElement = [locationElement elementForName:@"latitude"];
-		[[sensorItemsObject location] setLatitude:[[latitudeElement stringValue] integerValue]];
+		[[sensorItemsObject location] setLatitude:[[latitudeElement stringValue] floatValue]];
 		NSXMLElement* longitudeElement = [locationElement elementForName:@"longitude"];
-		[[sensorItemsObject location] setLongitude:[[longitudeElement stringValue] integerValue]];
+		[[sensorItemsObject location] setLongitude:[[longitudeElement stringValue] floatValue]];
 		NSXMLElement* typeElement = [sensorItemsElement elementForName:@"type"];
 		[sensorItemsObject setType:[typeElement stringValue]];
 		[[self sensorItems] addObject:sensorItemsObject];
