@@ -58,13 +58,20 @@
 - (void)constructChart
 {
     self.graph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
-    [self.graph applyTheme:[CPTTheme themeNamed:kCPTPlainWhiteTheme]];
+    [self.graph applyTheme:[CPTTheme themeNamed:kCPTDarkGradientTheme]];
     self.plotView.hostedGraph = _graph;
+	_graph.plotAreaFrame.cornerRadius = 0.f;
+	_graph.plotAreaFrame.shadowRadius = 0.f;
+	
+	[_graph.plotAreaFrame setPaddingTop:10.0f];
+    [_graph.plotAreaFrame setPaddingRight:10.0f];
+    [_graph.plotAreaFrame setPaddingBottom:10.0f];
+    [_graph.plotAreaFrame setPaddingLeft:15.0f];
     
-    _graph.paddingBottom = 10.0;
-    _graph.paddingLeft = 10.0;
-    _graph.paddingRight = 10.0;
-    _graph.paddingTop = 10.0;
+    _graph.paddingBottom = 0.0;
+    _graph.paddingLeft = 0.0;
+    _graph.paddingRight = 0.0;
+    _graph.paddingTop = 0.0;
     
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)_graph.defaultPlotSpace;
     plotSpace.allowsUserInteraction = YES;
@@ -75,12 +82,14 @@
     
     CPTXYAxisSet *axisSet = (CPTXYAxisSet *)_graph.axisSet;
     CPTXYAxis *xAxis = axisSet.xAxis;
-    xAxis.majorIntervalLength = CPTDecimalFromString(@"10.0");
+    xAxis.majorIntervalLength = CPTDecimalFromString(@"1.0");
     xAxis.minorTicksPerInterval = 5;
+	xAxis.axisConstraints = [CPTConstraints constraintWithLowerOffset:30.0];
     
     CPTXYAxis *yAxis = axisSet.yAxis;
     yAxis.majorIntervalLength = CPTDecimalFromString(@"1.0");
     yAxis.minorTicksPerInterval = 1;
+	yAxis.axisConstraints = [CPTConstraints constraintWithLowerOffset:50.0];
     
     [self updateChartPlot];
 }
@@ -115,6 +124,24 @@
 - (void)updateChartContent
 {
     [_graph reloadData];
+	[_graph.defaultPlotSpace scaleToFitPlots:_graph.allPlots];
+	CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace*)_graph.defaultPlotSpace;
+	plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromInteger(-1) length:CPTDecimalFromInteger(self.sensorValues.count + 2)];
+
+	double min = DBL_MAX;
+	double max = DBL_MIN;
+	for (SensorValue *value in self.sensorValues)
+	{
+		if ([value.value doubleValue] > max)
+			max = [value.value doubleValue];
+		if ([value.value doubleValue] < min)
+			min = [value.value doubleValue];
+	}
+	if (max != min) {
+		plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(min-0.1*(max-min)) length:CPTDecimalFromDouble(1.2*(max-min))];
+	} else {
+		plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(max-1) length:CPTDecimalFromDouble(2)];
+	}
 }
 
 - (void)updateChartPlot
@@ -129,9 +156,15 @@
     
     CPTMutableLineStyle *lineStyle = [dataSourceLinePlot.dataLineStyle mutableCopy];
     lineStyle.lineWidth = 3.f;
-    lineStyle.lineColor = [CPTColor blackColor];
-    lineStyle.dashPattern = [NSArray arrayWithObjects:[NSNumber numberWithFloat:5.0f],[NSNumber numberWithFloat:5.0f], nil];
+    lineStyle.lineColor = [CPTColor lightGrayColor];
+//    lineStyle.dashPattern = [NSArray arrayWithObjects:[NSNumber numberWithFloat:5.0f],[NSNumber numberWithFloat:5.0f], nil];
     dataSourceLinePlot.dataLineStyle = lineStyle;
+	dataSourceLinePlot.labelRotation = 1.571f/2;
+	
+	CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];
+	textStyle.textAlignment = CPTTextAlignmentRight;
+	dataSourceLinePlot.labelTextStyle = textStyle;
+
     
     dataSourceLinePlot.dataSource = self;
     [_graph addPlot:dataSourceLinePlot];
@@ -192,7 +225,8 @@
     SensorValue *value = [_sensorValues objectAtIndex:idx];
     Timestamp *timestamp = value.timestamp;
 
-    CPTTextStyle *labelStyle = [[CPTTextStyle alloc] init];
+    CPTMutableTextStyle *labelStyle = [[CPTMutableTextStyle alloc] init];
+	labelStyle.color = [CPTColor lightGrayColor];
     CPTAxisLabel *axisLabel = [[CPTAxisLabel alloc] initWithText:[timestamp timestampAsString]
                                                        textStyle:labelStyle];
     
