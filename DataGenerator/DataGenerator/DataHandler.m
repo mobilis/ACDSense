@@ -13,6 +13,9 @@
 
 @property (strong) NSMutableArray *cachedItems;
 
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic) NSUInteger counter;
+
 @end
 
 @implementation DataHandler
@@ -31,6 +34,7 @@
         self.dataLoader.delegate = self;
         self.cachedItems = [NSMutableArray arrayWithCapacity:50];
         self.submitData = NO;
+        self.counter = 0;
     }
     
     return self;
@@ -45,13 +49,16 @@
 
     _submitData = submitData;
     if (_submitData)
-        [self flushCachedItems];
+        self.timer = [NSTimer timerWithTimeInterval:15.0 target:self selector:@selector(fireItem) userInfo:nil repeats:YES];
+    else {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
 }
-- (void)flushCachedItems
+- (void)fireItem
 {
-    for (SensorItem *item in _cachedItems)
-        if ([_delegate respondsToSelector:@selector(sendSensorItem:)])
-            [_delegate performSelector:@selector(sendSensorItem:) withObject:item];
+    if ([_delegate respondsToSelector:@selector(sendSensorItem:)])
+        [_delegate performSelector:@selector(sendSensorItem:) withObject:[self.cachedItems objectAtIndex:(self.counter++)]];
 }
 
 #pragma mark - DataLoaderDelegate
@@ -63,13 +70,7 @@
 
 - (void)sensorItemParsed:(SensorItem *)sensorItem
 {
-    if (self.submitData) {
-        if ([_delegate respondsToSelector:@selector(sendSensorItem:)]) {
-            [_delegate performSelector:@selector(sendSensorItem:) withObject:sensorItem];
-        }
-    } else {
-        [_cachedItems addObject:sensorItem];
-    }
+    [_cachedItems addObject:sensorItem];
 }
 
 - (void)loadingFinished:(BOOL)successfull

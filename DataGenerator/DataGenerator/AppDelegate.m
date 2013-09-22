@@ -14,9 +14,9 @@
 
 #import "NSString+FileReading.h"
 #import "MainWindowController.h"
-#import "Timestamp+Description.h"
 #import "DataHandler.h"
 #import "MessageProcessor.h"
+#import "SensorItem+Equality.h"
 
 @interface AppDelegate () <DataHandlerDelegate>
 
@@ -58,10 +58,7 @@
     self.mucInformation = [NSMutableArray arrayWithCapacity:rawMUCInformation.count];
     for (NSString *rawMUC in rawMUCInformation) {
         [_mucInformation addObject:[[MUCInformation alloc] initWithAddress:[MUCInfoParser parseMUCAddressFromString:rawMUC]
-                                                                      type:[MUCInfoParser parseMUCTypeFromString:rawMUC]
-                                                                lowerLimit:[MUCInfoParser parseLowerLimitFromString:rawMUC]
-                                                                upperLimit:[MUCInfoParser parseUpperLimitFromString:rawMUC]
-                                                         intermediarySteps:[MUCInfoParser parseIntermediaryStepsFromString:rawMUC]]];
+                                                               andSensorID:[MUCInfoParser parseSensorIDFromString:rawMUC]]];
     }
 }
 
@@ -208,13 +205,15 @@
 
 - (void)sendSensorItem:(SensorItem *)sensorItem
 {
-    // TODO: ask Daniel how MUCs shall be handled (Post weather to type or to one MUC?)
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
     {
-        for (SensorValue *value in sensorItem.values) {
-            [self.connection sendMessage:[MessageProcessor messageWithSensorValue:value]
-                                  toRoom:((MUCInformation *)_connectedMUCs[0]).address];
-        }
+        for (MUCInformation *mucInfo in self.connectedMUCs)
+            if ([sensorItem isSameSensorID:mucInfo.sensorID]) {
+                for (SensorValue *value in sensorItem.values)
+                    [self.connection sendMessage:[MessageProcessor messageWithSensorValue:value]
+                                          toRoom:mucInfo.address];
+                break;
+            }
     });
 }
 

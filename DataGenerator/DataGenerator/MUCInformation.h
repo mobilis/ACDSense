@@ -18,8 +18,12 @@
 @property float upperLimit;
 @property int intermediarySteps;
 
-- (id)initWithAddress:(NSString *)address type:(NSString *)type;
-- (id)initWithAddress:(NSString *)address type:(NSString *)type lowerLimit:(float)lowerLimit upperLimit:(float)upperLimit;
-- (id)initWithAddress:(NSString *)address type:(NSString *)type lowerLimit:(float)lowerLimit upperLimit:(float)upperLimit intermediarySteps:(int)steps;
+@property (nonatomic, copy) NSString *sensorID;
+
+//- (id)initWithAddress:(NSString *)address type:(NSString *)type;
+//- (id)initWithAddress:(NSString *)address type:(NSString *)type lowerLimit:(float)lowerLimit upperLimit:(float)upperLimit;
+//- (id)initWithAddress:(NSString *)address type:(NSString *)type lowerLimit:(float)lowerLimit upperLimit:(float)upperLimit intermediarySteps:(int)steps;
+
+- (id)initWithAddress:(NSString *)address andSensorID:(NSString *)sensorID;
 
 @end

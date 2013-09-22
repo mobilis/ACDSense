@@ -11,9 +11,6 @@
 @interface MUCInfoParser : NSObject
 
 + (NSString *)parseMUCAddressFromString:(NSString *)string;
-+ (NSString *)parseMUCTypeFromString:(NSString *)string;
-+ (float)parseLowerLimitFromString:(NSString *)string;
-+ (float)parseUpperLimitFromString:(NSString *)string;
-+ (NSInteger)parseIntermediaryStepsFromString:(NSString *)string;
++ (NSString *)parseSensorIDFromString:(NSString *)string;
 
 @end

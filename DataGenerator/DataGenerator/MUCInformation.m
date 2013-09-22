@@ -20,31 +20,43 @@
 
 @implementation MUCInformation
 
-- (id)initWithAddress:(NSString *)address type:(NSString *)type
-{
-    return [self initWithAddress:address type:type lowerLimit:0.0 upperLimit:0.0 intermediarySteps:0];
-}
+//- (id)initWithAddress:(NSString *)address type:(NSString *)type
+//{
+//    return [self initWithAddress:address type:type lowerLimit:0.0 upperLimit:0.0 intermediarySteps:0];
+//}
+//
+//- (id)initWithAddress:(NSString *)address type:(NSString *)type lowerLimit:(float)lowerLimit upperLimit:(float)upperLimit
+//{
+//    return [self initWithAddress:address type:type lowerLimit:lowerLimit upperLimit:upperLimit intermediarySteps:0];
+//}
+//
+//- (id)initWithAddress:(NSString *)address type:(NSString *)type lowerLimit:(float)lowerLimit upperLimit:(float)upperLimit intermediarySteps:(int)steps
+//{
+//    self = [super init];
+//    if (self) {
+//        _address = address;
+//        _type = type;
+//        _lowerLimit = lowerLimit;
+//        _upperLimit = upperLimit;
+//        _intermediarySteps = steps;
+//
+//        [self setUpUnit];
+//        [self setupValueCalculator];
+//    }
+//    return self;
+//}
 
-- (id)initWithAddress:(NSString *)address type:(NSString *)type lowerLimit:(float)lowerLimit upperLimit:(float)upperLimit
-{
-    return [self initWithAddress:address type:type lowerLimit:lowerLimit upperLimit:upperLimit intermediarySteps:0];
-}
-
-- (id)initWithAddress:(NSString *)address type:(NSString *)type lowerLimit:(float)lowerLimit upperLimit:(float)upperLimit intermediarySteps:(int)steps
+- (id)initWithAddress:(NSString *)address andSensorID:(NSString *)sensorID
 {
     self = [super init];
     if (self) {
-        _address = address;
-        _type = type;
-        _lowerLimit = lowerLimit;
-        _upperLimit = upperLimit;
-        _intermediarySteps = steps;
-        
-        [self setUpUnit];
-        [self setupValueCalculator];
+        self.address = address;
+        self.sensorID = sensorID;
     }
+    
     return self;
 }
+
 
 - (void)setupValueCalculator
 {

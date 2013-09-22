@@ -25,33 +25,9 @@
     return [self splitLineIntoComponents:string][0];
 }
 
-+ (NSString *)parseMUCTypeFromString:(NSString *)string
++ (NSString *)parseSensorIDFromString:(NSString *)string
 {
     return [self splitLineIntoComponents:string][1];
-}
-
-+ (float)parseLowerLimitFromString:(NSString *)string
-{
-    NSArray *components = [self splitLineIntoComponents:string];
-    if (components.count < 3) {
-        return LOWER_LIMIT;
-    } else return [((NSString *)components[2]) floatValue];
-}
-
-+ (float)parseUpperLimitFromString:(NSString *)string
-{
-    NSArray *components = [self splitLineIntoComponents:string];
-    if (components.count < 4) {
-        return UPPER_LIMIT;
-    } else return [((NSString *)components[3]) floatValue];
-}
-
-+ (NSInteger)parseIntermediaryStepsFromString:(NSString *)string
-{
-    NSArray *components = [self splitLineIntoComponents:string];
-    if (components.count < 5) {
-        return STEPS;
-    } else return [((NSString *)components[4]) integerValue];
 }
 
 + (NSArray *)splitLineIntoComponents:(NSString *)line

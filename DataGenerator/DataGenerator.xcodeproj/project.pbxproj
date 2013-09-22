@@ -55,6 +55,7 @@
 		BF8CB732400BA089FAD8EBF1 /* NSString+FileReading.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B63EE5B17D1D10700CD8667 /* NSString+FileReading.m */; };
 		BF8CB740BCAB80BD45A01CC7 /* MUCInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBB67CA62B94A8ECE455D /* MUCInformation.m */; };
 		BF8CB75D7213A021D9B492A3 /* MUCInfoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBC2797248890512511AC /* MUCInfoParser.m */; };
+		BF8CB760DB7267B7EBAB5707 /* SensorItem+Equality.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB441B7B1F6103C5D86B2 /* SensorItem+Equality.m */; };
 		BF8CB7AF253F1F80EEE86BE6 /* LoaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB43F316485F99C48CE74 /* LoaderOperation.m */; };
 		BF8CB845F5A8A4FE2048AAC2 /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBD31E55CEE28EEE1DBB2 /* DataLoader.m */; };
 		BF8CB8C0743F7272391E4D4A /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBD31E55CEE28EEE1DBB2 /* DataLoader.m */; };
@@ -161,9 +162,11 @@
 		5BFEA39917BA959B00C7914D /* ValueCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueCalculator.h; sourceTree = "<group>"; };
 		5BFEA39A17BA959C00C7914D /* ValueCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValueCalculator.m; sourceTree = "<group>"; };
 		BF8CB076BD06048942FDDA64 /* test_parser.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = test_parser.py; path = scripts/test_parser.py; sourceTree = "<group>"; };
+		BF8CB0940EC9E98FEC6CF46B /* SensorItem+Equality.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SensorItem+Equality.h"; sourceTree = "<group>"; };
 		BF8CB32FCC2E75315D1873A9 /* MessageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageProcessor.h; sourceTree = "<group>"; };
 		BF8CB3B9E944DA4DB5BF3520 /* sparql.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sparql.txt; path = scripts/sparql.txt; sourceTree = "<group>"; };
 		BF8CB43F316485F99C48CE74 /* LoaderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoaderOperation.m; path = n3/LoaderOperation.m; sourceTree = "<group>"; };
+		BF8CB441B7B1F6103C5D86B2 /* SensorItem+Equality.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SensorItem+Equality.m"; sourceTree = "<group>"; };
 		BF8CB4776FBFA22E0B774E76 /* Timestamp+Description.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Timestamp+Description.m"; sourceTree = SOURCE_ROOT; };
 		BF8CB505CEA995E5510F49B2 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		BF8CB8E537F28076A2156EFC /* LoaderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoaderOperation.h; path = n3/LoaderOperation.h; sourceTree = "<group>"; };
@@ -311,6 +314,8 @@
 				5B63EE5B17D1D10700CD8667 /* NSString+FileReading.m */,
 				BF8CB4776FBFA22E0B774E76 /* Timestamp+Description.m */,
 				BF8CBC5B7FDD8248228402BA /* Timestamp+Description.h */,
+				BF8CB0940EC9E98FEC6CF46B /* SensorItem+Equality.h */,
+				BF8CB441B7B1F6103C5D86B2 /* SensorItem+Equality.m */,
 			);
 			name = "Helper Categories";
 			sourceTree = "<group>";
@@ -546,6 +551,7 @@
 				BF8CBC7523289A9DC034D6EF /* MUCInfoParser.m in Sources */,
 				BF8CB2919133477A1601C300 /* MUCInformation.m in Sources */,
 				BF8CB8CA01FE4ECE60EFAD90 /* MessageProcessor.m in Sources */,
+				BF8CB760DB7267B7EBAB5707 /* SensorItem+Equality.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
