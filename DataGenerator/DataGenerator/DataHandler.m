@@ -17,13 +17,10 @@
 @property (nonatomic, strong) NSTimer *timer;
 
 @property (nonatomic) NSUInteger counter;
-@property (nonatomic) int finishCounter;
 
 @end
 
 @implementation DataHandler
-
-static void *KVOContext;
 
 + (id)dataHandlerWithDelegate:(id)delegate andDirectory:(NSString *)directory
 {
@@ -40,22 +37,9 @@ static void *KVOContext;
         self.cachedItems = [NSMutableArray arrayWithCapacity:50];
         self.submitData = NO;
         self.counter = 0;
-        self.finishCounter = 0;
-
-        [self addObserver:self forKeyPath:@"finishCounter" options:NSKeyValueObservingOptionNew context:KVOContext];
     }
     
     return self;
-}
-
-#pragma mark - KVO Compliance
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if (context == KVOContext) {
-        if (self.finishCounter == self.cachedItems.count)
-            self.submitData = NO;
-    }
 }
 
 #pragma mark - Custom Getter & Setter
@@ -83,7 +67,7 @@ static void *KVOContext;
                 [_delegate performSelector:@selector(sendSensorValue:forSensorID:) 
                                 withObject:[item.values objectAtIndex:(self.counter++)] 
                                 withObject:item.sensorId];
-            else self.finishCounter++;
+            else self.counter = 0;
         }
     }
 }
