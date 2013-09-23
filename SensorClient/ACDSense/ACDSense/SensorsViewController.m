@@ -41,13 +41,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-	[self.view removeConstraints:self.view.constraints];
-	UIView *upperView = self.sensorsView;
-	UIView *lowerView = self.sensorDetailView;
-	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[upperView][lowerView(==upperView)]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(upperView,lowerView)]];
-	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[upperView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(upperView,lowerView)]];
-	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[lowerView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(upperView,lowerView)]];
-    
+//	[self.view removeConstraints:self.view.constraints];
+//	UIView *upperView = self.sensorsView;
+//	UIView *lowerView = self.sensorDetailView;
+//	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[upperView][lowerView(==upperView)]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(upperView,lowerView)]];
+//	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[upperView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(upperView,lowerView)]];
+//	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[lowerView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(upperView,lowerView)]];
+//    
     [self registerBeanListener];
 }
 
