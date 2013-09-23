@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "DataLoader.h"
 
+@class SensorValue;
+
 @protocol DataHandlerDelegate
 
-- (void)sendSensorItem:(SensorItem *)sensorItem;
+- (void)sendSensorValue:(SensorValue *)sensorValue forSensorID:(NSString *)sensorID;
 
 @end
 

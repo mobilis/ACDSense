@@ -203,15 +203,14 @@
 
 #pragma mark - DataHandlerDelegate
 
-- (void)sendSensorItem:(SensorItem *)sensorItem
+- (void)sendSensorValue:(SensorValue *)sensorValue forSensorID:(NSString *)sensorID
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
     {
         for (MUCInformation *mucInfo in self.connectedMUCs)
-            if ([sensorItem isSameSensorID:mucInfo.sensorID]) {
-                for (SensorValue *value in sensorItem.values)
-                    [self.connection sendMessage:[MessageProcessor messageWithSensorValue:value]
-                                          toRoom:mucInfo.address];
+            if ([sensorID isEqualToString:mucInfo.sensorID]) {
+                [self.connection sendMessage:[MessageProcessor messageWithSensorValue:sensorValue]
+                                      toRoom:mucInfo.address];
                 break;
             }
     });

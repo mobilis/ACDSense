@@ -18,7 +18,7 @@
     NSMutableString *jsonString = [NSMutableString stringWithCapacity:100];
     [jsonString appendString:@"{\"sensorevent\":{\"type\":\""];
     [jsonString appendFormat:@"%@",sensorValue.subType];
-    [jsonString appendString:@"\",\"value\":["];
+    [jsonString appendString:@"\",\"values\":["];
     [jsonString appendString:sensorValue.value];
     [jsonString appendString:@"],\"timestamp\":\""];
     [jsonString appendString:[sensorValue.timestamp timestampAsString]];
