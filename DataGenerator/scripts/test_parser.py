@@ -35,23 +35,25 @@ def get_timestamp_element_from_components(components):
 	return timestamp_element
 
 def write_result_to_file(result):
-	root = ET.Element("sensorItem")
-	
 	first = 1
 	file_exists = 1
 	file_name = ""
 	for row in result:
 		if row.observation is None:
-			return;
+			return
 		components = get_string_components(row.observation,'_')
 		file_name = components[2] + ".xml"
-		try:
-			with open(file_name):
-				tree = ET.parse(file_name);
-				root = tree.getroot()
-		except IOError:
-			file_exists = 0
+		if first == 1:
+			try:
+				with open(file_name):
+					tree = ET.parse(file_name)
+					root = tree.getroot()
+					first = 0
+			except IOError:
+				file_exists = 0
 		if first == 1 and file_exists == 0:
+			root = ET.Element("sensorItem")
+			tree = ET.ElementTree(root)
 			sensorID = ET.SubElement(root,"sensorId")
 			sensorID.text = components[2]
 			first = 0
@@ -72,7 +74,7 @@ def write_result_to_file(result):
         values.append(unit)
         root.append(values)
 	
-	tree = ET.ElementTree(root)
+	tree._setroot(root)
 	tree.write(file_name)
 
 def files_in_directory(directory):
