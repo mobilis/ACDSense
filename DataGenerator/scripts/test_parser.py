@@ -55,18 +55,22 @@ def write_result_to_file(result):
 			sensorID = ET.SubElement(root,"sensorId")
 			sensorID.text = components[2]
 			first = 0
-		values = ET.SubElement(root,"values")
-		value = ET.SubElement(values,"value")
+		values = ET.Element("values")
+		value = ET.Element("value")
 		value.text = row.value
-		sensorValueType = ET.SubElement(values,"subType")
+		sensorValueType = ET.Element("subType")
         sensorValueType.text = components[1]
-        unit = ET.SubElement(values,"unit")
+        unit = ET.Element("unit")
         timestamp = get_timestamp_element_from_components(components)
+        values.append(value)
+        values.append(sensorValueType)
         values.append(timestamp)
         try:
         	unit.text = row.unit[row.unit.index('#') + 1:]
         except ValueError:
         	unit.text = ""
+        values.append(unit)
+        root.append(values)
 	
 	tree = ET.ElementTree(root)
 	tree.write(file_name)
