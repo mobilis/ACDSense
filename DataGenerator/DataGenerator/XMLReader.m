@@ -51,15 +51,13 @@
 {
     if ([elementName compare:@"sensorItem" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
         self.sensorItem = [[SensorItem alloc] init];
+        self.sensorItem.values = [NSMutableArray new];
     }
     if ([elementName compare:@"timestamp" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
         self.timestamp = [[Timestamp alloc] init];
     }
     if ([elementName compare:@"value" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
         self.sensorValue = [[SensorValue alloc] init];
-    }
-    if ([elementName compare:@"values" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        self.sensorItem.values = [NSMutableArray new];
     }
 }
 
