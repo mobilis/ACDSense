@@ -116,10 +116,8 @@ public class IQHandler implements PacketListener, IACDSenseIncoming,
 
 	@Override
 	public void sendXMPPBean(XMPPBean out) {
-		logger.info(out.toXML());
+//		logger.info(out.toXML());
 		getAgent().getConnection().sendPacket(new BeanIQAdapter(out));
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
