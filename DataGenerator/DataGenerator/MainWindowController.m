@@ -34,6 +34,7 @@ static void *KVOContext;
 {
     [super windowDidLoad];
     
+    _running = NO;
     [self addObserver:self forKeyPath:@"running" options:NSKeyValueObservingOptionNew context:KVOContext];
 }
 
