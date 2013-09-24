@@ -175,6 +175,7 @@ public class IQHandler implements PacketListener, IACDSenseIncoming,
 		if (!DomainStore.getInstance().removeDomain(
 				in.getSensorDomain().getDomainId()))
 			return;
+		MUCHandler.getInstance().removeRoomConnection(in.getSensorDomain().getDomainURL());
 		for (String toJID : receivers) {
 			proxy.SensorMUCDomainRemoved(toJID, in.getSensorDomain());
 		}

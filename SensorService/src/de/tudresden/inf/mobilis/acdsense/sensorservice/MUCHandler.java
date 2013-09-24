@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Logger;
 
 import org.jivesoftware.smack.Connection;
 import org.jivesoftware.smack.XMPPException;
@@ -15,6 +16,9 @@ import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.PublishSensorItems;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.SensorMUCDomain;
 
 public class MUCHandler implements Observer {
+	
+	private static Logger logger = Logger
+			.getLogger("de.tudresden.inf.mobilis.acdsense.sensorservice");
 	
 	private static int RefreshInterval = 120;
 	
@@ -54,7 +58,7 @@ public class MUCHandler implements Observer {
 			
 			timer.startPerdiodicDiscovering(RefreshInterval, domain.getDomainURL(), connection);
 		} catch (XMPPException e) {
-			e.printStackTrace();
+			logger.info("Could not joint room: " + roomJID);
 		}
 	}
 	private boolean doesConnectionToRoomAlreadyExist(final String roomJID) {
