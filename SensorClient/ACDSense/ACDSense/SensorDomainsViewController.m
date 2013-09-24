@@ -166,6 +166,7 @@
 	for (SensorMUCDomain *domain in self.sensorDomains) {
 		if ([[domain domainId] isEqualToString:bean.sensorDomain.domainId]) {
 			[self.sensorDomains removeObject:domain];
+			break;
 		}
 	}
 	[self refreshTableView];
