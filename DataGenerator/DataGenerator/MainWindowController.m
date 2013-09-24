@@ -79,7 +79,7 @@ static void *KVOContext;
 }
 
 - (IBAction)startSetup:(id)sender {
-    if (self.running) {
+    if (!self.running) {
         if ([self.delegate respondsToSelector:@selector(getMUCInformationFromFile:)]) {
             [self.delegate performSelector:@selector(getMUCInformationFromFile:) withObject:_mucFile];
         }
@@ -90,7 +90,6 @@ static void *KVOContext;
             [self.delegate performSelector:@selector(launchConnectionEstablishment)];
         }
     } else {
-        // TODO: stop parsing here...
         if ([self.delegate respondsToSelector:@selector(stopSendingSensorInformation)]) {
             [self.delegate performSelector:@selector(stopSendingSensorInformation)];
         }
