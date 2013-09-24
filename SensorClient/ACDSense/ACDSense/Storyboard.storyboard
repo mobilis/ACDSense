@@ -40,6 +40,9 @@
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
+                                <connections>
+                                    <outlet property="delegate" destination="eut-kj-EqU" id="E5O-hr-Syz"/>
+                                </connections>
                             </navigationBar>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hBr-oH-fOw">
                                 <rect key="frame" x="0.0" y="65" width="768" height="480"/>
@@ -142,7 +145,7 @@
                                     <navigationItem title="Settings" id="4WD-LT-BDj"/>
                                 </items>
                                 <connections>
-                                    <outlet property="delegate" destination="ngK-JF-2tT" id="8Ac-Wh-mCg"/>
+                                    <outlet property="delegate" destination="ngK-JF-2tT" id="k6b-59-UnT"/>
                                 </connections>
                             </navigationBar>
                         </subviews>
@@ -202,6 +205,9 @@
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
+                                <connections>
+                                    <outlet property="delegate" destination="WfK-2c-cNG" id="Pb5-y0-VGz"/>
+                                </connections>
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

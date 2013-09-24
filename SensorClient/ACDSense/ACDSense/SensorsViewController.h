@@ -12,7 +12,7 @@
 
 @class SensorMUCDomain;
 
-@interface SensorsViewController : UIViewController <SensorSelectionDelegate>
+@interface SensorsViewController : UIViewController <SensorSelectionDelegate, UINavigationBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *sensorsView;
 @property (weak, nonatomic) IBOutlet UIView *sensorDetailView;

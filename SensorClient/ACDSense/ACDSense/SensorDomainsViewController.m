@@ -186,4 +186,10 @@
 	} completion:nil];
 }
 
+#pragma mark - UINavigationBarDelegate
+-(UIBarPosition)positionForBar:(id<UIBarPositioning>)bar
+{
+	return UIBarPositionTopAttached;
+}
+
 @end
