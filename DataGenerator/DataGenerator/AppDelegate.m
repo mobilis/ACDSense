@@ -88,6 +88,11 @@
     [self.dataHandler startLoading];
 }
 
+- (void)stopSendingSensorInformation
+{
+    [self.dataHandler stop];
+}
+
 #pragma mark - MXi Communication
 
 - (void)launchConnectionEstablishment

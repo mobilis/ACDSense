@@ -46,4 +46,9 @@
 */
 - (void)startLoading;
 
+/**
+ *  Stop loading and sending sensor information.
+ */
+- (void)stop;
+
 @end

@@ -25,4 +25,6 @@
 
 - (void)launchDataLoadingFromDirectory:(NSString *)directory;
 
+- (void)stopSendingSensorInformation;
+
 @end

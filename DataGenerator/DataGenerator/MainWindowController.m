@@ -14,6 +14,8 @@
 @property (strong, nonatomic) NSString *mucFile;
 @property (strong, nonatomic) NSString *weatherDataDirectory;
 
+@property BOOL running;
+
 @property (weak) IBOutlet NSButton *startButton;
 @property (weak) IBOutlet NSTextField *mucFileTextField;
 @property (weak) IBOutlet NSTextField *weatherDirectoryTextField;
@@ -26,9 +28,22 @@
 
 @implementation MainWindowController
 
+static void *KVOContext;
+
 - (void)windowDidLoad
 {
     [super windowDidLoad];
+    
+    [self addObserver:self forKeyPath:@"running" options:NSKeyValueObservingOptionNew context:KVOContext];
+}
+
+#pragma mark - KVO Compliance
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if (context == KVOContext && self.running)
+        [self.startButton setTitle:@"Stop"];
+    else [self.startButton setTitle:@"Start"];
 }
 
 #pragma mark - IBAction
@@ -64,15 +79,23 @@
 }
 
 - (IBAction)startSetup:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(getMUCInformationFromFile:)]) {
-        [self.delegate performSelector:@selector(getMUCInformationFromFile:) withObject:_mucFile];
+    if (self.running) {
+        if ([self.delegate respondsToSelector:@selector(getMUCInformationFromFile:)]) {
+            [self.delegate performSelector:@selector(getMUCInformationFromFile:) withObject:_mucFile];
+        }
+        if ([self.delegate respondsToSelector:@selector(launchDataLoadingFromDirectory:)]) {
+            [self.delegate performSelector:@selector(launchDataLoadingFromDirectory:) withObject:_weatherDataDirectory];
+        }
+        if ([self.delegate respondsToSelector:@selector(launchConnectionEstablishment)]) {
+            [self.delegate performSelector:@selector(launchConnectionEstablishment)];
+        }
+    } else {
+        // TODO: stop parsing here...
+        if ([self.delegate respondsToSelector:@selector(stopSendingSensorInformation)]) {
+            [self.delegate performSelector:@selector(stopSendingSensorInformation)];
+        }
     }
-    if ([self.delegate respondsToSelector:@selector(launchDataLoadingFromDirectory:)]) {
-        [self.delegate performSelector:@selector(launchDataLoadingFromDirectory:) withObject:_weatherDataDirectory];
-    }
-    if ([self.delegate respondsToSelector:@selector(launchConnectionEstablishment)]) {
-        [self.delegate performSelector:@selector(launchConnectionEstablishment)];
-    }
+    self.running = !self.running;
 }
 
 #pragma mark - NSTextFieldDelegate

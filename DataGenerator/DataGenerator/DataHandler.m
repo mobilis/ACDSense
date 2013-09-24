@@ -95,4 +95,11 @@
 {
     [_dataLoader startLoading];
 }
+
+- (void)stop
+{
+    [_dataLoader stopLoading];
+    [self setSubmitData:NO];
+}
+
 @end
