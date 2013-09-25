@@ -147,7 +147,7 @@ public class MUCConnection extends Observable implements PacketListener {
 				location = new Location();
 				type = "";
 			}
-			SensorItem sensorItem = new SensorItem(packet.getFrom(), domain, mucSensorItem.getValues(), location, type);
+			SensorItem sensorItem = new SensorItem(packet.getFrom(), muc.getRoom(), domain, mucSensorItem.getValues(), location, type);
 			List<SensorItem> sensorItems = new ArrayList<>(1);
 			sensorItems.add(sensorItem);
 			

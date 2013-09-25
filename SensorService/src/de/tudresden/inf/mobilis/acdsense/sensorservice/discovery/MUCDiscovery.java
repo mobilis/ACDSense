@@ -47,7 +47,7 @@ class MUCDiscovery {
 							"muc#roominfo_subject")) {
 						for (Iterator<String> valueIterator = field.getValues(); valueIterator.hasNext() && !found;) {
 							String value = valueIterator.next();
-							if ("SensorMUC".equalsIgnoreCase(value)) {
+							if (value.equalsIgnoreCase("SensorMUC")) {
 								found = true;
 								this.sensorRooms.add(room);
 							}

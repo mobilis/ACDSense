@@ -4,14 +4,16 @@ import org.xmlpull.v1.XmlPullParser;import java.util.List;import java.util.Array
 
 public class Location implements XMPPInfo {
 
-	private Double latitude = 51.049259;
-	private Double longitude = 13.73836;
+	private float latitude = Float.MIN_VALUE;
+	private float longitude = Float.MIN_VALUE;
+	private String locationName = null;
 
 
-	public Location( Double latitude, Double longitude ) {
+	public Location( float latitude, float longitude, String locationName ) {
 		super();
 		this.latitude = latitude;
 		this.longitude = longitude;
+		this.locationName = locationName;
 	}
 
 	public Location(){}
@@ -31,10 +33,13 @@ public class Location implements XMPPInfo {
 					parser.next();
 				}
 				else if (tagName.equals( "latitude" ) ) {
-					this.latitude = Double.parseDouble(parser.nextText());
+					this.latitude = Float.parseFloat( parser.nextText() );
 				}
 				else if (tagName.equals( "longitude" ) ) {
-					this.longitude = Double.parseDouble(parser.nextText());
+					this.longitude = Float.parseFloat( parser.nextText() );
+				}
+				else if (tagName.equals( "locationName" ) ) {
+					this.locationName = parser.nextText();
 				}
 				else
 					parser.next();
@@ -80,25 +85,37 @@ public class Location implements XMPPInfo {
 			.append( this.longitude )
 			.append( "</longitude>" );
 
+		sb.append( "<locationName>" )
+			.append( this.locationName )
+			.append( "</locationName>" );
+
 		return sb.toString();
 	}
 
 
 
-	public Double getLatitude() {
+	public float getLatitude() {
 		return this.latitude;
 	}
 
-	public void setLatitude( Double latitude ) {
+	public void setLatitude( float latitude ) {
 		this.latitude = latitude;
 	}
 
-	public Double getLongitude() {
+	public float getLongitude() {
 		return this.longitude;
 	}
 
-	public void setLongitude( Double longitude ) {
+	public void setLongitude( float longitude ) {
 		this.longitude = longitude;
+	}
+
+	public String getLocationName() {
+		return this.locationName;
+	}
+
+	public void setLocationName( String locationName ) {
+		this.locationName = locationName;
 	}
 
 }

@@ -9,8 +9,8 @@ public class MUCSensorRoom {
 		public class Location {
 			private String countryCode;
 			private String cityName;
-			private Double latitude;
-			private Double longitude;
+			private float latitude;
+			private float longitude;
 			
 			public String getCountryCode() {
 				return countryCode;
@@ -26,22 +26,22 @@ public class MUCSensorRoom {
 				this.cityName = cityName;
 			}
 			
-			public Double getLatitude() {
+			public float getLatitude() {
 				return latitude;
 			}
-			public void setLatitude(Double latitude) {
+			public void setLatitude(float latitude) {
 				this.latitude = latitude;
 			}
 			
-			public Double getLongitude() {
+			public float getLongitude() {
 				return longitude;
 			}
-			public void setLongitude(Double longitude) {
+			public void setLongitude(float longitude) {
 				this.longitude = longitude;
 			}
 			
 			public de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.Location convertToLocation() {
-				return new de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.Location(getLatitude(), getLongitude());
+				return new de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.Location(getLatitude(), getLongitude(), getCityName());
 			}
 		}
 		
