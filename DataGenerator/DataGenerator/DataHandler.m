@@ -63,10 +63,20 @@
 {
     if ([_delegate respondsToSelector:@selector(sendSensorValue:forSensorID:)]) {
         for (SensorItem *item in _cachedItems) {
-            if (self.counter + 1 < item.values.count)
+            if (self.counter + 1 < item.values.count) {
+                NSUInteger tempCounter = self.counter;
+                while ( ((SensorValue *)[item.values objectAtIndex:tempCounter]).value == nil ||
+                        [((SensorValue *)[item.values objectAtIndex:tempCounter]).value isEqualToString:@""]
+                       ) {
+                    tempCounter = (tempCounter + 1) % item.values.count;
+                    if (tempCounter == self.counter)
+                        break;
+                }
                 [_delegate performSelector:@selector(sendSensorValue:forSensorID:) 
-                                withObject:[item.values objectAtIndex:(self.counter++)] 
+                                withObject:[item.values objectAtIndex:tempCounter]
                                 withObject:item.sensorId];
+                self.counter++;
+            }
             else self.counter = 0;
         }
     }
