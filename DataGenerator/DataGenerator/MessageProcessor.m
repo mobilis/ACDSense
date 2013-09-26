@@ -27,4 +27,12 @@
     return jsonString;
 }
 
++ (NSString *)messageWithTestValue:(NSUInteger)testValue
+{
+    // {"sensorevent":{"type":"AMBIENT_TEMPERATURE","values":[20.34432],"timestamp":"2013-09-18T18:31:38+1:00"}}
+    // The value in the Array is the packet identifier.
+    return [NSString stringWithFormat:@"{\"sensorevent\":{\"type\":\"AMBIENT_TEMPERATURE\",\"values\":[%i],\"timestamp\":\"2013-09-18T18:31:38+1:00\"}}",testValue];
+}
+
+
 @end

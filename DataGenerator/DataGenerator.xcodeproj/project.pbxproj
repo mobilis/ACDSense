@@ -12,6 +12,18 @@
 		5B5BCFD217D5CA8E006E3EF3 /* Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5BCFD117D5CA8E006E3EF3 /* Timestamp.m */; };
 		5B63EE5C17D1D10700CD8667 /* NSString+FileReading.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B63EE5B17D1D10700CD8667 /* NSString+FileReading.m */; };
 		5B63EE6417D1F95600CD8667 /* MXi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5B1189BA17C12AC900CACF5A /* MXi.framework */; };
+		5B9F992A17F2E9DA00F06C32 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFEA37417BA693200C7914D /* Cocoa.framework */; };
+		5B9F993017F2E9DA00F06C32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B9F992E17F2E9DA00F06C32 /* InfoPlist.strings */; };
+		5B9F993217F2E9DA00F06C32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9F993117F2E9DA00F06C32 /* main.m */; };
+		5B9F993617F2E9DA00F06C32 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5B9F993417F2E9DA00F06C32 /* Credits.rtf */; };
+		5B9F993917F2E9DA00F06C32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9F993817F2E9DA00F06C32 /* AppDelegate.m */; };
+		5B9F993C17F2E9DA00F06C32 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B9F993A17F2E9DA00F06C32 /* MainMenu.xib */; };
+		5B9F993E17F2E9DA00F06C32 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9F993D17F2E9DA00F06C32 /* Images.xcassets */; };
+		5B9F994517F2E9DA00F06C32 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B9F994417F2E9DA00F06C32 /* XCTest.framework */; };
+		5B9F994617F2E9DA00F06C32 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFEA37417BA693200C7914D /* Cocoa.framework */; };
+		5B9F995917F2EA5100F06C32 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9F995817F2EA5100F06C32 /* MainWindowController.m */; };
+		5B9F995B17F2EA7100F06C32 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B9F995A17F2EA7100F06C32 /* MainWindow.xib */; };
+		5B9F995D17F2F06F00F06C32 /* MXi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1189BA17C12AC900CACF5A /* MXi.framework */; };
 		5BB763F117CC770500006CA3 /* CreateSensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763D417CC770400006CA3 /* CreateSensorMUCDomain.m */; };
 		5BB763F217CC770500006CA3 /* DelegateSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763D617CC770400006CA3 /* DelegateSensorItems.m */; };
 		5BB763F317CC770500006CA3 /* DelegateSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763D817CC770400006CA3 /* DelegateSensorValues.m */; };
@@ -32,6 +44,11 @@
 		5BC9413D17D708DD002F1051 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5BC9413C17D708DD002F1051 /* icon.icns */; };
 		5BCAC94817E8456900AEDFF6 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BCAC94617E8456900AEDFF6 /* MainWindow.xib */; };
 		5BCAC94C17E846FE00AEDFF6 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCAC94B17E846FE00AEDFF6 /* MainWindowController.m */; };
+		5BDAA70D17F325AD005F9DA8 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BDAA70C17F325AD005F9DA8 /* Settings.plist */; };
+		5BDAA70E17F33E14005F9DA8 /* NSString+FileReading.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B63EE5B17D1D10700CD8667 /* NSString+FileReading.m */; };
+		5BDAA70F17F33E14005F9DA8 /* Timestamp+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB4776FBFA22E0B774E76 /* Timestamp+Description.m */; };
+		5BDAA71017F33E14005F9DA8 /* SensorItem+Equality.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB441B7B1F6103C5D86B2 /* SensorItem+Equality.m */; };
+		5BDAA71117F33E3E005F9DA8 /* LogFileWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */; };
 		5BFEA37517BA693200C7914D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFEA37417BA693200C7914D /* Cocoa.framework */; };
 		5BFEA37F17BA693200C7914D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BFEA37D17BA693200C7914D /* InfoPlist.strings */; };
 		5BFEA38117BA693200C7914D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA38017BA693200C7914D /* main.m */; };
@@ -40,16 +57,44 @@
 		5BFEA38B17BA693200C7914D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BFEA38917BA693200C7914D /* MainMenu.xib */; };
 		5BFEA39417BA8F4600C7914D /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BFEA39317BA8F4600C7914D /* Settings.plist */; };
 		5BFEA39B17BA959C00C7914D /* ValueCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA39A17BA959C00C7914D /* ValueCalculator.m */; };
+		BF8CB027E2A12E31134F8667 /* MUCInfoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBC2797248890512511AC /* MUCInfoParser.m */; };
+		BF8CB08DCF6724FF3CDC7BFF /* DelegateSensorValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763D817CC770400006CA3 /* DelegateSensorValues.m */; };
 		BF8CB0B990577C64D268F802 /* DataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBCB530B86497096DC61E /* DataHandler.m */; };
 		BF8CB1C00C1DC103F0149A3E /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB505CEA995E5510F49B2 /* XMLReader.m */; };
+		BF8CB2125CD489269C5B51FB /* DelegateSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763D617CC770400006CA3 /* DelegateSensorItems.m */; };
 		BF8CB2919133477A1601C300 /* MUCInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBB67CA62B94A8ECE455D /* MUCInformation.m */; };
+		BF8CB353DBB82A2FC3B09AAA /* SensorMUCDomainRemoved.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763F017CC770500006CA3 /* SensorMUCDomainRemoved.m */; };
+		BF8CB366EE11CA58984BA47F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7640117CC7DA300006CA3 /* Location.m */; };
+		BF8CB3CC51F2A177EA77DF76 /* RegisterReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763E217CC770400006CA3 /* RegisterReceiver.m */; };
+		BF8CB4036B26FE6A4614E869 /* MUCInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBB67CA62B94A8ECE455D /* MUCInformation.m */; };
+		BF8CB4275A79B380D2B04AA6 /* ConnectionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB7B6DC384CA6B6BE0183 /* ConnectionHandler.m */; };
+		BF8CB42C41EB6AD6D84C14BA /* ValueCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFEA39A17BA959C00C7914D /* ValueCalculator.m */; };
+		BF8CB4AF6F570FEF172CE928 /* GetSensorMUCDomainsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763DC17CC770400006CA3 /* GetSensorMUCDomainsResponse.m */; };
 		BF8CB5BF056FCE11A3DEC191 /* LoaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB43F316485F99C48CE74 /* LoaderOperation.m */; };
 		BF8CB760DB7267B7EBAB5707 /* SensorItem+Equality.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB441B7B1F6103C5D86B2 /* SensorItem+Equality.m */; };
 		BF8CB845F5A8A4FE2048AAC2 /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBD31E55CEE28EEE1DBB2 /* DataLoader.m */; };
 		BF8CB8CA01FE4ECE60EFAD90 /* MessageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBB8E5C4B94CC504ED5A0 /* MessageProcessor.m */; };
+		BF8CB949FE86E38012EA1682 /* SensorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7640717CC7E2100006CA3 /* SensorItem.m */; };
+		BF8CBB72D307126E4E293660 /* SensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763EC17CC770500006CA3 /* SensorMUCDomain.m */; };
+		BF8CBC6A0DB807FB34296929 /* MessageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBB8E5C4B94CC504ED5A0 /* MessageProcessor.m */; };
 		BF8CBC7523289A9DC034D6EF /* MUCInfoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBC2797248890512511AC /* MUCInfoParser.m */; };
+		BF8CBCC5F5F2D6630EDD9766 /* CreateSensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763D417CC770400006CA3 /* CreateSensorMUCDomain.m */; };
+		BF8CBCF1C63D03B6AC9E246C /* SensorValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7640317CC7DA400006CA3 /* SensorValue.m */; };
 		BF8CBD41D57E29A995D1B635 /* Timestamp+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB4776FBFA22E0B774E76 /* Timestamp+Description.m */; };
+		BF8CBE268439C7568F439A46 /* Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5BCFD117D5CA8E006E3EF3 /* Timestamp.m */; };
+		BF8CBEF9D2E648A8C1358BFF /* SensorMUCDomainCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB763EE17CC770500006CA3 /* SensorMUCDomainCreated.m */; };
+		BF8CBF4E1A06017F31EC1607 /* RoundtripInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBD2638EF45CD3FB3CC14 /* RoundtripInfo.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5B9F994717F2E9DA00F06C32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5BFEA36917BA693200C7914D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B9F992817F2E9D900F06C32;
+			remoteInfo = DataGeneratorLT;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		5B63EE6317D1F92500CD8667 /* CopyFiles */ = {
@@ -75,6 +120,21 @@
 		5B63EE5A17D1D10700CD8667 /* NSString+FileReading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FileReading.h"; sourceTree = "<group>"; };
 		5B63EE5B17D1D10700CD8667 /* NSString+FileReading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FileReading.m"; sourceTree = "<group>"; };
 		5B63EE6017D1E8FC00CD8667 /* roomList.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = roomList.txt; sourceTree = "<group>"; };
+		5B9F992917F2E9DA00F06C32 /* DataGeneratorLT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataGeneratorLT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B9F992D17F2E9DA00F06C32 /* DataGeneratorLT-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DataGeneratorLT-Info.plist"; sourceTree = "<group>"; };
+		5B9F992F17F2E9DA00F06C32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5B9F993117F2E9DA00F06C32 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5B9F993317F2E9DA00F06C32 /* DataGeneratorLT-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DataGeneratorLT-Prefix.pch"; sourceTree = "<group>"; };
+		5B9F993517F2E9DA00F06C32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		5B9F993717F2E9DA00F06C32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5B9F993817F2E9DA00F06C32 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5B9F993B17F2E9DA00F06C32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		5B9F993D17F2E9DA00F06C32 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5B9F994317F2E9DA00F06C32 /* DataGeneratorLTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataGeneratorLTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B9F994417F2E9DA00F06C32 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		5B9F995717F2EA5100F06C32 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
+		5B9F995817F2EA5100F06C32 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
+		5B9F995A17F2EA7100F06C32 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		5BB763D317CC770400006CA3 /* CreateSensorMUCDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSensorMUCDomain.h; sourceTree = "<group>"; };
 		5BB763D417CC770400006CA3 /* CreateSensorMUCDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateSensorMUCDomain.m; sourceTree = "<group>"; };
 		5BB763D517CC770400006CA3 /* DelegateSensorItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateSensorItems.h; sourceTree = "<group>"; };
@@ -113,6 +173,7 @@
 		5BCAC94717E8456900AEDFF6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		5BCAC94A17E846FE00AEDFF6 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		5BCAC94B17E846FE00AEDFF6 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
+		5BDAA70C17F325AD005F9DA8 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		5BFEA37117BA693200C7914D /* DataGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFEA37417BA693200C7914D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5BFEA37717BA693200C7914D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -137,9 +198,12 @@
 		BF8CB441B7B1F6103C5D86B2 /* SensorItem+Equality.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SensorItem+Equality.m"; sourceTree = "<group>"; };
 		BF8CB4776FBFA22E0B774E76 /* Timestamp+Description.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Timestamp+Description.m"; sourceTree = SOURCE_ROOT; };
 		BF8CB505CEA995E5510F49B2 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
+		BF8CB7B6DC384CA6B6BE0183 /* ConnectionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionHandler.m; sourceTree = "<group>"; };
 		BF8CB8E537F28076A2156EFC /* LoaderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoaderOperation.h; path = n3/LoaderOperation.h; sourceTree = "<group>"; };
+		BF8CB932DFBC13AD6625B444 /* RoundtripInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundtripInfo.h; sourceTree = "<group>"; };
 		BF8CB98CB4A9038FB1689A7D /* MUCInfoParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUCInfoParser.h; sourceTree = "<group>"; };
 		BF8CB9E9536F0DE4DA391D41 /* MUCInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUCInformation.h; sourceTree = "<group>"; };
+		BF8CBB58C591EFB02CCDE65F /* ConnectionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionHandler.h; sourceTree = "<group>"; };
 		BF8CBB67CA62B94A8ECE455D /* MUCInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUCInformation.m; sourceTree = "<group>"; };
 		BF8CBB8E5C4B94CC504ED5A0 /* MessageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageProcessor.m; sourceTree = "<group>"; };
 		BF8CBC2797248890512511AC /* MUCInfoParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUCInfoParser.m; sourceTree = "<group>"; };
@@ -147,11 +211,30 @@
 		BF8CBC5B7FDD8248228402BA /* Timestamp+Description.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Timestamp+Description.h"; sourceTree = SOURCE_ROOT; };
 		BF8CBC99C7638B729653BB38 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
 		BF8CBCB530B86497096DC61E /* DataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHandler.m; sourceTree = "<group>"; };
+		BF8CBD2638EF45CD3FB3CC14 /* RoundtripInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundtripInfo.m; sourceTree = "<group>"; };
 		BF8CBD31E55CEE28EEE1DBB2 /* DataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataLoader.m; sourceTree = "<group>"; };
 		BF8CBDF831B330828C0253FA /* DataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataLoader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5B9F992617F2E9D900F06C32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B9F995D17F2F06F00F06C32 /* MXi.framework in Frameworks */,
+				5B9F992A17F2E9DA00F06C32 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B9F994017F2E9DA00F06C32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B9F994617F2E9DA00F06C32 /* Cocoa.framework in Frameworks */,
+				5B9F994517F2E9DA00F06C32 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BFEA36E17BA693200C7914D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -223,6 +306,46 @@
 			name = Beans;
 			sourceTree = "<group>";
 		};
+		5B9F992B17F2E9DA00F06C32 /* DataGeneratorLT */ = {
+			isa = PBXGroup;
+			children = (
+				5B9F993717F2E9DA00F06C32 /* AppDelegate.h */,
+				5B9F993817F2E9DA00F06C32 /* AppDelegate.m */,
+				5B9F993D17F2E9DA00F06C32 /* Images.xcassets */,
+				5B9F992C17F2E9DA00F06C32 /* Supporting Files */,
+				5B9F995C17F2EA7E00F06C32 /* User Interface */,
+				BF8CB932DFBC13AD6625B444 /* RoundtripInfo.h */,
+				BF8CBD2638EF45CD3FB3CC14 /* RoundtripInfo.m */,
+				BF8CBB58C591EFB02CCDE65F /* ConnectionHandler.h */,
+				BF8CB7B6DC384CA6B6BE0183 /* ConnectionHandler.m */,
+			);
+			path = DataGeneratorLT;
+			sourceTree = "<group>";
+		};
+		5B9F992C17F2E9DA00F06C32 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5B9F992D17F2E9DA00F06C32 /* DataGeneratorLT-Info.plist */,
+				5B9F992E17F2E9DA00F06C32 /* InfoPlist.strings */,
+				5B9F993117F2E9DA00F06C32 /* main.m */,
+				5B9F993317F2E9DA00F06C32 /* DataGeneratorLT-Prefix.pch */,
+				5B9F993417F2E9DA00F06C32 /* Credits.rtf */,
+				5BDAA70C17F325AD005F9DA8 /* Settings.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5B9F995C17F2EA7E00F06C32 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				5B9F993A17F2E9DA00F06C32 /* MainMenu.xib */,
+				5B9F995717F2EA5100F06C32 /* MainWindowController.h */,
+				5B9F995817F2EA5100F06C32 /* MainWindowController.m */,
+				5B9F995A17F2EA7100F06C32 /* MainWindow.xib */,
+			);
+			name = "User Interface";
+			sourceTree = "<group>";
+		};
 		5BCAC94917E8457A00AEDFF6 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +390,7 @@
 			children = (
 				5B63EE6017D1E8FC00CD8667 /* roomList.txt */,
 				5BFEA37A17BA693200C7914D /* DataGenerator */,
+				5B9F992B17F2E9DA00F06C32 /* DataGeneratorLT */,
 				5BFEA37317BA693200C7914D /* Frameworks */,
 				5BFEA37217BA693200C7914D /* Products */,
 				BF8CB3B9E944DA4DB5BF3520 /* sparql.txt */,
@@ -278,6 +402,8 @@
 			isa = PBXGroup;
 			children = (
 				5BFEA37117BA693200C7914D /* DataGenerator.app */,
+				5B9F992917F2E9DA00F06C32 /* DataGeneratorLT.app */,
+				5B9F994317F2E9DA00F06C32 /* DataGeneratorLTTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -288,6 +414,7 @@
 				5B1189BA17C12AC900CACF5A /* MXi.framework */,
 				5BFEA37417BA693200C7914D /* Cocoa.framework */,
 				5B442E1C17E7715C006AF7AE /* Foundation.framework */,
+				5B9F994417F2E9DA00F06C32 /* XCTest.framework */,
 				5BFEA37617BA693200C7914D /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -353,6 +480,41 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5B9F992817F2E9D900F06C32 /* DataGeneratorLT */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B9F995117F2E9DA00F06C32 /* Build configuration list for PBXNativeTarget "DataGeneratorLT" */;
+			buildPhases = (
+				5B9F992517F2E9D900F06C32 /* Sources */,
+				5B9F992617F2E9D900F06C32 /* Frameworks */,
+				5B9F992717F2E9D900F06C32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DataGeneratorLT;
+			productName = DataGeneratorLT;
+			productReference = 5B9F992917F2E9DA00F06C32 /* DataGeneratorLT.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5B9F994217F2E9DA00F06C32 /* DataGeneratorLTTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B9F995417F2E9DA00F06C32 /* Build configuration list for PBXNativeTarget "DataGeneratorLTTests" */;
+			buildPhases = (
+				5B9F993F17F2E9DA00F06C32 /* Sources */,
+				5B9F994017F2E9DA00F06C32 /* Frameworks */,
+				5B9F994117F2E9DA00F06C32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B9F994817F2E9DA00F06C32 /* PBXTargetDependency */,
+			);
+			name = DataGeneratorLTTests;
+			productName = DataGeneratorLTTests;
+			productReference = 5B9F994317F2E9DA00F06C32 /* DataGeneratorLTTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5BFEA37017BA693200C7914D /* DataGenerator */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BFEA38E17BA693200C7914D /* Build configuration list for PBXNativeTarget "DataGenerator" */;
@@ -379,6 +541,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Technische Universität Dresden";
+				TargetAttributes = {
+					5B9F994217F2E9DA00F06C32 = {
+						TestTargetID = 5BFEA37017BA693200C7914D;
+					};
+				};
 			};
 			buildConfigurationList = 5BFEA36C17BA693200C7914D /* Build configuration list for PBXProject "DataGenerator" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -386,6 +553,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 5BFEA36817BA693200C7914D;
 			productRefGroup = 5BFEA37217BA693200C7914D /* Products */;
@@ -393,11 +561,33 @@
 			projectRoot = "";
 			targets = (
 				5BFEA37017BA693200C7914D /* DataGenerator */,
+				5B9F992817F2E9D900F06C32 /* DataGeneratorLT */,
+				5B9F994217F2E9DA00F06C32 /* DataGeneratorLTTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5B9F992717F2E9D900F06C32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B9F993017F2E9DA00F06C32 /* InfoPlist.strings in Resources */,
+				5B9F995B17F2EA7100F06C32 /* MainWindow.xib in Resources */,
+				5B9F993E17F2E9DA00F06C32 /* Images.xcassets in Resources */,
+				5B9F993617F2E9DA00F06C32 /* Credits.rtf in Resources */,
+				5B9F993C17F2E9DA00F06C32 /* MainMenu.xib in Resources */,
+				5BDAA70D17F325AD005F9DA8 /* Settings.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B9F994117F2E9DA00F06C32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BFEA36F17BA693200C7914D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -414,6 +604,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5B9F992517F2E9D900F06C32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B9F995917F2EA5100F06C32 /* MainWindowController.m in Sources */,
+				5B9F993917F2E9DA00F06C32 /* AppDelegate.m in Sources */,
+				5BDAA71017F33E14005F9DA8 /* SensorItem+Equality.m in Sources */,
+				5B9F993217F2E9DA00F06C32 /* main.m in Sources */,
+				BF8CBF4E1A06017F31EC1607 /* RoundtripInfo.m in Sources */,
+				BF8CB4275A79B380D2B04AA6 /* ConnectionHandler.m in Sources */,
+				BF8CBC6A0DB807FB34296929 /* MessageProcessor.m in Sources */,
+				BF8CB4036B26FE6A4614E869 /* MUCInformation.m in Sources */,
+				BF8CB027E2A12E31134F8667 /* MUCInfoParser.m in Sources */,
+				BF8CB353DBB82A2FC3B09AAA /* SensorMUCDomainRemoved.m in Sources */,
+				BF8CB08DCF6724FF3CDC7BFF /* DelegateSensorValues.m in Sources */,
+				5BDAA70E17F33E14005F9DA8 /* NSString+FileReading.m in Sources */,
+				5BDAA70F17F33E14005F9DA8 /* Timestamp+Description.m in Sources */,
+				BF8CBEF9D2E648A8C1358BFF /* SensorMUCDomainCreated.m in Sources */,
+				BF8CB4AF6F570FEF172CE928 /* GetSensorMUCDomainsResponse.m in Sources */,
+				BF8CB2125CD489269C5B51FB /* DelegateSensorItems.m in Sources */,
+				BF8CBB72D307126E4E293660 /* SensorMUCDomain.m in Sources */,
+				BF8CBE268439C7568F439A46 /* Timestamp.m in Sources */,
+				BF8CBCF1C63D03B6AC9E246C /* SensorValue.m in Sources */,
+				BF8CB366EE11CA58984BA47F /* Location.m in Sources */,
+				5BDAA71117F33E3E005F9DA8 /* LogFileWriter.m in Sources */,
+				BF8CB949FE86E38012EA1682 /* SensorItem.m in Sources */,
+				BF8CB42C41EB6AD6D84C14BA /* ValueCalculator.m in Sources */,
+				BF8CB3CC51F2A177EA77DF76 /* RegisterReceiver.m in Sources */,
+				BF8CBCC5F5F2D6630EDD9766 /* CreateSensorMUCDomain.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B9F993F17F2E9DA00F06C32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BFEA36D17BA693200C7914D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -456,7 +685,39 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5B9F994817F2E9DA00F06C32 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B9F992817F2E9D900F06C32 /* DataGeneratorLT */;
+			targetProxy = 5B9F994717F2E9DA00F06C32 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		5B9F992E17F2E9DA00F06C32 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B9F992F17F2E9DA00F06C32 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5B9F993417F2E9DA00F06C32 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B9F993517F2E9DA00F06C32 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		5B9F993A17F2E9DA00F06C32 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B9F993B17F2E9DA00F06C32 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		5BCAC94617E8456900AEDFF6 /* MainWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -492,6 +753,110 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5B9F995217F2E9DA00F06C32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/ACDSenseWorkspace-frdhqldyuzdizvcnvnpsartakqci/Build/Products/Debug",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DataGeneratorLT/DataGeneratorLT-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "DataGeneratorLT/DataGeneratorLT-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5B9F995317F2E9DA00F06C32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/ACDSenseWorkspace-frdhqldyuzdizvcnvnpsartakqci/Build/Products/Debug",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DataGeneratorLT/DataGeneratorLT-Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "DataGeneratorLT/DataGeneratorLT-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		5B9F995517F2E9DA00F06C32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DataGenerator.app/Contents/MacOS/DataGenerator";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DataGeneratorLT/DataGeneratorLT-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "DataGeneratorLTTests/DataGeneratorLTTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		5B9F995617F2E9DA00F06C32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DataGenerator.app/Contents/MacOS/DataGenerator";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DataGeneratorLT/DataGeneratorLT-Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "DataGeneratorLTTests/DataGeneratorLTTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 		5BFEA38C17BA693200C7914D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -588,6 +953,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5B9F995117F2E9DA00F06C32 /* Build configuration list for PBXNativeTarget "DataGeneratorLT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B9F995217F2E9DA00F06C32 /* Debug */,
+				5B9F995317F2E9DA00F06C32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B9F995417F2E9DA00F06C32 /* Build configuration list for PBXNativeTarget "DataGeneratorLTTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B9F995517F2E9DA00F06C32 /* Debug */,
+				5B9F995617F2E9DA00F06C32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5BFEA36C17BA693200C7914D /* Build configuration list for PBXProject "DataGenerator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

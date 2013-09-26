@@ -22,4 +22,6 @@
 */
 + (NSString *)messageWithSensorValue:(SensorValue *)sensorValue;
 
++ (NSString *)messageWithTestValue:(NSUInteger)testValue;
+
 @end
