@@ -90,4 +90,9 @@
     }
 }
 
+- (void)stopLoading
+{
+    [self.backgroundQueue cancelAllOperations];
+}
+
 @end
