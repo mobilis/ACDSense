@@ -10,8 +10,6 @@
 #import <MapKit/MapKit.h>
 #import "CorePlot-CocoaTouch.h"
 
-#import "SensorSelectionDelegate.h"
-
 @class SensorMUCDomain;
 
 @interface SensorsViewController : UIViewController <UINavigationBarDelegate, UITableViewDataSource, UITableViewDelegate, CPTPlotDataSource, MKMapViewDelegate>

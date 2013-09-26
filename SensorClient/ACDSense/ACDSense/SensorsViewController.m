@@ -7,9 +7,6 @@
 //
 
 #import "SensorsViewController.h"
-
-#import "SensorChooserViewController.h"
-#import "SensorDetailViewController.h"
 #import "SensorTableViewCell.h"
 
 #import "ConnectionHandler.h"
