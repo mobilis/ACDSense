@@ -145,16 +145,14 @@
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
     {
-        for (RoundtripInfo *info in self.roundtripData) {
-            if ([info isSameIdentifier:identifier]) {
-                [info setReceived:[date descriptionWithLocale:nil]];
-                break;
+        @synchronized(_roundtripData) {
+            for (RoundtripInfo *info in self.roundtripData) {
+                if ([info isSameIdentifier:identifier]) {
+                    [info setReceived:[date descriptionWithLocale:nil]];
+                    break;
+                }
             }
         }
-//        dispatch_async(dispatch_get_main_queue(), ^
-//        {
-//            [self refreshTableView];
-//        });
     });
 }
 

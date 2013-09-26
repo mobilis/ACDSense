@@ -18,6 +18,7 @@
 @property (strong) NSTimer *senderTimer;
 @property (strong) NSOperationQueue *backgroundQueue;
 @property NSUInteger repetitionCounter;
+@property NSUInteger bunchMessages;
 @property NSUInteger packetIdentifier;
 
 @end
@@ -44,6 +45,7 @@
 
         self.senderTimer = nil;
         self.repetitionCounter = 0;
+        self.bunchMessages = 1;
         self.backgroundQueue = [NSOperationQueue new];
     }
 
@@ -54,7 +56,7 @@
 
 - (void)commenceTest
 {
-    [self updateTimerWithInterval:5.0];
+    [self updateTimerWithInterval:1.0];
 }
 
 - (void)finishTest
@@ -78,18 +80,21 @@
 }
 - (void)fireMessage
 {
-    if (self.repetitionCounter == (NSUInteger) REPETITIONS)
-        [self updateTimerWithInterval:[self.senderTimer timeInterval] / 2.0];
-    else {
+    if (self.repetitionCounter == (NSUInteger) REPETITIONS) {
+        [self updateTimerWithInterval:[self.senderTimer timeInterval]];
+        self.bunchMessages = self.bunchMessages * 2;
+    } else {
         [self.backgroundQueue addOperationWithBlock:^
         {
-            for (NSString *roomJID in self.roomJIDs) {
-                RoundtripInfo *roundtripInfo = [[RoundtripInfo alloc] initWithStartDate:[NSDate date]
-                                                                          andIdentifier:self.packetIdentifier];
-                [self.connection sendMessage:[MessageProcessor messageWithTestValue:roundtripInfo.roundtripIdentifier]
-                                      toRoom:roomJID];
-                self.packetIdentifier = self.packetIdentifier + 1;
-                [self.delegate sendRoundtripItem:roundtripInfo];
+            for (unsigned int inkrement = 0; inkrement < self.bunchMessages; inkrement++) {
+                for (NSString *roomJID in self.roomJIDs) {
+                    RoundtripInfo *roundtripInfo = [[RoundtripInfo alloc] initWithStartDate:[NSDate date]
+                                                                              andIdentifier:self.packetIdentifier];
+                        [self.connection sendMessage:[MessageProcessor messageWithTestValue:roundtripInfo.roundtripIdentifier]
+                                              toRoom:roomJID];
+                    self.packetIdentifier = self.packetIdentifier + 1;
+                    [self.delegate sendRoundtripItem:roundtripInfo];
+                }
             }
         }];
         self.repetitionCounter = self.repetitionCounter + 1;
