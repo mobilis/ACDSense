@@ -75,11 +75,9 @@
 		5B96FFA917CA4F0100DADDFA /* DelegateSelectorMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B96FFA817CA4F0100DADDFA /* DelegateSelectorMapping.m */; };
 		5B96FFAC17CA553200DADDFA /* NSString+Selector.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B96FFAB17CA553200DADDFA /* NSString+Selector.m */; };
 		5BB71D5C17D31872000CAF47 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB71D5B17D31872000CAF47 /* CoreData.framework */; };
-		5BB71D5F17D3199E000CAF47 /* SensorChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB71D5E17D3199E000CAF47 /* SensorChooserViewController.m */; };
 		5BB71D6117D32CDA000CAF47 /* libMXi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB71D6017D32CDA000CAF47 /* libMXi.a */; };
 		5BB71DB117D32EEA000CAF47 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB71DB017D32EEA000CAF47 /* libCorePlot-CocoaTouch.a */; };
 		5BB71DB317D32F37000CAF47 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB71DB217D32F37000CAF47 /* QuartzCore.framework */; };
-		5BB71DB617D32F88000CAF47 /* SensorDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB71DB517D32F88000CAF47 /* SensorDetailViewController.m */; };
 		5BE348A017CF287300AE0407 /* Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3489F17CF287300AE0407 /* Timestamp.m */; };
 /* End PBXBuildFile section */
 
@@ -149,7 +147,6 @@
 		5B19093B17D60F9200376B58 /* SensorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorTableViewCell.m; sourceTree = "<group>"; };
 		5B1F318E17D4823900ADA1CA /* Location+Description.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Location+Description.h"; sourceTree = "<group>"; };
 		5B1F318F17D4823900ADA1CA /* Location+Description.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Location+Description.m"; sourceTree = "<group>"; };
-		5B1F319117D487F500ADA1CA /* SensorSelectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorSelectionDelegate.h; sourceTree = "<group>"; };
 		5B22E84B17C2547B00E6E4F4 /* ACDSense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACDSense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B22E84E17C2547B00E6E4F4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5B22E85017C2547B00E6E4F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -189,13 +186,9 @@
 		5B96FFAA17CA553200DADDFA /* NSString+Selector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Selector.h"; sourceTree = "<group>"; };
 		5B96FFAB17CA553200DADDFA /* NSString+Selector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Selector.m"; sourceTree = "<group>"; };
 		5BB71D5B17D31872000CAF47 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		5BB71D5D17D3199E000CAF47 /* SensorChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorChooserViewController.h; sourceTree = "<group>"; };
-		5BB71D5E17D3199E000CAF47 /* SensorChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorChooserViewController.m; sourceTree = "<group>"; };
 		5BB71D6017D32CDA000CAF47 /* libMXi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMXi.a; path = "../../../Mobilis/MXi/build/Release-iphoneos/libMXi.a"; sourceTree = "<group>"; };
 		5BB71DB017D32EEA000CAF47 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libCorePlot-CocoaTouch.a"; path = "/ProgrammingLibraries/CorePlot_1.3/Source/framework/../build/Release-iphoneos/libCorePlot-CocoaTouch.a"; sourceTree = "<absolute>"; };
 		5BB71DB217D32F37000CAF47 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		5BB71DB417D32F88000CAF47 /* SensorDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorDetailViewController.h; sourceTree = "<group>"; };
-		5BB71DB517D32F88000CAF47 /* SensorDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorDetailViewController.m; sourceTree = "<group>"; };
 		5BE3489E17CF287300AE0407 /* Timestamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Timestamp.h; path = "src-gen/Timestamp.h"; sourceTree = "<group>"; };
 		5BE3489F17CF287300AE0407 /* Timestamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Timestamp.m; path = "src-gen/Timestamp.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -249,11 +242,6 @@
 				0CD1893717C74DAC004DF634 /* MainViewController.m */,
 				0C8B6A4E17CE397000D15D3C /* SensorsViewController.h */,
 				0C8B6A4F17CE397000D15D3C /* SensorsViewController.m */,
-				5BB71D5D17D3199E000CAF47 /* SensorChooserViewController.h */,
-				5BB71D5E17D3199E000CAF47 /* SensorChooserViewController.m */,
-				5BB71DB417D32F88000CAF47 /* SensorDetailViewController.h */,
-				5BB71DB517D32F88000CAF47 /* SensorDetailViewController.m */,
-				5B1F319117D487F500ADA1CA /* SensorSelectionDelegate.h */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -581,8 +569,6 @@
 				0C84D6F017CE300700E1DB7D /* Location.m in Sources */,
 				0C8B6A5017CE397000D15D3C /* SensorsViewController.m in Sources */,
 				5BE348A017CF287300AE0407 /* Timestamp.m in Sources */,
-				5BB71D5F17D3199E000CAF47 /* SensorChooserViewController.m in Sources */,
-				5BB71DB617D32F88000CAF47 /* SensorDetailViewController.m in Sources */,
 				5B1F319017D4823900ADA1CA /* Location+Description.m in Sources */,
 				5B5BCFCF17D5BAB4006E3EF3 /* Timestamp+Description.m in Sources */,
 				5B19093C17D60F9200376B58 /* SensorTableViewCell.m in Sources */,

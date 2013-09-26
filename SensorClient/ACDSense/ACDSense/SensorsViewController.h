@@ -7,15 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import "CorePlot-CocoaTouch.h"
 
 #import "SensorSelectionDelegate.h"
 
 @class SensorMUCDomain;
 
-@interface SensorsViewController : UIViewController <SensorSelectionDelegate, UINavigationBarDelegate>
-
-@property (weak, nonatomic) IBOutlet UIView *sensorsView;
-@property (weak, nonatomic) IBOutlet UIView *sensorDetailView;
+@interface SensorsViewController : UIViewController <UINavigationBarDelegate, UITableViewDataSource, UITableViewDelegate, CPTPlotDataSource, MKMapViewDelegate>
 
 - (void)filterForDomain:(SensorMUCDomain *)domain;
 - (void)filterForDomains:(NSArray *)domains;

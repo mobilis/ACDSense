@@ -10,15 +10,41 @@
 
 #import "SensorChooserViewController.h"
 #import "SensorDetailViewController.h"
+#import "SensorTableViewCell.h"
 
 #import "ConnectionHandler.h"
 
 #import "DelegateSensorItems.h"
 
+#import "Timestamp+Description.h"
+
 @interface SensorsViewController ()
 
-@property (weak) SensorChooserViewController *sensorsViewController;
-@property (weak) SensorDetailViewController *sensorDetailViewController; 
+@property (strong, nonatomic) NSMutableDictionary *filteredSensorItems;
+@property (strong, nonatomic) NSMutableDictionary *allSensorItems;
+@property BOOL filtered;
+
+@property (strong, nonatomic) SensorItem *selectedSensor;
+@property (strong, nonatomic) NSMutableDictionary *valuesOfSelectedSensor;
+@property (strong, nonatomic) NSString *selectedSubType;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *subTypeChooser;
+@property (weak, nonatomic) IBOutlet CPTGraphHostingView *plotView;
+@property (weak, nonatomic) IBOutlet UILabel *sensorIDLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sensorTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sensorLocationLabel;
+
+@property (strong) CPTXYGraph *graph;
+
+//@property (strong, nonatomic) NSMutableArray *sensorValues;
+
+- (IBAction)subTypeChosen:(UISegmentedControl*)ctrl;
+
+- (void)constructChart;
+- (void)updateChartPlot;
+- (void)updateChartContent;
 
 - (void)registerBeanListener;
 
@@ -40,26 +66,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	self.allSensorItems = [NSMutableDictionary dictionaryWithCapacity:10];
+    self.filteredSensorItems = [NSMutableDictionary dictionaryWithCapacity:10];
     [self registerBeanListener];
+	[self constructChart];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"sensorsViewSegue"]) {
-        NSLog(@"Seque for SensorsView called");
-        self.sensorsViewController = [segue destinationViewController];
-        self.sensorsViewController.delegate = self;
-    }
-    if ([segue.identifier isEqualToString:@"sensorDetailSegue"]) {
-        NSLog(@"Segue for SensorDetail called");
-        self.sensorDetailViewController = [segue destinationViewController];
-    }
 }
 
 #pragma mark - Filter SensorMUCDomains
@@ -71,7 +87,22 @@
 
 - (void)filterForDomains:(NSArray *)domains
 {
-    [_sensorsViewController filterForSensorMUCDomains:domains];
+	if (!domains || domains.count == 0) {
+        _filtered = NO;
+        return;
+    }
+    
+    self.filteredSensorItems = [NSMutableDictionary dictionaryWithCapacity:domains.count];
+    for (NSString *domainID in [_allSensorItems allKeys]) {
+        for (SensorMUCDomain *domain in domains) {
+            if ([domain.domainId isEqualToString:domainID]) {
+                [self.filteredSensorItems setObject:[_allSensorItems objectForKey:domainID] forKey:domainID];
+            }
+        }
+    }
+    
+    _filtered = YES;
+    [self updateView];
 }
 
 #pragma mark - MXiCommunication
@@ -88,20 +119,336 @@
         return;
     }
     
-    [_sensorsViewController addSensorItems:sensorItems.sensorItems];
+    [self addSensorItems:sensorItems.sensorItems];
     for (SensorItem *item in sensorItems.sensorItems) {
-        if ([_sensorDetailViewController.sensorItem.sensorId isEqualToString:item.sensorId]) {
-            [_sensorDetailViewController addSensorValues:item.values];
+        if (_selectedSensor && [_selectedSensor.sensorId isEqualToString:item.sensorId]) {
+			for (SensorValue *value in item.values) {
+				NSMutableArray *values = [_valuesOfSelectedSensor objectForKey:value.subType];
+				if (values) {
+					[values addObject:value];
+				} else {
+					[_valuesOfSelectedSensor setObject:[NSMutableArray arrayWithObject:value] forKey:value.subType];
+				}
+			}
             break;
         }
     }
+	if(_selectedSensor) {
+		if ([[_valuesOfSelectedSensor allKeys] count] != self.subTypeChooser.numberOfSegments)
+		{
+			[self.subTypeChooser removeAllSegments];
+			int i=0;
+			for (NSString *title in [_valuesOfSelectedSensor allKeys]) {
+				[self.subTypeChooser insertSegmentWithTitle:title atIndex:i++ animated:YES];
+			}
+			self.subTypeChooser.selectedSegmentIndex = self.selectedSubType ? [[_valuesOfSelectedSensor allKeys] indexOfObject:self.selectedSubType] : UISegmentedControlNoSegment;
+
+		}
+		[self updateChartContent];
+	}
 }
 
-#pragma mark - SensorSelectionDelegate
-
-- (void)updateSensorItemWithSensorItem:(SensorItem *)sensorItem
+- (void)addSensorItems:(NSArray *)sensorItems
 {
-    [_sensorDetailViewController setSensorItem:sensorItem];
+    if (!sensorItems || sensorItems.count == 0) {
+        return;
+    }
+    
+    for (SensorItem *sensorItem in sensorItems) {
+        NSMutableArray *storedItems = [NSMutableArray arrayWithArray:[_allSensorItems objectForKey:sensorItem.sensorDomain.domainId]];
+        if (storedItems) {
+            BOOL found = NO;
+            for (SensorItem *storedSensorItem in storedItems) {
+                if ([sensorItem.sensorId isEqualToString:storedSensorItem.sensorId]) {
+                    [storedSensorItem.values addObjectsFromArray:sensorItem.values];
+                    found = YES;
+                    break;
+                }
+            }
+            if (!found) {
+                [storedItems addObject:sensorItem];
+                [_allSensorItems setObject:storedItems forKey:sensorItem.sensorDomain.domainId];
+            }
+        } else {
+            [_allSensorItems setObject:@[sensorItem] forKey:sensorItem.sensorDomain.domainId];
+        }
+    }
+    if (_filtered) {
+        for (SensorItem *sensorItem in sensorItems) {
+            NSMutableArray *storedItems = [NSMutableArray arrayWithArray:[_filteredSensorItems objectForKey:sensorItem.sensorDomain.domainId]];
+            if (storedItems) {
+                BOOL found = NO;
+                for (SensorItem *storedSensorItem in storedItems) {
+                    if ([sensorItem.sensorId isEqualToString:storedSensorItem.sensorId]) {
+                        [storedSensorItem.values addObjectsFromArray:sensorItem.values];
+                        found = YES;
+                        break;
+                    }
+                }
+                if (!found) {
+                    [storedItems addObject:sensorItem];
+                    [_filteredSensorItems setObject:storedItems forKey:sensorItem.sensorDomain.domainId];
+                }
+            } else {
+                [_filteredSensorItems setObject:@[sensorItem] forKey:sensorItem.sensorDomain.domainId];
+            }
+        }
+    }
+    [self updateView];
+}
+
+- (void)updateView
+{
+    [self.tableView reloadData];
+}
+
+- (SensorItem *)retrieveSensorItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *sensorItemKey = nil;
+    if (_filtered) {
+        sensorItemKey = [[_filteredSensorItems allKeys] objectAtIndex:indexPath.section];
+        return [[_filteredSensorItems objectForKey:sensorItemKey] objectAtIndex:indexPath.row];
+    } else {
+        sensorItemKey = [[_allSensorItems allKeys] objectAtIndex:indexPath.section];
+        return [[_allSensorItems objectForKey:sensorItemKey] objectAtIndex:indexPath.row];
+    }
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    if (_filtered) {
+        return [[_filteredSensorItems allKeys] count];
+    } else {
+        return [[_allSensorItems allKeys] count];
+    }
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSArray *items = nil;
+    if (_filtered) {
+        items = [_filteredSensorItems objectForKey:[[_filteredSensorItems allKeys] objectAtIndex:section]];
+    } else {
+        items = [_allSensorItems objectForKey:[[_allSensorItems allKeys] objectAtIndex:section]];
+    }
+    return items.count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *key = nil;
+    NSArray *items = nil;
+    if (_filtered) {
+        key = [[_filteredSensorItems allKeys] objectAtIndex:section];
+        items = [_filteredSensorItems objectForKey:key];
+    } else {
+        key = [[_allSensorItems allKeys] objectAtIndex:section];
+        items = [_allSensorItems objectForKey:key];
+    }
+    return ((SensorItem *)items[0]).sensorDomain.domainURL;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"sensorItemCell";
+    SensorTableViewCell *cell = (SensorTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SensorTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+    
+    SensorItem *sensorItem = [self retrieveSensorItemAtIndexPath:indexPath];
+    
+    cell.sensorIDLabel.text = sensorItem.sensorDescription;
+    cell.sensorDetailLabel.text = sensorItem.type;
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	SensorItem *sensorItem = [self retrieveSensorItemAtIndexPath:indexPath];
+	self.sensorIDLabel.text = sensorItem.sensorDescription;
+	self.sensorTypeLabel.text = sensorItem.type;
+	self.sensorLocationLabel.text = sensorItem.location.locationName;
+	[self.mapView removeAnnotations:self.mapView.annotations];
+	MKPointAnnotation *pa = [MKPointAnnotation new];
+	pa.coordinate = CLLocationCoordinate2DMake((double) sensorItem.location.latitude, (double) sensorItem.location.longitude);
+	[self.mapView addAnnotation:pa];
+	MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance([pa coordinate], 100000, 100000);
+	[self.mapView setRegion:region animated:YES];
+	[self.mapView selectAnnotation:pa animated:YES];
+
+	self.selectedSensor = sensorItem;
+	self.valuesOfSelectedSensor = [NSMutableDictionary new];
+	for (SensorValue *value in _selectedSensor.values) {
+		NSMutableArray *values = [_valuesOfSelectedSensor objectForKey:value.subType];
+		if (values) {
+			[values addObject:value];
+		} else {
+			[_valuesOfSelectedSensor setObject:[NSMutableArray arrayWithObject:value] forKey:value.subType];
+		}
+	}
+	self.selectedSubType = [[_valuesOfSelectedSensor allKeys] firstObject];
+	[self.subTypeChooser removeAllSegments];
+	int i=0;
+	for (NSString *title in [_valuesOfSelectedSensor allKeys]) {
+		[self.subTypeChooser insertSegmentWithTitle:title atIndex:i++ animated:YES];
+	}
+	[self updateChartPlot];
+	[self updateChartContent];
+}
+#pragma mark - Construct Chart
+- (void)constructChart
+{
+    self.graph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
+    [self.graph applyTheme:[CPTTheme themeNamed:kCPTDarkGradientTheme]];
+    self.plotView.hostedGraph = _graph;
+	_graph.plotAreaFrame.cornerRadius = 0.f;
+	_graph.plotAreaFrame.shadowRadius = 0.f;
+	
+	[_graph.plotAreaFrame setPaddingTop:10.0f];
+    [_graph.plotAreaFrame setPaddingRight:10.0f];
+    [_graph.plotAreaFrame setPaddingBottom:10.0f];
+    [_graph.plotAreaFrame setPaddingLeft:15.0f];
+    
+    _graph.paddingBottom = 0.0;
+    _graph.paddingLeft = 0.0;
+    _graph.paddingRight = 0.0;
+    _graph.paddingTop = 0.0;
+    
+    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)_graph.defaultPlotSpace;
+    plotSpace.allowsUserInteraction = YES;
+    plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-1.0)
+                                                    length:CPTDecimalFromFloat(10.0)];
+    plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-1.0)
+                                                    length:CPTDecimalFromFloat(5.0)];
+    
+    CPTXYAxisSet *axisSet = (CPTXYAxisSet *)_graph.axisSet;
+    CPTXYAxis *xAxis = axisSet.xAxis;
+    xAxis.majorIntervalLength = CPTDecimalFromString(@"1.0");
+    xAxis.minorTicksPerInterval = 5;
+	xAxis.axisConstraints = [CPTConstraints constraintWithLowerOffset:30.0];
+	xAxis.labelingPolicy = CPTAxisLabelingPolicyAutomatic;
+	xAxis.preferredNumberOfMajorTicks = 4;
+    
+    CPTXYAxis *yAxis = axisSet.yAxis;
+    yAxis.majorIntervalLength = CPTDecimalFromString(@"1.0");
+    yAxis.minorTicksPerInterval = 1;
+	yAxis.labelingPolicy = CPTAxisLabelingPolicyEqualDivisions;
+	yAxis.preferredNumberOfMajorTicks = 4;
+	
+	yAxis.axisConstraints = [CPTConstraints constraintWithLowerOffset:50.0];
+    
+    [self updateChartPlot];
+}
+
+#pragma mark - Private Methods
+
+- (void)updateChartContent
+{
+    [_graph reloadData];
+	[_graph.defaultPlotSpace scaleToFitPlots:_graph.allPlots];
+	CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace*)_graph.defaultPlotSpace;
+	plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromInteger(-1) length:CPTDecimalFromInteger([[_valuesOfSelectedSensor objectForKey:_selectedSubType] count] + 2)];
+	
+	double min = DBL_MAX;
+	double max = DBL_MIN;
+	for (SensorValue *value in [_valuesOfSelectedSensor objectForKey:_selectedSubType])
+	{
+		if ([value.value doubleValue] > max)
+			max = [value.value doubleValue];
+		if ([value.value doubleValue] < min)
+			min = [value.value doubleValue];
+	}
+	if (max != min) {
+		plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(min-0.1*(max-min)) length:CPTDecimalFromDouble(1.2*(max-min))];
+	} else {
+		plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(max-1) length:CPTDecimalFromDouble(2)];
+	}
+}
+
+- (void)updateChartPlot
+{
+    NSArray *plots = [_graph allPlots];
+    for (CPTPlot *plot in plots) {
+        [_graph removePlot:plot];
+    }
+    
+    CPTScatterPlot *dataSourceLinePlot = [[CPTScatterPlot alloc] init];
+    dataSourceLinePlot.identifier = @"Black Plot";
+    
+    CPTMutableLineStyle *lineStyle = [dataSourceLinePlot.dataLineStyle mutableCopy];
+    lineStyle.lineWidth = 3.f;
+    lineStyle.lineColor = [CPTColor lightGrayColor];
+	//    lineStyle.dashPattern = [NSArray arrayWithObjects:[NSNumber numberWithFloat:5.0f],[NSNumber numberWithFloat:5.0f], nil];
+    dataSourceLinePlot.dataLineStyle = lineStyle;
+	dataSourceLinePlot.labelRotation = 1.571f/2;
+	
+	CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];
+	textStyle.textAlignment = CPTTextAlignmentRight;
+	dataSourceLinePlot.labelTextStyle = textStyle;
+	
+    
+    dataSourceLinePlot.dataSource = self;
+    [_graph addPlot:dataSourceLinePlot];
+}
+
+#pragma mark - CPTPlotDataSource
+
+- (NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot
+{
+    if (_selectedSensor && _selectedSensor.values)
+		return ((NSArray*)[_valuesOfSelectedSensor objectForKey:_selectedSubType]).count;
+	return 0;
+}
+
+- (double)doubleForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)idx
+{
+    if (![_valuesOfSelectedSensor objectForKey:_selectedSubType]) {
+        return 0.0;
+    }
+    
+    switch (fieldEnum) {
+        case CPTScatterPlotFieldX: {
+            return [[NSNumber numberWithInt:idx] doubleValue];
+        }
+        case CPTScatterPlotFieldY: {
+            SensorValue *value = [[_valuesOfSelectedSensor objectForKey:_selectedSubType] objectAtIndex:idx];
+            return [value.value doubleValue];
+        }
+        default:
+            break;
+    }
+    return 0.0;
+}
+
+- (CPTLayer *)dataLabelForPlot:(CPTPlot *)plot recordIndex:(NSUInteger)idx
+{
+    if (![_valuesOfSelectedSensor objectForKey:_selectedSubType]) {
+        return NULL;
+    }
+    
+    SensorValue *value = [[_valuesOfSelectedSensor objectForKey:_selectedSubType] objectAtIndex:idx];
+    Timestamp *timestamp = value.timestamp;
+	
+    CPTMutableTextStyle *labelStyle = [[CPTMutableTextStyle alloc] init];
+	labelStyle.color = [CPTColor lightGrayColor];
+    CPTAxisLabel *axisLabel = [[CPTAxisLabel alloc] initWithText:[timestamp timestampAsString]
+                                                       textStyle:labelStyle];
+    
+    return [axisLabel contentLayer];
+}
+
+#pragma mark - SubTypeChooser
+- (void)subTypeChosen:(UISegmentedControl *)ctrl
+{
+	self.selectedSubType = [[_valuesOfSelectedSensor allKeys] objectAtIndex:ctrl.selectedSegmentIndex];
+	[self updateChartContent];
 }
 
 #pragma mark - UINavigationBarDelegate
