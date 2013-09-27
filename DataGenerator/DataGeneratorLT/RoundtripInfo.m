@@ -20,14 +20,20 @@
 
 - (id)initWithStartDate:(NSDate *)startDate andIdentifier:(NSUInteger)roundtripIdentifier
 {
+    return [self initWithStartDate:startDate andIdentifier:roundtripIdentifier andBlock:0];
+}
+
+- (id)initWithStartDate:(NSDate *)startDate andIdentifier:(NSUInteger)roundtripIdentifier andBlock:(NSUInteger)block
+{
     self = [super init];
     if (self) {
         self.sent = [startDate descriptionWithLocale:nil];
+        self.block = block;
         self.received = nil;
         self.roundtrip = nil;
         self.roundtripIdentifier = roundtripIdentifier;
     }
-
+    
     return self;
 }
 

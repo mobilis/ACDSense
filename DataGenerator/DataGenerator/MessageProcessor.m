@@ -34,7 +34,7 @@
         [timestampBuilder appendFormat:@"%02ldT", (long)dateComponents.day];
         [timestampBuilder appendFormat:@"%02ld:", (long)dateComponents.hour];
         [timestampBuilder appendFormat:@"%02ld:", (long)dateComponents.minute];
-        [timestampBuilder appendFormat:@"%02ld+1:00", (long)dateComponents.second];
+        [timestampBuilder appendFormat:@"%02ld+01:00", (long)dateComponents.second];
         
         timestamp = [NSString stringWithString:timestampBuilder];
     }

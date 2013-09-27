@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5B1189BC17C12FC000CACF5A /* MXi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1189BA17C12AC900CACF5A /* MXi.framework */; };
 		5B1A01E717BE7A6900CC7011 /* LogFileWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */; };
+		5B5080AE17F46D530031B043 /* ResultWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5080AD17F46D530031B043 /* ResultWriter.m */; };
 		5B5BCFD217D5CA8E006E3EF3 /* Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5BCFD117D5CA8E006E3EF3 /* Timestamp.m */; };
 		5B63EE5C17D1D10700CD8667 /* NSString+FileReading.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B63EE5B17D1D10700CD8667 /* NSString+FileReading.m */; };
 		5B63EE6417D1F95600CD8667 /* MXi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5B1189BA17C12AC900CACF5A /* MXi.framework */; };
@@ -115,6 +116,8 @@
 		5B1A01E517BE7A6900CC7011 /* LogFileWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogFileWriter.h; sourceTree = "<group>"; };
 		5B1A01E617BE7A6900CC7011 /* LogFileWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogFileWriter.m; sourceTree = "<group>"; };
 		5B442E1C17E7715C006AF7AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5B5080AC17F46D530031B043 /* ResultWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultWriter.h; sourceTree = "<group>"; };
+		5B5080AD17F46D530031B043 /* ResultWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultWriter.m; sourceTree = "<group>"; };
 		5B5BCFD017D5CA8E006E3EF3 /* Timestamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timestamp.h; sourceTree = "<group>"; };
 		5B5BCFD117D5CA8E006E3EF3 /* Timestamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timestamp.m; sourceTree = "<group>"; };
 		5B63EE5A17D1D10700CD8667 /* NSString+FileReading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FileReading.h"; sourceTree = "<group>"; };
@@ -318,6 +321,8 @@
 				BF8CBD2638EF45CD3FB3CC14 /* RoundtripInfo.m */,
 				BF8CBB58C591EFB02CCDE65F /* ConnectionHandler.h */,
 				BF8CB7B6DC384CA6B6BE0183 /* ConnectionHandler.m */,
+				5B5080AC17F46D530031B043 /* ResultWriter.h */,
+				5B5080AD17F46D530031B043 /* ResultWriter.m */,
 			);
 			path = DataGeneratorLT;
 			sourceTree = "<group>";
@@ -543,7 +548,7 @@
 				ORGANIZATIONNAME = "Technische Universität Dresden";
 				TargetAttributes = {
 					5B9F994217F2E9DA00F06C32 = {
-						TestTargetID = 5BFEA37017BA693200C7914D;
+						TestTargetID = 5BFEA37017BA693200C7914D /* DataGenerator */;
 					};
 				};
 			};
@@ -631,6 +636,7 @@
 				5BDAA71117F33E3E005F9DA8 /* LogFileWriter.m in Sources */,
 				BF8CB949FE86E38012EA1682 /* SensorItem.m in Sources */,
 				BF8CB42C41EB6AD6D84C14BA /* ValueCalculator.m in Sources */,
+				5B5080AE17F46D530031B043 /* ResultWriter.m in Sources */,
 				BF8CB3CC51F2A177EA77DF76 /* RegisterReceiver.m in Sources */,
 				BF8CBCC5F5F2D6630EDD9766 /* CreateSensorMUCDomain.m in Sources */,
 			);

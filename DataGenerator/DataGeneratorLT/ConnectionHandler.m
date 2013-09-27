@@ -89,7 +89,8 @@
             for (unsigned int inkrement = 0; inkrement < self.bunchMessages; inkrement++) {
                 for (NSString *roomJID in self.roomJIDs) {
                     RoundtripInfo *roundtripInfo = [[RoundtripInfo alloc] initWithStartDate:[NSDate date]
-                                                                              andIdentifier:self.packetIdentifier];
+                                                                              andIdentifier:self.packetIdentifier
+                                                                                   andBlock:self.bunchMessages];
                         [self.connection sendMessage:[MessageProcessor messageWithTestValue:roundtripInfo.roundtripIdentifier]
                                               toRoom:roomJID];
                     self.packetIdentifier = self.packetIdentifier + 1;

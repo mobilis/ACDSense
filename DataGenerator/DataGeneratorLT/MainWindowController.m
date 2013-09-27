@@ -12,6 +12,7 @@
 #import "ConnectionHandler.h"
 #import "NSString+FileReading.h"
 #import "MUCInfoParser.h"
+#import "ResultWriter.h"
 
 @interface MainWindowController () <NSTableViewDataSource, NSTableViewDelegate, ConnectionhandlerDelegate, MXiMultiUserChatDelegate>
 
@@ -122,6 +123,18 @@
 - (IBAction)finishTest:(id)sender
 {
     [self.connectionHandler finishTest];
+
+    NSSavePanel *savePanel = [NSSavePanel savePanel];
+    [savePanel setNameFieldStringValue:@"DataGeneratorLT-Result.cvs"];
+    [savePanel setAllowedFileTypes:@[@"cvs"]];
+    [savePanel setExtensionHidden:NO];
+    [savePanel setMessage:@"Choose a location to store the test results."];
+
+    if (NSFileHandlingPanelOKButton == [savePanel runModal])
+        [ResultWriter writeArrayToCVS:self.roundtripData
+                          inDirectory:[[savePanel directoryURL] absoluteString]
+                         withFileName:[savePanel nameFieldStringValue]];
+    else return;
 
     [self toggleButtons];
 }

@@ -12,11 +12,13 @@
 
 @property (strong) NSString *sent;
 @property (strong) NSString *received;
+@property NSUInteger block;
 @property (strong, readonly) NSString *roundtrip;
 
 @property NSUInteger roundtripIdentifier;
 
 - (id)initWithStartDate:(NSDate *)startDate andIdentifier:(NSUInteger)roundtripIdentifier;
+- (id)initWithStartDate:(NSDate *)startDate andIdentifier:(NSUInteger)roundtripIdentifier andBlock:(NSUInteger)block;
 
 - (BOOL)isSameIdentifier:(NSUInteger)otherIdentifier;
 

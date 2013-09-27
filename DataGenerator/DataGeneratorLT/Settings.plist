@@ -7,10 +7,10 @@
 	<key>serviceNamespace</key>
 	<string>http://mobilis.inf.tu-dresden.de#services/ACDSenseService</string>
 	<key>hostName</key>
-	<string>localhost</string>
+	<string>mobilis-dev.inf.tu-dresden.de</string>
 	<key>password</key>
-	<string>testpw</string>
+	<string>wutzler@rn</string>
 	<key>jid</key>
-	<string>mike@localhost</string>
+	<string>wutzler@mobilis-dev.inf.tu-dresden.de</string>
 </dict>
 </plist>
