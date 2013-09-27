@@ -303,10 +303,12 @@
 - (void)constructChart
 {
     self.graph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
-    [self.graph applyTheme:[CPTTheme themeNamed:kCPTDarkGradientTheme]];
+    [self.graph applyTheme:[CPTTheme themeNamed:kCPTPlainWhiteTheme]];
     self.plotView.hostedGraph = _graph;
 	_graph.plotAreaFrame.cornerRadius = 0.f;
 	_graph.plotAreaFrame.shadowRadius = 0.f;
+	_graph.borderLineStyle = nil;
+	_graph.plotAreaFrame.borderLineStyle = nil;
 	
 	[_graph.plotAreaFrame setPaddingTop:10.0f];
     [_graph.plotAreaFrame setPaddingRight:10.0f];
@@ -332,6 +334,7 @@
 	xAxis.axisConstraints = [CPTConstraints constraintWithLowerOffset:30.0];
 	xAxis.labelingPolicy = CPTAxisLabelingPolicyAutomatic;
 	xAxis.preferredNumberOfMajorTicks = 4;
+
     
     CPTXYAxis *yAxis = axisSet.yAxis;
     yAxis.majorIntervalLength = CPTDecimalFromString(@"1.0");
@@ -362,11 +365,22 @@
 		if ([value.value doubleValue] < min)
 			min = [value.value doubleValue];
 	}
-	if (max != min) {
+	if ((max-min) > 1.0) {
 		plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(min-0.1*(max-min)) length:CPTDecimalFromDouble(1.2*(max-min))];
 	} else {
-		plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(max-1) length:CPTDecimalFromDouble(2)];
+		double median = min+((max-min)/2);
+		plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(median-1) length:CPTDecimalFromDouble(2)];
 	}
+	
+	CPTXYAxisSet *axisSet = (CPTXYAxisSet *)_graph.axisSet;
+    CPTXYAxis *xAxis = axisSet.xAxis;
+	NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateStyle = kCFDateFormatterShortStyle;
+	dateFormatter.timeStyle = kCFDateFormatterMediumStyle;
+    CPTTimeFormatter *timeFormatter = [[CPTTimeFormatter alloc] initWithDateFormatter:dateFormatter];
+	SensorValue *origin = [[_valuesOfSelectedSensor objectForKey:_selectedSubType] firstObject];
+    timeFormatter.referenceDate = [origin.timestamp timestampAsDate];
+    xAxis.labelFormatter = timeFormatter;
 }
 
 - (void)updateChartPlot
@@ -381,16 +395,13 @@
     
     CPTMutableLineStyle *lineStyle = [dataSourceLinePlot.dataLineStyle mutableCopy];
     lineStyle.lineWidth = 3.f;
-    lineStyle.lineColor = [CPTColor lightGrayColor];
-	//    lineStyle.dashPattern = [NSArray arrayWithObjects:[NSNumber numberWithFloat:5.0f],[NSNumber numberWithFloat:5.0f], nil];
+    lineStyle.lineColor = [CPTColor blackColor];
     dataSourceLinePlot.dataLineStyle = lineStyle;
-	dataSourceLinePlot.labelRotation = 1.571f/2;
 	
-	CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];
-	textStyle.textAlignment = CPTTextAlignmentRight;
-	dataSourceLinePlot.labelTextStyle = textStyle;
+//	CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];
+//	textStyle.textAlignment = CPTTextAlignmentRight;
+//	dataSourceLinePlot.labelTextStyle = textStyle;
 	
-    
     dataSourceLinePlot.dataSource = self;
     [_graph addPlot:dataSourceLinePlot];
 }
@@ -429,13 +440,15 @@
     if (![_valuesOfSelectedSensor objectForKey:_selectedSubType]) {
         return NULL;
     }
-    
+    int mod  = ((int)[[_valuesOfSelectedSensor objectForKey:_selectedSubType] count] / 10)+1;
+	if (idx % mod != 0) {
+		return [NSNull null];
+	}
     SensorValue *value = [[_valuesOfSelectedSensor objectForKey:_selectedSubType] objectAtIndex:idx];
-    Timestamp *timestamp = value.timestamp;
 	
     CPTMutableTextStyle *labelStyle = [[CPTMutableTextStyle alloc] init];
-	labelStyle.color = [CPTColor lightGrayColor];
-    CPTAxisLabel *axisLabel = [[CPTAxisLabel alloc] initWithText:[timestamp timestampAsString]
+	labelStyle.color = [CPTColor blackColor];
+    CPTAxisLabel *axisLabel = [[CPTAxisLabel alloc] initWithText:value.value
                                                        textStyle:labelStyle];
     
     return [axisLabel contentLayer];
