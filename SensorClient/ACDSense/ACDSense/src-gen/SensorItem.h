@@ -4,6 +4,7 @@
 @interface SensorItem : NSObject
 
 @property (nonatomic, strong) NSString* sensorId;
+@property (nonatomic, strong) NSString* sensorDescription;
 @property (nonatomic, strong) SensorMUCDomain* sensorDomain;
 @property (nonatomic, strong) NSMutableArray* values;
 @property (nonatomic, strong) Location* location;

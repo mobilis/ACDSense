@@ -11,5 +11,6 @@
 @interface Timestamp (Description)
 
 - (NSString *)timestampAsString;
+- (NSDate *)timestampAsDate;
 
 @end

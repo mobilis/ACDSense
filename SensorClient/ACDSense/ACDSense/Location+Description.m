@@ -12,7 +12,7 @@
 
 - (NSString *)locationAsString
 {
-    NSString *string = [NSString stringWithFormat:@"Longitude: %d, Latitude: %d", self.longitude, self.latitude];
+    NSString *string = [NSString stringWithFormat:@"Longitude: %f, Latitude: %f", self.longitude, self.latitude];
     return string;
 }
 
