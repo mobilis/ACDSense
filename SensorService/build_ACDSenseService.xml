@@ -52,7 +52,7 @@
 			<fileset dir="${build.dir}" includes="${root.packages}" />
 			<fileset dir="${src.dir}" includes="" />
 			<fileset dir="${basedir}" includes="${res.dir}/${required.resources}" />
-
+			
 			<zipgroupfileset dir="${lib.dir}" includes="${required.libraries}" excludes="" />
 
 			<manifest>
