@@ -4,7 +4,7 @@
 
 - (id)init {
 	self = [super initWithBeanType:RESULT];
-
+	
 	return self;
 }
 
@@ -15,6 +15,8 @@
 		SensorItem *sensorItemsObject = [[SensorItem alloc] init];
 		NSXMLElement* sensorIdElement = [sensorItemsElement elementForName:@"sensorId"];
 		[sensorItemsObject setSensorId:[sensorIdElement stringValue]];
+		NSXMLElement* sensorDescriptionElement = [sensorItemsElement elementForName:@"sensorDescription"];
+		[sensorItemsObject setSensorDescription:[sensorDescriptionElement stringValue]];
 		NSXMLElement* sensorDomainElement = [sensorItemsElement elementForName:@"sensorDomain"];
 		[sensorItemsObject setSensorDomain:[[SensorMUCDomain alloc] init]];
 		NSXMLElement* domainIdElement = [sensorDomainElement elementForName:@"domainId"];
@@ -50,9 +52,11 @@
 		NSXMLElement* locationElement = [sensorItemsElement elementForName:@"location"];
 		[sensorItemsObject setLocation:[[Location alloc] init]];
 		NSXMLElement* latitudeElement = [locationElement elementForName:@"latitude"];
-		[[sensorItemsObject location] setLatitude:[[latitudeElement stringValue] integerValue]];
+		[[sensorItemsObject location] setLatitude:[[latitudeElement stringValue] floatValue]];
 		NSXMLElement* longitudeElement = [locationElement elementForName:@"longitude"];
-		[[sensorItemsObject location] setLongitude:[[longitudeElement stringValue] integerValue]];
+		[[sensorItemsObject location] setLongitude:[[longitudeElement stringValue] floatValue]];
+		NSXMLElement* locationNameElement = [locationElement elementForName:@"locationName"];
+		[[sensorItemsObject location] setLocationName:[locationNameElement stringValue]];
 		NSXMLElement* typeElement = [sensorItemsElement elementForName:@"type"];
 		[sensorItemsObject setType:[typeElement stringValue]];
 		[[self sensorItems] addObject:sensorItemsObject];

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SensorDomainsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UITextFieldDelegate>
+@interface SensorDomainsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UITextFieldDelegate, UINavigationBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 - (IBAction)addSensorDomain:(UIBarButtonItem *)sender;

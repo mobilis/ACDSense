@@ -166,6 +166,7 @@
 	for (SensorMUCDomain *domain in self.sensorDomains) {
 		if ([[domain domainId] isEqualToString:bean.sensorDomain.domainId]) {
 			[self.sensorDomains removeObject:domain];
+			break;
 		}
 	}
 	[self refreshTableView];
@@ -184,6 +185,12 @@
 	[UIView transitionWithView:self.tableView duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
 		[self.tableView reloadData];
 	} completion:nil];
+}
+
+#pragma mark - UINavigationBarDelegate
+-(UIBarPosition)positionForBar:(id<UIBarPositioning>)bar
+{
+	return UIBarPositionTopAttached;
 }
 
 @end
