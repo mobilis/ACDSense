@@ -87,6 +87,9 @@
 						name="sensorId"
 						type="xs:string" />
 					<xs:element
+						name="sensorDescription"
+						type="xs:string" />
+					<xs:element
 						name="sensorDomain"
 						type="mns:SensorMUCDomain" />
 					<xs:element
@@ -131,10 +134,13 @@
 				<xs:sequence>
 					<xs:element
 						name="latitude"
-						type="xs:long" />
+						type="xs:float" />
 					<xs:element
 						name="longitude"
-						type="xs:long" />
+						type="xs:float" />
+					<xs:element
+						name="locationName"
+						type="xs:string" />
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="Timestamp">

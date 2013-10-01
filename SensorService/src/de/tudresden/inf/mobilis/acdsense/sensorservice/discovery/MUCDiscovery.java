@@ -44,14 +44,13 @@ class MUCDiscovery {
 				while (fieldIterator.hasNext() && !found) {
 					FormField field = fieldIterator.next();
 					if (field.getVariable().equalsIgnoreCase(
-							"muc#roominfo_description")) {
+							"muc#roominfo_subject")) {
 						for (Iterator<String> valueIterator = field.getValues(); valueIterator.hasNext() && !found;) {
 							String value = valueIterator.next();
-							if (value.length() >= 12)
-								if (value.substring(0, 13).equalsIgnoreCase("acdsense_muc#")) {
-									found = true;
-									this.sensorRooms.add(room);
-								}
+							if (value.equalsIgnoreCase("SensorMUC")) {
+								found = true;
+								this.sensorRooms.add(room);
+							}
 						}
 					}
 				}

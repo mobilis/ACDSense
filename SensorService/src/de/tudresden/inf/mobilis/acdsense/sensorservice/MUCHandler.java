@@ -1,28 +1,37 @@
 package de.tudresden.inf.mobilis.acdsense.sensorservice;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Logger;
 
 import org.jivesoftware.smack.Connection;
 import org.jivesoftware.smack.XMPPException;
 
+import de.tudresden.inf.mobilis.acdsense.sensorservice.discovery.DiscoveryTimer;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.PublishSensorItems;
-import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.SensorItem;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.SensorMUCDomain;
 
 public class MUCHandler implements Observer {
+	
+	private static Logger logger = Logger
+			.getLogger("de.tudresden.inf.mobilis.acdsense.sensorservice");
+	
+	private static int RefreshInterval = 120;
 	
 	private static MUCHandler mucHandler;
 	
 	private Connection connection;
 	private IQHandler outgoingBeanHandler;
 	private List<MUCConnection> mucConnections;
+	private Map<String, DiscoveryTimer> hostTimerDictionary;
 	
 	private MUCHandler() {
 		this.mucConnections = new LinkedList<>();
+		this.hostTimerDictionary = new HashMap<>();
 	}
 	
 	public static synchronized MUCHandler getInstance() {
@@ -43,8 +52,13 @@ public class MUCHandler implements Observer {
 		try {
 			newConnection.join("acdsense_bot");
 			mucConnections.add(newConnection);
+			
+			DiscoveryTimer timer = new DiscoveryTimer();
+			hostTimerDictionary.put(domain.getDomainURL(), timer);
+			
+			timer.startPerdiodicDiscovering(RefreshInterval, domain.getDomainURL(), connection);
 		} catch (XMPPException e) {
-			e.printStackTrace();
+			logger.info("Could not joint room: " + roomJID);
 		}
 	}
 	private boolean doesConnectionToRoomAlreadyExist(final String roomJID) {
@@ -66,12 +80,16 @@ public class MUCHandler implements Observer {
 				break;
 			}
 		connectionToRemove.leave();
-		this.mucConnections.remove(connectionToRemove);
+		remove(connectionToRemove);
 	}
-	
 	public void removeRoomConnection(MUCConnection mucConnection) {
 		mucConnection.leave();
-		this.mucConnections.remove(mucConnection);
+		remove(mucConnection);
+	}
+	private void remove(MUCConnection connectionToRemove) {
+		this.mucConnections.remove(connectionToRemove);
+		this.hostTimerDictionary.get(connectionToRemove.getDomain().getDomainURL()).stopDiscovery();
+		this.hostTimerDictionary.remove(connectionToRemove.getDomain().getDomainURL());
 	}
 	
 	public void setOutgoingBeanHandler(IQHandler beanHandler) {

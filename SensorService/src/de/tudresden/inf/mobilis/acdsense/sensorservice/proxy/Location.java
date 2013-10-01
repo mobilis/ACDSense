@@ -4,14 +4,16 @@ import org.xmlpull.v1.XmlPullParser;import java.util.List;import java.util.Array
 
 public class Location implements XMPPInfo {
 
-	private long latitude = Long.MIN_VALUE;
-	private long longitude = Long.MIN_VALUE;
+	private float latitude = Float.MIN_VALUE;
+	private float longitude = Float.MIN_VALUE;
+	private String locationName = null;
 
 
-	public Location( long latitude, long longitude ) {
+	public Location( float latitude, float longitude, String locationName ) {
 		super();
 		this.latitude = latitude;
 		this.longitude = longitude;
+		this.locationName = locationName;
 	}
 
 	public Location(){}
@@ -31,10 +33,13 @@ public class Location implements XMPPInfo {
 					parser.next();
 				}
 				else if (tagName.equals( "latitude" ) ) {
-					this.latitude = Long.parseLong( parser.nextText() );
+					this.latitude = Float.parseFloat( parser.nextText() );
 				}
 				else if (tagName.equals( "longitude" ) ) {
-					this.longitude = Long.parseLong( parser.nextText() );
+					this.longitude = Float.parseFloat( parser.nextText() );
+				}
+				else if (tagName.equals( "locationName" ) ) {
+					this.locationName = parser.nextText();
 				}
 				else
 					parser.next();
@@ -80,25 +85,37 @@ public class Location implements XMPPInfo {
 			.append( this.longitude )
 			.append( "</longitude>" );
 
+		sb.append( "<locationName>" )
+			.append( this.locationName )
+			.append( "</locationName>" );
+
 		return sb.toString();
 	}
 
 
 
-	public long getLatitude() {
+	public float getLatitude() {
 		return this.latitude;
 	}
 
-	public void setLatitude( long latitude ) {
+	public void setLatitude( float latitude ) {
 		this.latitude = latitude;
 	}
 
-	public long getLongitude() {
+	public float getLongitude() {
 		return this.longitude;
 	}
 
-	public void setLongitude( long longitude ) {
+	public void setLongitude( float longitude ) {
 		this.longitude = longitude;
+	}
+
+	public String getLocationName() {
+		return this.locationName;
+	}
+
+	public void setLocationName( String locationName ) {
+		this.locationName = locationName;
 	}
 
 }
