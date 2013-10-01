@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>jabberInformation</key>
+	<dict>
+		<key>jid</key>
+		<string>jid@localhost</string>
+		<key>password</key>
+		<string>yourAccountPassword</string>
+		<key>hostName</key>
+		<string>localhost or other hostName</string>
+		<key>serviceJid</key>
+		<string>jidOfACDSenseService</string>
+	</dict>
+	<key>valueCreationInterval</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -8,8 +8,23 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+#import <MXi/MXi.h>
+#import <MXi/MXiMultiUserChatDelegate.h>
 
-@property (assign) IBOutlet NSWindow *window;
+#import "DelegateSensorValues.h"
+#import "RegisterPublisher.h"
+#import "RemovePublisher.h"
+#import "PublishSensorItems.h"
+
+@interface AppDelegate : NSObject <NSApplicationDelegate, MXiPresenceDelegate, MXiStanzaDelegate, MXiBeanDelegate, MXiMultiUserChatDelegate>
+
+@property (strong, nonatomic) MXiConnection *connection;
+
+- (void)launchConnectionEstablishment;
+- (void)getMUCInformationFromFile:(NSString *)pathToFile;
+
+- (void)launchDataLoadingFromDirectory:(NSString *)directory;
+
+- (void)stopSendingSensorInformation;
 
 @end
