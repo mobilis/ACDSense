@@ -66,13 +66,9 @@
 		5B22E89F17C26E0500E6E4F4 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B22E89E17C26E0500E6E4F4 /* libxml2.dylib */; };
 		5B333EDD17C28D9C0083BBD8 /* Settings.plist.example in Resources */ = {isa = PBXBuildFile; fileRef = 5B333EDC17C28D9C0083BBD8 /* Settings.plist.example */; };
 		5B5BCFCF17D5BAB4006E3EF3 /* Timestamp+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5BCFCE17D5BAB4006E3EF3 /* Timestamp+Description.m */; };
-		5B772CB017C89DF50008BC02 /* ConnectionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CAF17C89DF50008BC02 /* ConnectionHandler.m */; };
 		5B772CB417C8A2F60008BC02 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CB317C8A2F60008BC02 /* KeychainItemWrapper.m */; };
 		5B772CB717C8A3140008BC02 /* AccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CB617C8A3140008BC02 /* AccountManager.m */; };
 		5B772CBB17C8A37D0008BC02 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CBA17C8A37D0008BC02 /* Account.m */; };
-		5B772CBE17C911B20008BC02 /* DelegateDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CBD17C911B20008BC02 /* DelegateDictionary.m */; };
-		5B772CC217C923920008BC02 /* IncomingBeanDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B772CC117C923920008BC02 /* IncomingBeanDetection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		5B96FFA917CA4F0100DADDFA /* DelegateSelectorMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B96FFA817CA4F0100DADDFA /* DelegateSelectorMapping.m */; };
 		5B96FFAC17CA553200DADDFA /* NSString+Selector.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B96FFAB17CA553200DADDFA /* NSString+Selector.m */; };
 		5BB71D5C17D31872000CAF47 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB71D5B17D31872000CAF47 /* CoreData.framework */; };
 		5BB71D6117D32CDA000CAF47 /* libMXi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB71D6017D32CDA000CAF47 /* libMXi.a */; };
@@ -169,20 +165,12 @@
 		5B333EDC17C28D9C0083BBD8 /* Settings.plist.example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.plist.example; sourceTree = "<group>"; };
 		5B5BCFCD17D5BAB4006E3EF3 /* Timestamp+Description.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Timestamp+Description.h"; sourceTree = "<group>"; };
 		5B5BCFCE17D5BAB4006E3EF3 /* Timestamp+Description.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Timestamp+Description.m"; sourceTree = "<group>"; };
-		5B772CAE17C89DF50008BC02 /* ConnectionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionHandler.h; sourceTree = "<group>"; };
-		5B772CAF17C89DF50008BC02 /* ConnectionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionHandler.m; sourceTree = "<group>"; };
 		5B772CB217C8A2F60008BC02 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		5B772CB317C8A2F60008BC02 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		5B772CB517C8A3140008BC02 /* AccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountManager.h; sourceTree = "<group>"; };
 		5B772CB617C8A3140008BC02 /* AccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountManager.m; sourceTree = "<group>"; };
 		5B772CB917C8A37D0008BC02 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		5B772CBA17C8A37D0008BC02 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
-		5B772CBC17C911B20008BC02 /* DelegateDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateDictionary.h; sourceTree = "<group>"; };
-		5B772CBD17C911B20008BC02 /* DelegateDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateDictionary.m; sourceTree = "<group>"; };
-		5B772CC017C923910008BC02 /* IncomingBeanDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomingBeanDetection.h; sourceTree = "<group>"; };
-		5B772CC117C923920008BC02 /* IncomingBeanDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomingBeanDetection.m; sourceTree = "<group>"; };
-		5B96FFA717CA4F0100DADDFA /* DelegateSelectorMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateSelectorMapping.h; sourceTree = "<group>"; };
-		5B96FFA817CA4F0100DADDFA /* DelegateSelectorMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateSelectorMapping.m; sourceTree = "<group>"; };
 		5B96FFAA17CA553200DADDFA /* NSString+Selector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Selector.h"; sourceTree = "<group>"; };
 		5B96FFAB17CA553200DADDFA /* NSString+Selector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Selector.m"; sourceTree = "<group>"; };
 		5BB71D5B17D31872000CAF47 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -408,9 +396,6 @@
 				0CD1895417CA4031004DF634 /* Generated Model */,
 				5B22E88517C25CF700E6E4F4 /* Beans */,
 				5B772CB817C8A31F0008BC02 /* AccountManagement */,
-				5B772CAE17C89DF50008BC02 /* ConnectionHandler.h */,
-				5B772CAF17C89DF50008BC02 /* ConnectionHandler.m */,
-				5B772CC317C926160008BC02 /* Connection Helper */,
 			);
 			name = Backend;
 			sourceTree = "<group>";
@@ -426,19 +411,6 @@
 				5B772CBA17C8A37D0008BC02 /* Account.m */,
 			);
 			name = AccountManagement;
-			sourceTree = "<group>";
-		};
-		5B772CC317C926160008BC02 /* Connection Helper */ = {
-			isa = PBXGroup;
-			children = (
-				5B772CBC17C911B20008BC02 /* DelegateDictionary.h */,
-				5B772CBD17C911B20008BC02 /* DelegateDictionary.m */,
-				5B772CC017C923910008BC02 /* IncomingBeanDetection.h */,
-				5B772CC117C923920008BC02 /* IncomingBeanDetection.m */,
-				5B96FFA717CA4F0100DADDFA /* DelegateSelectorMapping.h */,
-				5B96FFA817CA4F0100DADDFA /* DelegateSelectorMapping.m */,
-			);
-			name = "Connection Helper";
 			sourceTree = "<group>";
 		};
 		5B96FFAD17CA559100DADDFA /* Categories */ = {
@@ -557,13 +529,9 @@
 				0CD1893B17C75350004DF634 /* SettingsViewController.m in Sources */,
 				0CD1894017C7560D004DF634 /* TextFieldCell.m in Sources */,
 				0CD1894317C75885004DF634 /* SensorDomainsViewController.m in Sources */,
-				5B772CB017C89DF50008BC02 /* ConnectionHandler.m in Sources */,
 				5B772CB417C8A2F60008BC02 /* KeychainItemWrapper.m in Sources */,
 				5B772CB717C8A3140008BC02 /* AccountManager.m in Sources */,
 				5B772CBB17C8A37D0008BC02 /* Account.m in Sources */,
-				5B772CBE17C911B20008BC02 /* DelegateDictionary.m in Sources */,
-				5B772CC217C923920008BC02 /* IncomingBeanDetection.m in Sources */,
-				5B96FFA917CA4F0100DADDFA /* DelegateSelectorMapping.m in Sources */,
 				5B96FFAC17CA553200DADDFA /* NSString+Selector.m in Sources */,
 				0C80B7CA17CA84A7002A0DD1 /* GetSensorMUCDomainsResponse.m in Sources */,
 				0C84D6F017CE300700E1DB7D /* Location.m in Sources */,
