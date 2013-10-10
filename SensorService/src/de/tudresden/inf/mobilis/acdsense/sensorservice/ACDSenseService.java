@@ -1,10 +1,12 @@
 package de.tudresden.inf.mobilis.acdsense.sensorservice;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.filter.PacketTypeFilter;
 import org.jivesoftware.smack.packet.IQ;
+import org.jivesoftware.smack.packet.PacketExtension;
 
 import de.tudresden.inf.mobilis.acdsense.sensorservice.discovery.MUCDiscoveryManager;
 import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.CreateSensorMUCDomain;
@@ -61,6 +63,12 @@ public class ACDSenseService extends MobilisService {
 	@Override
 	public void shutdown() throws Exception {
 		super.shutdown();
+	}
+
+	@Override
+	public List<PacketExtension> getNodePacketExtensions() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
