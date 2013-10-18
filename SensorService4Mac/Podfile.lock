@@ -1,13 +1,16 @@
 PODS:
   - CocoaAsyncSocket (7.3.2)
   - CocoaLumberjack (1.6.2)
-  - MobilisMXi (0.3.0):
+  - FXKeychain (1.4)
+  - MobilisMXi (0.4.0):
+    - FXKeychain
     - MobilisMXi/no_arc
     - XMPPFramework/Core
     - XMPPFramework/Reconnect
     - XMPPFramework/Roster
     - XMPPFramework/XEP-0045
-  - MobilisMXi/no_arc (0.3.0):
+  - MobilisMXi/no_arc (0.4.0):
+    - FXKeychain
     - XMPPFramework/Core
     - XMPPFramework/Reconnect
     - XMPPFramework/Roster
@@ -21,11 +24,8 @@ PODS:
     - CocoaLumberjack (~> 1.6.2)
     - XMPPFramework/Authentication
     - XMPPFramework/Categories
-    - XMPPFramework/KissXML
     - XMPPFramework/Utilities
   - XMPPFramework/CoreDataStorage (3.6.1):
-    - XMPPFramework/Core
-  - XMPPFramework/KissXML (3.6.1):
     - XMPPFramework/Core
   - XMPPFramework/Reconnect (3.6.1):
     - XMPPFramework/Core
@@ -61,7 +61,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   CocoaAsyncSocket: 977404129ec8505fee1c3701956b769e3bb10ea7
   CocoaLumberjack: d73e1e317ced14ab930797dda6c17156ff17aaa1
-  MobilisMXi: 8c230655717fd5366bb139fc70e398b926cd0d22
-  XMPPFramework: 497aa5e1173ad51124b81f53264fd64e83adc4e3
+  FXKeychain: 649efca683aa602c446620701a46780515d25610
+  MobilisMXi: 4f32e1094534a71ebd3d099bf2325c759794e920
+  XMPPFramework: 9dd6e09a5951480c659be1c651999f7904209ae8
 
 COCOAPODS: 0.26.2

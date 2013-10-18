@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		44DAB202C9A94352BD2C04D9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84033FFD2A1F46E687235069 /* libPods.a */; };
+		5B76A9B81810014E00E14C18 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B76A9B71810014E00E14C18 /* Settings.plist */; };
 		5BE5E349180EEF0B00DCA666 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE5E348180EEF0B00DCA666 /* Cocoa.framework */; };
 		5BE5E353180EEF0B00DCA666 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5E351180EEF0B00DCA666 /* InfoPlist.strings */; };
 		5BE5E355180EEF0B00DCA666 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5E354180EEF0B00DCA666 /* main.m */; };
@@ -15,6 +16,7 @@
 		5BE5E35C180EEF0B00DCA666 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5E35B180EEF0B00DCA666 /* AppDelegate.m */; };
 		5BE5E35F180EEF0B00DCA666 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5E35D180EEF0B00DCA666 /* MainMenu.xib */; };
 		5BE5E361180EEF0B00DCA666 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5E360180EEF0B00DCA666 /* Images.xcassets */; };
+		BF8CB057B77E61E90F14ACEC /* Settings.plist.example in Resources */ = {isa = PBXBuildFile; fileRef = BF8CB39F4BE24B5E1FAA9C15 /* Settings.plist.example */; };
 		BF8CB1466BEB382F17E532EC /* SensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB0DC75280CEBE7ED6622 /* SensorMUCDomain.m */; };
 		BF8CB18F074C886236CD7499 /* SensorMUCDomainRemoved.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB7E9164785AC28D1F5AC /* SensorMUCDomainRemoved.m */; };
 		BF8CB191FFAC40108E7DED78 /* SensorMUCDomainCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB532B89E7FA9F462E22D /* SensorMUCDomainCreated.m */; };
@@ -35,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B76A9B71810014E00E14C18 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		5BE5E345180EEF0B00DCA666 /* ACDSenseService4Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACDSenseService4Mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE5E348180EEF0B00DCA666 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5BE5E34B180EEF0B00DCA666 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -56,6 +59,7 @@
 		BF8CB36A77DDB8A398DE20B3 /* RemovePublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemovePublisher.h; sourceTree = "<group>"; };
 		BF8CB38046827DC9AB5EDED5 /* SensorMUCDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorMUCDomain.h; sourceTree = "<group>"; };
 		BF8CB39C26645BDC5839447E /* SensorMUCDomainRemoved.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorMUCDomainRemoved.h; sourceTree = "<group>"; };
+		BF8CB39F4BE24B5E1FAA9C15 /* Settings.plist.example */ = {isa = PBXFileReference; lastKnownFileType = file.example; path = Settings.plist.example; sourceTree = "<group>"; };
 		BF8CB3CA9EDD69E2FFE1B326 /* RemoveReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveReceiver.m; sourceTree = "<group>"; };
 		BF8CB4411D5749744D87BFC3 /* GetSensorMUCDomainsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetSensorMUCDomainsResponse.h; sourceTree = "<group>"; };
 		BF8CB4F1CF213DE8A550AF05 /* PublishSensorItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishSensorItems.m; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 				5BE5E360180EEF0B00DCA666 /* Images.xcassets */,
 				5BE5E34F180EEF0B00DCA666 /* Supporting Files */,
 				BF8CB690938A3E8BA3B82F41 /* Generated */,
+				BF8CB9C58BE4197BFEFC8EF9 /* Resources */,
 			);
 			path = ACDSenseService4Mac;
 			sourceTree = "<group>";
@@ -206,6 +211,15 @@
 			path = Generated;
 			sourceTree = "<group>";
 		};
+		BF8CB9C58BE4197BFEFC8EF9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5B76A9B71810014E00E14C18 /* Settings.plist */,
+				BF8CB39F4BE24B5E1FAA9C15 /* Settings.plist.example */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -248,8 +262,6 @@
 			mainGroup = 5BE5E33C180EEF0B00DCA666;
 			productRefGroup = 5BE5E346180EEF0B00DCA666 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-			);
 			projectRoot = "";
 			targets = (
 				5BE5E344180EEF0B00DCA666 /* ACDSenseService4Mac */,
@@ -266,6 +278,8 @@
 				5BE5E361180EEF0B00DCA666 /* Images.xcassets in Resources */,
 				5BE5E359180EEF0B00DCA666 /* Credits.rtf in Resources */,
 				5BE5E35F180EEF0B00DCA666 /* MainMenu.xib in Resources */,
+				5B76A9B81810014E00E14C18 /* Settings.plist in Resources */,
+				BF8CB057B77E61E90F14ACEC /* Settings.plist.example in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
