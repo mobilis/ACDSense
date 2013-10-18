@@ -11,6 +11,7 @@
 #import "CreateSensorMUCDomain.h"
 #import "RemovePublisher.h"
 #import "RemoveReceiver.h"
+#import "PubSubStore.h"
 
 
 @implementation ServerComponent
@@ -44,22 +45,22 @@
 
 - (void)removeReceiver:(RemoveReceiver *)removeReceiver
 {
-
+    [[PubSubStore sharedInstance] removeReceiver:[removeReceiver from]];
 }
 
 - (void)removePublisher:(RemovePublisher *)removePublisher
 {
-
+    [[PubSubStore sharedInstance] removePublisher:[removePublisher from]];
 }
 
 - (void)registerReceiver:(RegisterReceiver *)registerReceiver
 {
-
+    [[PubSubStore sharedInstance] addReceiver:[registerReceiver from]];
 }
 
 - (void)registerPublisher:(RegisterPublisher *)registerPublisher
 {
-
+    [[PubSubStore sharedInstance] addPublisher:[registerPublisher from]];
 }
 
 - (void)createMUCDomain:(CreateSensorMUCDomain *)domain
