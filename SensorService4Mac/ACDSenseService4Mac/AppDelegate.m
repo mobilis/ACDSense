@@ -10,6 +10,13 @@
 #import "AppDelegate.h"
 #import "Account.h"
 #import "DefaultSettings.h"
+#import "ServerComponent.h"
+
+@interface AppDelegate ()
+
+@property (strong) ServerComponent *server;
+
+@end
 
 @implementation AppDelegate
 
@@ -25,9 +32,12 @@
                                                           hostName:account.hostName
                                                        serviceType:SINGLE
                                                               port:account.port
-                                               authenticationBlock:^(BOOL b)
+                                               authenticationBlock:^(BOOL authenticationSuccessful)
                                                {
-                                                   NSLog(@"Service connection finished with status: %i", b);
+                                                   NSLog(@"Service connection finished with status: %i", authenticationSuccessful);
+                                                   if (authenticationSuccessful) {
+                                                       self.server = [ServerComponent sharedInstance];
+                                                   }
                                                }];
 }
 - (Account *)defaultAccountInformation

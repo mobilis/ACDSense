@@ -17,6 +17,7 @@
 		5BE5E35F180EEF0B00DCA666 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5E35D180EEF0B00DCA666 /* MainMenu.xib */; };
 		5BE5E361180EEF0B00DCA666 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5E360180EEF0B00DCA666 /* Images.xcassets */; };
 		BF8CB057B77E61E90F14ACEC /* Settings.plist.example in Resources */ = {isa = PBXBuildFile; fileRef = BF8CB39F4BE24B5E1FAA9C15 /* Settings.plist.example */; };
+		BF8CB0CBEE07CADF2CB8DFE4 /* ServerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBA56036BD62665D4619D /* ServerComponent.m */; };
 		BF8CB1466BEB382F17E532EC /* SensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB0DC75280CEBE7ED6622 /* SensorMUCDomain.m */; };
 		BF8CB18F074C886236CD7499 /* SensorMUCDomainRemoved.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB7E9164785AC28D1F5AC /* SensorMUCDomainRemoved.m */; };
 		BF8CB191FFAC40108E7DED78 /* SensorMUCDomainCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB532B89E7FA9F462E22D /* SensorMUCDomainCreated.m */; };
@@ -33,6 +34,7 @@
 		BF8CBC764B4C0D65F009BAB7 /* GetSensorMUCDomainsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBC6AC4978E1E32276E2D /* GetSensorMUCDomainsResponse.m */; };
 		BF8CBCC980AA9DA943CCD5B0 /* Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB6403540C0F85C667272 /* Timestamp.m */; };
 		BF8CBD7D24104EAE2BF25E0E /* DelegateSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBDC77C8B7315F42EF73A /* DelegateSensorItems.m */; };
+		BF8CBED7FFA1E049647FFF37 /* PubSubStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB3E0FFDC451D212D8696 /* PubSubStore.m */; };
 		BF8CBFA00FAFEC343397F4A5 /* SensorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB922852514F809E65414 /* SensorItem.m */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,7 @@
 		BF8CB39C26645BDC5839447E /* SensorMUCDomainRemoved.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorMUCDomainRemoved.h; sourceTree = "<group>"; };
 		BF8CB39F4BE24B5E1FAA9C15 /* Settings.plist.example */ = {isa = PBXFileReference; lastKnownFileType = file.example; path = Settings.plist.example; sourceTree = "<group>"; };
 		BF8CB3CA9EDD69E2FFE1B326 /* RemoveReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveReceiver.m; sourceTree = "<group>"; };
+		BF8CB3E0FFDC451D212D8696 /* PubSubStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubSubStore.m; sourceTree = "<group>"; };
 		BF8CB4411D5749744D87BFC3 /* GetSensorMUCDomainsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetSensorMUCDomainsResponse.h; sourceTree = "<group>"; };
 		BF8CB4F1CF213DE8A550AF05 /* PublishSensorItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishSensorItems.m; sourceTree = "<group>"; };
 		BF8CB52B9084DA3E65BAA234 /* RemoveSensorMUCDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveSensorMUCDomain.m; sourceTree = "<group>"; };
@@ -77,6 +80,7 @@
 		BF8CB9193D2AD96A562381C5 /* CreateSensorMUCDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateSensorMUCDomain.m; sourceTree = "<group>"; };
 		BF8CB922852514F809E65414 /* SensorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorItem.m; sourceTree = "<group>"; };
 		BF8CBA361006F3B14CADAE81 /* GetSensorMUCDomainsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetSensorMUCDomainsRequest.h; sourceTree = "<group>"; };
+		BF8CBA56036BD62665D4619D /* ServerComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerComponent.m; sourceTree = "<group>"; };
 		BF8CBA85673593D415FFB0AC /* RemoveReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveReceiver.h; sourceTree = "<group>"; };
 		BF8CBB436E464BB3DC4E29F2 /* RegisterPublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterPublisher.h; sourceTree = "<group>"; };
 		BF8CBB77DED78CCFFAD8BE3B /* GetSensorMUCDomainsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetSensorMUCDomainsRequest.m; sourceTree = "<group>"; };
@@ -84,8 +88,10 @@
 		BF8CBBD7119BD14BF5CAEF0B /* SensorValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorValue.h; sourceTree = "<group>"; };
 		BF8CBC6AC4978E1E32276E2D /* GetSensorMUCDomainsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetSensorMUCDomainsResponse.m; sourceTree = "<group>"; };
 		BF8CBC96554E3B07ADE3FB07 /* RemovePublisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemovePublisher.m; sourceTree = "<group>"; };
+		BF8CBCF80216FF3E81185390 /* ServerComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerComponent.h; sourceTree = "<group>"; };
 		BF8CBD3AF005E7AD2019B635 /* CreateSensorMUCDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSensorMUCDomain.h; sourceTree = "<group>"; };
 		BF8CBDC77C8B7315F42EF73A /* DelegateSensorItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateSensorItems.m; sourceTree = "<group>"; };
+		BF8CBE02A2269ADD4E3D2F27 /* PubSubStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PubSubStore.h; sourceTree = "<group>"; };
 		BF8CBE70F647ACB9CBCEF18A /* RegisterReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterReceiver.h; sourceTree = "<group>"; };
 		BF8CBF61AC28A1F468F6ABC6 /* RegisterReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterReceiver.m; sourceTree = "<group>"; };
 		BF8CBF6747916626EAA13F34 /* SensorValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorValue.m; sourceTree = "<group>"; };
@@ -154,6 +160,10 @@
 				5BE5E34F180EEF0B00DCA666 /* Supporting Files */,
 				BF8CB690938A3E8BA3B82F41 /* Generated */,
 				BF8CB9C58BE4197BFEFC8EF9 /* Resources */,
+				BF8CBA56036BD62665D4619D /* ServerComponent.m */,
+				BF8CBCF80216FF3E81185390 /* ServerComponent.h */,
+				BF8CB3E0FFDC451D212D8696 /* PubSubStore.m */,
+				BF8CBE02A2269ADD4E3D2F27 /* PubSubStore.h */,
 			);
 			path = ACDSenseService4Mac;
 			sourceTree = "<group>";
@@ -342,6 +352,8 @@
 				BF8CB18F074C886236CD7499 /* SensorMUCDomainRemoved.m in Sources */,
 				BF8CB28E890DA3B3DDBC6A96 /* SensorValue.m in Sources */,
 				BF8CBCC980AA9DA943CCD5B0 /* Timestamp.m in Sources */,
+				BF8CB0CBEE07CADF2CB8DFE4 /* ServerComponent.m in Sources */,
+				BF8CBED7FFA1E049647FFF37 /* PubSubStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
