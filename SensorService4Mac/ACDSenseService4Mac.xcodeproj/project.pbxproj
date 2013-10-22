@@ -26,11 +26,13 @@
 		BF8CB2C3D91996531F49A658 /* RegisterPublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB8131223C91348BDFCE1 /* RegisterPublisher.m */; };
 		BF8CB35EDD06270B0EBEBB26 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB5316A59BB3F3DE8ED8E /* Location.m */; };
 		BF8CB3763756AF272B7CA093 /* RemovePublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBC96554E3B07ADE3FB07 /* RemovePublisher.m */; };
+		BF8CB3A4ED2A2646632603DF /* MUCDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB3239FFB972B20FE6615 /* MUCDiscovery.m */; };
 		BF8CB3EFBF19133495DDAC55 /* RemoveReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB3CA9EDD69E2FFE1B326 /* RemoveReceiver.m */; };
 		BF8CB51B972560B85772D1B6 /* GetSensorMUCDomainsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBB77DED78CCFFAD8BE3B /* GetSensorMUCDomainsRequest.m */; };
 		BF8CB87B300D5F0A842543AE /* PublishSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB4F1CF213DE8A550AF05 /* PublishSensorItems.m */; };
 		BF8CB87DEA9C4A7859096B1A /* CreateSensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB9193D2AD96A562381C5 /* CreateSensorMUCDomain.m */; };
 		BF8CBAFDFDEF927622F9E1B3 /* RemoveSensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB52B9084DA3E65BAA234 /* RemoveSensorMUCDomain.m */; };
+		BF8CBBAB4EF2937FA69A4FAE /* ACDSMultiUserChatRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB4D7230BBF38D4C65511 /* ACDSMultiUserChatRoom.m */; };
 		BF8CBC764B4C0D65F009BAB7 /* GetSensorMUCDomainsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBC6AC4978E1E32276E2D /* GetSensorMUCDomainsResponse.m */; };
 		BF8CBCC980AA9DA943CCD5B0 /* Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB6403540C0F85C667272 /* Timestamp.m */; };
 		BF8CBD7D24104EAE2BF25E0E /* DelegateSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBDC77C8B7315F42EF73A /* DelegateSensorItems.m */; };
@@ -58,6 +60,8 @@
 		84033FFD2A1F46E687235069 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8CB0DC75280CEBE7ED6622 /* SensorMUCDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorMUCDomain.m; sourceTree = "<group>"; };
 		BF8CB250017897119C1E3FE7 /* Timestamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timestamp.h; sourceTree = "<group>"; };
+		BF8CB3239FFB972B20FE6615 /* MUCDiscovery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUCDiscovery.m; sourceTree = "<group>"; };
+		BF8CB333417D5A9D80F31CEE /* ACDSMultiUserChatRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACDSMultiUserChatRoom.h; sourceTree = "<group>"; };
 		BF8CB36A77DDB8A398DE20B3 /* RemovePublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemovePublisher.h; sourceTree = "<group>"; };
 		BF8CB38046827DC9AB5EDED5 /* SensorMUCDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorMUCDomain.h; sourceTree = "<group>"; };
 		BF8CB39C26645BDC5839447E /* SensorMUCDomainRemoved.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorMUCDomainRemoved.h; sourceTree = "<group>"; };
@@ -65,6 +69,7 @@
 		BF8CB3CA9EDD69E2FFE1B326 /* RemoveReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveReceiver.m; sourceTree = "<group>"; };
 		BF8CB3E0FFDC451D212D8696 /* PubSubStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubSubStore.m; sourceTree = "<group>"; };
 		BF8CB4411D5749744D87BFC3 /* GetSensorMUCDomainsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetSensorMUCDomainsResponse.h; sourceTree = "<group>"; };
+		BF8CB4D7230BBF38D4C65511 /* ACDSMultiUserChatRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACDSMultiUserChatRoom.m; sourceTree = "<group>"; };
 		BF8CB4F1CF213DE8A550AF05 /* PublishSensorItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishSensorItems.m; sourceTree = "<group>"; };
 		BF8CB52B9084DA3E65BAA234 /* RemoveSensorMUCDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveSensorMUCDomain.m; sourceTree = "<group>"; };
 		BF8CB5316A59BB3F3DE8ED8E /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
@@ -95,6 +100,7 @@
 		BF8CBE70F647ACB9CBCEF18A /* RegisterReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterReceiver.h; sourceTree = "<group>"; };
 		BF8CBF61AC28A1F468F6ABC6 /* RegisterReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterReceiver.m; sourceTree = "<group>"; };
 		BF8CBF6747916626EAA13F34 /* SensorValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorValue.m; sourceTree = "<group>"; };
+		BF8CBFF4262085733C596732 /* MUCDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUCDiscovery.h; sourceTree = "<group>"; };
 		E6B5BBBF14824D638A3237F2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +170,10 @@
 				BF8CBCF80216FF3E81185390 /* ServerComponent.h */,
 				BF8CB3E0FFDC451D212D8696 /* PubSubStore.m */,
 				BF8CBE02A2269ADD4E3D2F27 /* PubSubStore.h */,
+				BF8CB3239FFB972B20FE6615 /* MUCDiscovery.m */,
+				BF8CBFF4262085733C596732 /* MUCDiscovery.h */,
+				BF8CB4D7230BBF38D4C65511 /* ACDSMultiUserChatRoom.m */,
+				BF8CB333417D5A9D80F31CEE /* ACDSMultiUserChatRoom.h */,
 			);
 			path = ACDSenseService4Mac;
 			sourceTree = "<group>";
@@ -354,6 +364,8 @@
 				BF8CBCC980AA9DA943CCD5B0 /* Timestamp.m in Sources */,
 				BF8CB0CBEE07CADF2CB8DFE4 /* ServerComponent.m in Sources */,
 				BF8CBED7FFA1E049647FFF37 /* PubSubStore.m in Sources */,
+				BF8CB3A4ED2A2646632603DF /* MUCDiscovery.m in Sources */,
+				BF8CBBAB4EF2937FA69A4FAE /* ACDSMultiUserChatRoom.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

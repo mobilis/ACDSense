@@ -65,7 +65,14 @@
 
 - (void)createMUCDomain:(CreateSensorMUCDomain *)domain
 {
-
+    [[MXiConnectionHandler sharedInstance] discoverMultiUserChatRoomsInDomain:domain.sensorDomain.domainURL
+                                                          withCompletionBlock:^(BOOL serviceSupported, NSArray *discoveredRooms)
+                                                          {
+                                                              if (serviceSupported) {
+                                                                  // TODO: add rooms to list for service – discover SensorMUCs
+                                                              }
+                                                          }];
+    // TODO: connect to Multi-User-Chat-Rooms
 }
 
 @end
