@@ -38,6 +38,8 @@
     [[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(removeReceiver:) forBeanClass:[RemoveReceiver class]];
     [[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(createMUCDomain:) forBeanClass:[CreateSensorMUCDomain class]];
 
+    [[MXiConnectionHandler sharedInstance] addStanzaDelegate:self];
+
     return [super init];
 }
 
@@ -83,6 +85,34 @@
                                                               }
                                                           }];
     // TODO: connect to Multi-User-Chat-Rooms
+}
+
+#pragma mark - MXiConnectionHandler stanza delegate callback
+
+- (void)iqStanzaReceived:(XMPPIQ *)xmppiq
+{
+    if (    [xmppiq isGetIQ] &&
+            [[[[xmppiq childElement] namespaces][0] stringValue] isEqualToString:@"http://jabber.org/protocol/disco#info"]
+            ) {
+        NSXMLElement *resultIQBody = [[NSXMLElement alloc] initWithName:@"query" xmlns:@"http://jabber.org/protocol/disco#info"];
+        NSXMLElement *featureString = [[NSXMLElement alloc] initWithName:@"feature"];
+        [featureString addAttributeWithName:@"var" stringValue:[self buildFeatureString]];
+        [resultIQBody addChild:featureString];
+
+        XMPPIQ *responseIQ = [XMPPIQ iqWithType:@"result"
+                                             to:[xmppiq from]
+                                      elementID:[xmppiq elementID]
+                                          child:resultIQBody];
+        [[MXiConnectionHandler sharedInstance] sendElement:responseIQ];
+    }
+}
+
+- (NSString *)buildFeatureString
+{
+    NSMutableString *featureString = [NSMutableString stringWithFormat:@"http://mobilis.inf.tu-dresden.de"];
+    [featureString appendString:@"service#servicenamespace=http://mobilis.inf.tu-dresden.de#services/ACDSenseService"];
+    [featureString appendString:@",version=1,mode=SINGLE,rt=testserviceacds@localhost"];
+    return featureString;
 }
 
 @end

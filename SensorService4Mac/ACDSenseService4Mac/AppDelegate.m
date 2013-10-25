@@ -51,7 +51,6 @@ static void *KVOContext = &KVOContext;
                                             forKeyPath:@"authenticated"
                                                options:NSKeyValueObservingOptionNew
                                                context:KVOContext];
-
 }
 - (Account *)defaultAccountInformation
 {
