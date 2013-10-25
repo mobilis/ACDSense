@@ -21,3 +21,6 @@ Icon
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
+SensorClient/ACDSense/ACDSense.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+SensorClient/ACDSense/ACDSense.xcworkspace/contents.xcworkspacedata
+SensorClient/ACDSense/ACDSense.xcworkspace/xcshareddata/ACDSense.xccheckout

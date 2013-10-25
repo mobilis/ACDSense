@@ -2,18 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>jabberInformation</key>
+	<key>server</key>
 	<dict>
-		<key>jid</key>
-		<string>jid@localhost</string>
-		<key>password</key>
-		<string>yourAccountPassword</string>
-		<key>hostName</key>
-		<string>localhost or other hostName</string>
 		<key>port</key>
-		<string>port number of hostName</string>
-        <key>serviceNamespace</key>
-        <string>http://mobilis.inf.tu-dresden.de#services/ACDSenseService</string>
+		<string>5222</string>
+		<key>hostname</key>
+		<string>localhost</string>
+		<key>username</key>
+		<string>mobilis</string>
+	</dict>
+	<key>service</key>
+	<dict>
+		<key>namespace</key>
+		<string>__YOUR_SERVICE_NAMESPACE__</string>
+		<key>type</key>
+		<string>__EITHER_SINGLE_OR_MULTI__</string>
+		<key>jid</key>
+		<string>__BARE_JID__</string>
+		<key>password</key>
+		<string>__PASSWORD__</string>
 	</dict>
 </dict>
 </plist>

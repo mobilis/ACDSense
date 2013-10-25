@@ -154,11 +154,9 @@
                                                    password:account.password
                                                    hostName:account.hostName
                                                        port:account.port
-                                       authtenticationBlock:^(BOOL success) {
-        // TODO: trigger reload of data in other views
-        // implement some kind of notification mechanism or something
-        NSLog(@"Reconnection from SettingsView successfull? %c", success);
-    }];
+                                        authenticationBlock:^(BOOL success) {
+                                            NSLog(@"Reconnection from SettingsView successfull? %c", success);
+                                        }];
 }
 
 #pragma mark - UINavigationBarDelegate

@@ -1,0 +1,11 @@
+platform :ios, '7.0'
+pod 'CorePlot'
+
+pod 'XMPPFramework/Core', :podspec => 'xmpp.podspec'
+pod 'XMPPFramework/Reconnect', :podspec => 'xmpp.podspec'
+pod 'XMPPFramework/XEP-0045', :podspec => 'xmpp.podspec'
+pod 'XMPPFramework/Roster', :podspec => 'xmpp.podspec'
+# Uncomment this line and modify the path to your local MXi location
+#pod 'MobilisMXi', :path => '/Users/martin/Development/Mobilis/Mobilis'
+# Production
+pod 'MobilisMXi', :podspec => 'mxi.podspec'

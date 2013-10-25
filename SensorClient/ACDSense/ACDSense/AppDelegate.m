@@ -60,14 +60,16 @@
 {
 	Account *account = [AccountManager account];
 	if (account && account.hostName && account.hostName.length > 0) {
-		[[MXiConnectionHandler sharedInstance] launchConnectionWithJID:account.jid
+        [[MXiConnectionHandler sharedInstance] launchConnectionWithJID:account.jid
                                                               password:account.password
                                                               hostName:account.hostName
+                                                           serviceType:SINGLE
                                                                   port:account.port
-                                                   authenticationBlock:^(BOOL success){
-			if (success)
-				[[MXiConnectionHandler sharedInstance] sendBean:[RegisterReceiver new]];
-		}];
+                                                   authenticationBlock:^(BOOL success) {
+                                                       if (success) {
+                                                           [[MXiConnectionHandler sharedInstance] sendBean:[RegisterReceiver new]];
+                                                       }
+                                                   }];
 	} else {
 		NSString *settingsPath = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
 		NSDictionary *jabberSettings = [[NSDictionary dictionaryWithContentsOfFile:settingsPath] objectForKey:@"jabberInformation"];
@@ -77,10 +79,16 @@
 		NSString *hostName = [jabberSettings valueForKey:@"hostName"];
         NSNumber *port = [jabberSettings valueForKey:@"port"];
 		
-		[[MXiConnectionHandler sharedInstance] launchConnectionWithJID:jid password:password hostName:hostName port:port authenticationBlock:^(BOOL success){
-			if (success)
-				[[MXiConnectionHandler sharedInstance] sendBean:[RegisterReceiver new]];
-		}];
+        [[MXiConnectionHandler sharedInstance] launchConnectionWithJID:jid
+                                                              password:password
+                                                              hostName:hostName
+                                                           serviceType:SINGLE
+                                                                  port:port
+                                                   authenticationBlock:^(BOOL success) {
+                                                       if (success) {
+                                                           [[MXiConnectionHandler sharedInstance] sendBean:[RegisterReceiver new]];
+                                                       }
+                                                   }];
 	}
 }
 
