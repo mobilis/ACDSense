@@ -20,6 +20,8 @@
 
 @implementation AppDelegate
 
+static void *KVOContext = &KVOContext;
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     [self launchService];
@@ -36,9 +38,20 @@
                                                {
                                                    NSLog(@"Service connection finished with status: %i", authenticationSuccessful);
                                                    if (authenticationSuccessful) {
-                                                       self.server = [ServerComponent sharedInstance];
+                                                       //   Callback not reached because no services will be discovered usually
+                                                       //   when you test against a Mobilis not running any single services.
+                                                       //   Therefor the KVO workaround to determine nonetheless if and when
+                                                       //   the authentication finished successfully.
+//                                                       self.server = [ServerComponent sharedInstance];
+//                                                       [self.server synchronizeRuntimes];
                                                    }
                                                }];
+
+    [[MXiConnectionHandler sharedInstance] addObserver:self
+                                            forKeyPath:@"authenticated"
+                                               options:NSKeyValueObservingOptionNew
+                                               context:KVOContext];
+
 }
 - (Account *)defaultAccountInformation
 {
@@ -48,6 +61,17 @@
                                password:[settings valueForKey:SERVICE_PASSWORD]
                                hostName:[settings valueForKey:SERVER_HOSTNAME]
                                    port:[NSNumber numberWithInteger:[[settings valueForKey:SERVER_PORT] integerValue]]];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"authenticated"] && context == KVOContext) {
+        NSLog(@"The user got authenticated without disco completing.");
+
+        self.server = [ServerComponent sharedInstance];
+        [[MXiConnectionHandler sharedInstance] performSelector:@selector(setConnected:) withObject:[NSNumber numberWithBool:YES ]];
+        [self.server synchronizeRuntimes];
+    }
 }
 
 @end

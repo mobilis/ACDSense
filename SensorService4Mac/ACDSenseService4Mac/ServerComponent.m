@@ -12,6 +12,7 @@
 #import "RemovePublisher.h"
 #import "RemoveReceiver.h"
 #import "PubSubStore.h"
+#import "SynchronizeRuntimeBean.h"
 
 
 @implementation ServerComponent
@@ -39,6 +40,15 @@
 
     return [super init];
 }
+
+- (void)synchronizeRuntimes
+{
+    SynchronizeRuntimeBean *synchronizeRuntimeBean = [[SynchronizeRuntimeBean alloc] initWithTargetRuntimeJID:@"mobilis@localhost/Deployment"];
+    [synchronizeRuntimeBean setServiceJIDs:@[@"testserviceacds@localhost"]];
+
+    [[MXiConnectionHandler sharedInstance] sendElement:[MXiBeanConverter beanToIQ:synchronizeRuntimeBean]];
+}
+
 
 
 #pragma mark - Incoming Bean Handler

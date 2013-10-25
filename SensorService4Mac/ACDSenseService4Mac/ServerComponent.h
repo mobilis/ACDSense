@@ -13,4 +13,6 @@
 
 - (id)initUniqueInstance;
 
+- (void)synchronizeRuntimes;
+
 @end
