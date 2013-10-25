@@ -92,12 +92,18 @@
 - (void)iqStanzaReceived:(XMPPIQ *)xmppiq
 {
     if (    [xmppiq isGetIQ] &&
+            [[xmppiq childElement] namespaces].count > 0 &&
             [[[[xmppiq childElement] namespaces][0] stringValue] isEqualToString:@"http://jabber.org/protocol/disco#info"]
             ) {
         NSXMLElement *resultIQBody = [[NSXMLElement alloc] initWithName:@"query" xmlns:@"http://jabber.org/protocol/disco#info"];
-        NSXMLElement *featureString = [[NSXMLElement alloc] initWithName:@"feature"];
-        [featureString addAttributeWithName:@"var" stringValue:[self buildFeatureString]];
-        [resultIQBody addChild:featureString];
+
+        NSXMLElement *serviceFeatureString = [[NSXMLElement alloc] initWithName:@"feature"];
+        [serviceFeatureString addAttributeWithName:@"var" stringValue:[self buildServiceFeatureString]];
+        NSXMLElement *serviceInstanceFeatureString = [[NSXMLElement alloc] initWithName:@"feature"];
+        [serviceInstanceFeatureString addAttributeWithName:@"var" stringValue:[self buildServiceInstanceFeatureString]];
+
+//        [resultIQBody addChild:serviceFeatureString]; // obviously not required for SINGLE-services
+        [resultIQBody addChild:serviceInstanceFeatureString];
 
         XMPPIQ *responseIQ = [XMPPIQ iqWithType:@"result"
                                              to:[xmppiq from]
@@ -107,11 +113,19 @@
     }
 }
 
-- (NSString *)buildFeatureString
+- (NSString *)buildServiceFeatureString
 {
     NSMutableString *featureString = [NSMutableString stringWithFormat:@"http://mobilis.inf.tu-dresden.de"];
-    [featureString appendString:@"service#servicenamespace=http://mobilis.inf.tu-dresden.de#services/ACDSenseService"];
-    [featureString appendString:@",version=1,mode=SINGLE,rt=testserviceacds@localhost"];
+    [featureString appendString:@"/service#servicenamespace=http://mobilis.inf.tu-dresden.de#services/ACDSenseService"];
+    [featureString appendString:@",version=1,mode=single,rt=testserviceacds@localhost"];
+    return featureString;
+}
+
+- (NSString *)buildServiceInstanceFeatureString
+{
+    NSMutableString *featureString = [NSMutableString stringWithFormat:@"http://mobilis.inf.tu-dresden.de"];
+    [featureString appendString:@"/instance#servicenamespace=http://mobilis.inf.tu-dresden.de#services/ACDSenseService"];
+    [featureString appendString:@",version=1,name=ACDSenseService,rt=testserviceacds@localhost"];
     return featureString;
 }
 
