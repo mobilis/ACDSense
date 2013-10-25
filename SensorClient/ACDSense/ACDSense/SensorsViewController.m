@@ -9,8 +9,6 @@
 #import "SensorsViewController.h"
 #import "SensorTableViewCell.h"
 
-#import "ConnectionHandler.h"
-
 #import "DelegateSensorItems.h"
 
 #import "Timestamp+Description.h"
@@ -106,7 +104,7 @@
 
 - (void)registerBeanListener
 {
-    [[ConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(sensorItemsReceived:) forBeanClass:[DelegateSensorItems class]];
+    [[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(sensorItemsReceived:) forBeanClass:[DelegateSensorItems class]];
 }
 
 - (void)sensorItemsReceived:(DelegateSensorItems *)sensorItems

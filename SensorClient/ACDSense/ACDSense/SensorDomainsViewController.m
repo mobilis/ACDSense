@@ -10,8 +10,6 @@
 
 #import "SensorsViewController.h"
 
-#import "ConnectionHandler.h"
-
 #import "SensorMUCDomain.h"
 
 #import "CreateSensorMUCDomain.h"
@@ -46,9 +44,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 	self.sensorDomains = [NSMutableArray new];
-	[[ConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(sensorMUCDomainCreated:) forBeanClass:[SensorMUCDomainCreated class]];
-	[[ConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(sensorMUCDomainRemoved:) forBeanClass:[SensorMUCDomainRemoved class]];
-	[[ConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(sensorMUCDomainsReceived:) forBeanClass:[GetSensorMUCDomainsResponse class]];
+	[[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(sensorMUCDomainCreated:) forBeanClass:[SensorMUCDomainCreated class]];
+	[[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(sensorMUCDomainRemoved:) forBeanClass:[SensorMUCDomainRemoved class]];
+	[[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(sensorMUCDomainsReceived:) forBeanClass:[GetSensorMUCDomainsResponse class]];
 	
 	self.refreshControl = [UIRefreshControl new];
     [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
@@ -58,12 +56,12 @@
 
 - (void)handleRefresh:(id)arg
 {
-	[[ConnectionHandler sharedInstance] sendBean:[GetSensorMUCDomainsRequest new]];
+	[[MXiConnectionHandler sharedInstance] sendBean:[GetSensorMUCDomainsRequest new]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-	[[ConnectionHandler sharedInstance] sendBean:[GetSensorMUCDomainsRequest new]];
+	[[MXiConnectionHandler sharedInstance] sendBean:[GetSensorMUCDomainsRequest new]];
 	[super viewWillAppear:animated];
 }
 
@@ -101,7 +99,7 @@
 {
 	RemoveSensorMUCDomain *request = [RemoveSensorMUCDomain new];
 	request.sensorDomain = [self.sensorDomains objectAtIndex:indexPath.row];
-	[[ConnectionHandler sharedInstance] sendBean:request];
+	[[MXiConnectionHandler sharedInstance] sendBean:request];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -130,7 +128,7 @@
 		domain.domainId = [[NSUUID UUID] UUIDString];
 		domain.domainURL = [[alertView textFieldAtIndex:0] text];
 		request.sensorDomain = domain;
-		[[ConnectionHandler sharedInstance] sendBean:request];
+		[[MXiConnectionHandler sharedInstance] sendBean:request];
 	}
 }
 
@@ -141,7 +139,7 @@
 	domain.domainId = [[NSUUID UUID] UUIDString];
 	domain.domainURL = [textField text];
 	request.sensorDomain = domain;
-	[[ConnectionHandler sharedInstance] sendBean:request];
+	[[MXiConnectionHandler sharedInstance] sendBean:request];
 	return YES;
 }
 

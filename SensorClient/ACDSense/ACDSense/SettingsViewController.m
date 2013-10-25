@@ -6,12 +6,11 @@
 //  Copyright (c) 2013 Technische Universität Dresden. All rights reserved.
 //
 
+#import <MXi/MXiConnectionHandler.h>
 #import "SettingsViewController.h"
 #import "TextFieldCell.h"
 
-#import "ConnectionHandler.h"
 #import "AccountManager.h"
-#import "Account.h"
 
 @interface SettingsViewController ()
 @property (retain) NSString *jid;
@@ -151,11 +150,13 @@
     account.hostName = self.hostName;
     account.port = self.port;
     [AccountManager storeAccount:account];
-    [[ConnectionHandler sharedInstance] reconnectWithAuthenticationBlock:^(BOOL success) {
-        // TODO: trigger reload of data in other views
-        // implement some kind of notification mechanism or something
-        NSLog(@"Reconnection from SettingsView successfull? %c", success);
-    }];
+    [[MXiConnectionHandler sharedInstance] reconnectWithJID:account.jid
+                                                   password:account.password
+                                                   hostName:account.hostName
+                                                       port:account.port
+                                        authenticationBlock:^(BOOL success) {
+                                            NSLog(@"Reconnection from SettingsView successfull? %c", success);
+                                        }];
 }
 
 #pragma mark - UINavigationBarDelegate
