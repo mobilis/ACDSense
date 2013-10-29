@@ -19,7 +19,7 @@
     self = [super initWithName:room.name jabberID:room.jabberID];
     if (self) {
         NSError *error = nil;
-        NSArray *descriptionNodes = [element nodesForXPath:@"//field[@var='muc#roominfo_description'"
+        NSArray *descriptionNodes = [element nodesForXPath:@"./field[@var='muc#roominfo_description']"
                                                      error:&error];
         if (error || descriptionNodes.count == 0) {
             // TODO: implement error handling for XPath reading here

@@ -7,7 +7,6 @@
 #import <MobilisMXi/MXi/MXiMultiUserChatRoom.h>
 #import <XMPPFramework/XMPPIQ.h>
 #import "MUCDiscovery.h"
-#import "XMPPJID.h"
 #import "ACDSMultiUserChatRoom.h"
 #import "MXiConnectionHandler.h"
 #import "MXiMultiUserChatDiscovery.h"
@@ -47,7 +46,7 @@
 {
     if ([[iq attributeStringValueForName:@"id"] isEqualToString:self.randomRequestID]) {
         if ([self isSensorMUC:iq]) {
-            ACDSMultiUserChatRoom *acdsMultiUserChatRoom = [ACDSMultiUserChatRoom roomWithMXiChatRoom:self.room andXFormElement:[iq elementForName:@"x" xmlns:@"jabber:x:data"]];
+            ACDSMultiUserChatRoom *acdsMultiUserChatRoom = [ACDSMultiUserChatRoom roomWithMXiChatRoom:self.room andXFormElement:[[iq childElement] elementForName:@"x" xmlns:@"jabber:x:data"]];
             self.mucDiscoveryCompletionBlock(YES, acdsMultiUserChatRoom);
         } else self.mucDiscoveryCompletionBlock(NO, nil);
 
@@ -58,7 +57,8 @@
 - (BOOL)isSensorMUC:(XMPPIQ *)iq
 {
     NSError *error = nil;
-    NSArray *subjectNodes = [iq nodesForXPath:@"//field[@var='muc#roominfo_subject'" error:&error];
+    NSXMLElement *formData = [[iq childElement] elementForName:@"x" xmlns:@"jabber:x:data"];
+    NSArray *subjectNodes = [formData nodesForXPath:@"./field[@var='muc#roominfo_subject']" error:&error];
     if (error) {
         // TODO: error handling here for XPath Expression
         return NO;
@@ -75,7 +75,7 @@
 
 - (void)startDiscovery
 {
-    XMPPIQ *discoIQ = [[XMPPIQ alloc] initWithType:@"GET"
+    XMPPIQ *discoIQ = [[XMPPIQ alloc] initWithType:@"get"
                                                 to:self.room.jabberID
                                          elementID:self.randomRequestID
                                              child:[NSXMLElement elementWithName:@"query" xmlns:serviceDiscoInfoNS]];

@@ -17,7 +17,6 @@
 #import "MUCDiscovery.h"
 #import "ACDSMultiUserChatRoom.h"
 #import "DomainStore.h"
-#import "RemoveSensorMUCDomain.h"
 #import "GetSensorMUCDomainsRequest.h"
 #import "SensorMUCDomainRemoved.h"
 #import "SensorMUCDomainCreated.h"
@@ -102,7 +101,11 @@
                                                                       MUCDiscovery *discovery = [[MUCDiscovery alloc] initWithRoom:room
                                                                                                                    completionBlock:^(BOOL b, ACDSMultiUserChatRoom *sensorMUC)
                                                                                                                    {
-                                                                                                                       if (b) [self.discoveredMUCRooms addObject:sensorMUC];
+                                                                                                                       if (b) {
+                                                                                                                           [self.discoveredMUCRooms addObject:sensorMUC];
+                                                                                                                           [[MXiConnectionHandler sharedInstance] connectToMultiUserChatRoom:[sensorMUC.jabberID full]
+                                                                                                                                                                                withDelegate:self];
+                                                                                                                       }
                                                                                                                    }];
                                                                   }
                                                                   SensorMUCDomainCreated *domainCreatedBean = [SensorMUCDomainCreated new];
@@ -158,6 +161,18 @@
     [featureString appendString:@"/instance#servicenamespace=http://mobilis.inf.tu-dresden.de#services/ACDSenseService"];
     [featureString appendString:@",version=1,name=ACDSenseService,rt=testserviceacds@localhost"];
     return featureString;
+}
+
+#pragma mark - MXiMultiUserChatDelegate
+
+- (void)connectionToRoomEstablished:(NSString *)roomJID
+{
+    NSLog(@"Connection to roomJID %@ successfully established.", roomJID);
+}
+
+- (void)didReceiveMultiUserChatMessage:(NSString *)message fromUser:(NSString *)user publishedInRoom:(NSString *)roomJID
+{
+    NSLog(@"Message: %@ from user %@ in room %@ received.", message, user, roomJID);
 }
 
 @end
