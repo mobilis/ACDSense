@@ -20,6 +20,8 @@
 #import "GetSensorMUCDomainsRequest.h"
 #import "SensorMUCDomainRemoved.h"
 #import "SensorMUCDomainCreated.h"
+#import "SensorItem.h"
+#import "DelegateSensorItemsOut.h"
 
 @interface ServerComponent () <MXiMultiUserChatDelegate>
 
@@ -45,6 +47,9 @@
 
 - (id)initUniqueInstance
 {
+    self.discoveredMUCRooms = [NSMutableArray arrayWithCapacity:10];
+    self.domainStore = [DomainStore new];
+
     [[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(registerPublisher:) forBeanClass:[RegisterPublisher class]];
     [[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(registerReceiver:) forBeanClass:[RegisterReceiver class]];
     [[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(removePublisher:) forBeanClass:[RemovePublisher class]];
@@ -173,6 +178,94 @@
 - (void)didReceiveMultiUserChatMessage:(NSString *)message fromUser:(NSString *)user publishedInRoom:(NSString *)roomJID
 {
     NSLog(@"Message: %@ from user %@ in room %@ received.", message, user, roomJID);
+    NSError *error = nil;
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:[message dataUsingEncoding:NSUTF8StringEncoding]
+                                                    options:0 
+                                                      error:&error];
+    if (error || ![jsonObject isKindOfClass:[NSDictionary class]]) {
+        NSLog(@"Message %@ could not be parsed.", message);
+        return;
+    }
+
+    NSDictionary *sensorEvent = [jsonObject objectForKey:@"sensorevent"];
+    
+    ACDSMultiUserChatRoom *chatRoom = [self findRoomForJID:roomJID];
+    NSString *domainName = [[[[XMPPJID jidWithString:roomJID] domain] componentsSeparatedByString:@"."] lastObject];
+    SensorMUCDomain *sensorMUCDomain = [self.domainStore domainForJID:domainName];
+    
+    SensorItem *sensorItem = [SensorItem new];
+    sensorItem.type = [sensorEvent valueForKey:@"type"];
+    sensorItem.location = chatRoom.sensorLocation;
+    sensorItem.sensorDomain = sensorMUCDomain;
+
+    sensorItem.values = [NSMutableArray arrayWithCapacity:3];
+    id <NSFastEnumeration> sensorValues = [sensorEvent valueForKey:@"values"];
+    for (NSNumber *rawValue in sensorValues) {
+        SensorValue *sensorValue = [SensorValue new];
+        sensorValue.value = [rawValue stringValue];
+        sensorValue.timestamp = [self timestampFromString:[sensorEvent valueForKey:@"timestamp"]];
+        sensorValue.unit = @"Unit";
+        [sensorItem.values addObject:sensorValue];
+    }
+
+    DelegateSensorItemsOut *delegateSensorItems = [DelegateSensorItemsOut new];
+    delegateSensorItems.sensorItems = [NSMutableArray arrayWithObject:sensorItem];
+
+    for (XMPPJID *receiver in [[PubSubStore sharedInstance] receivers]) {
+        delegateSensorItems.to = receiver;
+        [[MXiConnectionHandler sharedInstance] sendElement:[MXiBeanConverter beanToIQ:delegateSensorItems]];
+    }
+}
+
+- (Timestamp *)timestampFromString:(NSString *)timestampString
+{
+    //  2013-09-18T18:31:38+1:00
+    NSArray *dateAndTime = [timestampString componentsSeparatedByString:@"T"];
+    if (dateAndTime.count != 2)
+        return nil;
+
+    Timestamp *timestamp = [Timestamp new];
+    [self extractDate:(NSString *)dateAndTime[0] toTimestamp:&timestamp];
+    [self extractTime:dateAndTime[1] toTimestamp:&timestamp];
+
+    return timestamp;
+}
+
+- (void)extractTime:(NSString *)timeString toTimestamp:(Timestamp **)timestamp
+{
+    //  18:31:38+01:00
+    NSArray *timeComponents = [((NSString *)[timeString componentsSeparatedByString:@"+"][0]) componentsSeparatedByString:@":"];
+    if (timeComponents.count != 3)
+        return;
+
+    [*timestamp setHour:[timeComponents[0] integerValue]];
+    [*timestamp setMinute:[timeComponents[1] integerValue]];
+    [*timestamp setSecond:[timeComponents[2] integerValue]];
+}
+
+- (void)extractDate:(NSString *)dateString toTimestamp:(Timestamp **)timestamp
+{
+    //  2013-09-18
+    NSArray *dateComponents = [dateString componentsSeparatedByString:@"-"];
+    if (dateComponents.count != 3)
+        return;
+
+    [*timestamp setYear:[dateComponents[0] integerValue]];
+    [*timestamp setMonth:[dateComponents[1] integerValue]];
+    [*timestamp setDay:[dateComponents[2] integerValue]];
+}
+
+- (ACDSMultiUserChatRoom *)findRoomForJID:(NSString *)jid
+{
+    ACDSMultiUserChatRoom *multiUserChatRoom = nil;
+    for (ACDSMultiUserChatRoom *storedRoom in self.discoveredMUCRooms) {
+        if ([[storedRoom.jabberID full] isEqualToString:jid]) {
+            multiUserChatRoom = storedRoom;
+            break;
+        }
+    }
+
+    return multiUserChatRoom;
 }
 
 @end

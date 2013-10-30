@@ -15,6 +15,11 @@
 	return beanElement;
 }
 
+- (void)fromXML:(NSXMLElement *)xml
+{
+    // Can probably remain empty.
+}
+
 + (NSString* )elementName {
 	return @"RegisterReceiver";
 }

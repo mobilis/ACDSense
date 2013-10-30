@@ -43,4 +43,15 @@
     self.registeredDomains = [NSArray arrayWithArray:tempArray];
 }
 
+- (SensorMUCDomain *)domainForJID:(NSString *)domain
+{
+    SensorMUCDomain *foundDomain = nil;
+    for (SensorMUCDomain *storedDomain in self.registeredDomains)
+        if ([storedDomain.domainURL isEqualToString:domain]) {
+            foundDomain = storedDomain;
+            break;
+        }
+
+    return foundDomain;
+}
 @end

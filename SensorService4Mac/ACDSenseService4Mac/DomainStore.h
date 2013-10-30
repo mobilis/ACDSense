@@ -16,4 +16,6 @@
 - (void)addDomain:(SensorMUCDomain *)domain;
 
 - (void)removeDomain:(SensorMUCDomain *)domain;
+
+- (SensorMUCDomain *)domainForJID:(NSString *)domain;
 @end

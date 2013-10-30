@@ -28,6 +28,7 @@
 		BF8CB35EDD06270B0EBEBB26 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB5316A59BB3F3DE8ED8E /* Location.m */; };
 		BF8CB3763756AF272B7CA093 /* RemovePublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBC96554E3B07ADE3FB07 /* RemovePublisher.m */; };
 		BF8CB3A4ED2A2646632603DF /* MUCDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB3239FFB972B20FE6615 /* MUCDiscovery.m */; };
+		BF8CB3B8793B8FA38C9948D8 /* DelegateSensorItemsOut.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBEECC9557FF712809F82 /* DelegateSensorItemsOut.m */; };
 		BF8CB3EFBF19133495DDAC55 /* RemoveReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB3CA9EDD69E2FFE1B326 /* RemoveReceiver.m */; };
 		BF8CB51B972560B85772D1B6 /* GetSensorMUCDomainsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBB77DED78CCFFAD8BE3B /* GetSensorMUCDomainsRequest.m */; };
 		BF8CB87B300D5F0A842543AE /* PublishSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB4F1CF213DE8A550AF05 /* PublishSensorItems.m */; };
@@ -92,6 +93,7 @@
 		BF8CBA361006F3B14CADAE81 /* GetSensorMUCDomainsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetSensorMUCDomainsRequest.h; sourceTree = "<group>"; };
 		BF8CBA56036BD62665D4619D /* ServerComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerComponent.m; sourceTree = "<group>"; };
 		BF8CBA85673593D415FFB0AC /* RemoveReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoveReceiver.h; sourceTree = "<group>"; };
+		BF8CBA87463EA6E40FF7AA98 /* DelegateSensorItemsOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateSensorItemsOut.h; sourceTree = "<group>"; };
 		BF8CBB436E464BB3DC4E29F2 /* RegisterPublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterPublisher.h; sourceTree = "<group>"; };
 		BF8CBB77DED78CCFFAD8BE3B /* GetSensorMUCDomainsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetSensorMUCDomainsRequest.m; sourceTree = "<group>"; };
 		BF8CBBB2131937436B502723 /* DelegateSensorItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateSensorItems.h; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		BF8CBDC77C8B7315F42EF73A /* DelegateSensorItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateSensorItems.m; sourceTree = "<group>"; };
 		BF8CBE02A2269ADD4E3D2F27 /* PubSubStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PubSubStore.h; sourceTree = "<group>"; };
 		BF8CBE70F647ACB9CBCEF18A /* RegisterReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterReceiver.h; sourceTree = "<group>"; };
+		BF8CBEECC9557FF712809F82 /* DelegateSensorItemsOut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateSensorItemsOut.m; sourceTree = "<group>"; };
 		BF8CBF61AC28A1F468F6ABC6 /* RegisterReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterReceiver.m; sourceTree = "<group>"; };
 		BF8CBF6747916626EAA13F34 /* SensorValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorValue.m; sourceTree = "<group>"; };
 		BF8CBFF4262085733C596732 /* MUCDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUCDiscovery.h; sourceTree = "<group>"; };
@@ -237,6 +240,8 @@
 				BF8CBF6747916626EAA13F34 /* SensorValue.m */,
 				BF8CB250017897119C1E3FE7 /* Timestamp.h */,
 				BF8CB6403540C0F85C667272 /* Timestamp.m */,
+				BF8CBA87463EA6E40FF7AA98 /* DelegateSensorItemsOut.h */,
+				BF8CBEECC9557FF712809F82 /* DelegateSensorItemsOut.m */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -378,6 +383,7 @@
 				BF8CBBAB4EF2937FA69A4FAE /* ACDSMultiUserChatRoom.m in Sources */,
 				BF8CB347FBF78511D86A1FAF /* SynchronizeRuntimeBean.m in Sources */,
 				BF8CBFA0994C5171A88FB474 /* DomainStore.m in Sources */,
+				BF8CB3B8793B8FA38C9948D8 /* DelegateSensorItemsOut.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
