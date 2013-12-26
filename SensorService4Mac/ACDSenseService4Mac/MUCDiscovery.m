@@ -6,9 +6,10 @@
 
 #import <MobilisMXi/MXi/MXiMultiUserChatRoom.h>
 #import <XMPPFramework/XMPPIQ.h>
+#import <XMPPFramework/NSXMLElement+XMPP.h>
+#import <MobilisMXi/MXi/MXiConnection.h>
 #import "MUCDiscovery.h"
 #import "ACDSMultiUserChatRoom.h"
-#import "MXiConnectionHandler.h"
 #import "MXiMultiUserChatDiscovery.h"
 
 @interface MUCDiscovery ()
@@ -50,7 +51,7 @@
             self.mucDiscoveryCompletionBlock(YES, acdsMultiUserChatRoom);
         } else self.mucDiscoveryCompletionBlock(NO, nil);
 
-        [[MXiConnectionHandler sharedInstance] removeStanzaDelegate:self];
+        [[MXiConnectionHandler sharedInstance].connection removeStanzaDelegate:self forStanzaElement:IQ];
     }
 }
 
@@ -79,7 +80,7 @@
                                                 to:self.room.jabberID
                                          elementID:self.randomRequestID
                                              child:[NSXMLElement elementWithName:@"query" xmlns:serviceDiscoInfoNS]];
-    [[MXiConnectionHandler sharedInstance] addStanzaDelegate:self];
+    [[MXiConnectionHandler sharedInstance].connection addStanzaDelegate:self withSelector:@selector(iqStanzaReceived:) forStanzaElement:IQ];
     [[MXiConnectionHandler sharedInstance] sendElement:discoIQ];
 }
 

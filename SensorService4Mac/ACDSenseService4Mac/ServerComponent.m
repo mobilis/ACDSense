@@ -5,6 +5,7 @@
 
 
 #import <MobilisMXi/MXi/MXiMultiUserChatRoom.h>
+#import <MobilisMXi/MXi/MXiMultiUserChatDiscovery.h>
 #import "ServerComponent.h"
 #import "MXiConnectionHandler.h"
 #import "RegisterPublisher.h"
@@ -23,10 +24,36 @@
 #import "SensorItem.h"
 #import "DelegateSensorItemsOut.h"
 
-@interface ServerComponent () <MXiMultiUserChatDelegate>
 
-@property (strong) NSMutableArray *discoveredMUCRooms;
-@property (strong) DomainStore *domainStore;
+@interface DiscoveryMapping : NSObject
+
+@property (nonatomic) CreateSensorMUCDomain *domain;
+@property (nonatomic) MXiMultiUserChatDiscovery *discovery;
+
+- (id)initWithDomain:(CreateSensorMUCDomain *)domain discovery:(MXiMultiUserChatDiscovery *)discovery;
+
+@end
+
+@implementation DiscoveryMapping
+
+- (id)initWithDomain:(CreateSensorMUCDomain *)domain discovery:(MXiMultiUserChatDiscovery *)discovery
+{
+    self = [super init];
+    if (self) {
+        self.domain = domain;
+        self.discovery = discovery;
+    }
+    return self;
+}
+
+@end
+
+@interface ServerComponent () <MXiMultiUserChatDelegate, MXiMultiUserChatDiscoveryDelegate>
+
+@property NSMutableArray *discoveredMUCRooms;
+@property DomainStore *domainStore;
+
+@property NSMutableArray *runningDiscoveries;
 
 @end
 
@@ -50,15 +77,17 @@
     self.discoveredMUCRooms = [NSMutableArray arrayWithCapacity:10];
     self.domainStore = [DomainStore new];
 
-    [[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(registerPublisher:) forBeanClass:[RegisterPublisher class]];
-    [[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(registerReceiver:) forBeanClass:[RegisterReceiver class]];
-    [[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(removePublisher:) forBeanClass:[RemovePublisher class]];
-    [[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(removeReceiver:) forBeanClass:[RemoveReceiver class]];
-    [[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(createMUCDomain:) forBeanClass:[CreateSensorMUCDomain class]];
-    [[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(removeMUCDomain:) forBeanClass:[SensorMUCDomainRemoved class]];
-    [[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(returnMUCDomains:) forBeanClass:[GetSensorMUCDomainsRequest class]];
+    self.runningDiscoveries = [NSMutableArray arrayWithCapacity:3];
 
-    [[MXiConnectionHandler sharedInstance] addStanzaDelegate:self];
+    [[MXiConnectionHandler sharedInstance].connection addBeanDelegate:self withSelector:@selector(registerPublisher:) forBeanClass:[RegisterPublisher class]];
+    [[MXiConnectionHandler sharedInstance].connection addBeanDelegate:self withSelector:@selector(registerReceiver:) forBeanClass:[RegisterReceiver class]];
+    [[MXiConnectionHandler sharedInstance].connection addBeanDelegate:self withSelector:@selector(removePublisher:) forBeanClass:[RemovePublisher class]];
+    [[MXiConnectionHandler sharedInstance].connection addBeanDelegate:self withSelector:@selector(removeReceiver:) forBeanClass:[RemoveReceiver class]];
+    [[MXiConnectionHandler sharedInstance].connection addBeanDelegate:self withSelector:@selector(createMUCDomain:) forBeanClass:[CreateSensorMUCDomain class]];
+    [[MXiConnectionHandler sharedInstance].connection addBeanDelegate:self withSelector:@selector(removeMUCDomain:) forBeanClass:[SensorMUCDomainRemoved class]];
+    [[MXiConnectionHandler sharedInstance].connection addBeanDelegate:self withSelector:@selector(returnMUCDomains:) forBeanClass:[GetSensorMUCDomainsRequest class]];
+
+    [[MXiConnectionHandler sharedInstance].connection addStanzaDelegate:self withSelector:@selector(iqStanzaReceived:) forStanzaElement:IQ];
 
     return [super init];
 }
@@ -70,8 +99,6 @@
 
     [[MXiConnectionHandler sharedInstance] sendElement:[MXiBeanConverter beanToIQ:synchronizeRuntimeBean]];
 }
-
-
 
 #pragma mark - Incoming Bean Handler
 
@@ -97,28 +124,11 @@
 
 - (void)createMUCDomain:(CreateSensorMUCDomain *)domain
 {
-    [[MXiConnectionHandler sharedInstance] discoverMultiUserChatRoomsInDomain:domain.sensorDomain.domainURL
-                                                          withCompletionBlock:^(BOOL serviceSupported, NSArray *discoveredRooms)
-                                                          {
-                                                              if (serviceSupported) {
-                                                                  [self.domainStore addDomain:domain.sensorDomain];
-                                                                  for (MXiMultiUserChatRoom *room in discoveredRooms) {
-                                                                      MUCDiscovery *discovery = [[MUCDiscovery alloc] initWithRoom:room
-                                                                                                                   completionBlock:^(BOOL b, ACDSMultiUserChatRoom *sensorMUC)
-                                                                                                                   {
-                                                                                                                       if (b) {
-                                                                                                                           [self.discoveredMUCRooms addObject:sensorMUC];
-                                                                                                                           [[MXiConnectionHandler sharedInstance] connectToMultiUserChatRoom:[sensorMUC.jabberID full]
-                                                                                                                                                                                withDelegate:self];
-                                                                                                                       }
-                                                                                                                   }];
-                                                                  }
-                                                                  SensorMUCDomainCreated *domainCreatedBean = [SensorMUCDomainCreated new];
-                                                                  domainCreatedBean.to = domain.from;
-                                                                  domainCreatedBean.sensorDomain = domain.sensorDomain;
-                                                                  [[MXiConnectionHandler sharedInstance] sendElement:[MXiBeanConverter beanToIQ:domainCreatedBean]];
-                                                              }
-                                                          }];
+    MXiMultiUserChatDiscovery *chatDiscovery = [MXiMultiUserChatDiscovery multiUserChatDiscoveryWithDomainName:domain.sensorDomain.domainURL
+                                                                                                   andDelegate:self];
+    [chatDiscovery startDiscoveryWithResultQueue:NULL];
+    [self.runningDiscoveries addObject:[[DiscoveryMapping alloc] initWithDomain:domain
+                                                                      discovery:chatDiscovery]];
 }
 
 - (void)removeMUCDomain:(SensorMUCDomainRemoved *)domain
@@ -170,9 +180,9 @@
 
 #pragma mark - MXiMultiUserChatDelegate
 
-- (void)connectionToRoomEstablished:(NSString *)roomJID
+- (void)connectionToRoomEstablished:(NSString *)roomJID usingRoomJID:(NSString *)myRoomJID
 {
-    NSLog(@"Connection to roomJID %@ successfully established.", roomJID);
+    NSLog(@"Connection to roomJID %@ successfully established.\nAlias JID; %@", roomJID, myRoomJID);
 }
 
 - (void)didReceiveMultiUserChatMessage:(NSString *)message fromUser:(NSString *)user publishedInRoom:(NSString *)roomJID
@@ -267,5 +277,35 @@
 
     return multiUserChatRoom;
 }
+
+#pragma mark - MXiMultiUserChatDiscoveryDelegate
+
+- (void)multiUserChatRoomsDiscovered:(NSArray *)chatRooms inDomain:(NSString *)domainName
+{
+    CreateSensorMUCDomain *domain = nil;
+    for (DiscoveryMapping *mapping in self.runningDiscoveries)
+        if ([mapping.domain.sensorDomain.domainURL isEqualToString:domainName]) {
+            domain = mapping.domain;
+            [self.runningDiscoveries removeObject:mapping];
+            break;
+        }
+
+    for (MXiMultiUserChatRoom *room in chatRooms) {
+        [[MUCDiscovery alloc] initWithRoom:room
+                           completionBlock:^(BOOL b, ACDSMultiUserChatRoom *sensorMUC)
+                           {
+                            if (b) {
+                                 [self.discoveredMUCRooms addObject:sensorMUC];
+                                 [[MXiConnectionHandler sharedInstance].connection connectToMultiUserChatRoom:[sensorMUC.jabberID full]
+                                                                                                 withDelegate:self];
+                            }
+                           }];
+    }
+    SensorMUCDomainCreated *domainCreatedBean = [SensorMUCDomainCreated new];
+    domainCreatedBean.to = domain.from;
+    domainCreatedBean.sensorDomain = domain.sensorDomain;
+    [[MXiConnectionHandler sharedInstance] sendElement:[MXiBeanConverter beanToIQ:domainCreatedBean]];
+}
+
 
 @end
