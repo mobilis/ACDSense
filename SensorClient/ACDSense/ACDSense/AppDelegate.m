@@ -12,8 +12,10 @@
 #import "RegisterReceiver.h"
 #import "RemoveReceiver.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <MXiConnectionHandlerDelegate>
+
 - (void) launchConnectionEstablishment;
+
 @end
 
 @implementation AppDelegate
@@ -22,7 +24,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [MXiConnectionHandler sharedInstance].delegate = self;
 	[self launchConnectionEstablishment];
+    
     return YES;
 }
 
@@ -36,7 +40,7 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    [[MXiConnectionHandler sharedInstance] sendBean:[RemoveReceiver new]];
+    [[MXiConnectionHandler sharedInstance] sendBean:[RemoveReceiver new] toService:nil];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -64,12 +68,7 @@
                                                               password:account.password
                                                               hostName:account.hostName
                                                            serviceType:SINGLE
-                                                                  port:account.port
-                                                   authenticationBlock:^(BOOL success) {
-                                                       if (success) {
-                                                           [[MXiConnectionHandler sharedInstance] sendBean:[RegisterReceiver new]];
-                                                       }
-                                                   }];
+                                                                  port:account.port];
 	} else {
 		NSString *settingsPath = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
 		NSDictionary *jabberSettings = [[NSDictionary dictionaryWithContentsOfFile:settingsPath] objectForKey:@"jabberInformation"];
@@ -83,13 +82,25 @@
                                                               password:password
                                                               hostName:hostName
                                                            serviceType:SINGLE
-                                                                  port:port
-                                                   authenticationBlock:^(BOOL success) {
-                                                       if (success) {
-                                                           [[MXiConnectionHandler sharedInstance] sendBean:[RegisterReceiver new]];
-                                                       }
-                                                   }];
+                                                                  port:port];
 	}
+}
+
+#pragma mark - MXiConnectionHandlerDelegate
+
+- (void)connectionDidDisconnect:(NSError *)error
+{
+    NSLog(@"Connection did disconnect with error: %@", error.localizedDescription);
+}
+
+- (void)authenticationFinishedSuccessfully:(BOOL)authenticationState
+{
+    [[MXiConnectionHandler sharedInstance] sendBean:[RegisterReceiver new] toService:nil];
+}
+
+- (void)serviceDiscoveryError:(NSError *)error
+{
+    NSLog(@"Service discovery failed with error: %@", error.localizedDescription);
 }
 
 @end

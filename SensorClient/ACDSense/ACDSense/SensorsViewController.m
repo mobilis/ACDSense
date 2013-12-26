@@ -33,8 +33,6 @@
 
 @property (strong) CPTXYGraph *graph;
 
-//@property (strong, nonatomic) NSMutableArray *sensorValues;
-
 - (IBAction)subTypeChosen:(UISegmentedControl*)ctrl;
 
 - (void)constructChart;
@@ -48,15 +46,6 @@
 @end
 
 @implementation SensorsViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -104,7 +93,9 @@
 
 - (void)registerBeanListener
 {
-    [[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(sensorItemsReceived:) forBeanClass:[DelegateSensorItems class]];
+    [[MXiConnectionHandler sharedInstance].connection addBeanDelegate:self
+                                                         withSelector:@selector(sensorItemsReceived:)
+                                                         forBeanClass:[DelegateSensorItems class]];
 }
 
 - (void)sensorItemsReceived:(DelegateSensorItems *)sensorItems
@@ -396,10 +387,6 @@
     lineStyle.lineColor = [CPTColor blackColor];
     dataSourceLinePlot.dataLineStyle = lineStyle;
 	
-//	CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];
-//	textStyle.textAlignment = CPTTextAlignmentRight;
-//	dataSourceLinePlot.labelTextStyle = textStyle;
-	
     dataSourceLinePlot.dataSource = self;
     [_graph addPlot:dataSourceLinePlot];
 }
@@ -440,7 +427,7 @@
     }
     int mod  = ((int)[[_valuesOfSelectedSensor objectForKey:_selectedSubType] count] / 10)+1;
 	if (idx % mod != 0) {
-		return [NSNull null];
+		return NULL;
 	}
     SensorValue *value = [[_valuesOfSelectedSensor objectForKey:_selectedSubType] objectAtIndex:idx];
 	

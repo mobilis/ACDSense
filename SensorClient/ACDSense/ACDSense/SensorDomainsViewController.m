@@ -20,33 +20,43 @@
 #import "GetSensorMUCDomainsResponse.h"
 
 @interface SensorDomainsViewController ()
-@property (retain) NSMutableArray *sensorDomains;
-@property (retain) UIRefreshControl *refreshControl;
+
+@property (strong) NSMutableArray *sensorDomains;
+@property (strong) UIRefreshControl *refreshControl;
 
 - (void) sensorMUCDomainCreated:(SensorMUCDomainCreated *) bean;
 - (void) sensorMUCDomainRemoved:(SensorMUCDomainRemoved *) bean;
 - (void) sensorMUCDomainsReceived:(GetSensorMUCDomainsResponse *) bean;
+
 @end
 
 @implementation SensorDomainsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void)dealloc
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    [[MXiConnectionHandler sharedInstance].connection removeBeanDelegate:self forBeanClass:[SensorMUCDomainCreated class]];
+    [[MXiConnectionHandler sharedInstance].connection removeBeanDelegate:self forBeanClass:[SensorMUCDomainRemoved class]];
+    [[MXiConnectionHandler sharedInstance].connection removeBeanDelegate:self forBeanClass:[GetSensorMUCDomainsResponse class]];
+    
+    self.sensorDomains = nil;
+    self.refreshControl = nil;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
 	self.sensorDomains = [NSMutableArray new];
-	[[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(sensorMUCDomainCreated:) forBeanClass:[SensorMUCDomainCreated class]];
-	[[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(sensorMUCDomainRemoved:) forBeanClass:[SensorMUCDomainRemoved class]];
-	[[MXiConnectionHandler sharedInstance] addDelegate:self withSelector:@selector(sensorMUCDomainsReceived:) forBeanClass:[GetSensorMUCDomainsResponse class]];
+
+    [[MXiConnectionHandler sharedInstance].connection addBeanDelegate:self
+                                                         withSelector:@selector(sensorMUCDomainCreated:)
+                                                         forBeanClass:[SensorMUCDomainCreated class]];
+    [[MXiConnectionHandler sharedInstance].connection addBeanDelegate:self
+                                                         withSelector:@selector(sensorMUCDomainRemoved:)
+                                                         forBeanClass:[SensorMUCDomainRemoved class]];
+    [[MXiConnectionHandler sharedInstance].connection addBeanDelegate:self
+                                                         withSelector:@selector(sensorMUCDomainsReceived:)
+                                                         forBeanClass:[GetSensorMUCDomainsResponse class]];
 	
 	self.refreshControl = [UIRefreshControl new];
     [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
@@ -56,22 +66,17 @@
 
 - (void)handleRefresh:(id)arg
 {
-	[[MXiConnectionHandler sharedInstance] sendBean:[GetSensorMUCDomainsRequest new]];
+	[[MXiConnectionHandler sharedInstance] sendBean:[GetSensorMUCDomainsRequest new] toService:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-	[[MXiConnectionHandler sharedInstance] sendBean:[GetSensorMUCDomainsRequest new]];
+	[[MXiConnectionHandler sharedInstance] sendBean:[GetSensorMUCDomainsRequest new] toService:nil];
 	[super viewWillAppear:animated];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - UITableViewDataSource
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 	return 1;
@@ -90,6 +95,7 @@
 }
 
 #pragma mark - UITableViewDelegate
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	return YES;
@@ -99,7 +105,7 @@
 {
 	RemoveSensorMUCDomain *request = [RemoveSensorMUCDomain new];
 	request.sensorDomain = [self.sensorDomains objectAtIndex:indexPath.row];
-	[[MXiConnectionHandler sharedInstance] sendBean:request];
+	[[MXiConnectionHandler sharedInstance] sendBean:request toService:nil];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -115,6 +121,7 @@
 }
 
 #pragma mark - UIAlertViewDelegate
+
 - (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
 {
 	return [[[alertView textFieldAtIndex:0] text] length] > 0;
@@ -128,22 +135,24 @@
 		domain.domainId = [[NSUUID UUID] UUIDString];
 		domain.domainURL = [[alertView textFieldAtIndex:0] text];
 		request.sensorDomain = domain;
-		[[MXiConnectionHandler sharedInstance] sendBean:request];
+		[[MXiConnectionHandler sharedInstance] sendBean:request toService:nil];
 	}
 }
 
 #pragma mark - UITextFieldDelegate
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	CreateSensorMUCDomain *request = [CreateSensorMUCDomain new];
 	SensorMUCDomain *domain = [SensorMUCDomain new];
 	domain.domainId = [[NSUUID UUID] UUIDString];
 	domain.domainURL = [textField text];
 	request.sensorDomain = domain;
-	[[MXiConnectionHandler sharedInstance] sendBean:request];
+	[[MXiConnectionHandler sharedInstance] sendBean:request toService:nil];
 	return YES;
 }
 
 #pragma mark - Interface Implementation
+
 - (IBAction)addSensorDomain:(UIBarButtonItem *)sender {
 	UIAlertView *newDomain = [[UIAlertView alloc] initWithTitle:@"New Domain" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add",nil];
 	newDomain.alertViewStyle = UIAlertViewStylePlainTextInput;
@@ -186,6 +195,7 @@
 }
 
 #pragma mark - UINavigationBarDelegate
+
 -(UIBarPosition)positionForBar:(id<UIBarPositioning>)bar
 {
 	return UIBarPositionTopAttached;

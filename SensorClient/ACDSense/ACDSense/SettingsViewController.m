@@ -153,10 +153,7 @@
     [[MXiConnectionHandler sharedInstance] reconnectWithJID:account.jid
                                                    password:account.password
                                                    hostName:account.hostName
-                                                       port:account.port
-                                        authenticationBlock:^(BOOL success) {
-                                            NSLog(@"Reconnection from SettingsView successfull? %c", success);
-                                        }];
+                                                       port:account.port];
 }
 
 #pragma mark - UINavigationBarDelegate

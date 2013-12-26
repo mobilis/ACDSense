@@ -6,6 +6,6 @@ pod 'XMPPFramework/Reconnect', :podspec => 'xmpp.podspec'
 pod 'XMPPFramework/XEP-0045', :podspec => 'xmpp.podspec'
 pod 'XMPPFramework/Roster', :podspec => 'xmpp.podspec'
 # Uncomment this line and modify the path to your local MXi location
-#pod 'MobilisMXi', :path => '/Users/martin/Development/Mobilis/Mobilis'
+pod 'MobilisMXi', :path => '/Users/cmdaltent/Development/Projects/Mobilis/Mobilis'
 # Production
-pod 'MobilisMXi', :podspec => 'mxi.podspec'
+#pod 'MobilisMXi', :podspec => 'mxi.podspec'
