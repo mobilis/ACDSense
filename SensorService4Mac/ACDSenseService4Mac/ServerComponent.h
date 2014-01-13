@@ -6,13 +6,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "MobilisService.h"
 
-@interface ServerComponent : NSObject
-
-+ (instancetype)sharedInstance;
-
-- (id)initUniqueInstance;
-
-- (void)synchronizeRuntimes;
+@interface ServerComponent : MobilisService
 
 @end

@@ -7,59 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		44DAB202C9A94352BD2C04D9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84033FFD2A1F46E687235069 /* libPods.a */; };
-		5B76A9B81810014E00E14C18 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B76A9B71810014E00E14C18 /* Settings.plist */; };
-		5BE5E349180EEF0B00DCA666 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE5E348180EEF0B00DCA666 /* Cocoa.framework */; };
-		5BE5E353180EEF0B00DCA666 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5E351180EEF0B00DCA666 /* InfoPlist.strings */; };
-		5BE5E355180EEF0B00DCA666 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5E354180EEF0B00DCA666 /* main.m */; };
-		5BE5E359180EEF0B00DCA666 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5E357180EEF0B00DCA666 /* Credits.rtf */; };
-		5BE5E35C180EEF0B00DCA666 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5E35B180EEF0B00DCA666 /* AppDelegate.m */; };
-		5BE5E35F180EEF0B00DCA666 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5E35D180EEF0B00DCA666 /* MainMenu.xib */; };
-		5BE5E361180EEF0B00DCA666 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5E360180EEF0B00DCA666 /* Images.xcassets */; };
-		BF8CB057B77E61E90F14ACEC /* Settings.plist.example in Resources */ = {isa = PBXBuildFile; fileRef = BF8CB39F4BE24B5E1FAA9C15 /* Settings.plist.example */; };
-		BF8CB0CBEE07CADF2CB8DFE4 /* ServerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBA56036BD62665D4619D /* ServerComponent.m */; };
-		BF8CB1466BEB382F17E532EC /* SensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB0DC75280CEBE7ED6622 /* SensorMUCDomain.m */; };
-		BF8CB18F074C886236CD7499 /* SensorMUCDomainRemoved.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB7E9164785AC28D1F5AC /* SensorMUCDomainRemoved.m */; };
-		BF8CB191FFAC40108E7DED78 /* SensorMUCDomainCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB532B89E7FA9F462E22D /* SensorMUCDomainCreated.m */; };
-		BF8CB28A1E712D15EC9C94B4 /* RegisterReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBF61AC28A1F468F6ABC6 /* RegisterReceiver.m */; };
-		BF8CB28E890DA3B3DDBC6A96 /* SensorValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBF6747916626EAA13F34 /* SensorValue.m */; };
-		BF8CB2C3D91996531F49A658 /* RegisterPublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB8131223C91348BDFCE1 /* RegisterPublisher.m */; };
-		BF8CB347FBF78511D86A1FAF /* SynchronizeRuntimeBean.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBDBB81F3F70E7EDA1976 /* SynchronizeRuntimeBean.m */; };
-		BF8CB35EDD06270B0EBEBB26 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB5316A59BB3F3DE8ED8E /* Location.m */; };
-		BF8CB3763756AF272B7CA093 /* RemovePublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBC96554E3B07ADE3FB07 /* RemovePublisher.m */; };
-		BF8CB3A4ED2A2646632603DF /* MUCDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB3239FFB972B20FE6615 /* MUCDiscovery.m */; };
-		BF8CB3B8793B8FA38C9948D8 /* DelegateSensorItemsOut.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBEECC9557FF712809F82 /* DelegateSensorItemsOut.m */; };
-		BF8CB3EFBF19133495DDAC55 /* RemoveReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB3CA9EDD69E2FFE1B326 /* RemoveReceiver.m */; };
-		BF8CB51B972560B85772D1B6 /* GetSensorMUCDomainsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBB77DED78CCFFAD8BE3B /* GetSensorMUCDomainsRequest.m */; };
-		BF8CB87B300D5F0A842543AE /* PublishSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB4F1CF213DE8A550AF05 /* PublishSensorItems.m */; };
-		BF8CB87DEA9C4A7859096B1A /* CreateSensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB9193D2AD96A562381C5 /* CreateSensorMUCDomain.m */; };
-		BF8CBAFDFDEF927622F9E1B3 /* RemoveSensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB52B9084DA3E65BAA234 /* RemoveSensorMUCDomain.m */; };
-		BF8CBBAB4EF2937FA69A4FAE /* ACDSMultiUserChatRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB4D7230BBF38D4C65511 /* ACDSMultiUserChatRoom.m */; };
-		BF8CBC764B4C0D65F009BAB7 /* GetSensorMUCDomainsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBC6AC4978E1E32276E2D /* GetSensorMUCDomainsResponse.m */; };
-		BF8CBCC980AA9DA943CCD5B0 /* Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB6403540C0F85C667272 /* Timestamp.m */; };
-		BF8CBD7D24104EAE2BF25E0E /* DelegateSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBDC77C8B7315F42EF73A /* DelegateSensorItems.m */; };
-		BF8CBED7FFA1E049647FFF37 /* PubSubStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB3E0FFDC451D212D8696 /* PubSubStore.m */; };
-		BF8CBFA00FAFEC343397F4A5 /* SensorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB922852514F809E65414 /* SensorItem.m */; };
-		BF8CBFA0994C5171A88FB474 /* DomainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB57B82BA52E8B5348C1E /* DomainStore.m */; };
+		63005F09188407250077C0DD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE5E348180EEF0B00DCA666 /* Cocoa.framework */; };
+		63005F18188408470077C0DD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63005F17188408470077C0DD /* InfoPlist.strings */; };
+		63005F191884089A0077C0DD /* ServerComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBA56036BD62665D4619D /* ServerComponent.m */; };
+		63005F1A1884089A0077C0DD /* PubSubStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB3E0FFDC451D212D8696 /* PubSubStore.m */; };
+		63005F1B1884089A0077C0DD /* MUCDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB3239FFB972B20FE6615 /* MUCDiscovery.m */; };
+		63005F1C1884089A0077C0DD /* ACDSMultiUserChatRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB4D7230BBF38D4C65511 /* ACDSMultiUserChatRoom.m */; };
+		63005F1D1884089A0077C0DD /* DomainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB57B82BA52E8B5348C1E /* DomainStore.m */; };
+		63005F1E1884089A0077C0DD /* CreateSensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB9193D2AD96A562381C5 /* CreateSensorMUCDomain.m */; };
+		63005F1F1884089A0077C0DD /* DelegateSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBDC77C8B7315F42EF73A /* DelegateSensorItems.m */; };
+		63005F201884089A0077C0DD /* GetSensorMUCDomainsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBB77DED78CCFFAD8BE3B /* GetSensorMUCDomainsRequest.m */; };
+		63005F211884089A0077C0DD /* GetSensorMUCDomainsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBC6AC4978E1E32276E2D /* GetSensorMUCDomainsResponse.m */; };
+		63005F221884089A0077C0DD /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB5316A59BB3F3DE8ED8E /* Location.m */; };
+		63005F231884089A0077C0DD /* PublishSensorItems.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB4F1CF213DE8A550AF05 /* PublishSensorItems.m */; };
+		63005F241884089A0077C0DD /* RegisterPublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB8131223C91348BDFCE1 /* RegisterPublisher.m */; };
+		63005F251884089A0077C0DD /* RegisterReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBF61AC28A1F468F6ABC6 /* RegisterReceiver.m */; };
+		63005F261884089A0077C0DD /* RemovePublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBC96554E3B07ADE3FB07 /* RemovePublisher.m */; };
+		63005F271884089A0077C0DD /* RemoveReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB3CA9EDD69E2FFE1B326 /* RemoveReceiver.m */; };
+		63005F281884089A0077C0DD /* RemoveSensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB52B9084DA3E65BAA234 /* RemoveSensorMUCDomain.m */; };
+		63005F291884089A0077C0DD /* SensorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB922852514F809E65414 /* SensorItem.m */; };
+		63005F2A1884089A0077C0DD /* SensorMUCDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB0DC75280CEBE7ED6622 /* SensorMUCDomain.m */; };
+		63005F2B1884089A0077C0DD /* SensorMUCDomainCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB532B89E7FA9F462E22D /* SensorMUCDomainCreated.m */; };
+		63005F2C1884089A0077C0DD /* SensorMUCDomainRemoved.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB7E9164785AC28D1F5AC /* SensorMUCDomainRemoved.m */; };
+		63005F2D1884089A0077C0DD /* SensorValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBF6747916626EAA13F34 /* SensorValue.m */; };
+		63005F2E1884089A0077C0DD /* Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB6403540C0F85C667272 /* Timestamp.m */; };
+		63005F2F1884089A0077C0DD /* DelegateSensorItemsOut.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBEECC9557FF712809F82 /* DelegateSensorItemsOut.m */; };
+		71DCC69DD18F43B8A4CE1136 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84033FFD2A1F46E687235069 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5B76A9B71810014E00E14C18 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
-		5BE5E345180EEF0B00DCA666 /* ACDSenseService4Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACDSenseService4Mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE5E348180EEF0B00DCA666 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5BE5E34B180EEF0B00DCA666 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		5BE5E34C180EEF0B00DCA666 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5BE5E34D180EEF0B00DCA666 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		5BE5E350180EEF0B00DCA666 /* ACDSenseService4Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ACDSenseService4Mac-Info.plist"; sourceTree = "<group>"; };
-		5BE5E352180EEF0B00DCA666 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5BE5E354180EEF0B00DCA666 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5BE5E356180EEF0B00DCA666 /* ACDSenseService4Mac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ACDSenseService4Mac-Prefix.pch"; sourceTree = "<group>"; };
-		5BE5E358180EEF0B00DCA666 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		5BE5E35A180EEF0B00DCA666 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		5BE5E35B180EEF0B00DCA666 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5BE5E35E180EEF0B00DCA666 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		5BE5E360180EEF0B00DCA666 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5BE5E367180EEF0B00DCA666 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		63005F08188407250077C0DD /* ACDSenseService4Mac.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ACDSenseService4Mac.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		63005F14188408190077C0DD /* ACDSenseService4Mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "ACDSenseService4Mac-Info.plist"; path = "ACDSenseService4Mac/ACDSenseService4Mac-Info.plist"; sourceTree = SOURCE_ROOT; };
+		63005F15188408190077C0DD /* ACDSenseService4Mac-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ACDSenseService4Mac-Prefix.pch"; path = "ACDSenseService4Mac/ACDSenseService4Mac-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		63005F17188408470077C0DD /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		84033FFD2A1F46E687235069 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8CB0DC75280CEBE7ED6622 /* SensorMUCDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorMUCDomain.m; sourceTree = "<group>"; };
 		BF8CB250017897119C1E3FE7 /* Timestamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timestamp.h; sourceTree = "<group>"; };
@@ -68,10 +53,8 @@
 		BF8CB36A77DDB8A398DE20B3 /* RemovePublisher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemovePublisher.h; sourceTree = "<group>"; };
 		BF8CB38046827DC9AB5EDED5 /* SensorMUCDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorMUCDomain.h; sourceTree = "<group>"; };
 		BF8CB39C26645BDC5839447E /* SensorMUCDomainRemoved.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorMUCDomainRemoved.h; sourceTree = "<group>"; };
-		BF8CB39F4BE24B5E1FAA9C15 /* Settings.plist.example */ = {isa = PBXFileReference; lastKnownFileType = file.example; path = Settings.plist.example; sourceTree = "<group>"; };
 		BF8CB3CA9EDD69E2FFE1B326 /* RemoveReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoveReceiver.m; sourceTree = "<group>"; };
 		BF8CB3E0FFDC451D212D8696 /* PubSubStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PubSubStore.m; sourceTree = "<group>"; };
-		BF8CB42A48C9208511CBA4D8 /* SynchronizeRuntimeBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynchronizeRuntimeBean.h; sourceTree = "<group>"; };
 		BF8CB4411D5749744D87BFC3 /* GetSensorMUCDomainsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetSensorMUCDomainsResponse.h; sourceTree = "<group>"; };
 		BF8CB4D7230BBF38D4C65511 /* ACDSMultiUserChatRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACDSMultiUserChatRoom.m; sourceTree = "<group>"; };
 		BF8CB4F1CF213DE8A550AF05 /* PublishSensorItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishSensorItems.m; sourceTree = "<group>"; };
@@ -102,7 +85,6 @@
 		BF8CBC96554E3B07ADE3FB07 /* RemovePublisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemovePublisher.m; sourceTree = "<group>"; };
 		BF8CBCF80216FF3E81185390 /* ServerComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerComponent.h; sourceTree = "<group>"; };
 		BF8CBD3AF005E7AD2019B635 /* CreateSensorMUCDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSensorMUCDomain.h; sourceTree = "<group>"; };
-		BF8CBDBB81F3F70E7EDA1976 /* SynchronizeRuntimeBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SynchronizeRuntimeBean.m; sourceTree = "<group>"; };
 		BF8CBDC77C8B7315F42EF73A /* DelegateSensorItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateSensorItems.m; sourceTree = "<group>"; };
 		BF8CBE02A2269ADD4E3D2F27 /* PubSubStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PubSubStore.h; sourceTree = "<group>"; };
 		BF8CBE70F647ACB9CBCEF18A /* RegisterReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterReceiver.h; sourceTree = "<group>"; };
@@ -114,12 +96,12 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5BE5E342180EEF0B00DCA666 /* Frameworks */ = {
+		63005F05188407250077C0DD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BE5E349180EEF0B00DCA666 /* Cocoa.framework in Frameworks */,
-				44DAB202C9A94352BD2C04D9 /* libPods.a in Frameworks */,
+				63005F09188407250077C0DD /* Cocoa.framework in Frameworks */,
+				71DCC69DD18F43B8A4CE1136 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				5BE5E34E180EEF0B00DCA666 /* ACDSenseService4Mac */,
+				63005F0A188407250077C0DD /* ACDSenseService4Mac */,
 				5BE5E347180EEF0B00DCA666 /* Frameworks */,
 				5BE5E346180EEF0B00DCA666 /* Products */,
 				E6B5BBBF14824D638A3237F2 /* Pods.xcconfig */,
@@ -139,7 +122,7 @@
 		5BE5E346180EEF0B00DCA666 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5BE5E345180EEF0B00DCA666 /* ACDSenseService4Mac.app */,
+				63005F08188407250077C0DD /* ACDSenseService4Mac.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -168,13 +151,42 @@
 		5BE5E34E180EEF0B00DCA666 /* ACDSenseService4Mac */ = {
 			isa = PBXGroup;
 			children = (
-				5BE5E35A180EEF0B00DCA666 /* AppDelegate.h */,
-				5BE5E35B180EEF0B00DCA666 /* AppDelegate.m */,
-				5BE5E35D180EEF0B00DCA666 /* MainMenu.xib */,
-				5BE5E360180EEF0B00DCA666 /* Images.xcassets */,
-				5BE5E34F180EEF0B00DCA666 /* Supporting Files */,
+				639A300A188289D7009EA98A /* Supporting Files */,
+				639A301318828A1E009EA98A /* Service */,
 				BF8CB690938A3E8BA3B82F41 /* Generated */,
-				BF8CB9C58BE4197BFEFC8EF9 /* Resources */,
+			);
+			path = ACDSenseService4Mac;
+			sourceTree = "<group>";
+		};
+		63005F0A188407250077C0DD /* ACDSenseService4Mac */ = {
+			isa = PBXGroup;
+			children = (
+				63005F0B188407250077C0DD /* Supporting Files */,
+			);
+			path = ACDSenseService4Mac;
+			sourceTree = "<group>";
+		};
+		63005F0B188407250077C0DD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		639A300A188289D7009EA98A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				63005F14188408190077C0DD /* ACDSenseService4Mac-Info.plist */,
+				63005F15188408190077C0DD /* ACDSenseService4Mac-Prefix.pch */,
+				63005F17188408470077C0DD /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			path = ../ACDSense4Mac;
+			sourceTree = "<group>";
+		};
+		639A301318828A1E009EA98A /* Service */ = {
+			isa = PBXGroup;
+			children = (
 				BF8CBA56036BD62665D4619D /* ServerComponent.m */,
 				BF8CBCF80216FF3E81185390 /* ServerComponent.h */,
 				BF8CB3E0FFDC451D212D8696 /* PubSubStore.m */,
@@ -183,24 +195,10 @@
 				BF8CBFF4262085733C596732 /* MUCDiscovery.h */,
 				BF8CB4D7230BBF38D4C65511 /* ACDSMultiUserChatRoom.m */,
 				BF8CB333417D5A9D80F31CEE /* ACDSMultiUserChatRoom.h */,
-				BF8CBDBB81F3F70E7EDA1976 /* SynchronizeRuntimeBean.m */,
-				BF8CB42A48C9208511CBA4D8 /* SynchronizeRuntimeBean.h */,
 				BF8CB57B82BA52E8B5348C1E /* DomainStore.m */,
 				BF8CB57DAA59B3B9054653DA /* DomainStore.h */,
 			);
-			path = ACDSenseService4Mac;
-			sourceTree = "<group>";
-		};
-		5BE5E34F180EEF0B00DCA666 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				5BE5E350180EEF0B00DCA666 /* ACDSenseService4Mac-Info.plist */,
-				5BE5E351180EEF0B00DCA666 /* InfoPlist.strings */,
-				5BE5E354180EEF0B00DCA666 /* main.m */,
-				5BE5E356180EEF0B00DCA666 /* ACDSenseService4Mac-Prefix.pch */,
-				5BE5E357180EEF0B00DCA666 /* Credits.rtf */,
-			);
-			name = "Supporting Files";
+			name = Service;
 			sourceTree = "<group>";
 		};
 		BF8CB690938A3E8BA3B82F41 /* Generated */ = {
@@ -246,27 +244,18 @@
 			path = Generated;
 			sourceTree = "<group>";
 		};
-		BF8CB9C58BE4197BFEFC8EF9 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				5B76A9B71810014E00E14C18 /* Settings.plist */,
-				BF8CB39F4BE24B5E1FAA9C15 /* Settings.plist.example */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5BE5E344180EEF0B00DCA666 /* ACDSenseService4Mac */ = {
+		63005F07188407250077C0DD /* ACDSenseService4Mac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5BE5E376180EEF0B00DCA666 /* Build configuration list for PBXNativeTarget "ACDSenseService4Mac" */;
+			buildConfigurationList = 63005F11188407250077C0DD /* Build configuration list for PBXNativeTarget "ACDSenseService4Mac" */;
 			buildPhases = (
-				67E85CAB99234619BAA8740C /* Check Pods Manifest.lock */,
-				5BE5E341180EEF0B00DCA666 /* Sources */,
-				5BE5E342180EEF0B00DCA666 /* Frameworks */,
-				5BE5E343180EEF0B00DCA666 /* Resources */,
-				3AA270CF94C042088DE61B36 /* Copy Pods Resources */,
+				BE1CCFDAFB3146A693FCF7CF /* Check Pods Manifest.lock */,
+				63005F04188407250077C0DD /* Sources */,
+				63005F05188407250077C0DD /* Frameworks */,
+				63005F06188407250077C0DD /* Resources */,
+				5740A4D637A2455F8BDA35EF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -274,8 +263,8 @@
 			);
 			name = ACDSenseService4Mac;
 			productName = ACDSenseService4Mac;
-			productReference = 5BE5E345180EEF0B00DCA666 /* ACDSenseService4Mac.app */;
-			productType = "com.apple.product-type.application";
+			productReference = 63005F08188407250077C0DD /* ACDSenseService4Mac.bundle */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -299,29 +288,24 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5BE5E344180EEF0B00DCA666 /* ACDSenseService4Mac */,
+				63005F07188407250077C0DD /* ACDSenseService4Mac */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5BE5E343180EEF0B00DCA666 /* Resources */ = {
+		63005F06188407250077C0DD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BE5E353180EEF0B00DCA666 /* InfoPlist.strings in Resources */,
-				5BE5E361180EEF0B00DCA666 /* Images.xcassets in Resources */,
-				5BE5E359180EEF0B00DCA666 /* Credits.rtf in Resources */,
-				5BE5E35F180EEF0B00DCA666 /* MainMenu.xib in Resources */,
-				5B76A9B81810014E00E14C18 /* Settings.plist in Resources */,
-				BF8CB057B77E61E90F14ACEC /* Settings.plist.example in Resources */,
+				63005F18188408470077C0DD /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3AA270CF94C042088DE61B36 /* Copy Pods Resources */ = {
+		5740A4D637A2455F8BDA35EF /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -336,7 +320,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		67E85CAB99234619BAA8740C /* Check Pods Manifest.lock */ = {
+		BE1CCFDAFB3146A693FCF7CF /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -354,67 +338,37 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		5BE5E341180EEF0B00DCA666 /* Sources */ = {
+		63005F04188407250077C0DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BE5E35C180EEF0B00DCA666 /* AppDelegate.m in Sources */,
-				5BE5E355180EEF0B00DCA666 /* main.m in Sources */,
-				BF8CB87DEA9C4A7859096B1A /* CreateSensorMUCDomain.m in Sources */,
-				BF8CBD7D24104EAE2BF25E0E /* DelegateSensorItems.m in Sources */,
-				BF8CB51B972560B85772D1B6 /* GetSensorMUCDomainsRequest.m in Sources */,
-				BF8CBC764B4C0D65F009BAB7 /* GetSensorMUCDomainsResponse.m in Sources */,
-				BF8CB35EDD06270B0EBEBB26 /* Location.m in Sources */,
-				BF8CB87B300D5F0A842543AE /* PublishSensorItems.m in Sources */,
-				BF8CB2C3D91996531F49A658 /* RegisterPublisher.m in Sources */,
-				BF8CB28A1E712D15EC9C94B4 /* RegisterReceiver.m in Sources */,
-				BF8CB3763756AF272B7CA093 /* RemovePublisher.m in Sources */,
-				BF8CB3EFBF19133495DDAC55 /* RemoveReceiver.m in Sources */,
-				BF8CBAFDFDEF927622F9E1B3 /* RemoveSensorMUCDomain.m in Sources */,
-				BF8CBFA00FAFEC343397F4A5 /* SensorItem.m in Sources */,
-				BF8CB1466BEB382F17E532EC /* SensorMUCDomain.m in Sources */,
-				BF8CB191FFAC40108E7DED78 /* SensorMUCDomainCreated.m in Sources */,
-				BF8CB18F074C886236CD7499 /* SensorMUCDomainRemoved.m in Sources */,
-				BF8CB28E890DA3B3DDBC6A96 /* SensorValue.m in Sources */,
-				BF8CBCC980AA9DA943CCD5B0 /* Timestamp.m in Sources */,
-				BF8CB0CBEE07CADF2CB8DFE4 /* ServerComponent.m in Sources */,
-				BF8CBED7FFA1E049647FFF37 /* PubSubStore.m in Sources */,
-				BF8CB3A4ED2A2646632603DF /* MUCDiscovery.m in Sources */,
-				BF8CBBAB4EF2937FA69A4FAE /* ACDSMultiUserChatRoom.m in Sources */,
-				BF8CB347FBF78511D86A1FAF /* SynchronizeRuntimeBean.m in Sources */,
-				BF8CBFA0994C5171A88FB474 /* DomainStore.m in Sources */,
-				BF8CB3B8793B8FA38C9948D8 /* DelegateSensorItemsOut.m in Sources */,
+				63005F191884089A0077C0DD /* ServerComponent.m in Sources */,
+				63005F1A1884089A0077C0DD /* PubSubStore.m in Sources */,
+				63005F1B1884089A0077C0DD /* MUCDiscovery.m in Sources */,
+				63005F1C1884089A0077C0DD /* ACDSMultiUserChatRoom.m in Sources */,
+				63005F1D1884089A0077C0DD /* DomainStore.m in Sources */,
+				63005F1E1884089A0077C0DD /* CreateSensorMUCDomain.m in Sources */,
+				63005F1F1884089A0077C0DD /* DelegateSensorItems.m in Sources */,
+				63005F201884089A0077C0DD /* GetSensorMUCDomainsRequest.m in Sources */,
+				63005F211884089A0077C0DD /* GetSensorMUCDomainsResponse.m in Sources */,
+				63005F221884089A0077C0DD /* Location.m in Sources */,
+				63005F231884089A0077C0DD /* PublishSensorItems.m in Sources */,
+				63005F241884089A0077C0DD /* RegisterPublisher.m in Sources */,
+				63005F251884089A0077C0DD /* RegisterReceiver.m in Sources */,
+				63005F261884089A0077C0DD /* RemovePublisher.m in Sources */,
+				63005F271884089A0077C0DD /* RemoveReceiver.m in Sources */,
+				63005F281884089A0077C0DD /* RemoveSensorMUCDomain.m in Sources */,
+				63005F291884089A0077C0DD /* SensorItem.m in Sources */,
+				63005F2A1884089A0077C0DD /* SensorMUCDomain.m in Sources */,
+				63005F2B1884089A0077C0DD /* SensorMUCDomainCreated.m in Sources */,
+				63005F2C1884089A0077C0DD /* SensorMUCDomainRemoved.m in Sources */,
+				63005F2D1884089A0077C0DD /* SensorValue.m in Sources */,
+				63005F2E1884089A0077C0DD /* Timestamp.m in Sources */,
+				63005F2F1884089A0077C0DD /* DelegateSensorItemsOut.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		5BE5E351180EEF0B00DCA666 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5BE5E352180EEF0B00DCA666 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		5BE5E357180EEF0B00DCA666 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5BE5E358180EEF0B00DCA666 /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		5BE5E35D180EEF0B00DCA666 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5BE5E35E180EEF0B00DCA666 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		5BE5E374180EEF0B00DCA666 /* Debug */ = {
@@ -451,6 +405,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SYMROOT = build;
 			};
 			name = Debug;
 		};
@@ -482,34 +437,49 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
+				SYMROOT = build;
 			};
 			name = Release;
 		};
-		5BE5E377180EEF0B00DCA666 /* Debug */ = {
+		63005F12188407250077C0DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E6B5BBBF14824D638A3237F2 /* Pods.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				DEPLOYMENT_LOCATION = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ACDSenseService4Mac/ACDSenseService4Mac-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = "ACDSenseService4Mac/ACDSenseService4Mac-Info.plist";
+				INSTALL_PATH = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
+				SKIP_INSTALL = NO;
+				SYMROOT = build;
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
-		5BE5E378180EEF0B00DCA666 /* Release */ = {
+		63005F13188407250077C0DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E6B5BBBF14824D638A3237F2 /* Pods.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				DEPLOYMENT_LOCATION = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ACDSenseService4Mac/ACDSenseService4Mac-Prefix.pch";
 				INFOPLIST_FILE = "ACDSenseService4Mac/ACDSenseService4Mac-Info.plist";
+				INSTALL_PATH = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
+				SKIP_INSTALL = NO;
+				SYMROOT = build;
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -525,11 +495,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5BE5E376180EEF0B00DCA666 /* Build configuration list for PBXNativeTarget "ACDSenseService4Mac" */ = {
+		63005F11188407250077C0DD /* Build configuration list for PBXNativeTarget "ACDSenseService4Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5BE5E377180EEF0B00DCA666 /* Debug */,
-				5BE5E378180EEF0B00DCA666 /* Release */,
+				63005F12188407250077C0DD /* Debug */,
+				63005F13188407250077C0DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
