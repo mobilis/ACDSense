@@ -99,7 +99,8 @@
 			tf.keyboardType = UIKeyboardTypeNumberPad;
 			tf.text = [NSString stringWithFormat:@"%@", self.port];
 			break;
-	}
+        default:break;
+    }
 	return cell;
 }
 
@@ -108,17 +109,14 @@
 	switch (section) {
 		case 0:
 			return @"Host";
-			break;
 		case 1:
 			return @"Your Account (JID)";
-			break;
 		case 2:
 			return @"Password";
-			break;
 		case 3:
 			return @"Port";
-			break;
-	}
+        default:break;
+    }
 	return @"";
 }
 
