@@ -18,6 +18,7 @@
 #import "SensorMUCDomainRemoved.h"
 #import "GetSensorMUCDomainsRequest.h"
 #import "GetSensorMUCDomainsResponse.h"
+#import "NewSensorDomainViewController.h"
 
 @interface SensorDomainsViewController ()
 
@@ -75,6 +76,15 @@
 	[super viewWillAppear:animated];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"newSensorDomain"])
+    {
+        NewSensorDomainViewController *controller = (NewSensorDomainViewController *)segue.destinationViewController;
+        controller.delegate = self;
+    }
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -120,25 +130,6 @@
     [detailView filterForDomains:selectedDomains];
 }
 
-#pragma mark - UIAlertViewDelegate
-
-- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
-{
-	return [[[alertView textFieldAtIndex:0] text] length] > 0;
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-	if (buttonIndex > 0) {
-		CreateSensorMUCDomain *request = [CreateSensorMUCDomain new];
-		SensorMUCDomain *domain = [SensorMUCDomain new];
-		domain.domainId = [[NSUUID UUID] UUIDString];
-		domain.domainURL = [[alertView textFieldAtIndex:0] text];
-		request.sensorDomain = domain;
-		[[MXiConnectionHandler sharedInstance] sendBean:request toService:nil];
-	}
-}
-
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -153,13 +144,21 @@
 
 #pragma mark - Interface Implementation
 
-- (IBAction)addSensorDomain:(UIBarButtonItem *)sender {
-	UIAlertView *newDomain = [[UIAlertView alloc] initWithTitle:@"New Domain" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add",nil];
-	newDomain.alertViewStyle = UIAlertViewStylePlainTextInput;
-	[[newDomain textFieldAtIndex:0] setKeyboardType:UIKeyboardTypeURL];
-	[[newDomain textFieldAtIndex:0] setDelegate:self];
-	newDomain.delegate = self;
-	[newDomain show];
+- (void)createSensorDomain:(NSString *)domainName fetchingFromService:(BOOL)fetchingRemote
+{
+    if (fetchingRemote)
+    {
+        CreateSensorMUCDomain *request = [CreateSensorMUCDomain new];
+        SensorMUCDomain *domain = [SensorMUCDomain new];
+        domain.domainId = [[NSUUID UUID] UUIDString];
+        domain.domainURL = domainName;
+        request.sensorDomain = domain;
+        [[MXiConnectionHandler sharedInstance] sendBean:request toService:nil];
+    }
+    else
+    {
+        // TODO: launch service discovery for MultiUserChatRooms
+    }
 }
 
 - (void)sensorMUCDomainCreated:(SensorMUCDomainCreated *)bean

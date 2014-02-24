@@ -71,6 +71,7 @@
 		5BB71D5C17D31872000CAF47 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB71D5B17D31872000CAF47 /* CoreData.framework */; };
 		5BB71DB317D32F37000CAF47 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB71DB217D32F37000CAF47 /* QuartzCore.framework */; };
 		5BE348A017CF287300AE0407 /* Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3489F17CF287300AE0407 /* Timestamp.m */; };
+		63174A3B18BB831100A9B0F7 /* NewSensorDomainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63174A3A18BB831100A9B0F7 /* NewSensorDomainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -170,6 +171,8 @@
 		5BB71DB217D32F37000CAF47 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5BE3489E17CF287300AE0407 /* Timestamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Timestamp.h; path = "src-gen/Timestamp.h"; sourceTree = "<group>"; };
 		5BE3489F17CF287300AE0407 /* Timestamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Timestamp.m; path = "src-gen/Timestamp.m"; sourceTree = "<group>"; };
+		63174A3918BB831100A9B0F7 /* NewSensorDomainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSensorDomainViewController.h; sourceTree = "<group>"; };
+		63174A3A18BB831100A9B0F7 /* NewSensorDomainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSensorDomainViewController.m; sourceTree = "<group>"; };
 		7DCE29203B844EA6A93532A5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,6 +224,8 @@
 				0CD1893717C74DAC004DF634 /* MainViewController.m */,
 				0C8B6A4E17CE397000D15D3C /* SensorsViewController.h */,
 				0C8B6A4F17CE397000D15D3C /* SensorsViewController.m */,
+				63174A3918BB831100A9B0F7 /* NewSensorDomainViewController.h */,
+				63174A3A18BB831100A9B0F7 /* NewSensorDomainViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -535,6 +540,7 @@
 				0C80B7C317CA61F7002A0DD1 /* RegisterPublisher.m in Sources */,
 				0C80B7C417CA61F7002A0DD1 /* RegisterReceiver.m in Sources */,
 				0C80B7C517CA61F7002A0DD1 /* RemovePublisher.m in Sources */,
+				63174A3B18BB831100A9B0F7 /* NewSensorDomainViewController.m in Sources */,
 				0C80B7C617CA61F7002A0DD1 /* RemoveReceiver.m in Sources */,
 				0C80B7C717CA61F7002A0DD1 /* RemoveSensorMUCDomain.m in Sources */,
 				5B22E85B17C2547B00E6E4F4 /* main.m in Sources */,
