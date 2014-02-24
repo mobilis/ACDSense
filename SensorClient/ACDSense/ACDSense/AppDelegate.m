@@ -95,11 +95,12 @@
 
 - (void)authenticationFinishedSuccessfully:(BOOL)authenticationState
 {
-    [[MXiConnectionHandler sharedInstance] sendBean:[RegisterReceiver new] toService:nil];
+    NSLog(@"Authentication Successfull. Waiting for Service Discovery");
 }
 
 - (void)serviceDiscoveryError:(NSError *)error
 {
+    if (!error) [[MXiConnectionHandler sharedInstance] sendBean:[RegisterReceiver new] toService:nil];
     NSLog(@"Service discovery failed with error: %@", error.localizedDescription);
 }
 

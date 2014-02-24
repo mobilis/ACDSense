@@ -1,5 +1,5 @@
 PODS:
-  - CocoaAsyncSocket (7.3.2)
+  - CocoaAsyncSocket (7.3.4)
   - CocoaLumberjack (1.6.5.1):
     - CocoaLumberjack/Core
     - CocoaLumberjack/Extensions
@@ -7,7 +7,7 @@ PODS:
   - CocoaLumberjack/Extensions (1.6.5.1):
     - CocoaLumberjack/Core
   - CorePlot (1.4)
-  - FXKeychain (1.4)
+  - FXKeychain (1.5)
   - MobilisMXi (0.5.0):
     - FXKeychain
     - MobilisMXi/no_arc
@@ -69,11 +69,11 @@ EXTERNAL SOURCES:
     :podspec: xmpp.podspec
 
 SPEC CHECKSUMS:
-  CocoaAsyncSocket: 977404129ec8505fee1c3701956b769e3bb10ea7
+  CocoaAsyncSocket: 534d09416f992fd51efb23f534742ce70b3a7999
   CocoaLumberjack: 17803afbade3126a377d32b8d23367264b44ced6
-  CorePlot: 620ec9763d92cc0478eae469c515132df317e24e
-  FXKeychain: 649efca683aa602c446620701a46780515d25610
+  CorePlot: 0c6cfe42f4cc458062dfd765d5b8f59a0d0fdddf
+  FXKeychain: 90cc7bf9ba005e4d099a113a194792e7983c5778
   MobilisMXi: 94efe63b89ed81b119a4c7119791c0e981ea7b9a
   XMPPFramework: fde30bd10f0bd848e3572f858e3be230805f28f0
 
-COCOAPODS: 0.28.0
+COCOAPODS: 0.29.0
