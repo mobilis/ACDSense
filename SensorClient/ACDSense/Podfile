@@ -1,5 +1,6 @@
 platform :ios, '7.0'
 pod 'CorePlot'
+pod 'SBJson'
 
 pod 'XMPPFramework/Core', :podspec => 'xmpp.podspec'
 pod 'XMPPFramework/Reconnect', :podspec => 'xmpp.podspec'

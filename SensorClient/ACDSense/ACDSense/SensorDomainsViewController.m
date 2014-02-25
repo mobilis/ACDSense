@@ -19,11 +19,18 @@
 #import "GetSensorMUCDomainsRequest.h"
 #import "GetSensorMUCDomainsResponse.h"
 #import "NewSensorDomainViewController.h"
+#import "MXiMultiUserChatDiscovery.h"
+#import "MXiMultiUserChatRoom.h"
+#import "SensorMUCValidator.h"
+#import "SensorMUC.h"
 
-@interface SensorDomainsViewController ()
+@interface SensorDomainsViewController () <MXiMultiUserChatDiscoveryDelegate>
 
 @property (strong) NSMutableArray *sensorDomains;
+@property (strong) NSMutableArray *mucSensorDomains;
 @property (strong) UIRefreshControl *refreshControl;
+
+@property(nonatomic, strong) NSMutableArray *runningMUCDiscoveries;
 
 - (void) sensorMUCDomainCreated:(SensorMUCDomainCreated *) bean;
 - (void) sensorMUCDomainRemoved:(SensorMUCDomainRemoved *) bean;
@@ -48,6 +55,8 @@
     [super viewDidLoad];
 
 	self.sensorDomains = [NSMutableArray new];
+    self.mucSensorDomains = [NSMutableArray new];
+    self.runningMUCDiscoveries = [[NSMutableArray alloc] initWithCapacity:5];
 
     [[MXiConnectionHandler sharedInstance].connection addBeanDelegate:self
                                                          withSelector:@selector(sensorMUCDomainCreated:)
@@ -63,6 +72,11 @@
     [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
     [self.tableView setAllowsMultipleSelection:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.runningMUCDiscoveries removeAllObjects];
 }
 
 - (void)handleRefresh:(id)arg
@@ -89,19 +103,35 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return 1;
+	return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return self.sensorDomains.count;
+	if (section == 0) return self.sensorDomains.count;
+    else if (section == 1) return self.mucSensorDomains.count;
+    else return 0;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-	cell.textLabel.text = ((SensorMUCDomain *)[self.sensorDomains objectAtIndex:indexPath.row]).domainURL;
+    if (indexPath.section == 0)
+    {
+	    cell.textLabel.text = ((SensorMUCDomain *)[self.sensorDomains objectAtIndex:indexPath.row]).domainURL;
+    }
+    else if (indexPath.section == 1)
+    {
+        cell.textLabel.text = ((SensorMUC *)[self.mucSensorDomains objectAtIndex:indexPath.row]).jabberID.full;
+    }
 	return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) return @"Service Managed Domains";
+    else if (section == 1) return @"Direct Access MUC";
+    else return @"";
 }
 
 #pragma mark - UITableViewDelegate
@@ -120,6 +150,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 1) return; // FIXME: handle touch events correctly
     SensorsViewController *detailView = [((UISplitViewController *)self.parentViewController.parentViewController) viewControllers][1];
     NSArray *selectedRows = [tableView indexPathsForSelectedRows];
     NSMutableArray *selectedDomains = [NSMutableArray arrayWithCapacity:selectedRows.count];
@@ -157,7 +188,11 @@
     }
     else
     {
-        // TODO: launch service discovery for MultiUserChatRooms
+        MXiMultiUserChatDiscovery *multiUserChatDiscovery = [MXiMultiUserChatDiscovery multiUserChatDiscoveryWithConnectionHandler:[MXiConnectionHandler sharedInstance]
+                                                                                                                     forDomainName:domainName
+                                                                                                                       andDelegate:self];
+        [self.runningMUCDiscoveries addObject:multiUserChatDiscovery];
+        [multiUserChatDiscovery startDiscoveryWithResultQueue:dispatch_get_main_queue()];
     }
 }
 
@@ -198,6 +233,31 @@
 -(UIBarPosition)positionForBar:(id<UIBarPositioning>)bar
 {
 	return UIBarPositionTopAttached;
+}
+
+#pragma mark - MXiMultiUserChatDiscoveryDelegate
+
+- (void)multiUserChatRoomsDiscovered:(NSArray *)chatRooms inDomain:(NSString *)domainName
+{
+    for (MXiMultiUserChatRoom *room in chatRooms)
+    {
+        [SensorMUCValidator launchValidationWithConnection:[MXiConnectionHandler sharedInstance]
+                                                       jid:room.jabberID.full
+                                           completionBlock:^(BOOL sensorMUC, NSString *description)
+                                           {
+                                               if (sensorMUC && description)
+                                               {
+                                                   // TODO: add to list of discovered MUCs that support ACDS
+                                                   SensorMUC *muc = [SensorMUC new];
+                                                   muc.jabberID = room.jabberID;
+                                                   [self.mucSensorDomains addObject:muc];
+                                                   dispatch_async(dispatch_get_main_queue(), ^
+                                                   {
+                                                       [self refreshTableView];
+                                                   });
+                                               }
+                                           }];
+    }
 }
 
 @end

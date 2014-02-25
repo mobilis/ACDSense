@@ -21,6 +21,7 @@ PODS:
     - XMPPFramework/Reconnect
     - XMPPFramework/Roster
     - XMPPFramework/XEP-0045
+  - SBJson (4.0.0)
   - XMPPFramework/Authentication (3.6.1):
     - XMPPFramework/Core
   - XMPPFramework/Categories (3.6.1):
@@ -57,6 +58,7 @@ PODS:
 DEPENDENCIES:
   - CorePlot
   - MobilisMXi (from `/Users/cmdaltent/Development/Projects/Mobilis/Mobilis`)
+  - SBJson
   - XMPPFramework/Core (from `xmpp.podspec`)
   - XMPPFramework/Reconnect (from `xmpp.podspec`)
   - XMPPFramework/Roster (from `xmpp.podspec`)
@@ -74,6 +76,7 @@ SPEC CHECKSUMS:
   CorePlot: 0c6cfe42f4cc458062dfd765d5b8f59a0d0fdddf
   FXKeychain: 90cc7bf9ba005e4d099a113a194792e7983c5778
   MobilisMXi: 94efe63b89ed81b119a4c7119791c0e981ea7b9a
+  SBJson: f3c686806e8e36ab89e020189ac582ba26ec4220
   XMPPFramework: fde30bd10f0bd848e3572f858e3be230805f28f0
 
 COCOAPODS: 0.29.0
