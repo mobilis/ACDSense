@@ -122,7 +122,7 @@
     }
     else if (indexPath.section == 1)
     {
-        cell.textLabel.text = ((SensorMUC *)[self.mucSensorDomains objectAtIndex:indexPath.row]).jabberID.full;
+        cell.textLabel.text = ((SensorMUC *)[self.mucSensorDomains objectAtIndex:indexPath.row]).domainName;
     }
 	return cell;
 }
@@ -248,8 +248,7 @@
                                                if (sensorMUC && description)
                                                {
                                                    // TODO: add to list of discovered MUCs that support ACDS
-                                                   SensorMUC *muc = [SensorMUC new];
-                                                   muc.jabberID = room.jabberID;
+                                                   SensorMUC *muc = [[SensorMUC alloc] initWithJabberID:room.jabberID];
                                                    [self.mucSensorDomains addObject:muc];
                                                    dispatch_async(dispatch_get_main_queue(), ^
                                                    {

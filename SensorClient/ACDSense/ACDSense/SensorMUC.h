@@ -10,6 +10,8 @@
 
 @interface SensorMUC : NSObject
 
-@property (nonatomic) XMPPJID *jabberID;
+@property (nonatomic, readonly) XMPPJID *jabberID;
+@property (nonatomic, readonly) NSString *domainName;
 
+- (id)initWithJabberID:(XMPPJID *)jabberID;
 @end

@@ -7,7 +7,24 @@
 #import "XMPPJID.h"
 
 
-@implementation SensorMUC {
+@interface SensorMUC ()
 
+@property (nonatomic, readwrite) XMPPJID *jabberID;
+@property (nonatomic, readwrite) NSString *domainName;
+
+@end
+
+@implementation SensorMUC
+
+- (id)initWithJabberID:(XMPPJID *)jabberID
+{
+    if (self = [super init])
+    {
+        self.jabberID = jabberID;
+        self.domainName = [jabberID domain];
+    }
+
+    return self;
 }
+
 @end
