@@ -24,6 +24,12 @@
 #import "SensorMUCValidator.h"
 #import "SensorMUC.h"
 
+typedef enum
+{
+    REMOTE_DOMAINS,
+    MUC_DOMAINS
+} TableSections;
+
 @interface SensorDomainsViewController () <MXiMultiUserChatDiscoveryDelegate>
 
 @property (strong) NSMutableArray *sensorDomains;
@@ -108,19 +114,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	if (section == 0) return self.sensorDomains.count;
-    else if (section == 1) return self.mucSensorDomains.count;
+	if (section == REMOTE_DOMAINS) return self.sensorDomains.count;
+    else if (section == MUC_DOMAINS) return self.mucSensorDomains.count;
     else return 0;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-    if (indexPath.section == 0)
+    if (indexPath.section == REMOTE_DOMAINS)
     {
 	    cell.textLabel.text = ((SensorMUCDomain *)[self.sensorDomains objectAtIndex:indexPath.row]).domainURL;
     }
-    else if (indexPath.section == 1)
+    else if (indexPath.section == MUC_DOMAINS)
     {
         cell.textLabel.text = ((SensorMUC *)[self.mucSensorDomains objectAtIndex:indexPath.row]).domainName;
     }
@@ -129,8 +135,8 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (section == 0) return @"Service Managed Domains";
-    else if (section == 1) return @"Direct Access MUC";
+    if (section == REMOTE_DOMAINS) return @"Service Managed Domains";
+    else if (section == MUC_DOMAINS) return @"Direct Access MUC";
     else return @"";
 }
 
@@ -150,7 +156,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1) return; // FIXME: handle touch events correctly
+    if (indexPath.section == MUC_DOMAINS) return; // FIXME: handle touch events correctly
     SensorsViewController *detailView = [((UISplitViewController *)self.parentViewController.parentViewController) viewControllers][1];
     NSArray *selectedRows = [tableView indexPathsForSelectedRows];
     NSMutableArray *selectedDomains = [NSMutableArray arrayWithCapacity:selectedRows.count];
