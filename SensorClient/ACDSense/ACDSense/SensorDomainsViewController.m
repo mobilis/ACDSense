@@ -53,7 +53,10 @@ typedef enum
     [[MXiConnectionHandler sharedInstance].connection removeBeanDelegate:self forBeanClass:[GetSensorMUCDomainsResponse class]];
     
     self.sensorDomains = nil;
+    self.mucSensorDomains = nil;
     self.refreshControl = nil;
+
+    self.runningMUCDiscoveries = nil;
 }
 
 - (void)viewDidLoad
@@ -156,15 +159,24 @@ typedef enum
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == MUC_DOMAINS) return; // FIXME: handle touch events correctly
-    SensorsViewController *detailView = [((UISplitViewController *)self.parentViewController.parentViewController) viewControllers][1];
-    NSArray *selectedRows = [tableView indexPathsForSelectedRows];
-    NSMutableArray *selectedDomains = [NSMutableArray arrayWithCapacity:selectedRows.count];
-    
-    for (NSIndexPath *indexPath in selectedRows) {
-        [selectedDomains addObject:[_sensorDomains objectAtIndex:indexPath.row]];
+    if (indexPath.section == MUC_DOMAINS) // FIXME: handle touch events correctly
+    {
+        SensorMUC *sensorMUC = [self.mucSensorDomains objectAtIndex:indexPath.row];
+        SensorsViewController *detailView = [((UISplitViewController *) self.parentViewController.parentViewController) viewControllers][1];
+
+        return;
     }
-    [detailView filterForDomains:selectedDomains];
+    else
+    {
+        SensorsViewController *detailView = [((UISplitViewController *)self.parentViewController.parentViewController) viewControllers][1];
+        NSArray *selectedRows = [tableView indexPathsForSelectedRows];
+        NSMutableArray *selectedDomains = [NSMutableArray arrayWithCapacity:selectedRows.count];
+
+        for (NSIndexPath *indexPath in selectedRows) {
+            [selectedDomains addObject:[_sensorDomains objectAtIndex:indexPath.row]];
+        }
+        [detailView filterForDomains:selectedDomains];
+    }
 }
 
 #pragma mark - UITextFieldDelegate
@@ -253,7 +265,6 @@ typedef enum
                                            {
                                                if (sensorMUC && description)
                                                {
-                                                   // TODO: add to list of discovered MUCs that support ACDS
                                                    SensorMUC *muc = [[SensorMUC alloc] initWithJabberID:room.jabberID];
                                                    [self.mucSensorDomains addObject:muc];
                                                    dispatch_async(dispatch_get_main_queue(), ^
