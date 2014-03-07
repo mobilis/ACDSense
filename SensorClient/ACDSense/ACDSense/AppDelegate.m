@@ -67,6 +67,7 @@
         [[MXiConnectionHandler sharedInstance] launchConnectionWithJID:account.jid
                                                               password:account.password
                                                               hostName:account.hostName
+                                                           runtimeName:account.runtimeName
                                                            serviceType:SINGLE
                                                                   port:account.port];
 	} else {
@@ -81,6 +82,7 @@
         [[MXiConnectionHandler sharedInstance] launchConnectionWithJID:jid
                                                               password:password
                                                               hostName:hostName
+                                                           runtimeName:account.runtimeName
                                                            serviceType:SINGLE
                                                                   port:port];
 	}
