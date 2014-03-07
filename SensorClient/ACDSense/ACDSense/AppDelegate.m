@@ -11,6 +11,7 @@
 
 #import "RegisterReceiver.h"
 #import "RemoveReceiver.h"
+#import "GetSensorMUCDomainsRequest.h"
 
 @interface AppDelegate () <MXiConnectionHandlerDelegate>
 
@@ -107,7 +108,11 @@
 
 - (void)serviceDiscoveryError:(NSError *)error
 {
-    if (!error) [[MXiConnectionHandler sharedInstance] sendBean:[RegisterReceiver new] toService:nil];
+    if (!error)
+    {
+        [[MXiConnectionHandler sharedInstance] sendBean:[RegisterReceiver new] toService:nil];
+        [[MXiConnectionHandler sharedInstance] sendBean:[GetSensorMUCDomainsRequest new] toService:nil];
+    }
     NSLog(@"Service discovery failed with error: %@", error.localizedDescription);
 }
 
