@@ -463,6 +463,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Technische Universität Dresden";
+				TargetAttributes = {
+					5B22E84A17C2547B00E6E4F4 = {
+						DevelopmentTeam = KYTQR8SDCT;
+					};
+				};
 			};
 			buildConfigurationList = 5B22E84617C2547B00E6E4F4 /* Build configuration list for PBXProject "ACDSense" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -662,6 +667,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7DCE29203B844EA6A93532A5 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ACDSense/ACDSense-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(inherited)";
@@ -673,6 +680,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -681,6 +689,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7DCE29203B844EA6A93532A5 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ACDSense/ACDSense-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(inherited)";
@@ -692,6 +702,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

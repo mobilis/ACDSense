@@ -95,7 +95,12 @@
 
 - (void)authenticationFinishedSuccessfully:(BOOL)authenticationState
 {
-    NSLog(@"Authentication Successfull. Waiting for Service Discovery");
+    if (authenticationState) {
+        NSLog(@"Authentication Successful. Waiting for Service Discovery");
+    } else {
+        NSLog(@"Authentication not successful");
+    }
+    
 }
 
 - (void)serviceDiscoveryError:(NSError *)error

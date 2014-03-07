@@ -95,7 +95,8 @@ typedef enum
 
 - (void)viewWillAppear:(BOOL)animated
 {
-	[[MXiConnectionHandler sharedInstance] sendBean:[GetSensorMUCDomainsRequest new] toService:nil];
+    if ([MXiConnectionHandler sharedInstance].serviceManager.services.count == 1)
+        [[MXiConnectionHandler sharedInstance] sendBean:[GetSensorMUCDomainsRequest new] toService:nil];
 	[super viewWillAppear:animated];
 }
 
