@@ -35,13 +35,16 @@
 
 - (void)launchDiscovery
 {
+    
+    
     XMPPIQ *infoIQ = [XMPPIQ iqWithType:@"get" to:[XMPPJID jidWithString:_jid] elementID:@"roomInfo" child:[NSXMLElement elementWithName:@"query" xmlns:@"http://jabber.org/protocol/disco#info"]];
     [_connectionHandler sendElement:infoIQ];
 }
 
 - (void)iqStanzaReceived:(XMPPIQ *)iq
 {
-    NSError *error = nil;
+    if (![iq.from.full isEqualToString:_jid]) return;
+    
     NSArray *fieldNodes = [[[iq elementForName:@"query"] elementForName:@"x"] elementsForName:@"field"];
     if (!fieldNodes || fieldNodes.count == 0)
     {
