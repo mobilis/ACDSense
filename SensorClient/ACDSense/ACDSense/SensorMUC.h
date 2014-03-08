@@ -13,5 +13,5 @@
 @property (nonatomic, readonly) XMPPJID *jabberID;
 @property (nonatomic, readonly) NSString *domainName;
 
-- (id)initWithJabberID:(XMPPJID *)jabberID;
+- (id)initWithJabberID:(XMPPJID *)jabberID andDomainName:(NSString *)domainName;
 @end

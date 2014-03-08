@@ -17,4 +17,6 @@
 - (void)filterForDomain:(SensorMUCDomain *)domain;
 - (void)filterForDomains:(NSArray *)domains;
 
+- (void)connectToSensorMUC:(NSString *)roomID;
+
 @end

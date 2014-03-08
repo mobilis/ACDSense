@@ -16,12 +16,12 @@
 
 @implementation SensorMUC
 
-- (id)initWithJabberID:(XMPPJID *)jabberID
+- (id)initWithJabberID:(XMPPJID *)jabberID andDomainName:(NSString *)domainName
 {
     if (self = [super init])
     {
         self.jabberID = jabberID;
-        self.domainName = [jabberID domain];
+        self.domainName = domainName;
     }
 
     return self;

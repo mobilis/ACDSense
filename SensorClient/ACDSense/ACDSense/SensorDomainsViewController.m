@@ -266,10 +266,13 @@ typedef enum
                                            {
                                                if (sensorMUC && description)
                                                {
-                                                   SensorMUC *muc = [[SensorMUC alloc] initWithJabberID:room.jabberID];
+                                                   SensorMUC *muc = [[SensorMUC alloc] initWithJabberID:room.jabberID andDomainName:domainName];
                                                    [self.mucSensorDomains addObject:muc];
                                                    dispatch_async(dispatch_get_main_queue(), ^
                                                    {
+                                                       SensorsViewController *detailView = [((UISplitViewController *) self.parentViewController.parentViewController) viewControllers][1];
+                                                       [detailView connectToSensorMUC:room.jabberID.full];
+                                                       
                                                        [self refreshTableView];
                                                    });
                                                }

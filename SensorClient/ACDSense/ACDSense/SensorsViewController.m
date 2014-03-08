@@ -13,7 +13,7 @@
 
 #import "Timestamp+Description.h"
 
-@interface SensorsViewController ()
+@interface SensorsViewController () <MXiMultiUserChatDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary *filteredSensorItems;
 @property (strong, nonatomic) NSMutableDictionary *allSensorItems;
@@ -87,6 +87,26 @@
     
     _filtered = YES;
     [self updateView];
+}
+
+#pragma mark - ACDSense Chat Support
+
+- (void)connectToSensorMUC:(NSString *)roomID
+{
+    [[MXiConnectionHandler sharedInstance].connection connectToMultiUserChatRoom:roomID withDelegate:self];
+}
+
+#pragma mark - MXiMultiUserChatDelegate
+
+- (void)connectionToRoomEstablished:(NSString *)roomJID usingRoomJID:(NSString *)myRoomJID
+{
+    NSLog(@"Connection to room %@ established.", roomJID);
+    // TODO: store room information somewhere
+}
+
+- (void)didReceiveMultiUserChatMessage:(NSString *)message fromUser:(NSString *)user publishedInRoom:(NSString *)roomJID
+{
+    NSLog(@"Did receive MultiUserChat Message:\n%@", message);
 }
 
 #pragma mark - MXiCommunication
