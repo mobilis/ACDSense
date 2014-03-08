@@ -12,11 +12,14 @@
 #import "DelegateSensorItems.h"
 
 #import "Timestamp+Description.h"
+#import "SensorMUC.h"
+#import "MUCMessageProcessor.h"
 
 @interface SensorsViewController () <MXiMultiUserChatDelegate>
 
 @property (strong, nonatomic) NSMutableDictionary *filteredSensorItems;
 @property (strong, nonatomic) NSMutableDictionary *allSensorItems;
+@property (strong, nonatomic) NSMutableArray *mucDomains;
 @property BOOL filtered;
 
 @property (strong, nonatomic) SensorItem *selectedSensor;
@@ -52,6 +55,7 @@
     [super viewDidLoad];
 	self.allSensorItems = [NSMutableDictionary dictionaryWithCapacity:10];
     self.filteredSensorItems = [NSMutableDictionary dictionaryWithCapacity:10];
+    self.mucDomains = [NSMutableArray arrayWithCapacity:10];
     [self registerBeanListener];
 	[self constructChart];
 }
@@ -91,9 +95,10 @@
 
 #pragma mark - ACDSense Chat Support
 
-- (void)connectToSensorMUC:(NSString *)roomID
+- (void)connectToSensorMUC:(SensorMUC *)sensorMUC;
 {
-    [[MXiConnectionHandler sharedInstance].connection connectToMultiUserChatRoom:roomID withDelegate:self];
+    [[MXiConnectionHandler sharedInstance].connection connectToMultiUserChatRoom:sensorMUC.jabberID.full withDelegate:self];
+    [self.mucDomains addObject:[sensorMUC copyAsSensorMUCDomain]];
 }
 
 #pragma mark - MXiMultiUserChatDelegate
@@ -101,12 +106,19 @@
 - (void)connectionToRoomEstablished:(NSString *)roomJID usingRoomJID:(NSString *)myRoomJID
 {
     NSLog(@"Connection to room %@ established.", roomJID);
-    // TODO: store room information somewhere
 }
 
 - (void)didReceiveMultiUserChatMessage:(NSString *)message fromUser:(NSString *)user publishedInRoom:(NSString *)roomJID
 {
     NSLog(@"Did receive MultiUserChat Message:\n%@", message);
+    SensorItem *item = [[MUCMessageProcessor processJSONString:message andSensorID:roomJID] processedJSON];
+    for (SensorMUCDomain *domain in self.mucDomains)
+        if ([roomJID rangeOfString:domain.domainURL].location != NSNotFound) {
+            item.sensorDomain = domain;
+        }
+    DelegateSensorItems *delegateSensorItem = [DelegateSensorItems new];
+    delegateSensorItem.sensorItems = [[NSMutableArray alloc] initWithArray:@[item]];
+    [self sensorItemsReceived:delegateSensorItem];
 }
 
 #pragma mark - MXiCommunication

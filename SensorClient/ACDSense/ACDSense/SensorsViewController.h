@@ -11,12 +11,13 @@
 #import "CorePlot-CocoaTouch.h"
 
 @class SensorMUCDomain;
+@class SensorMUC;
 
 @interface SensorsViewController : UIViewController <UINavigationBarDelegate, UITableViewDataSource, UITableViewDelegate, CPTPlotDataSource, MKMapViewDelegate>
 
 - (void)filterForDomain:(SensorMUCDomain *)domain;
 - (void)filterForDomains:(NSArray *)domains;
 
-- (void)connectToSensorMUC:(NSString *)roomID;
+- (void)connectToSensorMUC:(SensorMUC *)sensorMUC;
 
 @end

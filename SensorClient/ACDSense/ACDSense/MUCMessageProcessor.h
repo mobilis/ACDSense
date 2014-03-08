@@ -10,7 +10,7 @@
 
 @interface MUCMessageProcessor : NSObject
 
-+ (instancetype)processJSONString:(NSString *)jsonString;
++ (instancetype)processJSONString:(NSString *)jsonString andSensorID:(NSString *)sensorID;
 
 - (SensorItem *)processedJSON;
 

@@ -6,12 +6,19 @@
 #import <Foundation/Foundation.h>
 
 @class XMPPJID;
-
+@class Location;
+@class SensorMUCDomain;
 
 @interface SensorMUC : NSObject
 
 @property (nonatomic, readonly) XMPPJID *jabberID;
 @property (nonatomic, readonly) NSString *domainName;
 
-- (id)initWithJabberID:(XMPPJID *)jabberID andDomainName:(NSString *)domainName;
+- (id)initWithJabberID:(XMPPJID *)jabberID domainName:(NSString *)domainName andDescription:(NSString *)description;
+
+- (SensorMUCDomain *)copyAsSensorMUCDomain;
+
+- (NSString *)type;
+- (Location *)location;
+
 @end

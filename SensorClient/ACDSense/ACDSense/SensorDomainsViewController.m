@@ -126,15 +126,9 @@ typedef enum
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-    if (indexPath.section == REMOTE_DOMAINS)
-    {
-	    cell.textLabel.text = ((SensorMUCDomain *)[self.sensorDomains objectAtIndex:indexPath.row]).domainURL;
-    }
-    else if (indexPath.section == MUC_DOMAINS)
-    {
-        cell.textLabel.text = ((SensorMUC *)[self.mucSensorDomains objectAtIndex:indexPath.row]).domainName;
-    }
-	return cell;
+    cell.textLabel.text = ((SensorMUCDomain *)[self.sensorDomains objectAtIndex:indexPath.row]).domainURL;
+	
+    return cell;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -160,24 +154,14 @@ typedef enum
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == MUC_DOMAINS) // FIXME: handle touch events correctly
-    {
-        SensorMUC *sensorMUC = [self.mucSensorDomains objectAtIndex:indexPath.row];
-        SensorsViewController *detailView = [((UISplitViewController *) self.parentViewController.parentViewController) viewControllers][1];
+    NSArray *selectedRows = [tableView indexPathsForSelectedRows];
+    SensorsViewController *detailView = [((UISplitViewController *)self.parentViewController.parentViewController) viewControllers][1];
+    NSMutableArray *selectedDomains = [NSMutableArray arrayWithCapacity:selectedRows.count];
 
-        return;
+    for (NSIndexPath *indexPath in selectedRows) {
+        [selectedDomains addObject:[_sensorDomains objectAtIndex:indexPath.row]];
     }
-    else
-    {
-        SensorsViewController *detailView = [((UISplitViewController *)self.parentViewController.parentViewController) viewControllers][1];
-        NSArray *selectedRows = [tableView indexPathsForSelectedRows];
-        NSMutableArray *selectedDomains = [NSMutableArray arrayWithCapacity:selectedRows.count];
-
-        for (NSIndexPath *indexPath in selectedRows) {
-            [selectedDomains addObject:[_sensorDomains objectAtIndex:indexPath.row]];
-        }
-        [detailView filterForDomains:selectedDomains];
-    }
+    [detailView filterForDomains:selectedDomains];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -266,12 +250,12 @@ typedef enum
                                            {
                                                if (sensorMUC && description)
                                                {
-                                                   SensorMUC *muc = [[SensorMUC alloc] initWithJabberID:room.jabberID andDomainName:domainName];
-                                                   [self.mucSensorDomains addObject:muc];
+                                                   SensorMUC *muc = [[SensorMUC alloc] initWithJabberID:room.jabberID domainName:domainName andDescription:description];
+                                                   [self.mucSensorDomains addObject:[muc copyAsSensorMUCDomain]];
                                                    dispatch_async(dispatch_get_main_queue(), ^
                                                    {
                                                        SensorsViewController *detailView = [((UISplitViewController *) self.parentViewController.parentViewController) viewControllers][1];
-                                                       [detailView connectToSensorMUC:room.jabberID.full];
+                                                       [detailView connectToSensorMUC:muc];
                                                        
                                                        [self refreshTableView];
                                                    });

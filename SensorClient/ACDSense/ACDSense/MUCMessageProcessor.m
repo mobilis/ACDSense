@@ -13,16 +13,18 @@
     __strong SensorItem *_sensorItem;
 }
 
-+ (instancetype)processJSONString:(NSString *)jsonString
++ (instancetype)processJSONString:(NSString *)jsonString andSensorID:(NSString *)sensorID
 {
-    return [[self alloc] initWithJSONString:jsonString];
+    return [[self alloc] initWithJSONString:jsonString andSensorID:sensorID];
 }
 
-- (id)initWithJSONString:(NSString *)jsonString
+- (id)initWithJSONString:(NSString *)jsonString andSensorID:(NSString *)sensorID
 {
     if (self = [super init])
     {
         _sensorItem = [SensorItem new];
+        _sensorItem.sensorId = sensorID;
+        _sensorItem.sensorDescription = sensorID;
         _sensorItem.values = [NSMutableArray arrayWithCapacity:5];
 
         SBJson4Parser *json4Parser = [SBJson4Parser parserWithBlock:^(id element, BOOL *stop)
@@ -68,7 +70,10 @@
         _sensorItem.type = [eventDictionary valueForKey:@"type"];
         [self parseArrayElement:(NSMutableArray *)[eventDictionary valueForKey:@"values"]];
         for (SensorValue *value in _sensorItem.values)
+        {
             value.timestamp = [self parseTimestamp:(NSString *)[eventDictionary valueForKey:@"timestamp"]];
+            value.subType = _sensorItem.type;
+        }
     }
 }
 

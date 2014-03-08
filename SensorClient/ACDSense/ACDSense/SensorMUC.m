@@ -5,6 +5,10 @@
 
 #import "SensorMUC.h"
 #import "XMPPJID.h"
+#import "Location.h"
+#import "SensorMUCDomain.h"
+
+#import <SBJson/SBJson4Parser.h>
 
 
 @interface SensorMUC ()
@@ -15,16 +19,77 @@
 @end
 
 @implementation SensorMUC
+{
+    NSString *_type;
+    Location *_location;
+}
 
-- (id)initWithJabberID:(XMPPJID *)jabberID andDomainName:(NSString *)domainName
+- (id)initWithJabberID:(XMPPJID *)jabberID domainName:(NSString *)domainName andDescription:(NSString *)description;
 {
     if (self = [super init])
     {
         self.jabberID = jabberID;
         self.domainName = domainName;
+        
+        [self parseDescription:description];
     }
 
     return self;
+}
+
+- (NSString *)type
+{
+    return _type;
+}
+
+- (Location *)location
+{
+    return _location;
+}
+
+- (SensorMUCDomain *)copyAsSensorMUCDomain
+{
+    SensorMUCDomain *sensorMUCDomain = [SensorMUCDomain new];
+    sensorMUCDomain.domainURL = self.domainName;
+    sensorMUCDomain.domainId = [NSUUID UUID];
+    
+    return sensorMUCDomain;
+}
+
+- (void)parseDescription:(NSString *)description
+{
+    // {"sensormuc":{"type":"MULTI","format":"full","location":{"countryCode":"DE","cityName":"Dresden","latitude":51.025714,"longitude":13.722278}}}
+    
+    SBJson4Parser *parser = [SBJson4Parser parserWithBlock:^(id item, BOOL *stop) {
+        if ([item isKindOfClass:[NSMutableDictionary class]])
+        {
+            NSMutableDictionary *information = [((NSMutableDictionary *)item) objectForKey:@"sensormuc"];
+            _type = [information valueForKey:@"type"];
+            _location = [self parseLocation:(NSMutableDictionary *)[information objectForKey:@"location"]];
+        }
+    }
+                                            allowMultiRoot:NO
+                                           unwrapRootArray:NO
+                                              errorHandler:^(NSError *error) {
+                                                  @throw [NSException exceptionWithName:@"JSON Parser error" reason:[NSString stringWithFormat:@"%i",error.code] userInfo:error.userInfo];
+                                              }];
+    
+    NSData *jsonData = [description dataUsingEncoding:NSUTF8StringEncoding];
+    if (!jsonData) {
+        @throw [NSException exceptionWithName:@"Json to Data error" reason:@"Json could not be converted to NSData" userInfo:nil];
+    }
+    
+    if (SBJson4ParserComplete == [parser parse:jsonData]) return;
+}
+
+- (Location *)parseLocation:(NSMutableDictionary *)rawLocation
+{
+    Location *location = [Location new];
+    location.latitude = [[rawLocation valueForKey:@"latitude"] floatValue];
+    location.longitude = [[rawLocation valueForKey:@"longitude"] floatValue];
+    location.locationName = [rawLocation valueForKey:@"cityName"];
+    
+    return location;
 }
 
 @end
