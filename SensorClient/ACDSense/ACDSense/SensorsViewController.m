@@ -14,6 +14,7 @@
 #import "Timestamp+Description.h"
 #import "SensorMUC.h"
 #import "MUCMessageProcessor.h"
+#import "SensorMUCDomain+Location.h"
 
 @interface SensorsViewController () <MXiMultiUserChatDelegate>
 
@@ -115,6 +116,7 @@
     for (SensorMUCDomain *domain in self.mucDomains)
         if ([roomJID rangeOfString:domain.domainURL].location != NSNotFound) {
             item.sensorDomain = domain;
+            item.location = domain.location;
         }
     DelegateSensorItems *delegateSensorItem = [DelegateSensorItems new];
     delegateSensorItem.sensorItems = [[NSMutableArray alloc] initWithArray:@[item]];

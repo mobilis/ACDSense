@@ -7,6 +7,7 @@
 #import "XMPPJID.h"
 #import "Location.h"
 #import "SensorMUCDomain.h"
+#import "SensorMUCDomain+Location.h"
 
 #import <SBJson/SBJson4Parser.h>
 
@@ -51,8 +52,9 @@
 {
     SensorMUCDomain *sensorMUCDomain = [SensorMUCDomain new];
     sensorMUCDomain.domainURL = self.domainName;
-    sensorMUCDomain.domainId = [NSUUID UUID];
-    
+    sensorMUCDomain.domainId = [[NSUUID UUID] UUIDString];
+    sensorMUCDomain.location = _location;
+
     return sensorMUCDomain;
 }
 

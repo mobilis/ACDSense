@@ -73,6 +73,7 @@
 		5BE348A017CF287300AE0407 /* Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3489F17CF287300AE0407 /* Timestamp.m */; };
 		63174A3B18BB831100A9B0F7 /* NewSensorDomainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63174A3A18BB831100A9B0F7 /* NewSensorDomainViewController.m */; };
 		E6F4723FF0CD97CEB6914E8B /* SensorMUC.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F472D722673B3CB1A8D941 /* SensorMUC.m */; };
+		E6F472BA22CB5D2B3E2F2668 /* SensorMUCDomain+Location.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F47F1D8E9EEB611FB5751E /* SensorMUCDomain+Location.m */; };
 		E6F474E7AC19BAD62493B8F9 /* SensorMUCValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F47F99961412AC133E140A /* SensorMUCValidator.m */; };
 		E6F47A773B01E4B6E919A9F7 /* MUCMessageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F47E9321275DA1C6CCDD08 /* MUCMessageProcessor.m */; };
 /* End PBXBuildFile section */
@@ -177,11 +178,13 @@
 		63174A3918BB831100A9B0F7 /* NewSensorDomainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSensorDomainViewController.h; sourceTree = "<group>"; };
 		63174A3A18BB831100A9B0F7 /* NewSensorDomainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSensorDomainViewController.m; sourceTree = "<group>"; };
 		7DCE29203B844EA6A93532A5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		E6F4715CFA7A1588866E5590 /* SensorMUCDomain+Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SensorMUCDomain+Location.h"; sourceTree = "<group>"; };
 		E6F472D722673B3CB1A8D941 /* SensorMUC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorMUC.m; sourceTree = "<group>"; };
 		E6F47532DB89F29CC86A529E /* SensorMUCValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorMUCValidator.h; sourceTree = "<group>"; };
 		E6F478DCF671B48AB299A6BA /* MUCMessageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUCMessageProcessor.h; sourceTree = "<group>"; };
 		E6F47A879850FA1E2241A696 /* SensorMUC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorMUC.h; sourceTree = "<group>"; };
 		E6F47E9321275DA1C6CCDD08 /* MUCMessageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUCMessageProcessor.m; sourceTree = "<group>"; };
+		E6F47F1D8E9EEB611FB5751E /* SensorMUCDomain+Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SensorMUCDomain+Location.m"; sourceTree = "<group>"; };
 		E6F47F99961412AC133E140A /* SensorMUCValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorMUCValidator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -416,6 +419,8 @@
 				5B1F318F17D4823900ADA1CA /* Location+Description.m */,
 				5B5BCFCD17D5BAB4006E3EF3 /* Timestamp+Description.h */,
 				5B5BCFCE17D5BAB4006E3EF3 /* Timestamp+Description.m */,
+				E6F47F1D8E9EEB611FB5751E /* SensorMUCDomain+Location.m */,
+				E6F4715CFA7A1588866E5590 /* SensorMUCDomain+Location.h */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -588,6 +593,7 @@
 				E6F474E7AC19BAD62493B8F9 /* SensorMUCValidator.m in Sources */,
 				E6F4723FF0CD97CEB6914E8B /* SensorMUC.m in Sources */,
 				E6F47A773B01E4B6E919A9F7 /* MUCMessageProcessor.m in Sources */,
+				E6F472BA22CB5D2B3E2F2668 /* SensorMUCDomain+Location.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
