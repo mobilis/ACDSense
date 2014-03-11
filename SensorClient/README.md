@@ -1,6 +1,9 @@
 ACDSense Sensor Client for iOS
 ========
 
+**This version of the SensorClient is still capable of communicating with the ACDSenseService.
+Checkout the master-branch if you want a client application only communicating to MUC rooms directly.**
+
 ## Dependencies ##
 ### Core-Plot ###
 *Core-Plot* is a library used in the iOS application to display sensor values in a chart.
