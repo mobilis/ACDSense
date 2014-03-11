@@ -1,6 +1,10 @@
 ACDSense Sensor Client for iOS
 ========
 
+**This version of the SensorClient does not connect to the ACDSense service anymore.**
+
+**Checkout the *SensorClient_w_Service* branch to build a client application that communicates with the ACDSense Service running on a Mobilis Runtime.**
+
 ## Dependencies ##
 ### Core-Plot ###
 *Core-Plot* is a library used in the iOS application to display sensor values in a chart.
