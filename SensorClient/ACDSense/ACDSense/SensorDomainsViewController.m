@@ -37,6 +37,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideLoginIndicator:) name:@"loggedInTrue" object:nil];
 
     self.mucSensorDomains = [NSMutableDictionary new];
     self.runningMUCDiscoveries = [[NSMutableArray alloc] initWithCapacity:5];
@@ -68,6 +70,52 @@
         NewSensorDomainViewController *controller = (NewSensorDomainViewController *)segue.destinationViewController;
         controller.delegate = self;
     }
+}
+
+- (void)hideLoginIndicator:(id)sender
+{
+    UIView *notificationView = [[UIView alloc] initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, 0)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 0)];
+    
+    notificationView.backgroundColor = [UIColor lightGrayColor];
+    
+    label.attributedText = [[NSAttributedString alloc] initWithString:@"Login Successful" attributes:@{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]}];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor whiteColor];
+    
+    [notificationView addSubview:label];
+    [self.view addSubview:notificationView];
+    
+    [UIView animateWithDuration:.25
+                     animations:^{
+                         CGRect viewFrame = notificationView.frame;
+                         viewFrame.size.height = 44;
+                         notificationView.frame = viewFrame;
+                         
+                         CGRect labelFrame = label.frame;
+                         labelFrame.size.height = 44;
+                         label.frame = labelFrame;
+    }
+                     completion:^(BOOL finished) {
+                         if (finished)
+                         {
+                             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                 [UIView animateWithDuration:.25
+                                                  animations:^{
+                                                      CGRect viewFrame = notificationView.frame;
+                                                      viewFrame.size.height = 0;
+                                                      notificationView.frame = viewFrame;
+                                                      
+                                                      CGRect labelFrame = label.frame;
+                                                      labelFrame.size.height = 0;
+                                                      label.frame = labelFrame;
+                                                  }
+                                                  completion:^(BOOL finished) {
+                                                      [notificationView removeFromSuperview];
+                                                  }];
+                             });
+                         }
+    }];
 }
 
 #pragma mark - Interface Implementation

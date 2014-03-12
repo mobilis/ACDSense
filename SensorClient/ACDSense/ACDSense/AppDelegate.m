@@ -100,6 +100,7 @@
 {
     if (authenticationState) {
         NSLog(@"Authentication Successful. Waiting for Service Discovery");
+        [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"loggedInTrue" object:self]];
     } else {
         NSLog(@"Authentication not successful");
     }
