@@ -12,7 +12,6 @@
 @interface NewSensorDomainViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *domainNameTextField;
-@property (weak, nonatomic) IBOutlet UISwitch *fetchFromRemoteSwitch;
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)save:(id)sender;
@@ -51,7 +50,7 @@
 
 - (IBAction)save:(id)sender
 {
-    [self.delegate createSensorDomain:self.domainNameTextField.text fetchingFromService:self.fetchFromRemoteSwitch.isOn];
+    [self.delegate createSensorDomain:self.domainNameTextField.text];
     [self cancel:self];
 }
 @end

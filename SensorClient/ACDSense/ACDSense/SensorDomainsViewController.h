@@ -12,6 +12,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
-- (void)createSensorDomain:(NSString *)domainName fetchingFromService:(BOOL)fetchingRemote;
+- (void)createSensorDomain:(NSString *)domainName;
 
 @end

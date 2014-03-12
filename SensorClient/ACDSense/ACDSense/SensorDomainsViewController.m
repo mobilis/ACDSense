@@ -72,7 +72,7 @@
 
 #pragma mark - Interface Implementation
 
-- (void)createSensorDomain:(NSString *)domainName fetchingFromService:(BOOL)fetchingRemote
+- (void)createSensorDomain:(NSString *)domainName
 {
     MXiMultiUserChatDiscovery *chatDiscovery = [MXiMultiUserChatDiscovery multiUserChatDiscoveryWithConnectionHandler:[MXiConnectionHandler sharedInstance]
                                                                                                         forDomainName:domainName
