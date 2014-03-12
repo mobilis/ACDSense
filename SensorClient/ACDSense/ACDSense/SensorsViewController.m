@@ -182,12 +182,15 @@
 		if ([[_valuesOfSelectedSensor allKeys] count] != self.subTypeChooser.numberOfSegments)
 		{
             @synchronized (_subTypeChooser) {
-                [self.subTypeChooser removeAllSegments];
-                int i=0;
-                for (NSString *title in [_valuesOfSelectedSensor allKeys]) {
-                    [self.subTypeChooser insertSegmentWithTitle:title atIndex:i++ animated:YES];
-                }
-                self.subTypeChooser.selectedSegmentIndex = self.selectedSubType ? [[_valuesOfSelectedSensor allKeys] indexOfObject:self.selectedSubType] : UISegmentedControlNoSegment;
+                dispatch_async(dispatch_get_main_queue(), ^
+                {
+                    [self.subTypeChooser removeAllSegments];
+                    int i=0;
+                    for (NSString *title in [_valuesOfSelectedSensor allKeys]) {
+                        [self.subTypeChooser insertSegmentWithTitle:title atIndex:i++ animated:YES];
+                    }
+                    self.subTypeChooser.selectedSegmentIndex = self.selectedSubType ? [[_valuesOfSelectedSensor allKeys] indexOfObject:self.selectedSubType] : UISegmentedControlNoSegment;
+                });
             }
 
 		}
