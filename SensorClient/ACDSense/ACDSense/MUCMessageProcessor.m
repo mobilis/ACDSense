@@ -6,6 +6,7 @@
 #import "MUCMessageProcessor.h"
 #import "SBJson4Parser.h"
 #import "SensorItem.h"
+#import "MessageProcessingException.h"
 
 
 @implementation MUCMessageProcessor
@@ -35,7 +36,7 @@
                                                     unwrapRootArray:NO
                                                        errorHandler:^(NSError *error)
                                                        {
-                                                           @throw [NSException exceptionWithName:@"JSON Parser error" reason:[NSString stringWithFormat:@"%i", error.code] userInfo:error.userInfo];
+                                                           @throw [MessageProcessingException exceptionWithError:error];
                                                        }];
 
         NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];

@@ -14,16 +14,14 @@
 #import "Timestamp+Description.h"
 #import "SensorMUC.h"
 #import "MUCMessageProcessor.h"
-#import "SensorMUCDomain+Location.h"
+#import "MessageProcessingException.h"
 
 @interface SensorsViewController () <MXiMultiUserChatDelegate>
 
-@property (strong, nonatomic) NSMutableDictionary *filteredSensorItems;
-@property (strong, nonatomic) NSMutableDictionary *allSensorItems;
-@property (strong, nonatomic) NSMutableArray *mucDomains;
-@property BOOL filtered;
+@property (nonatomic) NSMutableDictionary *multiUserChatRooms;
+@property (nonatomic) NSMutableArray *connectedMUCs;
 
-@property (strong, nonatomic) SensorItem *selectedSensor;
+@property (strong, nonatomic) SensorMUC *selectedSensor;
 @property (strong, nonatomic) NSMutableDictionary *valuesOfSelectedSensor;
 @property (strong, nonatomic) NSString *selectedSubType;
 
@@ -50,13 +48,16 @@
 @end
 
 @implementation SensorsViewController
+{
+    NSMutableDictionary *_allSensorItems;
+    NSMutableDictionary *_filteredSensorItems;
+    BOOL *_filtered;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.allSensorItems = [NSMutableDictionary dictionaryWithCapacity:10];
-    self.filteredSensorItems = [NSMutableDictionary dictionaryWithCapacity:10];
-    self.mucDomains = [NSMutableArray arrayWithCapacity:10];
+    self.multiUserChatRooms = [NSMutableDictionary new];
     [self registerBeanListener];
 	[self constructChart];
 }
@@ -67,31 +68,28 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Filter SensorMUCDomains
+#pragma mark - Display SensorMUC
 
-- (void)filterForDomain:(SensorMUCDomain *)domain
+- (void)displayMultiUserChatRooms:(NSArray *)multiUserChatRooms
 {
-    [self filterForDomains:@[domain]];
-}
-
-- (void)filterForDomains:(NSArray *)domains
-{
-	if (!domains || domains.count == 0) {
-        _filtered = NO;
-        return;
-    }
-    
-    self.filteredSensorItems = [NSMutableDictionary dictionaryWithCapacity:domains.count];
-    for (NSString *domainID in [_allSensorItems allKeys]) {
-        for (SensorMUCDomain *domain in domains) {
-            if ([domain.domainId isEqualToString:domainID]) {
-                [self.filteredSensorItems setObject:[_allSensorItems objectForKey:domainID] forKey:domainID];
-            }
+    for (SensorMUC *sensorMUC in multiUserChatRooms)
+    {
+        if ([self isDomainKnown:sensorMUC.domainName])
+        {
+            [[self.multiUserChatRooms objectForKey:sensorMUC.domainName] addObject:sensorMUC];
+        }
+        else
+        {
+            [self.multiUserChatRooms setObject:[@[sensorMUC] mutableCopy] forKey:sensorMUC.domainName];
         }
     }
-    
-    _filtered = YES;
+
     [self updateView];
+}
+
+- (BOOL)isDomainKnown:(NSString *)domainName
+{
+    return [self.multiUserChatRooms objectForKey:domainName] != nil;
 }
 
 #pragma mark - ACDSense Chat Support
@@ -99,28 +97,55 @@
 - (void)connectToSensorMUC:(SensorMUC *)sensorMUC;
 {
     [[MXiConnectionHandler sharedInstance].connection connectToMultiUserChatRoom:sensorMUC.jabberID.full withDelegate:self];
-    [self.mucDomains addObject:[sensorMUC copyAsSensorMUCDomain]];
 }
 
 #pragma mark - MXiMultiUserChatDelegate
 
 - (void)connectionToRoomEstablished:(NSString *)roomJID usingRoomJID:(NSString *)myRoomJID
 {
-    NSLog(@"Connection to room %@ established.", roomJID);
+    #if TARGET_IPHONE_SIMULATOR
+        NSLog(@"Connection to room %@ established.", roomJID);
+    #endif
+    for (NSString *domainName in self.multiUserChatRooms)
+        for (SensorMUC *sensorMUC in [self.multiUserChatRooms objectForKey:domainName])
+            if ([sensorMUC.jabberID isEqualToJID:[XMPPJID jidWithString:roomJID]])
+                [self.connectedMUCs addObject:sensorMUC];
 }
 
 - (void)didReceiveMultiUserChatMessage:(NSString *)message fromUser:(NSString *)user publishedInRoom:(NSString *)roomJID
 {
-    NSLog(@"Did receive MultiUserChat Message:\n%@", message);
-    SensorItem *item = [[MUCMessageProcessor processJSONString:message andSensorID:roomJID] processedJSON];
-    for (SensorMUCDomain *domain in self.mucDomains)
-        if ([roomJID rangeOfString:domain.domainURL].location != NSNotFound) {
-            item.sensorDomain = domain;
-            item.location = domain.location;
+    #if TARGET_IPHONE_SIMULATOR
+        NSLog(@"Did receive MultiUserChat Message:\n%@", message);
+    #endif
+    @try {
+        SensorItem *item = [[MUCMessageProcessor processJSONString:message andSensorID:roomJID] processedJSON];
+        for (NSString *domain in [self.multiUserChatRooms allKeys])
+            for (SensorMUC *sensorMUC in [self.multiUserChatRooms objectForKey:domain]) {
+                if ([roomJID rangeOfString:sensorMUC.domainName].location != NSNotFound) {
+                    item.sensorDomain = [sensorMUC copyAsSensorMUCDomain];
+                    item.location = sensorMUC.location;
+                }
+            }
+        DelegateSensorItems *delegateSensorItem = [DelegateSensorItems new];
+        delegateSensorItem.sensorItems = [[NSMutableArray alloc] initWithArray:@[item]];
+        if (_selectedSubType == nil)
+        {
+            _selectedSubType = item.type;
+            @synchronized (_subTypeChooser) {
+                [self.subTypeChooser removeAllSegments];
+                int i=0;
+                for (NSString *title in [_valuesOfSelectedSensor allKeys]) {
+                    [self.subTypeChooser insertSegmentWithTitle:title atIndex:i++ animated:YES];
+                }
+            }
         }
-    DelegateSensorItems *delegateSensorItem = [DelegateSensorItems new];
-    delegateSensorItem.sensorItems = [[NSMutableArray alloc] initWithArray:@[item]];
-    [self sensorItemsReceived:delegateSensorItem];
+        [self sensorItemsReceived:delegateSensorItem];
+    }
+    @catch (MessageProcessingException *exception) {
+        #if TARGET_IPHONE_SIMULATOR
+            NSLog(@"Exception occurred: %@, %@", exception, [exception userInfo]);
+        #endif
+    }
 }
 
 #pragma mark - MXiCommunication
@@ -141,7 +166,7 @@
     
     [self addSensorItems:sensorItems.sensorItems];
     for (SensorItem *item in sensorItems.sensorItems) {
-        if (_selectedSensor && [_selectedSensor.sensorId isEqualToString:item.sensorId]) {
+        if (_selectedSensor && [_selectedSensor.jabberID.full isEqualToString:item.sensorId]) {
 			for (SensorValue *value in item.values) {
 				NSMutableArray *values = [_valuesOfSelectedSensor objectForKey:value.subType];
 				if (values) {
@@ -156,15 +181,20 @@
 	if(_selectedSensor) {
 		if ([[_valuesOfSelectedSensor allKeys] count] != self.subTypeChooser.numberOfSegments)
 		{
-			[self.subTypeChooser removeAllSegments];
-			int i=0;
-			for (NSString *title in [_valuesOfSelectedSensor allKeys]) {
-				[self.subTypeChooser insertSegmentWithTitle:title atIndex:i++ animated:YES];
-			}
-			self.subTypeChooser.selectedSegmentIndex = self.selectedSubType ? [[_valuesOfSelectedSensor allKeys] indexOfObject:self.selectedSubType] : UISegmentedControlNoSegment;
+            @synchronized (_subTypeChooser) {
+                [self.subTypeChooser removeAllSegments];
+                int i=0;
+                for (NSString *title in [_valuesOfSelectedSensor allKeys]) {
+                    [self.subTypeChooser insertSegmentWithTitle:title atIndex:i++ animated:YES];
+                }
+                self.subTypeChooser.selectedSegmentIndex = self.selectedSubType ? [[_valuesOfSelectedSensor allKeys] indexOfObject:self.selectedSubType] : UISegmentedControlNoSegment;
+            }
 
 		}
-		[self updateChartContent];
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+            [self updateChartContent];
+        });
 	}
 }
 
@@ -222,52 +252,23 @@
     [self.tableView reloadData];
 }
 
-- (SensorItem *)retrieveSensorItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *sensorItemKey = nil;
-    if (_filtered) {
-        sensorItemKey = [[_filteredSensorItems allKeys] objectAtIndex:indexPath.section];
-        return [[_filteredSensorItems objectForKey:sensorItemKey] objectAtIndex:indexPath.row];
-    } else {
-        sensorItemKey = [[_allSensorItems allKeys] objectAtIndex:indexPath.section];
-        return [[_allSensorItems objectForKey:sensorItemKey] objectAtIndex:indexPath.row];
-    }
-}
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (_filtered) {
-        return [[_filteredSensorItems allKeys] count];
-    } else {
-        return [[_allSensorItems allKeys] count];
-    }
+    return [self.multiUserChatRooms allKeys].count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray *items = nil;
-    if (_filtered) {
-        items = [_filteredSensorItems objectForKey:[[_filteredSensorItems allKeys] objectAtIndex:section]];
-    } else {
-        items = [_allSensorItems objectForKey:[[_allSensorItems allKeys] objectAtIndex:section]];
-    }
-    return items.count;
+    NSString *key = [[self.multiUserChatRooms allKeys] objectAtIndex:section];
+    return [((NSArray *)[self.multiUserChatRooms objectForKey:key]) count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSString *key = nil;
-    NSArray *items = nil;
-    if (_filtered) {
-        key = [[_filteredSensorItems allKeys] objectAtIndex:section];
-        items = [_filteredSensorItems objectForKey:key];
-    } else {
-        key = [[_allSensorItems allKeys] objectAtIndex:section];
-        items = [_allSensorItems objectForKey:key];
-    }
-    return ((SensorItem *)items[0]).sensorDomain.domainURL;
+
+    return [[self.multiUserChatRooms allKeys] objectAtIndex:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -278,11 +279,12 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SensorTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    
-    SensorItem *sensorItem = [self retrieveSensorItemAtIndexPath:indexPath];
-    
-    cell.sensorIDLabel.text = sensorItem.sensorDescription;
-    cell.sensorDetailLabel.text = sensorItem.type;
+
+    NSString *key = [[self.multiUserChatRooms allKeys] objectAtIndex:indexPath.section];
+    SensorMUC *sensorMUC = [[self.multiUserChatRooms objectForKey:key] objectAtIndex:indexPath.row];
+
+    cell.sensorIDLabel.text = sensorMUC.jabberID.full;
+    cell.sensorDetailLabel.text = [sensorMUC type];
     
     return cell;
 }
@@ -291,34 +293,39 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	SensorItem *sensorItem = [self retrieveSensorItemAtIndexPath:indexPath];
-	self.sensorIDLabel.text = sensorItem.sensorDescription;
-	self.sensorTypeLabel.text = sensorItem.type;
-	self.sensorLocationLabel.text = sensorItem.location.locationName;
-	[self.mapView removeAnnotations:self.mapView.annotations];
+    NSString *key = [[self.multiUserChatRooms allKeys] objectAtIndex:indexPath.section];
+    SensorMUC *sensorMUC = [[self.multiUserChatRooms objectForKey:key] objectAtIndex:indexPath.row];
+    [self connectToSensorMUC:sensorMUC];
+
+	self.sensorIDLabel.text = [sensorMUC.jabberID full];
+    self.sensorTypeLabel.text = [sensorMUC type];
+    self.sensorLocationLabel.text = [sensorMUC location].locationName;
+    [self.mapView removeAnnotations:self.mapView.annotations];
 	MKPointAnnotation *pa = [MKPointAnnotation new];
-	pa.coordinate = CLLocationCoordinate2DMake((double) sensorItem.location.latitude, (double) sensorItem.location.longitude);
+	pa.coordinate = CLLocationCoordinate2DMake((double) sensorMUC.location.latitude, (double) sensorMUC.location.longitude);
 	[self.mapView addAnnotation:pa];
 	MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance([pa coordinate], 100000, 100000);
 	[self.mapView setRegion:region animated:YES];
 	[self.mapView selectAnnotation:pa animated:YES];
 
-	self.selectedSensor = sensorItem;
+	self.selectedSensor = sensorMUC;
 	self.valuesOfSelectedSensor = [NSMutableDictionary new];
-	for (SensorValue *value in _selectedSensor.values) {
-		NSMutableArray *values = [_valuesOfSelectedSensor objectForKey:value.subType];
-		if (values) {
-			[values addObject:value];
-		} else {
-			[_valuesOfSelectedSensor setObject:[NSMutableArray arrayWithObject:value] forKey:value.subType];
-		}
-	}
-	self.selectedSubType = [[_valuesOfSelectedSensor allKeys] firstObject];
-	[self.subTypeChooser removeAllSegments];
-	int i=0;
-	for (NSString *title in [_valuesOfSelectedSensor allKeys]) {
-		[self.subTypeChooser insertSegmentWithTitle:title atIndex:i++ animated:YES];
-	}
+    for (SensorItem *sensorItem in [_allSensorItems objectForKey:[sensorMUC copyAsSensorMUCDomain].domainId]) {
+        for (SensorValue *value in sensorItem.values) {
+            NSMutableArray *values = [_valuesOfSelectedSensor objectForKey:value.subType];
+            if (values) {
+                [values addObject:value];
+            } else {
+                [_valuesOfSelectedSensor setObject:[NSMutableArray arrayWithObject:value] forKey:value.subType];
+            }
+        }
+    }
+//    self.selectedSubType = [[_valuesOfSelectedSensor allKeys] firstObject];
+//	[self.subTypeChooser removeAllSegments];
+//	int i=0;
+//	for (NSString *title in [_valuesOfSelectedSensor allKeys]) {
+//		[self.subTypeChooser insertSegmentWithTitle:title atIndex:i++ animated:YES];
+//	}
 	[self updateChartPlot];
 	[self updateChartContent];
 }
@@ -391,7 +398,7 @@
 	if ((max-min) > 1.0) {
 		plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(min-0.1*(max-min)) length:CPTDecimalFromDouble(1.2*(max-min))];
 	} else {
-		double median = min+((max-min)/2);
+		double median = [[_valuesOfSelectedSensor objectForKey:_selectedSubType] count] == 0 ? 0 : min+((max-min)/2);
 		plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(median-1) length:CPTDecimalFromDouble(2)];
 	}
 	
@@ -429,7 +436,7 @@
 
 - (NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot
 {
-    if (_selectedSensor && _selectedSensor.values)
+    if (_selectedSensor)
 		return ((NSArray*)[_valuesOfSelectedSensor objectForKey:_selectedSubType]).count;
 	return 0;
 }

@@ -23,6 +23,8 @@
 {
     NSString *_type;
     Location *_location;
+
+    NSString *_domainID;
 }
 
 - (id)initWithJabberID:(XMPPJID *)jabberID domainName:(NSString *)domainName andDescription:(NSString *)description;
@@ -52,7 +54,8 @@
 {
     SensorMUCDomain *sensorMUCDomain = [SensorMUCDomain new];
     sensorMUCDomain.domainURL = self.domainName;
-    sensorMUCDomain.domainId = [[NSUUID UUID] UUIDString];
+    if (_domainID == nil) _domainID = [[NSUUID UUID] UUIDString];
+    sensorMUCDomain.domainId = _domainID;
     sensorMUCDomain.location = _location;
 
     return sensorMUCDomain;
