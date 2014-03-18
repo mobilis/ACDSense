@@ -25,6 +25,9 @@
 @end
 
 @implementation SensorDomainsViewController
+{
+    dispatch_queue_t _discoveryQueue;
+}
 
 - (void)dealloc
 {
@@ -37,6 +40,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    _discoveryQueue = dispatch_queue_create("de.tu-dresden.inf.rn.acds.discoQueue", DISPATCH_QUEUE_SERIAL);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideLoginIndicator:) name:@"loggedInTrue" object:nil];
 
@@ -56,6 +61,8 @@
 
 - (void)handleRefresh:(id)arg
 {
+    for (NSString *domainName in [self.mucSensorDomains allKeys])
+        [self createSensorDomain:domainName];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -125,7 +132,7 @@
     MXiMultiUserChatDiscovery *chatDiscovery = [MXiMultiUserChatDiscovery multiUserChatDiscoveryWithConnectionHandler:[MXiConnectionHandler sharedInstance]
                                                                                                         forDomainName:domainName
                                                                                                           andDelegate:self];
-    [chatDiscovery startDiscoveryWithResultQueue:dispatch_get_main_queue()];
+    [chatDiscovery startDiscoveryWithResultQueue:_discoveryQueue];
     [self.runningMUCDiscoveries addObject:chatDiscovery];
 }
 
@@ -165,7 +172,6 @@
 {
     if (UITableViewCellEditingStyleDelete == editingStyle)
     {
-        // TODO: delete the MUC domain, close connections to MUC and remove them from the detail view.
         NSString *domainName = [[self.mucSensorDomains allKeys] objectAtIndex:indexPath.row];
         [self.mucSensorDomains removeObjectForKey:domainName];
         [self refreshTableView];
@@ -182,6 +188,8 @@
 
 - (void)refreshTableView
 {
+    if ([self.refreshControl isRefreshing]) [self.refreshControl endRefreshing];
+
 	[UIView transitionWithView:self.tableView duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
 		[self.tableView reloadData];
 	} completion:nil];
@@ -196,8 +204,10 @@
 
 #pragma mark - MXiMultiUserChatDiscoveryDelegate
 
-- (void)multiUserChatRoomsDiscovered:(NSArray *)chatRooms inDomain:(NSString *)domainName
+- (void)multiUserChatRoomsDiscovery:(MXiMultiUserChatDiscovery *)chatDiscovery discoveredChatRooms:(NSArray *)chatRooms inDomain:(NSString *)domainName
 {
+    [self.runningMUCDiscoveries removeObject:chatDiscovery];
+
     for (MXiMultiUserChatRoom *room in chatRooms)
     {
         [SensorMUCValidator launchValidationWithConnection:[MXiConnectionHandler sharedInstance]
