@@ -166,6 +166,9 @@
     if (UITableViewCellEditingStyleDelete == editingStyle)
     {
         // TODO: delete the MUC domain, close connections to MUC and remove them from the detail view.
+        NSString *domainName = [[self.mucSensorDomains allKeys] objectAtIndex:indexPath.row];
+        [self.mucSensorDomains removeObjectForKey:domainName];
+        [self refreshTableView];
     }
 }
 
