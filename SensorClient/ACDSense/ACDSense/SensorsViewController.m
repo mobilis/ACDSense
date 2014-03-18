@@ -76,7 +76,8 @@
     {
         if ([self isDomainKnown:sensorMUC.domainName])
         {
-            [[self.multiUserChatRooms objectForKey:sensorMUC.domainName] addObject:sensorMUC];
+            if (![[self.multiUserChatRooms objectForKey:sensorMUC.domainName] containsObject:sensorMUC])
+                [[self.multiUserChatRooms objectForKey:sensorMUC.domainName] addObject:sensorMUC];
         }
         else
         {

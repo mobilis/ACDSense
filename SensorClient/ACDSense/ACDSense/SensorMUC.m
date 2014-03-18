@@ -97,4 +97,19 @@
     return location;
 }
 
+#pragma mark - Equality
+
+- (BOOL)isEqual:(id)object
+{
+    if (![object isKindOfClass:[self class]]) return NO;
+
+    if ([object hash] == [self hash]) return YES;
+    else return NO;
+}
+
+- (NSUInteger)hash
+{
+    return [self.domainName hash] | [self.jabberID hash];
+}
+
 @end
