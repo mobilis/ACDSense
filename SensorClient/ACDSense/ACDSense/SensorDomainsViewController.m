@@ -179,7 +179,11 @@
     if (UITableViewCellEditingStyleDelete == editingStyle)
     {
         NSString *domainName = [[self.mucSensorDomains allKeys] objectAtIndex:indexPath.row];
-        [self.mucSensorDomains removeObjectForKey:domainName];
+        NSArray *sensorMUCs = [self.mucSensorDomains objectForKey:domainName];
+        for (SensorMUC *sensorMUC in sensorMUCs) {
+            [[CoreDataStack coreDataStack].managedObjectContext deleteObject:sensorMUC];
+        }
+        self.mucSensorDomains = [[CoreDataStack coreDataStack] sensorMUCs];
         [self refreshTableView];
     }
 }
