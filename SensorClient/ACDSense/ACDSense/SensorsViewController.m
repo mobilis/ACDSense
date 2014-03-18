@@ -50,8 +50,6 @@
 @implementation SensorsViewController
 {
     NSMutableDictionary *_allSensorItems;
-    NSMutableDictionary *_filteredSensorItems;
-    BOOL *_filtered;
 }
 
 - (void)viewDidLoad
@@ -97,6 +95,12 @@
 
 - (void)connectToSensorMUC:(SensorMUC *)sensorMUC;
 {
+    if ([_selectedSensor.jabberID isEqualToString:sensorMUC.jabberID])
+    {
+        [[MXiConnectionHandler sharedInstance].connection leaveMultiUserChatRoom:_selectedSensor.jabberID];
+        _valuesOfSelectedSensor = nil;
+        _valuesOfSelectedSensor = [NSMutableDictionary new];
+    }
     [[MXiConnectionHandler sharedInstance].connection connectToMultiUserChatRoom:sensorMUC.jabberID withDelegate:self];
 }
 
@@ -164,19 +168,21 @@
         NSLog(@"Severe issue in the DelegateBeanMapping");
         return;
     }
-    
-    [self addSensorItems:sensorItems.sensorItems];
-    for (SensorItem *item in sensorItems.sensorItems) {
-        if (_selectedSensor && [_selectedSensor.jabberID isEqualToString:item.sensorId]) {
-			for (SensorValue *value in item.values) {
-				NSMutableArray *values = [_valuesOfSelectedSensor objectForKey:value.subType];
-				if (values) {
-					[values addObject:value];
-				} else {
-					[_valuesOfSelectedSensor setObject:[NSMutableArray arrayWithObject:value] forKey:value.subType];
-				}
-			}
-            break;
+
+    @synchronized (_valuesOfSelectedSensor) {
+        [self addSensorItems:sensorItems.sensorItems];
+        for (SensorItem *item in sensorItems.sensorItems) {
+            if (_selectedSensor && [_selectedSensor.jabberID isEqualToString:item.sensorId]) {
+                for (SensorValue *value in item.values) {
+                    NSMutableArray *values = [_valuesOfSelectedSensor objectForKey:value.subType];
+                    if (values) {
+                        [values addObject:value];
+                    } else {
+                        [_valuesOfSelectedSensor setObject:[NSMutableArray arrayWithObject:value] forKey:value.subType];
+                    }
+                }
+                break;
+            }
         }
     }
 	if(_selectedSensor) {
@@ -225,27 +231,6 @@
             }
         } else {
             [_allSensorItems setObject:@[sensorItem] forKey:sensorItem.sensorDomain.domainId];
-        }
-    }
-    if (_filtered) {
-        for (SensorItem *sensorItem in sensorItems) {
-            NSMutableArray *storedItems = [NSMutableArray arrayWithArray:[_filteredSensorItems objectForKey:sensorItem.sensorDomain.domainId]];
-            if (storedItems) {
-                BOOL found = NO;
-                for (SensorItem *storedSensorItem in storedItems) {
-                    if ([sensorItem.sensorId isEqualToString:storedSensorItem.sensorId]) {
-                        [storedSensorItem.values addObjectsFromArray:sensorItem.values];
-                        found = YES;
-                        break;
-                    }
-                }
-                if (!found) {
-                    [storedItems addObject:sensorItem];
-                    [_filteredSensorItems setObject:storedItems forKey:sensorItem.sensorDomain.domainId];
-                }
-            } else {
-                [_filteredSensorItems setObject:@[sensorItem] forKey:sensorItem.sensorDomain.domainId];
-            }
         }
     }
     [self updateView];
@@ -299,6 +284,9 @@
 {
     NSString *key = [[self.multiUserChatRooms allKeys] objectAtIndex:indexPath.section];
     SensorMUC *sensorMUC = [[self.multiUserChatRooms objectForKey:key] objectAtIndex:indexPath.row];
+
+    self.selectedSensor = sensorMUC;
+
     [self connectToSensorMUC:sensorMUC];
 
 	self.sensorIDLabel.text = sensorMUC.jabberID;
@@ -312,7 +300,6 @@
 	[self.mapView setRegion:region animated:YES];
 	[self.mapView selectAnnotation:pa animated:YES];
 
-	self.selectedSensor = sensorMUC;
 	self.valuesOfSelectedSensor = [NSMutableDictionary new];
     for (SensorItem *sensorItem in [_allSensorItems objectForKey:[sensorMUC copyAsSensorMUCDomain].domainId]) {
         for (SensorValue *value in sensorItem.values) {
@@ -324,15 +311,24 @@
             }
         }
     }
-//    self.selectedSubType = [[_valuesOfSelectedSensor allKeys] firstObject];
-//	[self.subTypeChooser removeAllSegments];
-//	int i=0;
-//	for (NSString *title in [_valuesOfSelectedSensor allKeys]) {
-//		[self.subTypeChooser insertSegmentWithTitle:title atIndex:i++ animated:YES];
-//	}
+
 	[self updateChartPlot];
 	[self updateChartContent];
 }
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *key = [[self.multiUserChatRooms allKeys] objectAtIndex:indexPath.section];
+    SensorMUC *sensorMUC = [[self.multiUserChatRooms objectForKey:key] objectAtIndex:indexPath.row];
+
+    [[MXiConnectionHandler sharedInstance].connection leaveMultiUserChatRoom:sensorMUC.jabberID];
+
+    _valuesOfSelectedSensor = nil;
+    _valuesOfSelectedSensor = [NSMutableDictionary new];
+
+    return indexPath;
+}
+
 #pragma mark - Construct Chart
 - (void)constructChart
 {
@@ -392,14 +388,16 @@
 	
 	double min = DBL_MAX;
 	double max = DBL_MIN;
-	for (SensorValue *value in [_valuesOfSelectedSensor objectForKey:_selectedSubType])
-	{
-		if ([value.value doubleValue] > max)
-			max = [value.value doubleValue];
-		if ([value.value doubleValue] < min)
-			min = [value.value doubleValue];
-	}
-	if ((max-min) > 1.0) {
+    @synchronized (_valuesOfSelectedSensor) {
+        for (SensorValue *value in [_valuesOfSelectedSensor objectForKey:_selectedSubType])
+        {
+            if ([value.value doubleValue] > max)
+                max = [value.value doubleValue];
+            if ([value.value doubleValue] < min)
+                min = [value.value doubleValue];
+        }
+    }
+    if ((max-min) > 1.0) {
 		plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(min-0.1*(max-min)) length:CPTDecimalFromDouble(1.2*(max-min))];
 	} else {
 		double median = [[_valuesOfSelectedSensor objectForKey:_selectedSubType] count] == 0 ? 0 : min+((max-min)/2);
