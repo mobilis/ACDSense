@@ -72,6 +72,8 @@
 		5BB71DB317D32F37000CAF47 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB71DB217D32F37000CAF47 /* QuartzCore.framework */; };
 		5BE348A017CF287300AE0407 /* Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3489F17CF287300AE0407 /* Timestamp.m */; };
 		63174A3B18BB831100A9B0F7 /* NewSensorDomainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63174A3A18BB831100A9B0F7 /* NewSensorDomainViewController.m */; };
+		636CDA4D18D8384E00952293 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 636CDA4B18D8384E00952293 /* Model.xcdatamodeld */; };
+		636CDA5018D839CC00952293 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 636CDA4F18D839CC00952293 /* CoreDataStack.m */; };
 		E6F4723FF0CD97CEB6914E8B /* SensorMUC.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F472D722673B3CB1A8D941 /* SensorMUC.m */; };
 		E6F472BA22CB5D2B3E2F2668 /* SensorMUCDomain+Location.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F47F1D8E9EEB611FB5751E /* SensorMUCDomain+Location.m */; };
 		E6F474E7AC19BAD62493B8F9 /* SensorMUCValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F47F99961412AC133E140A /* SensorMUCValidator.m */; };
@@ -178,6 +180,9 @@
 		5BE3489F17CF287300AE0407 /* Timestamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Timestamp.m; path = "src-gen/Timestamp.m"; sourceTree = "<group>"; };
 		63174A3918BB831100A9B0F7 /* NewSensorDomainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSensorDomainViewController.h; sourceTree = "<group>"; };
 		63174A3A18BB831100A9B0F7 /* NewSensorDomainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSensorDomainViewController.m; sourceTree = "<group>"; };
+		636CDA4C18D8384E00952293 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		636CDA4E18D839CC00952293 /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStack.h; sourceTree = "<group>"; };
+		636CDA4F18D839CC00952293 /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStack.m; sourceTree = "<group>"; };
 		7DCE29203B844EA6A93532A5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		E6F4715CFA7A1588866E5590 /* SensorMUCDomain+Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SensorMUCDomain+Location.h"; sourceTree = "<group>"; };
 		E6F472D722673B3CB1A8D941 /* SensorMUC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorMUC.m; sourceTree = "<group>"; };
@@ -407,6 +412,7 @@
 		5B772CB117C89F270008BC02 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				636CDA4A18D8383300952293 /* CoreData */,
 				0CD1895417CA4031004DF634 /* Generated Model */,
 				5B22E88517C25CF700E6E4F4 /* Beans */,
 				E6F475CBDEF47AE699F42906 /* MultiUserChat */,
@@ -427,6 +433,16 @@
 				E6F4715CFA7A1588866E5590 /* SensorMUCDomain+Location.h */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		636CDA4A18D8383300952293 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				636CDA4B18D8384E00952293 /* Model.xcdatamodeld */,
+				636CDA4E18D839CC00952293 /* CoreDataStack.h */,
+				636CDA4F18D839CC00952293 /* CoreDataStack.m */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 		E6F475CBDEF47AE699F42906 /* MultiUserChat */ = {
@@ -591,6 +607,7 @@
 				0C80B7C717CA61F7002A0DD1 /* RemoveSensorMUCDomain.m in Sources */,
 				5B22E85B17C2547B00E6E4F4 /* main.m in Sources */,
 				5B22E85F17C2547B00E6E4F4 /* AppDelegate.m in Sources */,
+				636CDA4D18D8384E00952293 /* Model.xcdatamodeld in Sources */,
 				0CD1893817C74DAC004DF634 /* MainViewController.m in Sources */,
 				0CD1893B17C75350004DF634 /* SettingsViewController.m in Sources */,
 				0CD1894017C7560D004DF634 /* TextFieldCell.m in Sources */,
@@ -608,6 +625,7 @@
 				E6F47A773B01E4B6E919A9F7 /* MUCMessageProcessor.m in Sources */,
 				E6F472BA22CB5D2B3E2F2668 /* SensorMUCDomain+Location.m in Sources */,
 				E6F479F235117BDBCBB8930C /* MessageProcessingException.m in Sources */,
+				636CDA5018D839CC00952293 /* CoreDataStack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,6 +767,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		636CDA4B18D8384E00952293 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				636CDA4C18D8384E00952293 /* Model.xcdatamodel */,
+			);
+			currentVersion = 636CDA4C18D8384E00952293 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5B22E84317C2547B00E6E4F4 /* Project object */;
 }

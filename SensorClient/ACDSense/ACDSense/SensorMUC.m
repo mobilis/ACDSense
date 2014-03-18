@@ -8,14 +8,17 @@
 #import "Location.h"
 #import "SensorMUCDomain.h"
 #import "SensorMUCDomain+Location.h"
+#import "CoreDataStack.h"
 
 #import <SBJson/SBJson4Parser.h>
 
+#import <objc/runtime.h>
 
 @interface SensorMUC ()
 
-@property (nonatomic, readwrite) XMPPJID *jabberID;
+@property (nonatomic, readwrite) NSString *jabberID;
 @property (nonatomic, readwrite) NSString *domainName;
+@property (nonatomic, readwrite) NSString *jsonDescription;
 
 @end
 
@@ -27,18 +30,53 @@
     NSString *_domainID;
 }
 
+@dynamic jabberID, domainName, jsonDescription;
+
++ (instancetype)sensorMUCwithJabberID:(XMPPJID *)jabberID domainName:(NSString *)domainName andDescription:(NSString *)description
+{
+    NSString *entityName = [NSString stringWithUTF8String:object_getClassName(self)];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"jabberID like %@ AND domainName like %@" argumentArray:@[jabberID.full, domainName]];
+
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    request.predicate = predicate;
+
+    NSError *error;
+    NSArray *results = [[CoreDataStack coreDataStack].managedObjectContext executeFetchRequest:request error:&error];
+
+    if (error != nil)
+        return nil;
+    else if (results.count == 0)
+        return [[self alloc] initWithJabberID:jabberID domainName:domainName andDescription:description];
+    else return [results firstObject];
+}
+
 - (id)initWithJabberID:(XMPPJID *)jabberID domainName:(NSString *)domainName andDescription:(NSString *)description;
 {
-    if (self = [super init])
+    NSManagedObjectContext *context = [CoreDataStack coreDataStack].managedObjectContext;
+    NSString *entityName = [NSString stringWithUTF8String:object_getClassName(self)];
+    
+    if (self = [super initWithEntity:[NSEntityDescription entityForName:entityName
+                                                 inManagedObjectContext:context]
+      insertIntoManagedObjectContext:context])
     {
-        self.jabberID = jabberID;
+        self.jabberID = jabberID.full;
         self.domainName = domainName;
+        self.jsonDescription = description;
         
         [self parseDescription:description];
     }
 
     return self;
 }
+
+- (void)awakeFromFetch
+{
+    [super awakeFromFetch];
+    
+    [self parseDescription:self.jsonDescription];
+}
+
+#pragma mark - Public Interface
 
 - (NSString *)type
 {
@@ -61,6 +99,8 @@
     return sensorMUCDomain;
 }
 
+#pragma mark - JSON Parser
+
 - (void)parseDescription:(NSString *)description
 {
     // {"sensormuc":{"type":"MULTI","format":"full","location":{"countryCode":"DE","cityName":"Dresden","latitude":51.025714,"longitude":13.722278}}}
@@ -76,7 +116,7 @@
                                             allowMultiRoot:NO
                                            unwrapRootArray:NO
                                               errorHandler:^(NSError *error) {
-                                                  @throw [NSException exceptionWithName:@"JSON Parser error" reason:[NSString stringWithFormat:@"%i",error.code] userInfo:error.userInfo];
+                                                  @throw [NSException exceptionWithName:@"JSON Parser error" reason:[NSString stringWithFormat:@"%li",(long)error.code] userInfo:error.userInfo];
                                               }];
     
     NSData *jsonData = [description dataUsingEncoding:NSUTF8StringEncoding];
@@ -95,21 +135,6 @@
     location.locationName = [rawLocation valueForKey:@"cityName"];
     
     return location;
-}
-
-#pragma mark - Equality
-
-- (BOOL)isEqual:(id)object
-{
-    if (![object isKindOfClass:[self class]]) return NO;
-
-    if ([object hash] == [self hash]) return YES;
-    else return NO;
-}
-
-- (NSUInteger)hash
-{
-    return [self.domainName hash] | [self.jabberID hash];
 }
 
 @end

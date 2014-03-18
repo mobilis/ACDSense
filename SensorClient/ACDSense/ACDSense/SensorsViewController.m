@@ -97,7 +97,7 @@
 
 - (void)connectToSensorMUC:(SensorMUC *)sensorMUC;
 {
-    [[MXiConnectionHandler sharedInstance].connection connectToMultiUserChatRoom:sensorMUC.jabberID.full withDelegate:self];
+    [[MXiConnectionHandler sharedInstance].connection connectToMultiUserChatRoom:sensorMUC.jabberID withDelegate:self];
 }
 
 #pragma mark - MXiMultiUserChatDelegate
@@ -109,7 +109,7 @@
     #endif
     for (NSString *domainName in self.multiUserChatRooms)
         for (SensorMUC *sensorMUC in [self.multiUserChatRooms objectForKey:domainName])
-            if ([sensorMUC.jabberID isEqualToJID:[XMPPJID jidWithString:roomJID]])
+            if ([sensorMUC.jabberID isEqualToString:roomJID])
                 [self.connectedMUCs addObject:sensorMUC];
 }
 
@@ -167,7 +167,7 @@
     
     [self addSensorItems:sensorItems.sensorItems];
     for (SensorItem *item in sensorItems.sensorItems) {
-        if (_selectedSensor && [_selectedSensor.jabberID.full isEqualToString:item.sensorId]) {
+        if (_selectedSensor && [_selectedSensor.jabberID isEqualToString:item.sensorId]) {
 			for (SensorValue *value in item.values) {
 				NSMutableArray *values = [_valuesOfSelectedSensor objectForKey:value.subType];
 				if (values) {
@@ -287,7 +287,7 @@
     NSString *key = [[self.multiUserChatRooms allKeys] objectAtIndex:indexPath.section];
     SensorMUC *sensorMUC = [[self.multiUserChatRooms objectForKey:key] objectAtIndex:indexPath.row];
 
-    cell.sensorIDLabel.text = sensorMUC.jabberID.full;
+    cell.sensorIDLabel.text = sensorMUC.jabberID;
     cell.sensorDetailLabel.text = [sensorMUC type];
     
     return cell;
@@ -301,7 +301,7 @@
     SensorMUC *sensorMUC = [[self.multiUserChatRooms objectForKey:key] objectAtIndex:indexPath.row];
     [self connectToSensorMUC:sensorMUC];
 
-	self.sensorIDLabel.text = [sensorMUC.jabberID full];
+	self.sensorIDLabel.text = sensorMUC.jabberID;
     self.sensorTypeLabel.text = [sensorMUC type];
     self.sensorLocationLabel.text = [sensorMUC location].locationName;
     [self.mapView removeAnnotations:self.mapView.annotations];

@@ -14,6 +14,7 @@
 #import "MXiMultiUserChatRoom.h"
 #import "SensorMUCValidator.h"
 #import "SensorMUC.h"
+#import "CoreDataStack.h"
 
 @interface SensorDomainsViewController () <MXiMultiUserChatDiscoveryDelegate>
 
@@ -35,6 +36,8 @@
     self.refreshControl = nil;
 
     self.runningMUCDiscoveries = nil;
+
+    _discoveryQueue = NULL;
 }
 
 - (void)viewDidLoad
@@ -45,7 +48,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideLoginIndicator:) name:@"loggedInTrue" object:nil];
 
-    self.mucSensorDomains = [NSMutableDictionary new];
+    self.mucSensorDomains = [[CoreDataStack coreDataStack] sensorMUCs];
     self.runningMUCDiscoveries = [[NSMutableArray alloc] initWithCapacity:5];
 
 	self.refreshControl = [UIRefreshControl new]; // TODO: use this refresh control to relaunch service discovery to detect MUCs for domain.
@@ -61,6 +64,9 @@
 
 - (void)handleRefresh:(id)arg
 {
+    if (self.mucSensorDomains.count == 0)
+        [self.refreshControl endRefreshing];
+
     for (NSString *domainName in [self.mucSensorDomains allKeys])
         [self createSensorDomain:domainName];
 }
@@ -190,9 +196,10 @@
 {
     if ([self.refreshControl isRefreshing]) [self.refreshControl endRefreshing];
 
-	[UIView transitionWithView:self.tableView duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-		[self.tableView reloadData];
-	} completion:nil];
+//	[UIView transitionWithView:self.tableView duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+//		[self.tableView reloadData];
+//	} completion:nil];
+    [self.tableView reloadData];
 }
 
 #pragma mark - UINavigationBarDelegate
@@ -216,7 +223,9 @@
                                            {
                                                if (sensorMUC && description)
                                                {
-                                                   SensorMUC *muc = [[SensorMUC alloc] initWithJabberID:room.jabberID domainName:domainName andDescription:description];
+                                                   SensorMUC *muc = [SensorMUC sensorMUCwithJabberID:room.jabberID
+                                                                                          domainName:domainName
+                                                                                      andDescription:description];
                                                    if ([self isDomainKnown:muc.domainName])
                                                    {
                                                        [[self.mucSensorDomains objectForKey:muc.domainName] addObject:muc];

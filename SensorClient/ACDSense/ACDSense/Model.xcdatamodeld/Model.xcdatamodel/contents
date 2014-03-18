@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="SensorMUC" representedClassName="SensorMUC" syncable="YES">
+        <attribute name="domainName" attributeType="String" syncable="YES"/>
+        <attribute name="jabberID" attributeType="String" syncable="YES"/>
+        <attribute name="jsonDescription" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="SensorMUC" positionX="-63" positionY="-18" width="128" height="90"/>
+    </elements>
+</model>
