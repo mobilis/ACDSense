@@ -18,7 +18,7 @@ import de.tudresden.inf.mobilis.acdsense.sensorservice.proxy.RemoveSensorMUCDoma
 import de.tudresden.inf.rn.mobilis.server.agents.MobilisAgent;
 import de.tudresden.inf.rn.mobilis.server.services.MobilisService;
 import de.tudresden.inf.rn.mobilis.xmpp.beans.ProxyBean;
-import de.tudresden.inf.rn.mobilis.xmpp.server.BeanProviderAdapter;
+import de.tudresden.inf.rn.mobilis.xmpp.mxj.BeanProviderAdapter;
 
 public class ACDSenseService extends MobilisService {
 

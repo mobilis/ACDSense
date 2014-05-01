@@ -32,7 +32,7 @@
 		63005F2D1884089A0077C0DD /* SensorValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBF6747916626EAA13F34 /* SensorValue.m */; };
 		63005F2E1884089A0077C0DD /* Timestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CB6403540C0F85C667272 /* Timestamp.m */; };
 		63005F2F1884089A0077C0DD /* DelegateSensorItemsOut.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CBEECC9557FF712809F82 /* DelegateSensorItemsOut.m */; };
-		71DCC69DD18F43B8A4CE1136 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84033FFD2A1F46E687235069 /* libPods.a */; };
+		63E344D318894F750027D710 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84033FFD2A1F46E687235069 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,8 +100,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63E344D318894F750027D710 /* libPods.a in Frameworks */,
 				63005F09188407250077C0DD /* Cocoa.framework in Frameworks */,
-				71DCC69DD18F43B8A4CE1136 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,7 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				5BE5E34E180EEF0B00DCA666 /* ACDSenseService4Mac */,
-				63005F0A188407250077C0DD /* ACDSenseService4Mac */,
 				5BE5E347180EEF0B00DCA666 /* Frameworks */,
 				5BE5E346180EEF0B00DCA666 /* Products */,
 				E6B5BBBF14824D638A3237F2 /* Pods.xcconfig */,
@@ -156,21 +155,6 @@
 				BF8CB690938A3E8BA3B82F41 /* Generated */,
 			);
 			path = ACDSenseService4Mac;
-			sourceTree = "<group>";
-		};
-		63005F0A188407250077C0DD /* ACDSenseService4Mac */ = {
-			isa = PBXGroup;
-			children = (
-				63005F0B188407250077C0DD /* Supporting Files */,
-			);
-			path = ACDSenseService4Mac;
-			sourceTree = "<group>";
-		};
-		63005F0B188407250077C0DD /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		639A300A188289D7009EA98A /* Supporting Files */ = {

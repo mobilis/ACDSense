@@ -25,7 +25,7 @@ import de.tudresden.inf.rn.mobilis.server.agents.MobilisAgent;
 import de.tudresden.inf.rn.mobilis.xmpp.beans.IXMPPCallback;
 import de.tudresden.inf.rn.mobilis.xmpp.beans.ProxyBean;
 import de.tudresden.inf.rn.mobilis.xmpp.beans.XMPPBean;
-import de.tudresden.inf.rn.mobilis.xmpp.server.BeanIQAdapter;
+import de.tudresden.inf.rn.mobilis.xmpp.mxj.BeanIQAdapter;
 
 public class IQHandler implements PacketListener, IACDSenseIncoming,
 		IACDSenseOutgoing {

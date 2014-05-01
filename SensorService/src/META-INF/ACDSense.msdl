@@ -293,6 +293,7 @@
 		name="ACDSense"
 		interface="mns:ACDSInterface"
 		ident="http://mobilis.inf.tu-dresden.de#services/ACDSenseService"
+		type="SINGLE"
 		version="1">
 		<msdl:endpoint
 			name="ACDSEndpoint"

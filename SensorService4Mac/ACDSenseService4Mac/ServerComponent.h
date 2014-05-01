@@ -7,6 +7,7 @@
 #import <Foundation/Foundation.h>
 
 #import "MobilisService.h"
+#import "MXiConnection.h"
 
 @interface ServerComponent : MobilisService
 

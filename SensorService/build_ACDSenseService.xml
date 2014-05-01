@@ -5,7 +5,7 @@
 	<echo>mobilis.root = ${mobilis.root}</echo>
 
 	<!-- none: ""; separate entrylist by ':' ; remove one "../" if you're developing on Windows -->
-	<property name="src.dirs.extern" value="${mobilis.root}/MobilisServer/src:${mobilis.root}/MobilisXMPP/src" />
+	<property name="src.dirs.extern" value="${mobilis.root}/MobilisServer/src:${mobilis.root}/MobilisXMPP/src:${mobilis.root}/MXJ" />
 
 	<!-- Create build and dist directory-->
 	<target name="makedir">
@@ -49,7 +49,7 @@
 		 if source files shouldn't be included in jar) -->
 	<target name="jar" depends="compile">
 		<jar jarfile="${dist.dir}\${jar.filename}">
-			<fileset dir="${build.dir}" includes="${root.packages}" />
+			<fileset dir="${build.dir}" includes="**/*.class" />
 			<fileset dir="${src.dir}" includes="" />
 			<fileset dir="${basedir}" includes="${res.dir}/${required.resources}" />
 			
